@@ -1,0 +1,186 @@
+%\documentclass[10pt,a4paper]{article}
+%\usepackage[latin1]{inputenc}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\author{}
+%\title{}
+%\begin{document}
+\tableofcontents
+\listoffigures
+\pagebreak
+\section{Introduction}
+
+
+
+The study of two-particle correlation functions, called femtoscopy, can provide space-time information about the emitting source in high-energy collisions.  Femtoscopic studies primarily focus on pion correlations \cite{Aamodt:2011mr}, but other particles such as kaons \cite{Abelev:2012ms} and protons \cite{Gos:2007cj} have been studied as well. In this note, two-$\Lambda$ momentum correlation functions measured in PbPb collisions at $\sqrt{s_{NN}}=2.76$ TeV by the ALICE collaboration are presented.  Results are shown for $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs. The $\Lambda\bar{\Lambda}$ results are presented as a candidate for preliminary status. The motivation for $\Lambda$ baryon femtoscopy is to complement previous studies, as well as to probe the little-understood strong interactions of these baryons.
+
+
+The primary effect seen in $\Lambda\bar{\Lambda}$ correlations should be strong final state interactions (FSI).  A suppression of the correlation function at low-$q_{\rm inv}$ is expected due to interactions in the baryon-antibaryon annihilation channel.  Suppressions of this sort have also been seen in $p \bar{p}$ interactions \cite{Gos:2007cj}, though the effects of this channel in charged particle studies can be somewhat obfuscated by Coulomb enhancement effects in the same $q_{\rm inv}$ region.  Also discussed in this note are the main influences on $\Lambda\Lambda$ correlations --- strong FSI and Fermi-Dirac statistics.  A long-term goal of this study is to measure the interaction potential of the $\Lambda$ baryons. It should also be noted that the H-dibaryon is thought to have two $\Lambda$ as one of its decay channels \cite{PhysRevLett.38.195}.  The study of $\Lambda$ momentum correlations at the ALICE Experiment may some day provide measurements of this phenomenon, though endeavors in this direction are too preliminary to report upon at this time.
+
+\section{Data analysis}
+
+The analysis was performed on 20 June, 2012 using AliRoot v5-04-25-AN. The data were from PbPb collisions at $\sqrt{s_{NN}}=2.76$  TeV taken from the LHC11h (AOD095) pass 2 reconstruction. Runs were selected if they were listed with a pass 2 global quality of 1 ("Good run") in the Run Condition Table. The following runs were used:
+
+170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308, 170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, 170203, 170193, 170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084, 170083, 170081, 170040, 170027, 169965, 169923, 169859, 169858, 169855, 169846, 169838, 169837, 169835, 169591, 169588, 169586, 169557, 169554, 169550, 169512, 169504, 169498, 169475, 169419, 169418, 169417, 169415, 169411, 169238, 169167, 169160, 169156, 169148, 169145, 169144, 169138, 169099, 169094, 169091, 169044, 169035, 168992, 168988, 168826, 168777, 168514, 168512, 168511, 168467, 168464, 168460, 168458, 168362, 168361, 168342, 168341, 168325, 168322, 168311, 168310, 168115, 168108, 168107, 168105, 168076, 168069, 167988, 167987, 167985, 167920, 167915
+
+Approximately 44.4 million combined central, semi-central and minimum bias events have been analyzed. The analysis utilized information from several different detectors.  Event centrality is measured using the V0 detector with a timing cut from the Zero Degree Calorimeter.  The Inner Tracking System (ITS), Time Projection Chamber (TPC), Transition Radiation Detector (TRD), and Time of Flight detector together provided global tracking for the daughter particles.  Particle identification (PID) was performed using the TPC, as well as using the Time of Flight detector (TOF) when possible.
+
+\subsection{Event selection and $\Lambda$ reconstruction}
+\label{sec:Recon}
+
+During event selection, the z-position of the primary vertex was required to be within 10 cm of the center of the ALICE detector.  
+
+For the V0 reconstruction, a list of potential $\Lambda(\bar{\Lambda})$ candidates were extracted using the AliAODv0 Offline finder. The following cuts were applied for each V0's daughter tracks.
+
+\begin{itemize}
+\item The V0 was required to have no more than two daughters, and those daughters were required to have different charges.
+\item The daughter tracks were required to have hits on at least 80 pad rows of the TPC.
+\item The daughter (anti)protons were required to have $p_{\rm T} > 0.5$ GeV/c, and the daughter pions required $p_{\rm T} > 0.16$ GeV/c.  All daughters were required to be in the range $|\eta| < 0.8$.
+\item The TPC was used for PID purposes.  For proton and pion daughter candidates, the PID resolution task was used to obtain NSigma, which was required to be less than 3. Daughter tracks were subjected to equivalent PID requirements using the TOF if the signal was available.
+\item The two daughters are required to have a $DCA < 0.4$ cm.
+\end{itemize}
+
+Each V0 is then subjected to the following cuts:
+\begin{itemize}
+\item The V0 is required to have $|\eta| < 0.8$.
+\item The cosine of the pointing angle must be greater than 0.99.
+\item The DCA of the V0 to the primary vertex must be less than 1 cm.
+\item For a $\Lambda$, one daughter must be identified as a proton and the other as a $\pi^-$.  For a $\bar{\Lambda}$, one daughter must be identified as an antiproton and the other as a $\pi^+$.
+\item For both $\Lambda$ and $\bar{\Lambda}$, the reconstructed invariant mass was required to fall within $ 1.11 < m_{\rm inv} < 1.12136$ GeV/${\rm c^2}$.
+\end{itemize}
+
+The invariant mass spectra for $\Lambda$ can be seen in Figure \ref{fig:MassLooseCut}. An approximation of the signal quality was estimated using a ratio of real and background counts.  The background was estimated using a fourth order polynomial.  The number of real $\Lambda$ was then estimated by counting the bin content and subtracting the background. The signal quality was found to be $real/(real + background) \approx 0.82$.
+
+Figure \ref{fig:MassTightCut} shows the invariant mass spectra when tighter cuts are enforced.  The cuts increase the minimum DCA of the daughters to the primary vertex to 1 cm, reduced the max DCA of the V0 to the primary vertex to 0.8 cm, and set a minimum decay length of 2 cm.  These cuts ensure a better purity by eliminating much of the contamination of the reconstruction by primary particles.  However, there is also a significant drop ({\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}} threefold) in the number of reconstructed $\Lambda$, as well as the number of $\Lambda$ pairs.  While these cuts afford a higher purity, the extracted correlation function was found to be less significant due to the decreased statistics.  Therefore, the looser cuts defined in Section \ref{sec:Recon} are preferred.  Further details are discussed in Section \ref{sec:Systematics}.
+
+\subsection{Correlation function construction and pair cuts}
+\label{sec:CFconstruct}
+
+This analysis studies two-particle correlations as a function of the invariant pair momentum $q_{\rm inv} = \sqrt{q^2_0 - |\textbf{q}|^2}$, where $q_\mu$ is the difference in the two particles' four-momentum (i.e. $q_\mu = p^1_\mu - p^2_\mu$).  The correlation function is constructed as $C(q_{\rm inv}) = A(q_{\rm inv})/B(q_{\rm inv})$, where $A(q_{\rm inv})$ is the two-particle distribution of the given event and $B(q_{\rm inv})$ is the distribution of a reference event.  In practice, the signal event histogram $A(q_{\rm inv})$ is constructed by binning the $q_{\rm inv}$ value of each pair of particles in a single event, and repeating this for each event.  The reference (or background) histogram is constructed by binning $q_{\rm inv}$ for pairs of particles taken from different events.  Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  There are five mixed events for each real event.
+
+Femtoscopic studies look at the relative momentum of particles, and often the most interesting physics lies at very low relative momentum (around 0.2 GeV/c and lower).  As a result, two-track reconstrution effects such as track splitting and track merging, both of which occur for tracks with similar momenta and trajectories, can have a large effect on the final results.  Track splitting means that the track left by a single charged particle is reconstructed as two separate tracks. Track merging is when the tracks of two separate particles are reconstructed as a single track.  In this analysis, these two-track reconstruction effects are combatted in two ways.  
+
+One way utilizes the Qfac method (from AliTwoTrackRes.cxx in the AliFemto code) to compare the TPC cluster map and shared cluster map for like-particle daughter pairs.  In principle, independent tracks should have separate clusters on any given pad row.  If there are few pad rows where two tracks both have a hit, or  if they share hits on many pad rows, there is some chance the tracks are split. The Qfac method computes a value $qfactor$.  For each pad row where both daughters have a cluster, $qfactor$ increases if both have a shared cluster and decreases if they do not.  It also increases if only one track has a hit on a given pad row.  The final $qfactor$ value falls between -0.5 and 1.0. Values near 1 indicate tracks that are likely split, while tracks with a value close to -0.5 are very likely to be independent tracks.
+
+In this analysis, histograms were binned according to both the $qfactor$ and $q_{\rm inv}$ values of like-daughter pairs.  Cut values were then obtained by comparing plots of mixed-event pairs where splitting cannot occur to plots of same-event pairs where splitting can occur (Figures \ref{fig:QfacMixed} and \ref{fig:QfacSame} respectively).  Above $q_{\rm inv} = 0.2$ GeV/c, the behavior of the two plots is seen to be comparable.  One feature evident on both plots is a vertical line structure that appear in several locations.  This is an artifact of the bin size and the math of the Qfac method - the final $qfactor$ value is a ratio of two integers, so a discrete set of values is allowed.  For $q_{\rm inv} < 0.2$ GeV/c, two features are apparent only in the same-event plot.  First, there exists a prominance of pairs at $qfactor = 0.5 \pm 0.2$, which is thought to be a result of splitting.  To deal with this, all daughter pairs are required to have a $qfactor$ value less than 0.2.  The second feature is a small spike of pairs in the lowest $qfactor$ bin.  This can only occur if the two tracks have effectively identical cluster mapping, as might be the case if the tracks are some how clones of each other.  This effect needs to be studied further.  For now, we just exclude V0 pairs with daughters falling into the lowest $qfactor$ bin so as to remove any contamination by this effect on the correlation function.  In all cases, the same cuts are made whether constructing same-event or mixed-event pairs.
+
+The second method of combatting reconstruction effects is primarily intended to remove merging effects, though it also provides a complementary splitting cut.  This method looks at the average separation distance of two daughter tracks as computed at nine different radii of the TPC.  The tracks are propagated iteratively using their local coordinates and the PropagateTo function, and their global positions are determined at 85, 105, 125, 145, 165, 185, 205, 225, and 245 cm.  Initial iteration is performed in 1 cm steps, though a secondary propagation is done in 0.1 cm steps for better precision.  Same- and mixed-event pairs are binned according to this separation distance.  To obtain an estimate of the merging/splitting effects both distributions are then scaled by the number of pairs at high average separation distance (10+ cm), and a correlation function (same event pairs/ mixed event pairs) is created.  Looking at Figure \ref{fig:Merging}, one can see that splitting effects are relevant out to about 1 cm, as evidenced by a relative abundance of same-event pairs.  Merging is visible out to about 3 cm, as evidenced by a dearth of same-event pairs in that range.  To address these effects, both same- and mixed-event V0 pairs are cut if they have a like-sign daughter pair with average separation less than 3 cm.
+
+Finally, when constructing pairs of V0s from the save event, care is taken to ensure that the two V0s do not share a daughter with the same track id. 
+
+\subsection{Fit Parameters}
+\label{sec:Parameters}
+
+One goal of femtoscopy is to fit correlation functions to extract various physical paramaters.  For example, one can obtain the size of the emitting source, often characterized by $R_{\rm inv}$ in 1D and $R_{\rm out}$, $R_{\rm side}$, and $R_{\rm long}$ in 3D.  This analysis of $\Lambda(\bar{\Lambda})$ correlations is still in a preliminary phase where those parameters are not yet available, though studies are ongoing.  
+
+\subsection{Residual Correlations}
+\label{sec:Residual}
+
+Attempts at fitting correlation functions should try to account for residual correlations between the particle being studied and other particles that might decay into the studied particle.  Various particles can decay into $\Lambda$ baryons, such as $\Sigma^{\rm 0}$, $\Xi^{\rm 0}$, and $\Omega^{\rm -}$.  The decay momentum between these particles and their daughter $\Lambda$ is small, such that daughter and parent carry very similar momenta.  As a result, relative-momentum correlation functions between primary particles and secondary particles such as $\Lambda$ should be sensitive to the interactions between the primary particles and the parent particles.  For example, the correlation between primary $\Lambda$ and primary $\Sigma^{\rm 0}$ should be visible, though somewhat smeared out, in the correlation between primary $\Lambda$ and secondary $\Lambda$.  Furthermore, these secondary $\Lambda$ are often difficult to distinguish from primary $\Lambda$.  Therefore, measurements of two-$\Lambda$ correlation functions will contain a mixture of primary correlations and feeddown correlations, and an attempt to parameterize the correlation functions should take this into account.  
+
+One example of this type of parameterization can be seen in the recent proton femtoscopy results from ALICE PbPb collisions \cite{Szymanski:2012AN}.  In that study, initial attempts to fit a purely primary proton-proton correlation function failed to reproduce the shape of the data.  However, when further parameterization was introduced to take into account proton-proton correlations where one proton was primary and one came from a $\Lambda$ decay, the fit was remarkably successful.  An analysis of residual correlations is not yet available for this $\Lambda$ study, though it is a work in progress.  Future femtoscopic analyses may also find this approach useful.
+
+\section{Results}
+\label{sec:Results}
+
+Figure \ref{fig:CFMixCentralities} shows $\Lambda\bar{\Lambda}$ correlation functions versus $q_{\rm inv}$ for three different centralities ranges.  The correlations are normalized to unity in the $ 0.3 < q_{\rm_{inv}} < 0.5$ GeV/c range.  Each correlation shows clear suppression in the low-$q_{\rm_{inv}}$ region, which is considered an effect of the baryon-antibaryon annihilation channel.  The strength of the correlation effect increases with more peripheral events, an indication that the emitting source size is shrinking for those events.
+
+Figure \ref{fig:CF} shows correlation functions constructed in the 0-10\% centrality range for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Both correlation functions exhibit an enhancement in the low-$q_{\rm inv}$ range of 0.04 - 0.2 GeV/c.  This may be due to attractive final state interactions.  The effects of FSI and quantum statistics are expected to be seen in roughly the same $q_{\rm inv}$ range, and it is unclear at this time to what extent their effects should be competing. The enhancement of the $\bar{\Lambda}\bar{\Lambda}$ correlation function does fall off in the lowest bins, though the statistical uncertainties are such that no significant statement about the effects of quantum statistics can be made at this time.
+
+\section{Systematic uncertainties}
+\label{sec:Systematics}
+
+This analysis is in a preliminary phase where fit parameters such as source radii and correlation strength are unavailable.  Therefore a discussion of systematic effects is at this time limited to showing how different sets of cuts change the qualitative aspects of the correlation function plot.  The effects of two such cuts are discussed here.  An attempt is made to quantify the systematic uncertainty between these different cuts for the $\Lambda\bar{\Lambda}$ correlation function.
+
+Two-track reconstruction effects were discussed in Section \ref{sec:CFconstruct}. Figure \ref{fig:CFNoMergeMix} shows the three centralities of $\Lambda\bar{\Lambda}$ correlation functions measured without the average separation cut in place.  Figure \ref{fig:CFNoMerge} shows the equivalent plot for the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlations. Subtle differences are visible in the $q_{\rm inv} < 0.2$ GeV/c range, with the most drastic changes lying in the lowest bins where the statistics are the weakest.  Except for the lowest bin, the changes all fall within error bars of the points in Figures \ref{fig:CFMixCentralities} and \ref{fig:CF}.  Nonetheless, it is clear that including the two-track cuts  shifts the low-$q_{\rm inv}$ bins down by a noticeable amount, a sign that splitting effects are being removed.  This consistent downward shift indicates that two-track effects are a significant source of systematic error in this study.
+
+As mentioned in Section \ref{sec:Recon}, two sets of reconstruction cuts (loose and tight) have been studied in detail.  Figure \ref{fig:CFMixCentralities} was created using loose reconstruction cuts.  For comparison, Figure \ref{fig:CFTightCutsMix} shows the same correlations with tighter reconstruction cuts employed.  Figure \ref{fig:CFTightCuts} shows a similar plot for the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlations.  It is apparent that the statistics are much worse under the tigher cuts, though qualitative similarities to the other plots remain, e.g.\ the centrality dependence of the $\Lambda\bar{\Lambda}$ annihilation and the enhancement of the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ at low-$q_{\rm inv}$.
+
+A convervative estimate of the systematic errors for the $\Lambda\bar{\Lambda}$ correlation function and are shown in Figure \ref{fig:CFMixSystematics}.  The systematic errors were computed by taking the absolute value of the difference between Figure \ref{fig:CFMixCentralities} and Figure \ref{fig:CFTightCutsMix} for each $q_{\rm inv}$ bin.  The results were then fit with a 5th order polynomial.  The value of the polynomial was determined at the center of each $q_{\rm inv}$ bin.  This value was halved and then applied as a symmetric systematic error for that particular $q_{\rm inv}$ bin.  The data points and statistical errors are those from Figure \ref{fig:CFMixCentralities}.
+
+
+
+\section{Summary}
+Results have been shown for correlation functions $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs.  The results show that like-particle pairs are enhanced at low relative momentum.  The low-$q_{\rm inv}$ suppression of the $\Lambda\bar{\Lambda}$ correlations in each of the three centrality bins may indicate pair annihilation processes reminiscent of those reported in other studies.
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.6]{2012-Aug-07-LamInvMass_Perf.pdf}
+\caption[Invariant mass distribution for reconstructed $\Lambda$]{Invariant mass distribution for reconstructed $\Lambda$ using the main analysis cuts.  The red line shows a fourth order polynomial fit to the background, which is used to estimate the number of real and accidental $\Lambda$.  The estimated ratio of real $\Lambda$ to all reconstructed $\Lambda$ in the signal region ($ 1.11 < m_{\rm inv} < 1.12136$ GeV/${\rm c^2}$) shown in this plot is approximately 0.82.  Candidate for performance status.}
+\label{fig:MassLooseCut}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.5]{11h_V0_MassLam_TightCuts.png}
+\caption[Invariant mass distribution for reconstructed $\Lambda$ using tight cuts]{Invariant mass distribution for reconstructed $\Lambda$ using tight cuts.  Here, $sig/(sig+bkg) \approx 0.92$.}
+\label{fig:MassTightCut}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.5]{Qfac_MixedEvent.png}
+\caption[$qfactor$ vs $q_{inv}$ distribution of mixed-event pairs]{Scaled $qfactor$ vs $q_{inv}$ distribution of mixed-event proton-daughter pairs.  Since the daughters come from two different events, two-track reconstruction effects are absent.}
+\label{fig:QfacMixed}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.5]{Qfac_SameEvent.png}
+\caption[$qfactor$ vs $q_{inv}$ distribution of same-event pairs]{Scaled $qfactor$ vs $q_{inv}$ distribution of same-event pairs.  Note the region of excess pairs (relative to Fig \ref{fig:QfacMixed}) at $qfactor \approx 0.45$ and $q_{inv} \leq 0.1$ GeV/c.  To excise splitting effects when constructing the correlation functions, V0 pairs are removed if their daughters have a $qfactor \geq 0.2$.}
+\label{fig:QfacSame}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.6]{2012-Aug-07-TwoTrack_Perf.pdf}
+\caption[Correlation function showing two-track reconstruction effects]{Correlation function versus average separation distance in the TPC for proton daughters.  Constructed using same-event pairs over mixed-event pairs.  Both splitting (enhancement) and merging (suppression) effects are visible.  Candidate for performance status.}
+\label{fig:Merging}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.7]{LamALamCF_LooseCuts.pdf}
+\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs in three centrality ranges.]{Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs.  Results are shown for the 0-10\%, 10-40\%, and 40-60\% centrality range.}
+\label{fig:CFMixCentralities}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.7]{CFs_main_note.pdf}
+\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.]{Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Results are shown for the 0-10\% centrality range.}
+\label{fig:CF}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.7]{MixCFs_No_MergeCut.pdf}
+\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs in three centrality ranges. No merging cuts]{Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs (without cut on the average separation distance of the daughter pairs).  Results are shown for the 0-10\%, 10-40\%, and 40-60\% centrality range.}
+\label{fig:CFNoMergeMix}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.7]{Mix_Tight_cuts_ANote.pdf}
+\caption{Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs in three centrality ranges. Tight cuts.}
+\label{fig:CFTightCutsMix}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.7]{CFs_noMergeCut_note.pdf}
+\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs. No merging cuts]{Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs (without cut on the average separation distance of the daughter pairs).  Results are shown for the 0-10\% centrality range.}
+\label{fig:CFNoMerge}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.7]{CFs_tightcut_note.pdf}
+\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Tight cuts]{Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs using tight reconstruction cuts.  Results are shown for the 0-10\% centrality range.}
+\label{fig:CFTightCuts}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[scale=0.7]{2012-Jul-25-LamALamPrelim.pdf}
+\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs in three centrality ranges with systematic errors.]{Correlation functions versus $q_{\rm inv}$ with systematic errors for $\Lambda\bar{\Lambda}$ pairs. Systematics are computed by fitting the absolute value of the difference between Figure \ref{fig:CFMixCentralities} and Figure \ref{fig:CFTightCutsMix} with a 5th order polynormial. Results are shown for the 0-10\%, 10-40\%, and 40-60\% centrality range.}
+\label{fig:CFMixSystematics}
+\end{figure}
+
+\bibliographystyle{plain}
+\bibliography{bibfile}
+
+
+
+
+
+%\end{document}
