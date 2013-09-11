@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Name:     cernphprep.cls                                       %
+%  Name:     ALICE_internal_notes.cls                                       %
 %                                                                 %
 %  Purpose:  Set LaTeX parameters for CERN PH preprint            %
 %                                                                 %
@@ -37,10 +37,10 @@
 \def\fileversion{1.06}
 \def\filedate{8 July 2010}
 \def\docdate{8 July 2010}
-\typeout{Document Style 'cernphprep'. Version <\fileversion>, <\filedate>}
+\typeout{Document Style 'ALICE_internal_notes'. Version <\fileversion>, <\filedate>}
 % -------------------------------- identification ---------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{cernphprep}[2010/07/08]
+\ProvidesClass{ALICE_internal_notes}[2010/07/08]
 % ---------------------------  declaration of options --
 % Define experiment logo for first page
 \providecommand*\EXPLOGO{nonelogo}
@@ -79,7 +79,7 @@
 \RequirePackage{graphicx,amsmath,amssymb,array,tabularx,url,xspace,subfigure}
 \RequirePackage{ifthen}
  
-\typeout{Document Class "cernphprep" 1.06 (8 July 2010)}
+\typeout{Document Class "ALICE_internal_notes" 1.06 (8 July 2010)}
 
 %% Defince collaboration is it cannot be inferred from option 
 
