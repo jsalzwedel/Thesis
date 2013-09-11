@@ -19,32 +19,39 @@ The study of two-particle correlation functions, called femtoscopy, can provide 
 The primary effect seen in $\Lambda\bar{\Lambda}$ correlations should be strong final state interactions (FSI).  A suppression of the correlation function at low-$q_{\rm inv}$ is expected due to interactions in the baryon-antibaryon annihilation channel.  Suppressions of this sort have also been seen in $p \bar{p}$ interactions \cite{Gos:2007cj}, though the effects of this channel in charged particle studies can be somewhat obfuscated by Coulomb enhancement effects in the same $q_{\rm inv}$ region.  Also discussed in this note are the main influences on $\Lambda\Lambda$ correlations --- strong FSI and Fermi-Dirac statistics.  A long-term goal of this study is to measure characteristics of the interaction potential of the $\Lambda$ baryons.  More specifically, the scattering length $f_0$ and effective radius $d_0$ of the interaction can be extracted from two-$Lambda$ correlations. It should also be noted that the H-dibaryon is thought to have two $\Lambda$s as one of its decay channels \cite{PhysRevLett.38.195}.  The study of $\Lambda$ momentum correlations at ALICE may some day provide measurements of this phenomenon, though endeavors in this direction are too preliminary to report upon at this time.
 
 \section{Data analysis}
+\subsection{Data selection}
+The analysis was performed on 31 July, 2013 using AliRoot v5-04-64-AN. The data were from PbPb collisions at $\sqrt{s_{NN}}=2.76$  TeV taken from the LHC11h (AOD115) pass 2 reconstruction. Runs were selected if they were listed with a pass 2 global quality of 1 ("Good run") in the Run Condition Table. Approximately 66 million combined central, semi-central and minimum bias events were analyzed. The following runs were used, which comprise both the positive (++) and negative magnetic (--) field orientations:
 
-The analysis was performed on 20 June, 2012 using AliRoot v5-04-25-AN. The data were from PbPb collisions at $\sqrt{s_{NN}}=2.76$  TeV taken from the LHC11h (AOD095) pass 2 reconstruction. Runs were selected if they were listed with a pass 2 global quality of 1 ("Good run") in the Run Condition Table. The following runs were used:
+170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308, 170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, 170203, 170193, 170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084, 170083, 170081, 170040, 170027, 169965, 169923, 169859, 169858, 169855, 169846, 169838, 169837, 169835, 169591, 169590, 169588, 169587, 169586, 169557, 169555, 169554, 169553, 169550, 169515, 169512, 169506, 169504, 169498, 169475, 169420, 169419, 169418, 169417, 169415, 169411, 169238, 169167, 169160, 169156, 169148, 169145, 169144, 169138, 169099, 169094, 169091, 169045, 169044, 169040, 169035, 168992, 168988, 168826, 168777, 168514, 168512, 168511, 168467, 168464, 168460, 168458, 168362, 168361, 168342, 168341, 168325, 168322, 168311, 168310, 168115, 168108, 168107, 168105, 168076, 168069, 167988, 167987, 167985, 167920, 167915
 
-170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308, 170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, 170203, 170193, 170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084, 170083, 170081, 170040, 170027, 169965, 169923, 169859, 169858, 169855, 169846, 169838, 169837, 169835, 169591, 169588, 169586, 169557, 169554, 169550, 169512, 169504, 169498, 169475, 169419, 169418, 169417, 169415, 169411, 169238, 169167, 169160, 169156, 169148, 169145, 169144, 169138, 169099, 169094, 169091, 169044, 169035, 168992, 168988, 168826, 168777, 168514, 168512, 168511, 168467, 168464, 168460, 168458, 168362, 168361, 168342, 168341, 168325, 168322, 168311, 168310, 168115, 168108, 168107, 168105, 168076, 168069, 167988, 167987, 167985, 167920, 167915
+Analysis was also performed on the LHC12a17a_fix Monte Carlo HIJING run, which corresponds to the ++ field orientation events of the LHC11h anchors.  Approximately 650 thousand events were analyzed from runs
 
-Approximately 44.4 million combined central, semi-central and minimum bias events have been analyzed. The analysis utilized information from several different detectors.  Event centrality is measured using the V0 detector with a timing cut from the Zero Degree Calorimeter.  The Inner Tracking System (ITS), Time Projection Chamber (TPC), Transition Radiation Detector (TRD), and Time of Flight detector together provided global tracking for the daughter particles.  Particle identification (PID) was performed using the TPC, as well as using the Time of Flight detector (TOF) when possible.
+170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308, 170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, 170203, 170193, 170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084, 170083, 170081, 170040, 170027, 169965, 169923, 169859, 169858, 169855, 169846, 169838, 169837, 169835
 
-\subsection{Event selection and $\Lambda$ reconstruction}
+In all cases, the z-position of the primary vertex was required to be within 10 cm of the center of the ALICE detector for an event to be selected.  
+
+\subsection{Detector use}
+Both the data analysis as well as the MC analysis utilized information from several different detectors.  Event centrality was measured using the V0 detector with a timing cut from the Zero Degree Calorimeter.  The Inner Tracking System (ITS), Time Projection Chamber (TPC), Transition Radiation Detector (TRD), and Time of Flight detector together provided global tracking for the daughter particles.  Particle identification (PID) was performed using the TPC, as well as using the Time of Flight detector (TOF) when possible.
+
+\subsection{$\Lambda$ reconstruction}
 \label{sec:Recon}
 
-During event selection, the z-position of the primary vertex was required to be within 10 cm of the center of the ALICE detector.  
-
-For the V0 reconstruction, a list of potential $\Lambda(\bar{\Lambda})$ candidates were extracted using the AliAODv0 Offline finder. The following cuts were applied for each V0's daughter tracks.
+During V0 reconstruction, a list of potential $\Lambda(\bar{\Lambda})$ candidates were extracted using the AliAODv0 Offline finder. The following cuts were applied for each V0's daughter tracks.
 
 \begin{itemize}
 \item The V0 was required to have no more than two daughters, and those daughters were required to have different charges.
 \item The daughter tracks were required to have hits on at least 80 pad rows of the TPC.
-\item The daughter (anti)protons were required to have $p_{\rm T} > 0.5$ GeV/c, and the daughter pions required $p_{\rm T} > 0.16$ GeV/c.  All daughters were required to be in the range $|\eta| < 0.8$.
-\item The TPC was used for PID purposes.  For proton and pion daughter candidates, the PID resolution task was used to obtain NSigma, which was required to be less than 3. Daughter tracks were subjected to equivalent PID requirements using the TOF if the signal was available.
-\item The two daughters are required to have a $DCA < 0.4$ cm.
+\item The daughter protons (antiprotons) were required to have $p_{\rm T} > 0.5 (0.3)$ GeV/c, and the daughter pions required $p_{\rm T} \geq 0.16$ GeV/c.  All daughters were required to be in the range $|\eta| < 0.8$.
+\item The TPC was used for PID purposes.  For proton and pion daughter candidates, the PID resolution task was used to obtain NSigma, which was required to be less than 3.
+\item Daughter tracks were required to have a TOF PID NSigma value less than 4 if the TOF signal was available.
+\item The two daughters are required to have a $DCA < 0.4$ cm to each other.
+\item The daughters were each required to have a DCA to the primary vertex $> 0.1$ cm.
 \end{itemize}
 
 Each V0 is then subjected to the following cuts:
 \begin{itemize}
 \item The V0 is required to have $|\eta| < 0.8$.
-\item The cosine of the pointing angle must be greater than 0.99.
+\item The cosine of the pointing angle must be greater than 0.998.
 \item The DCA of the V0 to the primary vertex must be less than 1 cm.
 \item For a $\Lambda$, one daughter must be identified as a proton and the other as a $\pi^-$.  For a $\bar{\Lambda}$, one daughter must be identified as an antiproton and the other as a $\pi^+$.
 \item For both $\Lambda$ and $\bar{\Lambda}$, the reconstructed invariant mass was required to fall within $ 1.11 < m_{\rm inv} < 1.12136$ GeV/${\rm c^2}$.
@@ -54,10 +61,34 @@ The invariant mass spectra for $\Lambda$ can be seen in Figure \ref{fig:MassLoos
 
 Figure \ref{fig:MassTightCut} shows the invariant mass spectra when tighter cuts are enforced.  The cuts increase the minimum DCA of the daughters to the primary vertex to 1 cm, reduced the max DCA of the V0 to the primary vertex to 0.8 cm, and set a minimum decay length of 2 cm.  These cuts ensure a better purity by eliminating much of the contamination of the reconstruction by primary particles.  However, there is also a significant drop ({\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}} threefold) in the number of reconstructed $\Lambda$, as well as the number of $\Lambda$ pairs.  While these cuts afford a higher purity, the extracted correlation function was found to be less significant due to the decreased statistics.  Therefore, the looser cuts defined in Section \ref{sec:Recon} are preferred.  Further details are discussed in Section \ref{sec:Systematics}.
 
+\subsection{Shared daughter cut}
+
+Occasionally two or more V0s are reconstructed that both claim the same daughter track.  However, a given track can only be the daughter of, at most, one V0.  Therefore, if several reconstructed V0s all lay claim to the same daughter, at most only one of them can be a true V0.  It was decided to employ a cut that would compare characteristics of the different V0s to determine which of them was most likely to be the true parent particle.  After the best V0 was found, the competing V0s were removed from the list of V0 particles and not used during same- or mixed-event pair construction.
+
+A study was done using MC event truths to determine which cut would be most successful at removing fraudulent V0s.  The following characteristics were examined:
+
+\item Closeness of invariant mass to the PDG mass value.
+\item DCA of the daughter particles to each other.
+\item Cosine of the pointing angle.
+\item DCA of the V0 to the primary vertex.
+
+Based on the MC truth study, the ... cut was found to successfully keep true V0s and remove fake V0s ...\% of the time.  
+
+On average there were two competing particles per every ... events in the MC study.  When applied to analysis of the LHC11h data, the rate was two per ....
+
+In order to keep spurious correlated signals from entering the correlation functions, a cut on daughter particles was implemented.  After all the V0s in an event were reconstructed, the V0s were checked to see if they shared any daughters.  Those V0s that shared a daughter were compared via several characteristics:
+
+As this shared-daughter cut process was done sequentially through the ... an iterative process was developed to ensure... 
+
+(example: V0s "A" and "B" both share a daughter, and V0s "A" and "C" share a different daughter.  "A" has a better DCA than "B", so "B" is removed.  Then "C" is found to have a better DCA than "A", so "A" is removed.  Finally, "B" is returned because it no longer competes for a daughter).
+
+This cut helps remove a splitting-like effect (see sec \ref{sec:CFconstruct) for more on splitting), wherein one true V0 has each of its daughters claimed by two separate fake V0s.  By the nature of the reconstruction cuts, all three of the V0s will be close in momentum space.  Therefore a pair constructed from the two fake V0s will contaminate the low relative-momentum region of the correlation function.  
+
+
 \subsection{Correlation function construction and pair cuts}
 \label{sec:CFconstruct}
 
-This analysis studies two-particle correlations as a function of the invariant pair momentum $q_{\rm inv} = \sqrt{q^2_0 - |\textbf{q}|^2}$, where $q_\mu$ is the difference in the two particles' four-momentum (i.e. $q_\mu = p^1_\mu - p^2_\mu$).  The correlation function is constructed as $C(q_{\rm inv}) = A(q_{\rm inv})/B(q_{\rm inv})$, where $A(q_{\rm inv})$ is the two-particle distribution of the given event and $B(q_{\rm inv})$ is the distribution of a reference event.  In practice, the signal event histogram $A(q_{\rm inv})$ is constructed by binning the $q_{\rm inv}$ value of each pair of particles in a single event, and repeating this for each event.  The reference (or background) histogram is constructed by binning $q_{\rm inv}$ for pairs of particles taken from different events.  Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  There are five mixed events for each real event.
+This analysis studies two-particle correlations as a function of the invariant relative pair momentum $q_{\rm inv} = \sqrt{q^2_0 - |\textbf{q}|^2}$, where $q_\mu$ is the difference in the two particles' four-momentum (i.e. $q_\mu = p^1_\mu - p^2_\mu$).  The correlation function is constructed as $C(q_{\rm inv}) = A(q_{\rm inv})/B(q_{\rm inv})$, where $A(q_{\rm inv})$ is the two-particle distribution of the given event and $B(q_{\rm inv})$ is the distribution of a reference event.  In practice, the signal event histogram $A(q_{\rm inv})$ is constructed by binning the $q_{\rm inv}$ value of each pair of particles in a single event, and repeating this for each event.  The reference (or background) histogram is constructed by binning $q_{\rm inv}$ for pairs of particles taken from different events.  Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  There are five mixed events for each real event.
 
 Femtoscopic studies look at the relative momentum of particles, and often the most interesting physics lies at very low relative momentum (around 0.2 GeV/c and lower).  As a result, two-track reconstruction effects such as track splitting and track merging, both of which occur for tracks with similar momenta and trajectories, can have a large effect on the final results.  Track splitting means that the track left by a single charged particle is reconstructed as two separate tracks. Track merging is when the tracks of two separate particles are reconstructed as a single track.  In this analysis, these two-track reconstruction effects are combatted in two ways.  
 
