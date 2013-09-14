@@ -1,9 +1,0 @@
-\contentsline {section}{\numberline {1}Introduction}{2}
-\contentsline {section}{\numberline {2}Data analysis}{2}
-\contentsline {subsection}{\numberline {2.1}Event selection and $\Lambda $ reconstruction}{2}
-\contentsline {subsection}{\numberline {2.2}Correlation function construction and pair cuts}{3}
-\contentsline {subsection}{\numberline {2.3}Fit Parameters}{4}
-\contentsline {subsection}{\numberline {2.4}Residual Correlations}{5}
-\contentsline {section}{\numberline {3}Results}{5}
-\contentsline {section}{\numberline {4}Systematic uncertainties}{5}
-\contentsline {section}{\numberline {5}Summary}{6}

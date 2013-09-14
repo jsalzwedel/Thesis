@@ -11,9 +11,11 @@
 \pagebreak
 \section{Introduction}
 
+The study of two-particle correlations at low relative momentum is commonly known as femtoscopy.  Femtoscopic analyses are capable of measuring spatio-temporal characteristics of heavy-ion collisions, with a particular emphasis made on estimating the homogeneity lengths (also called radii) of the particle-emitting source.  These analyses traditionally study pions \cite{Goldhaber:1960sf,Aamodt:2011mr} because of their ready availability and sensitivity to the spatial scale of the source.  However, measurements of heavier particles such as kaons \cite{Abelev:2012ms} and baryons \cite{Gos:2007cj} can serve to complement the pion results.  One motivation for studying an assortment of heavier particles is to test the hydrodynamic prediction that radial flow should cause the source radii to scale with the transverse mass $m_{\mathrm{T}}$ of the particles \cite{Csorgo:1995bi,Lisa:2005dd}.
 
+Baryon--(anti)baryon correlation functions are also useful in the study of final state interactions (FSI).  Measurements of scattering lengths of pairs such as p$\Lambda$ and $\Lambda\Lambda$ are of interest for rescattering calculations, and, in the latter case, for understanding the properties of neutron stars \cite{SchaffnerBielich:2008kb,Wang:2010gr}.  Baryon-antibaryon correlations allow for the study of annihilation processes.  It has been argued that annihilation in the hadronic rescattering phase should be taken into account when determining particle yields \cite{Werner:2012xh,Karpenko:2012yf,Steinheimer:2012rd}.  This annihilation should result in an anticorrelation in baryon-antibaryon correlation functions.  Results from these femtoscopic analyses may be able to provide insight into the $p/\pi^+$ ratio measured in experiments at the LHC, which falls short of thermal model expectations \cite{Preghenella:2012eu}. 
 
-The study of two-particle correlation functions, called femtoscopy, can provide space-time information about the emitting source in high-energy collisions.  Femtoscopic studies primarily focus on pion correlations \cite{Aamodt:2011mr}, but other particles such as kaons \cite{Abelev:2012ms} and protons \cite{Gos:2007cj} have been studied as well. In this note, two-$\Lambda$ momentum correlation functions measured in PbPb collisions at $\sqrt{s_{NN}}=2.76$ TeV by the ALICE collaboration are presented.  Results are shown for $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs. The $\Lambda\bar{\Lambda}$ results are presented as a candidate for preliminary status. The motivation for $\Lambda$ baryon femtoscopy is to complement previous studies, as well as to probe the little-understood strong interactions of these baryons.
+In this note, we present two-$\Lambda$ momentum correlation functions measured in PbPb collisions at $\sqrt{s_{NN}}=2.76$ TeV by the ALICE Collaboration.  Results are shown for $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs. The $\Lambda\bar{\Lambda}$ results are presented as a candidate for preliminary status. The motivation for $\Lambda$ baryon femtoscopy is to complement previous studies, as well as to probe the little-understood strong interactions of these baryons.
 
 
 The primary effect seen in $\Lambda\bar{\Lambda}$ correlations should be strong final state interactions (FSI).  A suppression of the correlation function at low-$q_{\rm inv}$ is expected due to interactions in the baryon-antibaryon annihilation channel.  Suppressions of this sort have also been seen in $p \bar{p}$ interactions \cite{Gos:2007cj}, though the effects of this channel in charged particle studies can be somewhat obfuscated by Coulomb enhancement effects in the same $q_{\rm inv}$ region.  Also discussed in this note are the main influences on $\Lambda\Lambda$ correlations --- strong FSI and Fermi-Dirac statistics.  A long-term goal of this study is to measure characteristics of the interaction potential of the $\Lambda$ baryons.  More specifically, the scattering length $f_0$ and effective radius $d_0$ of the interaction can be extracted from two-$Lambda$ correlations. It should also be noted that the H-dibaryon is thought to have two $\Lambda$s as one of its decay channels \cite{PhysRevLett.38.195}.  The study of $\Lambda$ momentum correlations at ALICE may some day provide measurements of this phenomenon, though endeavors in this direction are too preliminary to report upon at this time.
@@ -88,37 +90,31 @@ This cut helps remove a splitting-like effect (see sec \ref{sec:CFconstruct) for
 \subsection{Correlation function construction and pair cuts}
 \label{sec:CFconstruct}
 
-This analysis studies two-particle correlations as a function of the invariant relative pair momentum $q_{\rm inv} = \sqrt{q^2_0 - |\textbf{q}|^2}$, where $q_\mu$ is the difference in the two particles' four-momentum (i.e. $q_\mu = p^1_\mu - p^2_\mu$).  The correlation function is constructed as $C(q_{\rm inv}) = A(q_{\rm inv})/B(q_{\rm inv})$, where $A(q_{\rm inv})$ is the two-particle distribution of the given event and $B(q_{\rm inv})$ is the distribution of a reference event.  In practice, the signal event histogram $A(q_{\rm inv})$ is constructed by binning the $q_{\rm inv}$ value of each pair of particles in a single event, and repeating this for each event.  The reference (or background) histogram is constructed by binning $q_{\rm inv}$ for pairs of particles taken from different events.  Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  There are five mixed events for each real event.
+This analysis studies two-particle correlations as a function of the one dimensional relative momentum $q_{\mathrm{inv}}=2k^*=\abs{P(m^2_1-m^2_2)/P^2 - q}$, where $P$ and $q$ are the four-vector momentum sum and difference, respectively, and $m_1$ and $m_2$ are the masses of the two particles.  The correlation function is constructed as $C(q_{\rm inv}) = A(q_{\rm inv})/B(q_{\rm inv})$, where $A(q_{\rm inv})$ is the two-particle distribution of the given event and $B(q_{\rm inv})$ is the distribution of a reference event.  In practice, the signal event histogram $A(q_{\rm inv})$ is constructed by binning the $q_{\rm inv}$ value of each pair of particles in a single event, and repeating this for each event.  The reference (or background) histogram is constructed by binning $q_{\rm inv}$ for pairs of particles taken from different events.  Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  There are five mixed events for each real event.
 
 Femtoscopic studies look at the relative momentum of particles, and often the most interesting physics lies at very low relative momentum (around 0.2 GeV/c and lower).  As a result, two-track reconstruction effects such as track splitting and track merging, both of which occur for tracks with similar momenta and trajectories, can have a large effect on the final results.  Track splitting means that the track left by a single charged particle is reconstructed as two separate tracks. Track merging is when the tracks of two separate particles are reconstructed as a single track.  
 
 In this analysis, two-track reconstruction effects are combatted via a cut on the average separation of daughter tracks from different lambdas.  The average separation distance of two daughter tracks are computed at nine different radii of the TPC.  The tracks are propagated iteratively using their local coordinates and the PropagateTo function, and their global positions are determined at 85, 105, 125, 145, 165, 185, 205, 225, and 245 cm.  Initial iteration is performed in 1 cm steps, though a secondary propagation is done in 0.1 cm steps for better precision.  Same- and mixed-event pairs are binned according to this separation distance.  To obtain an estimate of the merging/splitting effects both distributions are then scaled by the number of pairs at high average separation distance (10+ cm), and a correlation function (same event pairs/ mixed event pairs) is created.  Looking at Figure \ref{fig:Merging}, one can see that splitting effects are relevant out to about 1 cm, as evidenced by a relative abundance of same-event pairs.  Merging is visible out to about 3 cm, as evidenced by a dearth of same-event pairs in that range.  To address these effects, both same- and mixed-event V0 pairs are cut if they have a like-sign daughter pair with average separation less than 3 cm.
 
-Primary vertex shifting of mixed eventsd.....
+To ensure that average separation distributions of mixed-event pairs are comparable to the same-event distributions, it is necessary to perform a shifting of the primary vertex for mixed events.  Doing so allows the track separations to be calculated as though both events had the same primary vertex.  Without this correction, the mixed-event distributions are biased by differences in the primary vertex location.  One could imagine an extreme example of this if one used a 20 cm wide z-vertex bin.  In that case, tracks from different events could be shifted relative to each other by as much as 20 cm.  For this analysis with 2 cm z-vertex binning, and the uncorrected average separation correlation is shown in Figure \ref{fig:Merging}.  In contrast, Figure \ref{fig:CorrectedMerging} shows the primary-vertex corrected correlation.  To get a clear account of the difference between the two, we can look at Figure \ref{fig:AvgSepRatio}, which shows the ratio of the uncorrected to corrected correlations.  The enhancement in the... shows that...
 
 Finally, when constructing pairs of V0s from the same event, care is taken to ensure that the two V0s do not share a daughter with the same track id. 
 
-\subsection{Fit Parameters}
-\label{sec:Parameters}
+\section{Results and Systematic Uncertainties}
+\label{sec:ResultsSystematicsData}
 
-One goal of femtoscopy is to fit correlation functions to extract various physical parameters.  For example, one can obtain the size of the emitting source, often characterized by $R_{\rm inv}$ in 1D and $R_{\rm out}$, $R_{\rm side}$, and $R_{\rm long}$ in 3D.  This analysis of $\Lambda(\bar{\Lambda})$ correlations is still in a preliminary phase where those parameters are not yet available, though studies are ongoing.  
-
-\subsection{Residual Correlations}
-\label{sec:Residual}
-
-Attempts at fitting correlation functions should try to account for residual correlations between the particle being studied and other particles that might decay into the studied particle.  Various particles can decay into $\Lambda$ baryons, such as $\Sigma^{\rm 0}$, $\Xi^{\rm 0}$, and $\Omega^{\rm -}$.  The decay momentum between these particles and their daughter $\Lambda$ is small, such that daughter and parent carry very similar momenta.  As a result, relative-momentum correlation functions between primary particles and secondary particles such as $\Lambda$ should be sensitive to the interactions between the primary particles and the parent particles.  For example, the correlation between primary $\Lambda$ and primary $\Sigma^{\rm 0}$ should be visible, though somewhat smeared out, in the correlation between primary $\Lambda$ and secondary $\Lambda$.  Furthermore, these secondary $\Lambda$ are often difficult to distinguish from primary $\Lambda$.  Therefore, measurements of two-$\Lambda$ correlation functions will contain a mixture of primary correlations and feeddown correlations, and an attempt to parameterize the correlation functions should take this into account.  
-
-One example of this type of parameterization can be seen in the recent proton femtoscopy results from ALICE PbPb collisions \cite{Szymanski:2012AN}.  In that study, initial attempts to fit a purely primary proton-proton correlation function failed to reproduce the shape of the data.  However, when further parameterization was introduced to take into account proton-proton correlations where one proton was primary and one came from a $\Lambda$ decay, the fit was remarkably successful.  An analysis of residual correlations is not yet available for this $\Lambda$ study, though it is a work in progress.  Future femtoscopic analyses may also find this approach useful.
-
-\section{Results}
-\label{sec:Results}
+..... Discussion of correlation function data results and systematic uncertainties.  ......
+%\section{Results}
+%\label{sec:Results}
 
 Figure \ref{fig:CFMixCentralities} shows $\Lambda\bar{\Lambda}$ correlation functions versus $q_{\rm inv}$ for three different centralities ranges.  The correlations are normalized to unity in the $ 0.3 < q_{\rm_{inv}} < 0.5$ GeV/c range.  Each correlation shows clear suppression in the low-$q_{\rm_{inv}}$ region, which is considered an effect of the baryon-antibaryon annihilation channel.  The strength of the correlation effect increases with more peripheral events, an indication that the emitting source size is shrinking for those events.
 
 Figure \ref{fig:CF} shows correlation functions constructed in the 0-10\% centrality range for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Both correlation functions exhibit an enhancement in the low-$q_{\rm inv}$ range of 0.04 - 0.2 GeV/c.  This may be due to attractive final state interactions.  The effects of FSI and quantum statistics are expected to be seen in roughly the same $q_{\rm inv}$ range, and it is unclear at this time to what extent their effects should be competing. The enhancement of the $\bar{\Lambda}\bar{\Lambda}$ correlation function does fall off in the lowest bins, though the statistical uncertainties are such that no significant statement about the effects of quantum statistics can be made at this time.
 
-\section{Systematic uncertainties}
-\label{sec:Systematics}
+Efforts to properly obtain fit parameters are still under way.  
+
+%\section{Systematic uncertainties}
+%\label{sec:Systematics}
 
 This analysis is in a preliminary phase where fit parameters such as source radii and correlation strength are unavailable.  Therefore a discussion of systematic effects is at this time limited to showing how different sets of cuts change the qualitative aspects of the correlation function plot.  The effects of two such cuts are discussed here.  An attempt is made to quantify the systematic uncertainty between these different cuts for the $\Lambda\bar{\Lambda}$ correlation function.
 
@@ -129,6 +125,62 @@ As mentioned in Section \ref{sec:Recon}, two sets of reconstruction cuts (loose 
 A convervative estimate of the systematic errors for the $\Lambda\bar{\Lambda}$ correlation function and are shown in Figure \ref{fig:CFMixSystematics}.  The systematic errors were computed by taking the absolute value of the difference between Figure \ref{fig:CFMixCentralities} and Figure \ref{fig:CFTightCutsMix} for each $q_{\rm inv}$ bin.  The results were then fit with a 5th order polynomial.  The value of the polynomial was determined at the center of each $q_{\rm inv}$ bin.  This value was halved and then applied as a symmetric systematic error for that particular $q_{\rm inv}$ bin.  The data points and statistical errors are those from Figure \ref{fig:CFMixCentralities}.
 
 
+
+
+
+\section{Fitting}
+\subsection{Analytical Model}
+The correlation functions can be calculated analytically \cite{lednicky82} using 
+\begin{equation}
+\label{eqLednicky}
+C(k^*)= 1+ \displaystyle\sum\limits_{S}\rho_S\left[\frac{1}{2}\abs{\frac{f^S(k^*)}{R}}^2(1-\frac{d_0^S}{2\sqrt{\pi}R})+\frac{2\Re f^S(k^*)}{\sqrt{\pi}R}F_1(2k^*R)-\frac{\Im f^S(k^*)}{R}F_2(2k^*R)\right]
+\end{equation}
+where $F_1(z) = \int_0^z \! \mathrm{d}x \, e^{x^2-z^2}/z$,  $F_2(z) = (1-e^{-z^2})/z$, and $R$ is the source size. We assume the particles are produced unpolarized, with $\rho_{\mathrm{S}}$ being the fraction of pairs in each total spin state S.  $f^S(k^*)=(1/f_0^S+\frac{1}{2}d_0^Sk^*-ik^*)^{-1}$ is the spin-dependent scattering amplitude, though this analysis measures only spin-averaged values. The scattering amplitude is dependent upon the complex scattering length $f_0^S$.  The real part of the scattering amplitude can contribute either a positive or a negative correlation, but either way the effect is relatively narrow in $k^*$ (on the order of about one hundred MeV/$c$).  The imaginary part of the scattering amplitude accounts for inelastic processes of baryon-antibaryon annihilation.  Introducing a non-zero imaginary part to the scattering length produces a wide (hundreds of MeV/$c$) negative correlation.  For identical and charged particles, additional terms \cite{Aamodt:2011kd} are necessary to account for quantum interference and the Coulomb interaction, respectively.
+  
+   the effective radius of interaction $d_0^S$ comes from scattering theory \cite{...}, and it loosely represents half the length of the interaction distance.
+
+\subsection{Fit Parameters}
+\label{sec:Parameters}
+
+For pion, kaon, and proton femtoscopic analyses, the scattering lengths and effective radius of interaction are well specified by years of scattering data, and they can be fixed to the known values.  In the case of lambda-(anti-)lambda femtoscopy, the interaction is heretofore large unstudied.  For this analysis, the scattering lengths and effective radius are left as free parameters.  Another free parameter is the $\lambda$ parameter, which is roughly a measure of the pair purity.  For example, $\lambda_{\Lambda\Lambda}$ would correspond to the ratio of number of true primary $\Lambda\Lambda$ pairs to the total number of pairs in the correlation function. The remaining fraction is comprised of all the other combinations of pair types, such as $\Lambda$-fake $\Lambda$ pairs, or pairs between primary and secondary lambdas.  The latter case will be described further in Section \ref{sec:Residual}.  The last fit parameter is $R_{\rm inv}$, which characterizes the one dimensional size of the emitting source.  
+
+
+
+\subsection{Residual Correlations}
+\label{sec:Residual}
+
+Attempts at fitting correlation functions should try to account for residual correlations between the particle being studied and other particles that might decay into the studied particle.  Various particles can decay into $\Lambda$ baryons, such as $\Sigma^{\rm 0}$, $\Xi^{\rm 0}$, and $\Omega^{\rm -}$.  The decay momentum between these particles and their daughter $\Lambda$ is small, such that daughter and parent carry very similar momenta.  As a result, relative-momentum correlation functions between primary particles and secondary particles such as $\Lambda$ should be sensitive to the interactions between the primary particles and the parent particles.  For example, the correlation between primary $\Lambda$ and primary $\Sigma^{\rm 0}$ should be visible, though somewhat smeared out, in the correlation between primary $\Lambda$ and secondary $\Lambda$.  Furthermore, these secondary $\Lambda$ are often difficult to distinguish from primary $\Lambda$.  Therefore, measurements of two-$\Lambda$ correlation functions will contain a mixture of primary correlations and feeddown correlations, and an attempt to parameterize the correlation functions should take this into account.  
+
+One example of this type of parameterization can be seen in the recent proton femtoscopy results from ALICE PbPb collisions \cite{Szymanski:2012AN}.  In that study, initial attempts to fit a purely primary proton-proton correlation function failed to reproduce the shape of the data.  However, when further parameterization was introduced to take into account proton-proton correlations where one proton was primary and one came from a $\Lambda$ decay, the fit was remarkably successful.  An analysis of residual correlations is not yet available for this $\Lambda$ study, though it is a work in progress.  Future femtoscopic analyses may also find this approach useful.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Replace references to protons with references to lambdas/sigmas
+%%%%%%%%%%%%%%%%%%%%%%%%%
+We attempt to quantify the residual contamination in our correlation functions by simultaneously fitting the data for both the primary correlation function and the residual correlation function.  For pp correlations with $\mathrm{p\Lambda}$ feeddown, we fit our data using 
+\begin{equation}
+\label{eq:Residual}
+C_{\mathrm{meas}}(k^*_{\mathrm{pp}})= 1 + \lambda_{\mathrm{pp}}[C_{\mathrm{pp}}(k^*_{\mathrm{pp}})-1]+\lambda_{\mathrm{p\Lambda}}[C_{\mathrm{p\Lambda}}(k^*_{\mathrm{pp}})-1],
+\end{equation}
+where $$C_{\mathrm{p\Lambda}}(k^*_{\mathrm{pp}}) \equiv \displaystyle\sum\limits_{k^*_{\mathrm{p\Lambda}}}C_{\mathrm{p\Lambda}}(k^*_{\mathrm{p\Lambda}})T(k^*_{\mathrm{p\Lambda}},{k^*_\mathrm{pp}}),$$ $C_{\mathrm{p\Lambda}}(k^*_{\mathrm{p\Lambda}})$ is the $\mathrm{p\Lambda}$ correlation function calculated from Eq.~(\ref{eqLednicky}), and $T$ is a THERMINATOR \cite{Chojnacki:2011hb} transform matrix, which generates pairs of particles and determines kinematically how the $k^*$ of the pair transforms when one of the particles decays.
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+Therminator plot
+
+Equation for adding two correlations together.
+
+\section{Fitting Results and Systematics}
+\label{sec:FittingSystematics}
+Discussion of current status of fit results and systematic uncertainties.  Report measured systematics as well as possible sources of systematics yet to be explored.
+
+\subsection{Estimates of $\lambda$ parameters}
+
+Lambda parameter equations.  Caveat that these equations apply on an event by event basis, and so they would get averaged out over many events and different multiplicities.  I.e. the ratio of total lambda-lambda pairs to all pairs in the whole correlation function is not constructed by taking the formula for lambda-lambda pairs and putting into total lambda yields.
+Yield estimates from thermal model.
+Efficiency calculation.
+Lambda parameter estimates.
 
 \section{Summary}
 Results have been shown for correlation functions $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs.  The results show that like-particle pairs are enhanced at low relative momentum.  The low-$q_{\rm inv}$ suppression of the $\Lambda\bar{\Lambda}$ correlations in each of the three centrality bins may indicate pair annihilation processes reminiscent of those reported in other studies.
