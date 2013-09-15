@@ -22,6 +22,7 @@ The primary effect seen in $\Lambda\bar{\Lambda}$ correlations should be strong 
 
 \section{Data analysis}
 \subsection{Data selection}
+\label{sec:DataSelection}
 The analysis was performed on 31 July, 2013 using AliRoot v5-04-64-AN. The data were from PbPb collisions at $\sqrt{s_{NN}}=2.76$  TeV taken from the LHC11h (AOD115) pass 2 reconstruction. Runs were selected if they were listed with a pass 2 global quality of 1 ("Good run") in the Run Condition Table. Approximately 66 million combined central, semi-central and minimum bias events were analyzed. The following runs were used, which comprise both the positive (++) and negative magnetic (--) field orientations:
 
 170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308, 170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, 170203, 170193, 170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084, 170083, 170081, 170040, 170027, 169965, 169923, 169859, 169858, 169855, 169846, 169838, 169837, 169835, 169591, 169590, 169588, 169587, 169586, 169557, 169555, 169554, 169553, 169550, 169515, 169512, 169506, 169504, 169498, 169475, 169420, 169419, 169418, 169417, 169415, 169411, 169238, 169167, 169160, 169156, 169148, 169145, 169144, 169138, 169099, 169094, 169091, 169045, 169044, 169040, 169035, 168992, 168988, 168826, 168777, 168514, 168512, 168511, 168467, 168464, 168460, 168458, 168362, 168361, 168342, 168341, 168325, 168322, 168311, 168310, 168115, 168108, 168107, 168105, 168076, 168069, 167988, 167987, 167985, 167920, 167915
@@ -69,10 +70,12 @@ Occasionally two or more V0s are reconstructed that both claim the same daughter
 
 A study was done using MC event truths to determine which cut would be most successful at removing fraudulent V0s.  The following characteristics were examined:
 
+\begin{itemize}
 \item Closeness of invariant mass to the PDG mass value.
 \item DCA of the daughter particles to each other.
 \item Cosine of the pointing angle.
 \item DCA of the V0 to the primary vertex.
+\end{itemize}
 
 Based on the MC truth study, the ... cut was found to successfully keep true V0s and remove fake V0s ...\% of the time.  
 
@@ -90,17 +93,17 @@ This cut helps remove a splitting-like effect (see sec \ref{sec:CFconstruct) for
 \subsection{Correlation function construction and pair cuts}
 \label{sec:CFconstruct}
 
-This analysis studies two-particle correlations as a function of the one dimensional relative momentum $q_{\mathrm{inv}}=2k^*=\abs{P(m^2_1-m^2_2)/P^2 - q}$, where $P$ and $q$ are the four-vector momentum sum and difference, respectively, and $m_1$ and $m_2$ are the masses of the two particles.  The correlation function is constructed as $C(q_{\rm inv}) = A(q_{\rm inv})/B(q_{\rm inv})$, where $A(q_{\rm inv})$ is the two-particle distribution of the given event and $B(q_{\rm inv})$ is the distribution of a reference event.  In practice, the signal event histogram $A(q_{\rm inv})$ is constructed by binning the $q_{\rm inv}$ value of each pair of particles in a single event, and repeating this for each event.  The reference (or background) histogram is constructed by binning $q_{\rm inv}$ for pairs of particles taken from different events.  Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  There are five mixed events for each real event.
+This analysis studies two-particle correlations as a function of the one dimensional relative momentum $k^*=\frac{1}{2}q_{\mathrm{inv}}=\frac{1}{2}\abs{P(m^2_1-m^2_2)/P^2 - q}$, where $P$ and $q$ are the four-vector momentum sum and difference, respectively, and $m_1$ and $m_2$ are the masses of the two particles.  The correlation function is constructed as $C(k^*) = A(k^*)/B(k^*)$, where $A(k^*)$ is the two-particle distribution of the given event and $B(k^*)$ is the distribution of a reference event.  In practice, the signal event histogram $A(k^*)$ is constructed by binning the $k^*$ value of each pair of particles in a single event, and repeating this for each event.  The reference (or background) histogram is constructed by binning $k^*$ for pairs of particles taken from different events.  Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  There are five mixed events for each real event.
 
-Femtoscopic studies look at the relative momentum of particles, and often the most interesting physics lies at very low relative momentum (around 0.2 GeV/c and lower).  As a result, two-track reconstruction effects such as track splitting and track merging, both of which occur for tracks with similar momenta and trajectories, can have a large effect on the final results.  Track splitting means that the track left by a single charged particle is reconstructed as two separate tracks. Track merging is when the tracks of two separate particles are reconstructed as a single track.  
+Femtoscopic studies look at the relative momentum of particles, and often the most interesting physics lies at very low relative momentum (around 0.1 GeV/c and lower).  As a result, two-track reconstruction effects such as track splitting and track merging, both of which occur for tracks with similar momenta and trajectories, can have a large effect on the final results.  Track splitting means that the track left by a single charged particle is reconstructed as two separate tracks. Track merging is when the tracks of two separate particles are reconstructed as a single track.  
 
-In this analysis, two-track reconstruction effects are combatted via a cut on the average separation of daughter tracks from different lambdas.  The average separation distance of two daughter tracks are computed at nine different radii of the TPC.  The tracks are propagated iteratively using their local coordinates and the PropagateTo function, and their global positions are determined at 85, 105, 125, 145, 165, 185, 205, 225, and 245 cm.  Initial iteration is performed in 1 cm steps, though a secondary propagation is done in 0.1 cm steps for better precision.  Same- and mixed-event pairs are binned according to this separation distance.  To obtain an estimate of the merging/splitting effects both distributions are then scaled by the number of pairs at high average separation distance (10+ cm), and a correlation function (same event pairs/ mixed event pairs) is created.  Looking at Figure \ref{fig:Merging}, one can see that splitting effects are relevant out to about 1 cm, as evidenced by a relative abundance of same-event pairs.  Merging is visible out to about 3 cm, as evidenced by a dearth of same-event pairs in that range.  To address these effects, both same- and mixed-event V0 pairs are cut if they have a like-sign daughter pair with average separation less than 3 cm.
+In this analysis, two-track reconstruction effects are combatted via a cut on the average separation of daughter tracks from different lambdas.  The average separation distance of two daughter tracks are computed at nine different radii of the TPC.  The tracks are propagated iteratively using their local coordinates and the PropagateTo function, and their global positions are determined at 85, 105, 125, 145, 165, 185, 205, 225, and 245 cm.  Initial iteration is performed in 1 cm steps, though a secondary propagation is done in 0.1 cm steps for better presec:Reconcision.  Same- and mixed-event pairs are binned according to this separation distance.  To obtain an estimate of the merging/splitting effects both distributions are then scaled by the number of pairs at high average separation distance (10+ cm), and a correlation function (same event pairs/ mixed event pairs) is created.  Looking at Figure \ref{fig:Merging}, one can see that splitting effects are relevant out to about 1 cm, as evidenced by a relative abundance of same-event pairs.  Merging is visible out to about 3 cm, as evidenced by a dearth of same-event pairs in that range.  To address these effects, both same- and mixed-event V0 pairs are cut if they have a like-sign daughter pair with average separation less than 3 cm.
 
 To ensure that average separation distributions of mixed-event pairs are comparable to the same-event distributions, it is necessary to perform a shifting of the primary vertex for mixed events.  Doing so allows the track separations to be calculated as though both events had the same primary vertex.  Without this correction, the mixed-event distributions are biased by differences in the primary vertex location.  One could imagine an extreme example of this if one used a 20 cm wide z-vertex bin.  In that case, tracks from different events could be shifted relative to each other by as much as 20 cm.  For this analysis with 2 cm z-vertex binning, and the uncorrected average separation correlation is shown in Figure \ref{fig:Merging}.  In contrast, Figure \ref{fig:CorrectedMerging} shows the primary-vertex corrected correlation.  To get a clear account of the difference between the two, we can look at Figure \ref{fig:AvgSepRatio}, which shows the ratio of the uncorrected to corrected correlations.  The enhancement in the... shows that...
 
 Finally, when constructing pairs of V0s from the same event, care is taken to ensure that the two V0s do not share a daughter with the same track id. 
 
-\section{Results and Systematic Uncertainties}
+\section{Results and systematic uncertainties}
 \label{sec:ResultsSystematicsData}
 
 ..... Discussion of correlation function data results and systematic uncertainties.  ......
@@ -111,76 +114,154 @@ Figure \ref{fig:CFMixCentralities} shows $\Lambda\bar{\Lambda}$ correlation func
 
 Figure \ref{fig:CF} shows correlation functions constructed in the 0-10\% centrality range for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Both correlation functions exhibit an enhancement in the low-$q_{\rm inv}$ range of 0.04 - 0.2 GeV/c.  This may be due to attractive final state interactions.  The effects of FSI and quantum statistics are expected to be seen in roughly the same $q_{\rm inv}$ range, and it is unclear at this time to what extent their effects should be competing. The enhancement of the $\bar{\Lambda}\bar{\Lambda}$ correlation function does fall off in the lowest bins, though the statistical uncertainties are such that no significant statement about the effects of quantum statistics can be made at this time.
 
-Efforts to properly obtain fit parameters are still under way.  
 
 %\section{Systematic uncertainties}
 %\label{sec:Systematics}
 
 This analysis is in a preliminary phase where fit parameters such as source radii and correlation strength are unavailable.  Therefore a discussion of systematic effects is at this time limited to showing how different sets of cuts change the qualitative aspects of the correlation function plot.  The effects of two such cuts are discussed here.  An attempt is made to quantify the systematic uncertainty between these different cuts for the $\Lambda\bar{\Lambda}$ correlation function.
 
-Two-track reconstruction effects were discussed in Section \ref{sec:CFconstruct}. Figure \ref{fig:CFNoMergeMix} shows the three centralities of $\Lambda\bar{\Lambda}$ correlation functions measured without the average separation cut in place.  Figure \ref{fig:CFNoMerge} shows the equivalent plot for the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlations. Subtle differences are visible in the $q_{\rm inv} < 0.2$ GeV/c range, with the most drastic changes lying in the lowest bins where the statistics are the weakest.  Except for the lowest bin, the changes all fall within error bars of the points in Figures \ref{fig:CFMixCentralities} and \ref{fig:CF}.  Nonetheless, it is clear that including the two-track cuts  shifts the low-$q_{\rm inv}$ bins down by a noticeable amount, a sign that splitting effects are being removed.  This consistent downward shift indicates that two-track effects are a significant source of systematic error in this study.
+Two-track reconstruction effects were discussed in Section \ref{sec:CFconstruct}. Figure \ref{fig:CFNoMergeMix} shows the three centralities of $\Lambda\bar{\Lambda}$ correlation functions measured without the average separation cut in place.  Figure \ref{fig:CFNoMerge} shows the equivalent plot for the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlations. Subtle differences are visible in the $q_{\rm inv} < 0.2$ GeV/c range, with the most drastic changessec:Recon lying in the lowest bins where the statistics are the weakest.  Except for the lowest bin, the changes all fall within error bars of the points in Figures \ref{fig:CFMixCentralities} and \ref{fig:CF}.  Nonetheless, it is clear that including the two-track cuts  shifts the low-$q_{\rm inv}$ bins down by a noticeable amount, a sign that splitting effects are being removed.  This consistent downward shift indicates that two-track effects are a significant source of systematic error in this study.
 
 As mentioned in Section \ref{sec:Recon}, two sets of reconstruction cuts (loose and tight) have been studied in detail.  Figure \ref{fig:CFMixCentralities} was created using loose reconstruction cuts.  For comparison, Figure \ref{fig:CFTightCutsMix} shows the same correlations with tighter reconstruction cuts employed.  Figure \ref{fig:CFTightCuts} shows a similar plot for the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlations.  It is apparent that the statistics are much worse under the tigher cuts, though qualitative similarities to the other plots remain, e.g.\ the centrality dependence of the $\Lambda\bar{\Lambda}$ annihilation and the enhancement of the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ at low-$q_{\rm inv}$.
 
-A convervative estimate of the systematic errors for the $\Lambda\bar{\Lambda}$ correlation function and are shown in Figure \ref{fig:CFMixSystematics}.  The systematic errors were computed by taking the absolute value of the difference between Figure \ref{fig:CFMixCentralities} and Figure \ref{fig:CFTightCutsMix} for each $q_{\rm inv}$ bin.  The results were then fit with a 5th order polynomial.  The value of the polynomial was determined at the center of each $q_{\rm inv}$ bin.  This value was halved and then applied as a symmetric systematic error for that particular $q_{\rm inv}$ bin.  The data points and statistical errors are those from Figure \ref{fig:CFMixCentralities}.
+A conservative estimate of the systematic errors for the $\Lambda\bar{\Lambda}$ correlation function and are shown in Figure \ref{fig:CFMixSystematics}.  The systematic errors were computed by taking the absolute value of the difference between Figure \ref{fig:CFMixCentralities} and Figure \ref{fig:CFTightCutsMix} for each $q_{\rm inv}$ bin.  The results were then fit with a 5th order polynomial.  The value of the polynomial was determined at the center of each $q_{\rm inv}$ bin.  This value was halved and then applied as a symmetric systematic error for that particular $q_{\rm inv}$ bin.  The data points and statistical errors are those from Figure \ref{fig:CFMixCentralities}.
 
 
 
 
 
-\section{Fitting}
-\subsection{Analytical Model}
+\section{Analytical model}
+%\subsection{Analytical model}
 The correlation functions can be calculated analytically \cite{lednicky82} using 
 \begin{equation}
-\label{eqLednicky}
+\label{eq:Lednicky}
 C(k^*)= 1+ \displaystyle\sum\limits_{S}\rho_S\left[\frac{1}{2}\abs{\frac{f^S(k^*)}{R}}^2(1-\frac{d_0^S}{2\sqrt{\pi}R})+\frac{2\Re f^S(k^*)}{\sqrt{\pi}R}F_1(2k^*R)-\frac{\Im f^S(k^*)}{R}F_2(2k^*R)\right]
 \end{equation}
 where $F_1(z) = \int_0^z \! \mathrm{d}x \, e^{x^2-z^2}/z$,  $F_2(z) = (1-e^{-z^2})/z$, and $R$ is the source size. We assume the particles are produced unpolarized, with $\rho_{\mathrm{S}}$ being the fraction of pairs in each total spin state S.  $f^S(k^*)=(1/f_0^S+\frac{1}{2}d_0^Sk^*-ik^*)^{-1}$ is the spin-dependent scattering amplitude, though this analysis measures only spin-averaged values. The scattering amplitude is dependent upon the complex scattering length $f_0^S$.  The real part of the scattering amplitude can contribute either a positive or a negative correlation, but either way the effect is relatively narrow in $k^*$ (on the order of about one hundred MeV/$c$).  The imaginary part of the scattering amplitude accounts for inelastic processes of baryon-antibaryon annihilation.  Introducing a non-zero imaginary part to the scattering length produces a wide (hundreds of MeV/$c$) negative correlation.  For identical and charged particles, additional terms \cite{Aamodt:2011kd} are necessary to account for quantum interference and the Coulomb interaction, respectively.
   
+  
+  
    the effective radius of interaction $d_0^S$ comes from scattering theory \cite{...}, and it loosely represents half the length of the interaction distance.
 
-\subsection{Fit Parameters}
-\label{sec:Parameters}
-
-For pion, kaon, and proton femtoscopic analyses, the scattering lengths and effective radius of interaction are well specified by years of scattering data, and they can be fixed to the known values.  In the case of lambda-(anti-)lambda femtoscopy, the interaction is heretofore large unstudied.  For this analysis, the scattering lengths and effective radius are left as free parameters.  Another free parameter is the $\lambda$ parameter, which is roughly a measure of the pair purity.  For example, $\lambda_{\Lambda\Lambda}$ would correspond to the ratio of number of true primary $\Lambda\Lambda$ pairs to the total number of pairs in the correlation function. The remaining fraction is comprised of all the other combinations of pair types, such as $\Lambda$-fake $\Lambda$ pairs, or pairs between primary and secondary lambdas.  The latter case will be described further in Section \ref{sec:Residual}.  The last fit parameter is $R_{\rm inv}$, which characterizes the one dimensional size of the emitting source.  
 
 
 
-\subsection{Residual Correlations}
+\subsection{Observables???}
+\label{sec:Observables}
+For pion, kaon, and proton femtoscopic analyses, the scattering lengths and effective radius of interaction are well specified by years of scattering data, and they can be fixed to the known values.  In the case of lambda-(anti-)lambda femtoscopy, the interaction is heretofore largely unstudied.  For this analysis, the scattering lengths and effective radius are left as free parameters.  Another free parameter is the $\lambda$ parameter, which is roughly a measure of the pair purity.  For example, $\lambda_{\Lambda\Lambda}$ would correspond to the ratio of number of true primary $\Lambda\Lambda$ pairs to the total number of pairs in the correlation function. The remaining fraction is comprised of all the other combinations of pair types, such as $\Lambda$-fake $\Lambda$ pairs, or pairs between primary and secondary lambdas.  The latter case will be described further in Section \ref{sec:Residual}.  The last fit parameter is $R_{\rm inv}$, which characterizes the one dimensional size of the emitting source.  
+
+
+
+\subsection{Residual correlations}
 \label{sec:Residual}
 
 Attempts at fitting correlation functions should try to account for residual correlations between the particle being studied and other particles that might decay into the studied particle.  Various particles can decay into $\Lambda$ baryons, such as $\Sigma^{\rm 0}$, $\Xi^{\rm 0}$, and $\Omega^{\rm -}$.  The decay momentum between these particles and their daughter $\Lambda$ is small, such that daughter and parent carry very similar momenta.  As a result, relative-momentum correlation functions between primary particles and secondary particles such as $\Lambda$ should be sensitive to the interactions between the primary particles and the parent particles.  For example, the correlation between primary $\Lambda$ and primary $\Sigma^{\rm 0}$ should be visible, though somewhat smeared out, in the correlation between primary $\Lambda$ and secondary $\Lambda$.  Furthermore, these secondary $\Lambda$ are often difficult to distinguish from primary $\Lambda$.  Therefore, measurements of two-$\Lambda$ correlation functions will contain a mixture of primary correlations and feeddown correlations, and an attempt to parameterize the correlation functions should take this into account.  
 
-One example of this type of parameterization can be seen in the recent proton femtoscopy results from ALICE PbPb collisions \cite{Szymanski:2012AN}.  In that study, initial attempts to fit a purely primary proton-proton correlation function failed to reproduce the shape of the data.  However, when further parameterization was introduced to take into account proton-proton correlations where one proton was primary and one came from a $\Lambda$ decay, the fit was remarkably successful.  An analysis of residual correlations is not yet available for this $\Lambda$ study, though it is a work in progress.  Future femtoscopic analyses may also find this approach useful.
+One example of this type of parameterization can be seen in the recent proton femtoscopy results from ALICE PbPb collisions \cite{Szymanski:2012AN}.  In that study, initial attempts to fit a purely primary proton-proton correlation function failed to reproduce the shape of the data.  However, when further parameterization was introduced to take into account proton-proton correlations where one proton was primary and one came from a $\Lambda$ decay, the fit was remarkably successful.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%% Replace references to protons with references to lambdas/sigmas
-%%%%%%%%%%%%%%%%%%%%%%%%%
-We attempt to quantify the residual contamination in our correlation functions by simultaneously fitting the data for both the primary correlation function and the residual correlation function.  For pp correlations with $\mathrm{p\Lambda}$ feeddown, we fit our data using 
+We attempt to quantify the residual contamination in our analysis by simultaneously fitting the data for both the primary correlation function and the residual correlations.  For example, $\Lambda\Lambda$ correlations with $\mathrm{\Lambda\Sigma^0}$ feeddown would be fit using 
 \begin{equation}
 \label{eq:Residual}
-C_{\mathrm{meas}}(k^*_{\mathrm{pp}})= 1 + \lambda_{\mathrm{pp}}[C_{\mathrm{pp}}(k^*_{\mathrm{pp}})-1]+\lambda_{\mathrm{p\Lambda}}[C_{\mathrm{p\Lambda}}(k^*_{\mathrm{pp}})-1],
+C_{\mathrm{meas}}(k^*_{\Lambda\Lambda})= 1 + \lambda_{\Lambda\Lambda}[C_{\Lambda\Lambda}(k^*_{\Lambda\Lambda})-1]+\lambda_{\Lambda\Sigma}[C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda})-1],
 \end{equation}
-where $$C_{\mathrm{p\Lambda}}(k^*_{\mathrm{pp}}) \equiv \displaystyle\sum\limits_{k^*_{\mathrm{p\Lambda}}}C_{\mathrm{p\Lambda}}(k^*_{\mathrm{p\Lambda}})T(k^*_{\mathrm{p\Lambda}},{k^*_\mathrm{pp}}),$$ $C_{\mathrm{p\Lambda}}(k^*_{\mathrm{p\Lambda}})$ is the $\mathrm{p\Lambda}$ correlation function calculated from Eq.~(\ref{eqLednicky}), and $T$ is a THERMINATOR \cite{Chojnacki:2011hb} transform matrix, which generates pairs of particles and determines kinematically how the $k^*$ of the pair transforms when one of the particles decays.
-%%%%%%%%%%%%%%%%%%%%%%%%
+where $$C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda}) \equiv \displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})T(k^*_{\Lambda\Sigma},{k^*_{\Lambda\Lambda}),$$ $C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eq.~(\ref{eq:Lednicky}), and $T$ is a THERMINATOR \cite{Chojnacki:2011hb} transform matrix, which generates pairs of particles and determines kinematically how the $k^*$ of the pair transforms when one of the particles decays.  Figure \ref{fig:TherminatorLS} shows the transform matrix for $\Lambda\Sigma \rightarrow \Lambda\Lambda$.  Further residual correlations (e.g. from $\Sigma\Sigma \rightarrow \Lambda\Lambda$) can be included via additional terms in Equation \ref{eq:Residual}.  Efforts are underway to understand which residual correlations must be included and which can be safely neglected.  Section \ref{sec:LambdaParams} will discuss the current status of this analysis.
 
-
-
-Therminator plot
-
-Equation for adding two correlations together.
-
-\section{Fitting Results and Systematics}
+\section{Fitting results and systematics}
 \label{sec:FittingSystematics}
-Discussion of current status of fit results and systematic uncertainties.  Report measured systematics as well as possible sources of systematics yet to be explored.
+
+Proper fitting techniques for this analysis are still a work in progress.  In particular, efforts are being made to evaluate the extent to which residual correlations impede upon the measured correlation functions.  Under the methodology of this analysis, the importance of residual correlations can be characterized by two sets of parameters.  The scattering lengths $f_0$ of the residual pair describe the strength of the residual pair interaction, such that a larger $\abs{f_0}$ will generally lead to a more pronounced residual correlation function.  Meanwhile, the pair purity $\lambda$ of each pair type describes the relative contribution of each individual correlation function (i.e. primary or residual) to the total correlation function, as described in Section \ref{sec:Residual}. The following sections will discuss how these two parameters are evaluated in this analysis.
+
+
+%Discussion of current status of fit results and systematic uncertainties.  Report measured systematics as well as possible sources of systematics yet to be explored.
 
 \subsection{Estimates of $\lambda$ parameters}
+\label{sec:LambdaParams}
+To understand the mathematical motivation behind the $\lambda$ parameters, let us consider the simple case where the signal pairs of the correlation function come from a single event.  Within this event, all combinations of reconstructed V0s are paired together and binned according to their $k^*$ values.  For this analysis, the reconstructed V0s consist of primary $\Lambda$s, secondary $\Lambda$s, and false $\Lambda$s.  Let us assume that origin of the different $\Lambdas$ cannot be determined - the analysis only knows that a given V0 appears to be a $\Lambda$.  As mentioned above, the total correlation function will be a linear combination of the component correlation functions (primary-primary, primary-secondary, primary-fake, fake-fake, etc.).  The $\lambda$ parameters for each component correlation are given by the fraction of total pairs of that type.  For example, if there are ten distinct $\Lambda\Sigma$ pairs and one hundred total pairs, then $\lambda_{\Lambda\Sigma} = 1/10$.  The sum of all $\lambda$s should be unity.
 
-Lambda parameter equations.  Caveat that these equations apply on an event by event basis, and so they would get averaged out over many events and different multiplicities.  I.e. the ratio of total lambda-lambda pairs to all pairs in the whole correlation function is not constructed by taking the formula for lambda-lambda pairs and putting into total lambda yields.
-Yield estimates from thermal model.
-Efficiency calculation.
-Lambda parameter estimates.
+The following equations describe the $\lambda$ parameters for different types of pairs.  For two identical particles (e.g. primary $\Lambda$s) \begin{equation}
+\label{eq:LambdaIdentical}
+\lambda_{\Lambda\Lambda} = \frac{N_\Lambda}{T}\frac{(N_\Lambda -1)/2}{(T-1)/2} = \frac{N_\Lambda}{T}\frac{(N_\Lambda -1)}{(T-1)}
+\end{equation}
+where the $\Lambda$ subscript means primary $\Lambda$, $N$ is the number of particles of that type, $T$ is the total number of all indistinguishable particles, and the factors of $1/2$ remove double counting.  For two different, indistinguishable particles (e.g. a primary $\Lambda$ and a $\Lambda$ from a $\Sigma^0$ decay)
+\begin{equation}
+\lambda_{\Lambda\Sigma} = \frac{N_\Lambda}{T} \frac{N_\Sigma}{(T-1)/2}
+\end{equation}
+where the $\Sigma$ subscript indicates $\Lambda$s from $\Sigma$ decays.  $\lambda$ can also be calculated for pairs that are distinguishable, such as primary $\Lambda$ and primary $\bar{\Lambda}$:
+\begin{equation}
+\lambda_{\Lambda\bar{\Lambda}} = \frac{N_\Lambda}{T_{\Lambda \mathrm{type}}} \frac{N_\bar{\Lambda}}{T_{\bar{\Lambda} \mathrm{type}}}
+\end{equation}
+where $\T_{\Lambda \mathrm{type}}$ is the sum of all indistinguishable particles that look like $\Lambdas$, etc.  These equations are all easily generalized to other particle pairs.
+
+One should note here that the above $\lambda$ equations technically apply to some sort of single-event correlation function.  The $\lambda$ parameters measured or estimated for a million-event correlation function would roughly correspond to an event-averaged value.  Nonetheless, we can attempt to employ these formulae to obtain ballpark estimates of the $\lambda$ parameters, given estimates of the yields of each type of particle.
+
+As the goal of this analysis is to measure the correlations of primary $\Lambda$s, it is important to know the relative yields of secondary $\Lambda$s.  We can obtain an estimate \cite{Florkowski:2010zz} of the yields of different types of particles at mid-rapidity from a thermal model using
+\begin{equation}
+\frac{1}{m_{\mathrm{T}}}\frac{dN}{dm_{mathrm{T}}} \proptu \exp{-m_\mathrm{T}/T}
+\end{equation}
+where the transverse mass $m_\mathrm{T} = \sqrt{m^2_{\mathrm{inv}} + p^2_{\mathrm{T}}}$ and $T$ is the chemical-feezeout temperature.  Integrating over $m_\mathrm{T}$ gives $\N \proptu (m_\mathrm{inv} + T) \exp{-m_\mathrm{inv}/T}$.  Therefore, the yield of any particle species $i$ relative to the $\Lambda$ yield is
+\begin{equation}
+\frac{N_i}{N_\Lambda} \approx \frac{m_i + T}{m_\Lambda + T} \exp{(m_\Lambda - m_i)/T}.
+\end{equation}
+
+Particles that decay into $\Lambda$ include $\Sigma^0$, $\Xi^0$, $\Xi^-$, and $\Omega^-$.  Assuming a freezeout temperature of 165 MeV, and taking into account that the $\Omega$ has a branching ratio of ~$68%$ and the others ~$100%$, we can then estimate that for every 100 $\Lambda$s, there will be approximately 67 $\Sigma$s, 34 of each type of $\Xi$, and 3 $\Omega$s.
+
+Before calculating the $\lambda$ parameters, it is also necessary to know approximately how many fake $\Lambda$s there are.  In Section \ref{sec:Recon}, we estimated that our signal quality $P$ was $P = real/(real + background) \approx 0.82$.  Taking $real$ to be the sum of all the primary and secondary $\Lambda$, we calculate that $\frac{background}{real} = P^{-1}-1 \approx 0.22$.  With the above yields totalling 238 $\Lambda$s, we would expect to see an additional 52 fake $\Lambda$s.  Based on these values, we can now estimate the $\lambda$ parameters for all pair types.
+
+\begin{center}
+\begin{tabular}{|c|c|c|}plots
+\hline
+					& 	$\lambda$	&	Cumulative total \\ \hline
+$\Lambda\Lambda$   	&	0.12			&	0.12 \\ \hline
+$\Lambda\Sigma^0$  	&	0.16			&	0.28 \\ \hline
+$\Lambda\Xi^0$     	&	0.08			&	0.36 \\ \hline
+$\Lambda\Xi^-$     	&	0.08			&	0.44 \\ \hline
+$\Lambda\Omega$    	&	0.007		&	0.45 \\ \hline
+$\Sigma^0\Sigma^0$ 	&	0.05			&	0.50 \\ \hline
+$\Sigma^0\Xi^0$    	&	0.05			&	0.55 \\ \hline
+$\Sigma^0\Xi^-$    	&	0.05			&	0.61 \\ \hline
+$\Sigma^0\Omega$   	&	0.004		&	0.61 \\ \hline
+$\Xi^0\Xi^0$       	&	0.01			&	0.63 \\ \hline
+$\Xi^0\Xi^-$ 		&	0.03			&	0.65 \\ \hline
+$\Xi^0\Omega$ 		&	0.002		&	0.66 \\ \hline
+$\Xi^-\Xi^-$ 		&	0.01			&	0.67 \\ \hline
+$\Xi^-\Omega$ 		&	0.002		&	0.67 \\ \hline
+$\Omega\Omega$ 		&	0.00			&	0.67 \\ \hline
+\end{tabular}
+\end{center}
+
+These estimates have several interesting characteristics.  First, the sum of the primary correlation all the residual correlations totals to 0.67.  The other $33%$ is lost to the background.  Note that feedup from residual p$\Lambda$ correlations would be included in this $33%$, though feedup has otherwise not yet been explored in this analysis. Another striking feature of these data is that the contribution from $\Lambda\Sigma$ is actually larger than the contribution from $\Lambda\Lambda$.  In other words, if the hyperon yields and reconstruction efficiencies of the true PbPb data are reminiscent of the yields above, then this analysis is measuring the $\Lambda\Sigma$ correlation more than the $\Lambda\Lambda$ correlation.  It should also be noted that contributions from $\Lambda\Xi$, $\Sigma\Sigma$, and $\Sigma\Xi$ are appreciable.
+
+For the the $\Lambda\bar{\Lambda}$ analysis, estimates of the $\lambda$ parameters work out to be approximately the same as in the table above.
+
+\subsection{Reconstruction efficiency effects on relative particle yields}
+\label{sec:ReconstructionEff}
+
+The above $\lambda$ estimates have been made under the assumption that primary and secondary $\Lambda$s have the same chance to be reconstructed.  However, detector efficiencies and topological reconstruction cuts can change the relative yields of each of these $\Lambda$ types.  To investigate the influence of reconstruction efficiencies on particle yields, we looked at the reconstruction rates of the different particle types using the HIJING run specified in Section \ref{sec:DataSelection}.  The MC truth yields of the V0s were examined at four stages of reconstruction:
+\begin{itemize}
+\item In the raw MC event before any detector simulation was added to the MC particles.  Here the daughters of the V0s are required to be in mid-rapidity and surpass a minimum-$p_\mathrm{T}$
+\item In the V0 finder before any analysis-side reconstruction cuts were employed.
+\item After topological reconstruction cuts have been made, but before a tight mass-window cut was employed.
+\item After the tight mass-window cut was used.
+\end{itemize}
+At each stage, the MC truths of all remaining particles of the following types were counted: primary $\Lambda$s; secondary $\Lambda$s from $\Sigma^0$s, $\Xi^0$s, $\Xi^-$, $\Omega$s, and other sources; the respective anti-particles; other V0s; fake V0s reconstructed in the V0 finder; and $\mathrm{K}^0_{\mathrm{S}}$ (for comparison).  Reconstructed $\mathrm{K}^0_{\mathrm{S}}$ were required to pass standard $\mathrm{K}^0_{\mathrm{S}}$ topological and mass cuts, not $\Lambda$ cuts.  In the topological cut and mass cut stages, the fake V0 and other V0 yields reflect V0 candidates that pass either the $\Lambda$ cuts, the $\bar{\Lambda}$ cuts, or the $\mathrm{K}^0_{\mathrm{S}}$ cuts.  The resulting yields are visible in Figure \ref{fig:MCYields}.  Figure \ref{fig:FakeAndOther} shows a breakdown of what the fake and other V0s were reconstructed as (i.e. $\Lambda$, $\bar{\Lambda}$, or $\mathrm{K}^0_{\mathrm{S}}$).  For both fake V0s and other V0s, the relative abundances of the misidentified V0s are comparable to the relative abundances of the true V0s.
+
+It should be noted that this MC run has injected $\Xi^0$, $\Xi^-$, and $\Omega$ signals, but not their respective antiparticles.  The disparity is quite obvious in Figure \ref{fig:MCYields}.  These injected signals are generated with a $p_\mathrm{T}$ distribution that differs from the distribution of the HIJING particles.  Because the detector efficiency is $p_\mathrm{T}$ dependant, this unfortunately means that the overall measured reconstruction efficiency of these species is suspect.  One plan for the near future is to run this analysis again and reject injected signals.  Without the injected signals, reconstruction efficiencies for the multi-strange particles and anti-particles are expected to be in line.
+
+The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  Figure \ref{fig:V0ToMassCut} shows one such ratio.  Here, one can see the fraction of V0s in the V0 finder that survived all the reconstruction cuts.  From this, one can see how successful the current topological cuts are at selecting (anti)$\Lambda$s of various origins.   If different topological cuts were made, a before-and-after comparison of this plot would show the efficacy of the new cuts at removing secondary V0s vs primary V0s.
+
+Figure \ref{fig:OriginToMassCut} shows another ratio.  In this plot, one sees the event-averaged reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).  This efficiency encompasses not only the results of the analysis-side cuts, but also the natural tracking efficiencies of ALICE detector.  One can see that the various $\Lambda$ and $\bar{\Lambda}$ types for the most part have a reconstruction rate between $15-25%$.  These reconstruction efficiencies could be convoluted with the thermal yield calculations of Section \ref{sec:LambdaParams} to obtain corrected estimates of the yields and $\lambda$ parameters.  Further analyses of these results are in progress.
+
+Up to now, reconstruction cuts have been set to maximize $\Lambda$ reconstruction, regardless of the $\Lambda$ origin.  An eventual goal of this efficiency study is to examine the advantages and disadvantages of cuts designed to exclude secondary $\Lambda$.
+
+\subsection{Scattering parameters of residual pairs}
+\label{sec:ScatteringParams}
+
+Treatment of LL vs LS scattering length.  Assume same, assume 0, take average?
+
+\subsection{Minuit fitting}
+\label{sec:MinuitFit}
+
+Include practical treatment of fit parameters here. Residual correlation scattering lengths, simultaneous fitting.  Normalization factor vs polynomial background.
 
 \section{Summary}
 Results have been shown for correlation functions $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs.  The results show that like-particle pairs are enhanced at low relative momentum.  The low-$q_{\rm inv}$ suppression of the $\Lambda\bar{\Lambda}$ correlations in each of the three centrality bins may indicate pair annihilation processes reminiscent of those reported in other studies.
