@@ -6,6 +6,10 @@
 %\author{}
 %\title{}
 %\begin{document}
+
+
+
+
 \providecommand{\abs}[1]{\left\lvert#1\right\rvert}
 \tableofcontents
 \listoffigures
@@ -61,9 +65,21 @@ Each V0 is then subjected to the following cuts:
 \item For both $\Lambda$ and $\bar{\Lambda}$, the reconstructed invariant mass was required to fall within $\abs{m_\mathrm{inv}-m_\mathrm{PDG}} < 5.68$ MeV.
 \end{itemize}
 
-The invariant mass spectra for $\Lambda$ can be seen in Figure \ref{fig:MassLooseCut}. An approximation of the signal quality was estimated using a ratio of real and background counts.  The background was estimated using a fourth order polynomial.  The number of real $\Lambda$ was then estimated by counting the bin content and subtracting the background. The signal quality was found to be $real/(real + background) \approx 0.82$.
+The optimal cut values were determined by comparing cut distributions of reconstructed $\Lambda$ in Monte Carlo HIJING events (including simulated detector effects). $\Lambda$ were reconstructed and their corresponding AliAODMCParticle objects were consulted in order to classify the $\Lambda$ into different categories: Real, primary $\Lambda$; secondary $\Lambda$ coming from decays of $\Sigma$ (or $\Sigma$ excited states), $\Xi$, and $\Omega$; secondary $\Lambda$ coming from other sources; fake $\Lambda$; and $K^0_\mathrm{s}$ that have been misidentified as $\Lambda$.  For each cut parameter (e.g. cosine of pointing angle), a plot was made showing the distributions of V0 candidates of the various types.  These plots contain only the parameter distributions of candidates that pass all the other cuts.  Figures \ref{fig:CosP,fig:DcaV0,...} show these distributions for the different particle types.  
 
-Figure \ref{fig:MassTightCut} shows the invariant mass spectra when tighter cuts are enforced.  The cuts increase the minimum DCA of the daughters to the primary vertex to 1 cm, reduced the max DCA of the V0 to the primary vertex to 0.8 cm, and set a minimum decay length of 2 cm.  These cuts ensure a better purity by eliminating much of the contamination of the reconstruction by primary particles.  However, there is also a significant drop ({\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}} threefold) in the number of reconstructed $\Lambda$, as well as the number of $\Lambda$ pairs.  While these cuts afford a higher purity, the extracted correlation function was found to be less significant due to the decreased statistics.  Therefore, the looser cuts defined in Section \ref{sec:Recon} are preferred.  Further details are discussed in Section \ref{sec:Systematics}.
+\begin{figure}
+%distribution figures
+\end{figure}
+
+For the construction of Figures \ref{fig:CosP,fig:DcaV0,...}, each $\Lambda$ type was preselected using AliAODMCParticle information, and only V0 candidates of that type were reconstructed in that analysis run. This was done for ease of histogramming the distributions.  Roughly equal numbers events were analyzed for each run type, with the exception of the analysis of the primary $\Lambda$.  That analysis run utilized only about half the data set.  Therefore, the primary $\Lambda$ distributions in Figures \ref{fig:CosP,fig:DcaV0,...} have been scaled by a factor of 2 to compensate.
+
+In these figures, both the shape and magnitude of each distribution is relevant for determining the cuts. For each cut type, a cut value was selected such that a looser cut would differentially accept more fake or secondary $\Lambda$ than primary $\Lambda$. Ideally, these cuts would be selected to reduce the inclusion of all types of secondary $\Lambda$.  However, it can be seen from the distributions that $\Lambda$ that come from $\Sigma$ decay display virtually the same cut parameter distribution shapes as primary $\Lambda$.  Only the magnitude of the $\Sigma$ curves differ from the primary $\Lambda$ curves.  This is due to the short decay length of the $\Sigma$ decay: ...dl... for $\Sigma$ ...smaller mass..., and ...dl... for $\Sigma$1385. As a result, secondary $\Lambda$ from $\Sigma$ look identical to primary $\Lambda$, and they cannot be selectively removed from the analysis.
+
+The systematic errors associated with these cut choices are discussed in Section \ref{sec:CFResults}. Further discussion of the reconstruction efficiency of the different $\Lambda$ types can be found in Section \ref{sec:ReconstructionEff}.
+
+The reconstructed invariant mass spectra for $\Lambda$ can be seen in Figure \ref{fig:LambdaInvMass}. An approximation of the signal purity was estimated using a ratio of real and background (falsely reconstructed) counts.  The background was estimated using a fourth order polynomial.  The number of real $\Lambda$ was then estimated by counting the bin content and subtracting the background. The signal quality was found to be $real/(real + background) \approx 0.82$ ********Update this **********.
+
+%Figure \ref{fig:MassTightCut} shows the invariant mass spectra when tighter cuts are enforced.  The cuts increase the minimum DCA of the daughters to the primary vertex to 1 cm, reduced the max DCA of the V0 to the primary vertex to 0.8 cm, and set a minimum decay length of 2 cm.  These cuts ensure a better purity by eliminating much of the contamination of the reconstruction by primary particles.  However, there is also a significant drop ({\raise.17ex\hbox{$\scriptstyle\mathtt{\sim}$}} threefold) in the number of reconstructed $\Lambda$, as well as the number of $\Lambda$ pairs.  While these cuts afford a higher purity, the extracted correlation function was found to be less significant due to the decreased statistics.  Therefore, the looser cuts defined in Section \ref{sec:Recon} are preferred.  Further details are discussed in Section \ref{sec:Systematics}.
 
 \subsection{Shared daughter cut}
 
@@ -149,7 +165,7 @@ A conservative estimate of the systematic errors for the $\Lambda\bar{\Lambda}$ 
 
 
 
-\section{Analytical model}
+\section{1D Analytic model}
 %\subsection{Analytical model}
 The correlation functions can be calculated analytically \cite{lednicky82} using 
 \begin{equation}
@@ -272,7 +288,6 @@ The results of Figure \ref{fig:MCYields} can be better interpreted by taking the
 
 Figure \ref{fig:OriginToMassCut} shows another ratio.  In this plot, one sees the event-averaged reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).  This efficiency encompasses not only the results of the analysis-side cuts, but also the natural tracking efficiencies of ALICE detector.  One can see that the various $\Lambda$ and $\bar{\Lambda}$ types for the most part have a reconstruction rate between 15-25\%.  These reconstruction efficiencies could be convoluted with the thermal yield calculations of Section \ref{sec:LambdaParams} to obtain corrected estimates of the yields and $\lambda$ parameters.  Further analyses of these results are in progress.
 
-Up to now, reconstruction cuts have been set to maximize $\Lambda$ reconstruction, regardless of the $\Lambda$ origin.  An eventual goal of this efficiency study is to examine the advantages and disadvantages of cuts designed to exclude secondary $\Lambda$.
 
 \subsection{Scattering parameters of residual pairs}
 \label{sec:ScatteringParams}
