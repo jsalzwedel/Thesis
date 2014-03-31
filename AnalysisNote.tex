@@ -53,19 +53,23 @@ During V0 reconstruction, a list of potential $\Lambda(\bar{\Lambda})$ candidate
 \item The TPC was used for PID purposes.  For proton and pion daughter candidates, the PID resolution task was used to obtain NSigma, which was required to be less than 3.
 \item Daughter tracks were required to have a TOF PID NSigma value less than 4 if the TOF signal was available.
 \item The two daughters are required to have a DCA $< 0.4$ cm to each other.
-\item The daughters were each required to have a DCA to the primary vertex $> 0.1$ cm.
+\item The proton daughter was required to have a DCA to the primary vertex $> 0.1$ cm.
+\item The pion daughter was required to have a DCA to the primary vertex $> 0.3$ cm.
 \end{itemize}
 
 Each V0 is then subjected to the following cuts:
 \begin{itemize}
 \item The V0 is required to have $|\eta| < 0.8$.
-\item The cosine of the pointing angle must be greater than 0.998.
-\item The DCA of the V0 to the primary vertex must be less than 1 cm.
+\item The V0 is required to have a proper decay length less than 60 cm.
+\item The cosine of the pointing angle must be greater than 0.9993.
+\item The DCA of the V0 to the primary vertex must be less than 0.5 cm.
 \item For a $\Lambda$, one daughter must be identified as a proton and the other as a $\pi^-$.  For a $\bar{\Lambda}$, one daughter must be identified as an antiproton and the other as a $\pi^+$.
-\item For both $\Lambda$ and $\bar{\Lambda}$, the reconstructed invariant mass was required to fall within $\abs{m_\mathrm{inv}-m_\mathrm{PDG}} < 5.68$ MeV.
+\item For both $\Lambda$ and $\bar{\Lambda}$, the reconstructed invariant mass was required to fall within $\abs{m_\mathrm{inv}-m_\mathrm{PDG}} < 3.8$ MeV.
 \end{itemize}
 
-The optimal cut values were determined by comparing cut distributions of reconstructed $\Lambda$ in Monte Carlo HIJING events (including simulated detector effects). $\Lambda$ were reconstructed and their corresponding AliAODMCParticle objects were consulted in order to classify the $\Lambda$ into different categories: Real, primary $\Lambda$; secondary $\Lambda$ coming from decays of $\Sigma$ (or $\Sigma$ excited states), $\Xi$, and $\Omega$; secondary $\Lambda$ coming from other sources; fake $\Lambda$; and $K^0_\mathrm{s}$ that have been misidentified as $\Lambda$.  For each cut parameter (e.g. cosine of pointing angle), a plot was made showing the distributions of V0 candidates of the various types.  These plots contain only the parameter distributions of candidates that pass all the other cuts.  Figures \ref{fig:CosP,fig:DcaV0,...} show these distributions for the different particle types.  
+The optimal cut values were determined by comparing cut distributions of reconstructed $\Lambda$ in Monte Carlo HIJING events (including simulated detector effects).  The data set (LHC12a17a\_fix) included injected strange signals (extra hyperons in each event).  The injected signals were found to introduce a disparity between hyperon and anti-hyperon reconstruction efficiency, since no anti-hyperons were injected.  Therefore, the injected signals were removed.  A primary particle (AliAODMCParticle) was considered injected if it had AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$. Likewise, a secondary particle (e.g. $\Lambda$ resulting from decay of a $\Sigma$ baryon) was considered injected if it's mother particle had AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$.
+
+$\Lambda$ were reconstructed and their corresponding AliAODMCParticle objects were consulted in order to classify the $\Lambda$ into different categories: Real, primary $\Lambda$; secondary $\Lambda$ coming from decays of $\Sigma$ (or $\Sigma$ excited states), $\Xi$, and $\Omega$; secondary $\Lambda$ coming from other sources; fake $\Lambda$; and $K^0_\mathrm{s}$ that have been misidentified as $\Lambda$.  For each cut parameter (e.g. cosine of pointing angle), a plot was made showing the distributions of V0 candidates of the various types.  These plots contain only the parameter distributions of candidates that pass all the other cuts.  Figures \ref{fig:CosP,fig:DcaV0,...} show these distributions for the different particle types.  
 
 \begin{figure}
 %distribution figures
@@ -75,7 +79,7 @@ For the construction of Figures \ref{fig:CosP,fig:DcaV0,...}, each $\Lambda$ typ
 
 In these figures, both the shape and magnitude of each distribution is relevant for determining the cuts. For each cut type, a cut value was selected such that a looser cut would differentially accept more fake or secondary $\Lambda$ than primary $\Lambda$. Ideally, these cuts would be selected to reduce the inclusion of all types of secondary $\Lambda$.  However, it can be seen from the distributions that $\Lambda$ that come from $\Sigma$ decay display virtually the same cut parameter distribution shapes as primary $\Lambda$.  Only the magnitude of the $\Sigma$ curves differ from the primary $\Lambda$ curves.  This is due to the short decay length of the $\Sigma$ decay: ...dl... for $\Sigma$ ...smaller mass..., and ...dl... for $\Sigma$1385. As a result, secondary $\Lambda$ from $\Sigma$ look identical to primary $\Lambda$, and they cannot be selectively removed from the analysis.
 
-The systematic errors associated with these cut choices are discussed in Section \ref{sec:sec:SystematicsReconstruction}. Further discussion of the reconstruction efficiency of the different $\Lambda$ types can be found in Section \ref{sec:ReconstructionEff}.
+The systematic errors associated with these cut choices are discussed in Section \ref{sec:SystematicsReconstruction}. Further discussion of the reconstruction efficiency of the different $\Lambda$ types can be found in Section \ref{sec:ReconstructionEff}.
 
 The reconstructed invariant mass spectra for $\Lambda$ can be seen in Figure \ref{fig:LambdaInvMass}. An approximation of the signal purity was estimated using a ratio of real and background (falsely reconstructed) counts.  The background was estimated using a fourth order polynomial.  The number of real $\Lambda$ was then estimated by counting the bin content and subtracting the background. The signal quality was found to be $real/(real + background) \approx 0.82$ ********Update this **********.
 
@@ -103,7 +107,7 @@ As this shared-daughter cut process was done sequentially through the ... an ite
 
 (example: V0s "A" and "B" both share a daughter, and V0s "A" and "C" share a different daughter.  "A" has a better DCA than "B", so "B" is removed.  Then "C" is found to have a better DCA than "A", so "A" is removed.  Finally, "B" is returned because it no longer competes for a daughter).
 
-This cut helps remove a splitting-like effect (see sec \ref{sec:PairWiseCuts} for more on splitting), wherein one true V0 has each of its daughters claimed by two separate fake V0s.  By the nature of the reconstruction cuts, all three of the V0s will be close in momentum space.  Therefore a pair constructed from the two fake V0s will contaminate the low relative-momentum region of the correlation function.  
+This cut helps remove a splitting-like effect (see Section \ref{sec:PairWiseCuts} for more on splitting), wherein one true V0 has each of its daughters claimed by two separate fake V0s.  By the nature of the reconstruction cuts, all three of the V0s will be close in momentum space.  Therefore a pair constructed from the two fake V0s will contaminate the low relative-momentum region of the correlation function.  
 
 
 \subsection{Correlation function construction and pair cuts}
@@ -163,12 +167,12 @@ Figure \ref{fig:CF} shows correlation functions constructed in the 0-10\% centra
 
 
 \subsection{Systematic errors from reconstruction cuts}
-label{sec:SystematicsReconstruction}
+\label{sec:SystematicsReconstruction}
 
 Discussion of systematic errors associated with V0 reconstruction cuts will go here.
 
 \subsection{Systematic errors from pair-wise cuts}
-label{sec:SystematicsReconstruction}
+\label{sec:SystematicsPairWise}
 
 Discussion of systematic errors associated with pair-wise cuts will go here.
 
@@ -177,7 +181,7 @@ Discussion of systematic errors associated with pair-wise cuts will go here.
 With the assumption of a spherically gaussian source of width $R$, the 1D femtoscopic correlation functions can be calculated analytically \cite{lednicky82} using 
 
 \begin{equation}
-C(k^*)= 1 + C_1(k^*)+C_2(k^*)
+C(k^*)= 1 + C_1(k^*)+C_2(k^*).
 \end{equation}
 $C_1$ describes plane-wave quantum interference:
 \begin{equation}
@@ -293,6 +297,8 @@ The above $\lambda$ estimates have been made under the assumption that primary a
 \end{itemize}
 At each stage, the MC truths of all remaining particles of the following types were counted: primary $\Lambda$s; secondary $\Lambda$s from $\Sigma^0$s, $\Xi^0$s, $\Xi^-$, $\Omega$s, and other sources; the respective anti-particles; other V0s; fake V0s reconstructed in the V0 finder; and $\mathrm{K}^0_{\mathrm{S}}$ (for comparison).  Reconstructed $\mathrm{K}^0_{\mathrm{S}}$ were required to pass standard $\mathrm{K}^0_{\mathrm{S}}$ topological and mass cuts, not $\Lambda$ cuts.  In the topological cut and mass cut stages, the fake V0 and other V0 yields reflect V0 candidates that pass either the $\Lambda$ cuts, the $\bar{\Lambda}$ cuts, or the $\mathrm{K}^0_{\mathrm{S}}$ cuts.  The resulting yields are visible in Figure \ref{fig:MCYields}.  Figure \ref{fig:FakeAndOther} shows a breakdown of what the fake and other V0s were reconstructed as (i.e. $\Lambda$, $\bar{\Lambda}$, or $\mathrm{K}^0_{\mathrm{S}}$).  For both fake V0s and other V0s, the relative abundances of the misidentified V0s are comparable to the relative abundances of the true V0s.
 
+%injected signals outdated
+
 It should be noted that this MC run has injected $\Xi^0$, $\Xi^-$, and $\Omega$ signals, but not their respective antiparticles.  The disparity is quite obvious in Figure \ref{fig:MCYields}.  These injected signals are generated with a $p_\mathrm{T}$ distribution that differs from the distribution of the HIJING particles.  Because the detector efficiency is $p_\mathrm{T}$ dependant, this unfortunately means that the overall measured reconstruction efficiency of these species is suspect.  One plan for the near future is to run this analysis again and reject injected signals.  Without the injected signals, reconstruction efficiencies for the multi-strange particles and anti-particles are expected to be in line.
 
 The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  Figure \ref{fig:V0ToMassCut} shows one such ratio.  Here, one can see the fraction of V0s in the V0 finder that survived all the reconstruction cuts.  From this, one can see how successful the current topological cuts are at selecting (anti)$\Lambda$s of various origins.   If different topological cuts were made, a before-and-after comparison of this plot would show the efficacy of the new cuts at removing secondary V0s vs primary V0s.
@@ -311,6 +317,12 @@ Yet another option would be to ansatz that all the pairs interact with approxima
 \label{sec:MinuitFit}
 
 %Include practical treatment of fit parameters here. Residual correlation scattering lengths, simultaneous fitting.  Normalization factor vs polynomial background.
+Discussion of Minuit fitting procedure will go here.
+
+\subsection{Fit systematics}
+\label{sec:FitSystematics}
+
+Discussion of fit systematics will go here.
 
 \section{Summary}
 Results have been shown for correlation functions $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs.  The results show that like-particle pairs are enhanced at low relative momentum.  The low-$q_{\rm inv}$ suppression of the $\Lambda\bar{\Lambda}$ correlations in each of the three centrality bins may indicate pair annihilation processes reminiscent of those reported in other studies.
