@@ -23,7 +23,7 @@ Baryon--(anti)baryon correlation functions are also useful in the study of final
 In this note, we present two-$\Lambda$ momentum correlation functions measured in PbPb collisions at $\sqrt{s_{NN}}=2.76$ TeV by the ALICE Collaboration.  Results are shown for $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs. The $\Lambda\bar{\Lambda}$ results are presented as a candidate for preliminary status. The motivation for $\Lambda$ baryon femtoscopy is to complement previous studies, as well as to probe the little-understood strong interactions of these baryons.
 
 
-The primary effect seen in $\Lambda\bar{\Lambda}$ correlations should be strong final state interactions (FSI).  A suppression of the correlation function at low-$q_{\rm inv}$ is expected due to interactions in the baryon-antibaryon annihilation channel.  Suppressions of this sort have also been seen in $p \bar{p}$ interactions \cite{Gos:2007cj}, though the effects of this channel in charged particle studies can be somewhat obfuscated by Coulomb enhancement effects in the same $q_{\rm inv}$ region.  Also discussed in this note are the main influences on $\Lambda\Lambda$ correlations --- strong FSI and Fermi-Dirac statistics.  A long-term goal of this study is to measure characteristics of the interaction potential of the $\Lambda$ baryons.  More specifically, the scattering length $f_0$ and effective radius $d_0$ of the interaction can be extracted from two-$\Lambda$ correlations. It should also be noted that the H-dibaryon is thought to have two $\Lambda$s as one of its decay channels \cite{PhysRevLett.38.195}.  The study of $\Lambda$ momentum correlations at ALICE may some day provide measurements of this phenomenon, though endeavors in this direction are too preliminary to report upon at this time.
+The primary effect seen in $\Lambda\bar{\Lambda}$ correlations should be strong final state interactions (FSI).  A suppression of the correlation function at low relative momentum ($k^*$) is expected due to interactions in the baryon-antibaryon annihilation channel.  Suppressions of this sort have also been seen in $p \bar{p}$ interactions \cite{Gos:2007cj}, though the effects of this channel in charged particle studies can be somewhat obfuscated by Coulomb enhancement effects in the same $k^*$ region.  Also discussed in this note are the main influences on $\Lambda\Lambda$ correlations --- strong FSI and Fermi-Dirac statistics.  A long-term goal of this study is to measure characteristics of the interaction potential of the $\Lambda$ baryons.  More specifically, the scattering length $f_0$ and effective radius $d_0$ of the interaction can be extracted from two-$\Lambda$ correlations. It should also be noted that the H-dibaryon may have two $\Lambda$ as one of its decay channels \cite{PhysRevLett.38.195}, though a recent study at ALICE has suggested that a $\Lambda\Lambda$ bound state is unlikely.  The study of $\Lambda$ momentum correlations at ALICE may some day provide further measurements of this phenomenon, though endeavors in this direction are too preliminary to report upon at this time.
 
 \section{Data analysis}
 \subsection{Data selection}
@@ -34,7 +34,7 @@ The analysis was performed on 31 July, 2013 using AliRoot v5-04-64-AN. The data 
 
 Analysis was also performed on the LHC12a17a\_fix Monte Carlo HIJING run, which corresponds to the ++ field orientation events of the LHC11h anchors.  Approximately 650 thousand events were analyzed from runs
 
-170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308, 170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, 170203, 170193, 170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084, 170083, 170081, 170040, 170027, 169965, 169923, 169859, 169858, 169855, 169uncorrected846, 169838, 169837, 169835
+170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308, 170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, 170203, 170193, 170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084, 170083, 170081, 170040, 170027, 169965, 169923, 169859, 169858, 169855, 169846, 169838, 169837, 169835
 
 In all cases, the z-position of the primary vertex was required to be within 10 cm of the center of the ALICE detector for an event to be selected.  
 
@@ -69,26 +69,51 @@ Each V0 is then subjected to the following cuts:
 
 The optimal cut values were determined by comparing cut distributions of reconstructed $\Lambda$ in Monte Carlo HIJING events (including simulated detector effects).  The data set (LHC12a17a\_fix) included injected strange signals (extra hyperons in each event).  The injected signals were found to introduce a disparity between hyperon and anti-hyperon reconstruction efficiency, since no anti-hyperons were injected.  Therefore, the injected signals were removed.  A primary particle (AliAODMCParticle) was considered injected if it had AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$. Likewise, a secondary particle (e.g. $\Lambda$ resulting from decay of a $\Sigma$ baryon) was considered injected if it's mother particle had AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$.
 
-$\Lambda$ were reconstructed and their corresponding AliAODMCParticle objects were consulted in order to classify the $\Lambda$ into different categories: Real, primary $\Lambda$; secondary $\Lambda$ coming from decays of $\Sigma$ (or $\Sigma$ excited states), $\Xi$, and $\Omega$; secondary $\Lambda$ coming from other sources; fake $\Lambda$; and $K^0_\mathrm{s}$ that have been misidentified as $\Lambda$.  For each cut parameter (e.g. cosine of pointing angle), a plot was made showing the distributions of V0 candidates of the various types.  These plots contain only the parameter distributions of candidates that pass all the other cuts.  Figures \ref{fig:CosP,fig:DcaV0,...} show these distributions for the different particle types.  
+$\Lambda$ were reconstructed and their corresponding AliAODMCParticle objects were consulted in order to classify the $\Lambda$ into different categories: Real, primary $\Lambda$; secondary $\Lambda$ coming from decays of $\Sigma$ (or $\Sigma$ excited states), $\Xi$, and $\Omega$; secondary $\Lambda$ coming from other sources; fake $\Lambda$; and $K^0_\mathrm{s}$ that have been misidentified as $\Lambda$.  For each cut parameter (e.g. cosine of pointing angle), a plot was made showing the distributions of V0 candidates of the various types.  These plots contain only the parameter distributions of candidates that pass all the other cuts.  Figures \ref{fig:LambdaCutDists1} and \ref{fig:LambdaCutDists2} show these distributions for the different $\Lambda$ types.  Figures \ref{fig:AntiLambdaCutDists1} and \ref{fig:AntiLambdaCutDists2} show the equivalent results for $\bar{\Lambda}$.
 
 \begin{figure}
-%distribution figures
+\includegraphics[width=36pc]{Figures/2014-03-31-Distribution-Lambda-4Types-CosP-DCA-pT-Minv.pdf}
+\caption[$\Lambda$ cut distributions]{$\Lambda$ cut distributions shown for real $\Lambda$ (black), $\Lambda$ from $\Sigma$ decay (blue), secondary $\Lambda$ from other sources (green), fake $\Lambda$ (red). Optimal cut values were set such that a looser cut would differentially add more fake and (non-$\Sigma$) secondary $\Lambda$ than primary $\Lambda$}
+\label{fig:LambdaCutDists1}
 \end{figure}
 
-For the construction of Figures \ref{fig:CosP,fig:DcaV0,...}, each $\Lambda$ type was preselected using AliAODMCParticle information, and only V0 candidates of that type were reconstructed in that analysis run. This was done for ease of histogramming the distributions.  Roughly equal numbers events were analyzed for each run type, with the exception of the analysis of the primary $\Lambda$.  That analysis run utilized only about half the data set.  Therefore, the primary $\Lambda$ distributions in Figures \ref{fig:CosP,fig:DcaV0,...} have been scaled by a factor of 2 to compensate.
+\begin{figure}
+\includegraphics[width=36pc]{Figures/2014-03-31-Distribution-Lambda-4Types-DCA-DCA-DCA-DecayLength.pdf}
+\caption[$\Lambda$ cut distributions]{$\Lambda$ cut distributions shown for real $\Lambda$ (black), $\Lambda$ from $\Sigma$ decay (blue), secondary $\Lambda$ from other sources (green), fake $\Lambda$ (red). Optimal cut values were set such that a looser cut would differentially add more fake and (non-$\Sigma$) secondary $\Lambda$ than primary $\Lambda$}
+\label{fig:LambdaCutDists2}
+\end{figure}
 
-In these figures, both the shape and magnitude of each distribution is relevant for determining the cuts. For each cut type, a cut value was selected such that a looser cut would differentially accept more fake or secondary $\Lambda$ than primary $\Lambda$. Ideally, these cuts would be selected to reduce the inclusion of all types of secondary $\Lambda$.  However, it can be seen from the distributions that $\Lambda$ that come from $\Sigma$ decay display virtually the same cut parameter distribution shapes as primary $\Lambda$.  Only the magnitude of the $\Sigma$ curves differ from the primary $\Lambda$ curves.  This is due to the short decay length of the $\Sigma$ decay: ...dl... for $\Sigma$ ...smaller mass..., and ...dl... for $\Sigma$1385. As a result, secondary $\Lambda$ from $\Sigma$ look identical to primary $\Lambda$, and they cannot be selectively removed from the analysis.
+\begin{figure}
+\includegraphics[width=36pc]{Figures/2014-03-31-Distribution-AntiLambda-4Types-CosP-DCA-pT-Minv.pdf}
+\caption[$\bar{\Lambda}$ cut distributions]{$\bar{\Lambda}$ cut distributions shown for real $\bar{\Lambda}$ (black), $\bar{\Lambda}$ from $\Sigma$ decay (blue), secondary $\bar{\Lambda}$ from other sources (green), fake $\bar{\Lambda}$ (red). Optimal cut values were set such that a looser cut would differentially add more fake and (non-$\bar{\Sigma}$) secondary $\bar{\Lambda}$ than primary $\bar{\Lambda}$}
+\label{fig:AntiLambdaCutDists1}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=36pc]{Figures/2014-03-31-Distribution-AntiLambda-4Types-DCA-DCA-DCA-DecayLength.pdf}
+\caption[$\bar{\Lambda}$ cut distributions]{$\bar{\Lambda}$ cut distributions shown for real $\bar{\Lambda}$ (black), $\bar{\Lambda}$ from $\Sigma$ decay (blue), secondary $\bar{\Lambda}$ from other sources (green), fake $\bar{\Lambda}$ (red). Optimal cut values were set such that a looser cut would differentially add more fake and (non-$\bar{\Sigma}$) secondary $\bar{\Lambda}$ than primary $\bar{\Lambda}$}
+\label{fig:AntiLambdaCutDists2}
+\end{figure}
+
+For the construction of Figures \ref{fig:LambdaCutDists1},\ref{fig:LambdaCutDists2},\ref{fig:AntiLambdaCutDists1}, and \ref{fig:AntiLambdaCutDists2}, each $\Lambda$ type was preselected using AliAODMCParticle information, and only V0 candidates of that type were reconstructed in that analysis run. This was done for ease of histogramming the distributions.  Roughly equal numbers events were analyzed for each run type, with the exception of the analysis of the primary $\Lambda$.  That analysis run utilized only about half the data set.  Therefore, the primary $\Lambda$ ($\bar{\Lambda}$) distributions in Figures \ref{fig:LambdaCutDists1},\ref{fig:LambdaCutDists2},\ref{fig:AntiLambdaCutDists1}, and \ref{fig:AntiLambdaCutDists2} have been scaled by a factor of 2 to compensate.
+
+In these figures, both the shape and magnitude of each distribution is relevant for determining the cuts. For each cut type, a cut value was selected such that a looser cut would differentially accept more fake or secondary $\Lambda$ than primary $\Lambda$. Ideally, these cuts would be selected to reduce the inclusion of all types of secondary $\Lambda$.  However, it can be seen from the distributions that $\Lambda$ that come from $\Sigma$ decay display virtually the same cut parameter distribution shapes as primary $\Lambda$.  Only the magnitude of the $\Sigma$ curves differ from the primary $\Lambda$ curves.  This is due to the short decay length of the $\Sigma$ decay: $c\tau \approx 20$ pm for $\Sigma^0$ , and $c\tau \approx 6$ fm for $\Sigma$(1385). As a result, secondary $\Lambda$ from $\Sigma$ look identical to primary $\Lambda$, and they cannot be selectively removed from the analysis.
 
 The systematic errors associated with these cut choices are discussed in Section \ref{sec:SystematicsReconstruction}. Further discussion of the reconstruction efficiency of the different $\Lambda$ types can be found in Section \ref{sec:ReconstructionEff}.
 
-The reconstructed invariant mass spectra for $\Lambda$ can be seen in Figure \ref{fig:LambdaInvMass}. An approximation of the signal purity was estimated using a ratio of real and background (falsely reconstructed) counts.  The background was estimated using a fourth order polynomial.  The number of real $\Lambda$ was then estimated by counting the bin content and subtracting the background. The signal quality was found to be $real/(real + background) \approx 0.82$ ********Update this **********.
+The reconstructed invariant mass spectra for $\Lambda$ can be seen in Figure \ref{fig:BothInvMass}. An approximation of the signal purity was estimated using a ratio of real and background (falsely reconstructed) counts.  The background was estimated using a fourth order polynomial.  The number of real $\Lambda$ was then estimated by counting the bin content and subtracting the background. The signal quality was found to be $real/(real + background) \approx 0.95$.
 
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-Minv-Both-Data.pdf}
+\caption[$\Lambda$ and $\bar{\Lambda}$ invariant mass distributions]{Invariant mass distribution for reconstructed $\Lambda$ (left) and $\bar{\Lambda}$ (right) using the optimal analysis cuts.  The plots show V0s reconstructed from centrality integrated LHC11h data.  The red line shows a fourth order polynomial fit to the background, which is used to estimate the number of real and fake $\Lambda$.  The estimated ratio of real $\Lambda$ to all reconstructed $\Lambda$ in the signal region ($ \lvert m_{\mathrm{inv}} - m_{\mathrm{PDG}}\rvert < 3.8$ MeV/$\rm c^2$) is approximately 0.95 for both particles.}
+\label{fig:BothInvMass}
+\end{figure}
 
 \subsection{Shared daughter cut}
 
 Occasionally two or more V0s are reconstructed that both claim the same daughter track.  However, a given track can only be the daughter of, at most, one V0.  Therefore, if several reconstructed V0s all lay claim to the same daughter, at most only one of them can be a true V0.  It was decided to employ a cut that would compare characteristics of the different V0s to determine which of them was most likely to be the true parent particle.  After the best V0 was found, the competing V0s were removed from the list of V0 particles and not used during same- or mixed-event pair construction.
 
-A study was done using MC event truths to determine which cut would be most successful at removing fraudulent V0s.  The following characteristics were examined:
+A study was done using MC event truths to determine which cut would be most successful at removing fraudulent V0s.  The following characteristics were examined as candidates for the cut criterion:
 
 \begin{itemize}
 \item Closeness of invariant mass to the PDG mass value.
@@ -97,17 +122,17 @@ A study was done using MC event truths to determine which cut would be most succ
 \item DCA of the V0 to the primary vertex.
 \end{itemize}
 
-Based on the MC truth study, the ... cut was found to successfully keep true V0s and remove fake V0s ...\% of the time.  
+The process of culling V0s with shared-daughters was done by looping through V0s was done on an event-by-event basis after the V0 reconstruction process was completed.  For each V0 in the list of successfully reconstructed V0s (i.e. V0s that passed all cuts), the V0 was compared with each other V0 in the event to determine if they shared a daughter.  Two V0s "share" a daughter if both V0s have a charged daughter track with the same track ID.  When two V0s were found that shared a daughter, their values of the cut criterion were compared.  The daughter with the stricter value (e.g. smaller DCA to primary vertex) was adjudged to be the better V0 candidate, and the other V0 was flagged as "bad" for failing the shared-daughter cut.  V0s that failed the shared-daughter cut were not used in any pair construction (same event or mixed event).
 
-On average there were two competing particles per every ... events in the MC study.  When applied to analysis of the LHC11h data, the rate was two per ....
+However, it is possible for a V0 to share a daughter or daughters with two different V0s. In the aforementioned scheme, it is therefore possible for an excessive number of V0s to fail the shared daughter cut (excessive in that some of those failed V0s only shared a daughter with another failed V0).  To avoid throwing away too many V0s, a second loop was added to shared-daughter cut method to un-flag V0s that no longer share a daughter with any "good" V0. Example: V0s "A" and "B" both share a daughter, and V0s "A" and "C" share a different daughter.  "A" has a better DCA than "B", so "B" is flagged as bad.  Then "C" is found to have a better DCA than "A", so "A" is flagged as bad.  Finally, "B" is re-flagged as good because it no longer shares a daughter with any other good V0.
 
-In order to keep spurious correlated signals from entering the correlation functions, a cut on daughter particles was implemented.  After all the V0s in an event were reconstructed, the V0s were checked to see if they shared any daughters.  Those V0s that shared a daughter were compared via several characteristics:
+This method was adapted to run iteratively over the list of V0s candidates until a stable list of non-sharing V0s was found.  Then, the MC truths of each V0 (those marked "good" and those marked "bad") were examined.  We this information, it is possible to calculate the percentages of true V0s and fake V0s that are removed via this process.  This analysis was run several times, each time using a different comparison criterion from the list above.
 
-As this shared-daughter cut process was done sequentially through the ... an iterative process was developed to ensure... 
+Based on the MC truth study, keeping the V0 with the closest DCA to the primary vertex was found to successfully keep true V0s and remove fake V0s 87\% of the time.  In comparison, the cosine of pointing angle criteria was also successful 87\% of the time (cos$(\Theta_\mathrm{p})$ and DCA to primary vertex are strongly correlated), the DCA of daughters to each other criteria was successful 81\% of the time, and the absolute value of mass difference criteria was successful 79\% of the time.   Based on these results, the DCA to primary vertex criteria was selected to used for the shared-daughter cut before correlation function construction.
 
-(example: V0s "A" and "B" both share a daughter, and V0s "A" and "C" share a different daughter.  "A" has a better DCA than "B", so "B" is removed.  Then "C" is found to have a better DCA than "A", so "A" is removed.  Finally, "B" is returned because it no longer competes for a daughter).
+%On average there were two competing particles per every ... events in the MC study.  When applied to analysis of the LHC11h data, the rate was two per ....
 
-This cut helps remove a splitting-like effect (see Section \ref{sec:PairWiseCuts} for more on splitting), wherein one true V0 has each of its daughters claimed by two separate fake V0s.  By the nature of the reconstruction cuts, all three of the V0s will be close in momentum space.  Therefore a pair constructed from the two fake V0s will contaminate the low relative-momentum region of the correlation function.  
+One of the benefits of this cut is that it helps remove a splitting-like effect (see Section \ref{sec:PairWiseCuts} for more on splitting), wherein a true V0 shares each of its daughters with two separate fake V0s.  By the nature of the reconstruction cuts, all three of the V0s will be close in momentum space.  Therefore a pair constructed from the two fake V0s will contaminate the low relative-momentum region of the correlation function.  That pair of fake V0s does not share any daughters with each other, so it is not kept out of the correlation function by simple daughter ID checks.  But iterative daughter-sharing cut described above is capable removing this fraudulent pair, since either of the fake V0s is likely to be removed for sharing a daughter with the true V0.
 
 
 \subsection{Correlation function construction and pair cuts}
@@ -158,25 +183,92 @@ One alternative/complement to using an average separation cut would be to enforc
 
 %..... Discussion of correlation function data results and systematic uncertainties.  ......
 
+
+
+Correlation functions have been constructed using the entirety of the LHC11h data set.  As discussed in Section \ref{sec:CFconstruct}, events were binned in 5\% centrality bins.  When combining data from different centrality bins, care was taken to combine the correlations by taking weighted averages of the correlation functions.  
+
+The naive method of combining correlation functions involves adding numerators from different bins and adding denominators from different bins and then taking the ratio.  However, this has the pitfall of potentially combining drastically different phase spaces.  As a result, it may introduce artificial signals into the combined correlation function.  Instead of using this method, the correct method is to construct correlation functions for different bins separately.  Then one takes a weighted average of the correlation functions, using the number of numerator pairs in each correlation function as the weight:
+
+\begin{equation}
+\label{eq:CombineCF}
+C_{combined}(k^*) = (\displaystyle\sum\limits_{i} w_i C_i(k^*))/(\displaystyle\sum\limits_{i} w_i)
+\end{equation}
+where the sum is done over different correlation function bins (e.g. 0-5\% and 5-10\%) and $w_i$ is the number of numerator pairs in $C_i$.  This averaging is done on a bin-by-bin basis in $k^*$.  Note that is averaging procedure should be used in general to combine data sets with potentially different phase spaces. For example, this procedure is employed to combine data from runs utilizing the two different field orientations (see Section \ref{sec:DataSelection}).  
+
+Figures \ref{fig:CFLamLam3Cents}, \ref{fig:CFALamALam3Cents}, and \ref{fig:CFLamALam3Cents} show correlation functions for $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$ respectively.  Each plot shows three centrality ranges: 0-10\%, 10-30\%, 30-50\%. The correlations are normalized to unity in the $ 0.3 < k^* < 0.5$ GeV/c range 
+
+
+
+%  Interpretation of results can be found in Section \ref{sec:CFInterpretation}.  In this section, we will
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamLam-3Cents.pdf}
+\caption[$\Lambda\Lambda$ correlation function for three centrality ranges]{$\Lambda\Lambda$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
+\label{fig:CFLamLam3Cents}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-ALamALam-3Cents.pdf}
+\caption[$\bar{\Lambda}\bar{\Lambda}$ correlation function for three centrality ranges]{$\bar{\Lambda}\bar{\Lambda}$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
+\label{fig:CFALamALam3Cents}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamALam-3Cents.pdf}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for three centrality ranges]{$\Lambda\bar{\Lambda}$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
+\label{fig:CFLamALam3Cents}
+\end{figure}
+
+Generally speaking, the interesting part of a relative-momentum correlation function is the region below 100 or 200 MeV/c.  Structures/backgrounds may exist at large relative momentum - these structures can complicate the fitting procedure, and sometimes even direct attention to flaws in the analysis.  However, the information about the source size and two-particle interactions is predominantly encoded within the low-$k^*$ region.  For the time being, this analysis will restrict its attention to behavior in that region.
+
+The $\Lambda\bar{\Lambda}$ correlation functions (Fig.\ \ref{fig:CFLamALam3Cents}) exhibit a clear, centrality dependent suppression in the low-$k^*$ region, even with the significant statistical error bars for the 10-30\% and 30-50\% systems.  However, in the present $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ data one cannot make the case for a centrality dependent signal.  Indeed, one is hard-pressed to see a signal at all, except perhaps for a small suppression in the lowest few $k^*$ bins.  
+
+Several factors may contribute to this absence of a signal.  First of all, the physics of the identical particle systems (see Sec.\ \ref{sec:AnalyticModel}) is expected to be confined to just the few lowest bins.  There may be competing physics effects -- a suppression from quantum interference and an enhancement from the strong final state interactions -- that wash each other out.    Furthermore, two-track effects like splitting and merging show up in this region.  Optimal two-track (i.e. pair-wise) cuts are still being worked out.  The systematic errors associated with these cuts will be discussed in Section \ref{sec:SystematicsPairWise}.  The presence of residual correlations might muddle or dilute the signal region.  This will be discussed further in Section \ref{sec:Residual}.  Finally, it must be noted that these are the $k^*$ bins with the least statistics.  Some statistical improvement can be made by averaging the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ results together.  Another option is to combine centrality bins.  Because of the LHC11h centrality distribution, a minimum bias correlation function of 0-50\% is not feasible.  Instead, Figures \ref{fig:CFLamLam2Cents}, \ref{fig:CFALamALam2Cents}, and \ref{fig:CFLamALam2Cents} show the same data reduced to two bins: 0-10\% and 10-50\%.  There are also a couple fitting tricks that can be employed to mitigate the statistical limitations in these plots.  They will be discussed in Section \ref{sec:MinuitFit}.
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamLam-2Cents.pdf}
+\caption[$\Lambda\Lambda$ correlation function for two centrality ranges]{$\Lambda\Lambda$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
+\label{fig:CFLamLam2Cents}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-ALamALam-2Cents.pdf}
+\caption[$\bar{\Lambda}\bar{\Lambda}$ correlation function for two centrality ranges]{$\bar{\Lambda}\bar{\Lambda}$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
+\label{fig:CFALamALam2Cents}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamALam-2Cents.pdf}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for two centrality ranges]{$\Lambda\bar{\Lambda}$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
+\label{fig:CFLamALam2Cents}
+\end{figure}
+
+
 %********Outdated****** some of this may be salvageable
 
-Figure \ref{fig:CFMixCentralities} shows $\Lambda\bar{\Lambda}$ correlation functions versus $q_{\rm inv}$ for three different centralities ranges.  The correlations are normalized to unity in the $ 0.3 < q_{\rm_{inv}} < 0.5$ GeV/c range.  Each correlation shows clear suppression in the low-$q_{\rm_{inv}}$ region, which is considered an effect of the baryon-antibaryon annihilation channel.  The strength of the correlation effect increases with more peripheral events, an indication that the emitting source size is shrinking for those events.
+%Figure \ref{fig:CFMixCentralities} shows $\Lambda\bar{\Lambda}$ correlation functions versus $q_{\rm inv}$ for three different centralities ranges.  The correlations are normalized to unity in the $ 0.3 < q_{\rm_{inv}} < 0.5$ GeV/c range.  Each correlation shows clear suppression in the low-$q_{\rm_{inv}}$ region, which is considered an effect of the baryon-antibaryon annihilation channel.  The strength of the correlation effect increases with more peripheral events, an indication that the emitting source size is shrinking for those events.
 
-Figure \ref{fig:CF} shows correlation functions constructed in the 0-10\% centrality range for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Both correlation functions exhibit an enhancement in the low-$q_{\rm inv}$ range of 0.04 - 0.2 GeV/c.  This may be due to attractive final state interactions.  The effects of FSI and quantum statistics are expected to be seen in roughly the same $q_{\rm inv}$ range, and it is unclear at this time to what extent their effects should be competing. The enhancement of the $\bar{\Lambda}\bar{\Lambda}$ correlation function does fall off in the lowest bins, though the statistical uncertainties are such that no significant statement about the effects of quantum statistics can be made at this time.
+%Figure \ref{fig:CF} shows correlation functions constructed in the 0-10\% centrality range for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Both correlation functions exhibit an enhancement in the low-$q_{\rm inv}$ range of 0.04 - 0.2 GeV/c.  This may be due to attractive final state interactions.  The effects of FSI and quantum statistics are expected to be seen in roughly the same $q_{\rm inv}$ range, and it is unclear at this time to what extent their effects should be competing. The enhancement of the $\bar{\Lambda}\bar{\Lambda}$ correlation function does fall off in the lowest bins, though the statistical uncertainties are such that no significant statement about the effects of quantum statistics can be made at this time.
 
 
 
 \subsection{Systematic errors from reconstruction cuts}
 \label{sec:SystematicsReconstruction}
 
-Discussion of systematic errors associated with V0 reconstruction cuts will go here.
+Discussion of systematic errors associated with V0 reconstruction cuts will go here.  The analysis for this section has been performed and will be added soon.
 
 \subsection{Systematic errors from pair-wise cuts}
 \label{sec:SystematicsPairWise}
 
 Discussion of systematic errors associated with pair-wise cuts will go here.
 
+\subsection{Interpretation of correlation function results}
+\label{sec:CFInterpretation}
+
+Finalized correlation functions with systematic errors will go here, as well as interpretation of correlation function shape, centrality dependence, and pair-type dependence.  
+
 \section{1D analytic model}
+\label{sec:AnalyticModel}
 %\subsection{Analytical model}
 With the assumption of a spherically gaussian source of width $R$, the 1D femtoscopic correlation functions can be calculated analytically \cite{lednicky82} using 
 
@@ -190,12 +282,12 @@ C_1(k^*) = \alpha e^{-4k^{*2}R^2}
 where $\alpha = (-1)^{2j}/(2j+1)$ for identical particles with spins $j$, and $\alpha = 0$ for non-identical particles.  $C_2$ describes the s-wave strong final state interaction of the particles:
 \begin{equation}
 \label{eq:Lednicky}
-C_2(k^*)= 1+ (1+\alpha)\left[\frac{1}{2}\abs{\frac{f(k^*)}{R}}^2(1-\frac{d_0}{2\sqrt{\pi}R})+\frac{2\Re f(k^*)}{\sqrt{\pi}R}F_1(2k^*R)-\frac{\Im f(k^*)}{R}F_2(2k^*R)\right]
+C_2(k^*)= (1+\alpha)\left[\frac{1}{2}\abs{\frac{f(k^*)}{R}}^2(1-\frac{d_0}{2\sqrt{\pi}R})+\frac{2\Re f(k^*)}{\sqrt{\pi}R}F_1(2k^*R)-\frac{\Im f(k^*)}{R}F_2(2k^*R)\right]
 %C_2(k^*)= 1+ \displaystyle\sum\limits_{S}\rho_S\left[\frac{1}{2}\abs{\frac{f^S(k^*)}{R}}^2(1-\frac{d_0^S}{2\sqrt{\pi}R})+\frac{2\Re f^S(k^*)}{\sqrt{\pi}R}F_1(2k^*R)-\frac{\Im f^S(k^*)}{R}F_2(2k^*R)\right]
 \end{equation}
 where $F_1(z) = \int_0^z \! \mathrm{d}x \, e^{x^2-z^2}/z$,  $F_2(z) = (1-e^{-z^2})/z$, and $R$ is the source size. The $(1+\alpha)$ pre-factor accounts for the relevant (non/anti-)symmetrizaton effects.  $f(k^*)=(1/f_0+\frac{1}{2}d_0k^*-ik^*)^{-1}$ is the s-wave scattering amplitude, written using the effective range approximation.  The scattering amplitude is dependent upon the effective range of interaction $d_0$, as well as the complex scattering length $f_0$.  The real part of the scattering amplitude can contribute either a positive or a negative correlation, but either way the effect is relatively narrow in $k^*$ (on the order of about one hundred MeV/$c$).  The imaginary part of the scattering amplitude accounts for inelastic processes of baryon-antibaryon annihilation.  Introducing a non-zero imaginary part to the scattering length produces a wide (hundreds of MeV/$c$) negative correlation.  For charged particles, an additional factor \cite{Aamodt:2011kd} is necessary to account for the Coulomb interaction.
 
-Techinically, the scattering length and effective range are spin dependent.  It should be noted that in the case of identical fermions, "the contributions of s-wave interaction of identical nucleons to the correlation function goes to zero [for summary spin state S = 1] (identical nucleons with parallel spins cannot be in the s-wave state)" \cite{lednicky82}.  As a result, only the spin singlet (i.e. antisymmetric spinor, symmetric spatial wave function) scattering parameters are measured for identical fermions.  Such is the case for the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlation measurements.  However, for non-identical particles such as $\Lambda\bar{\Lambda}$, the factor $(1+\alpha)$ could be replaced with a weighted sum of $C_2$ calculated using separate spin-dependent scattering parameters.  That calculation would use $\rho_S$, the fraction of pairs in each total spin state S, as the weight.  For statistical reasons, this analysis will eschew spin-dependent measurements of the $\Lambda\bar{\Lambda}$ scattering parameters, and instead attempt to fit for a spin-averaged value.
+Technically, the scattering length and effective range are spin dependent.  It should be noted that in the case of identical fermions, "the contributions of s-wave interaction of identical nucleons to the correlation function goes to zero [for summary spin state S = 1] (identical nucleons with parallel spins cannot be in the s-wave state)" \cite{lednicky82}.  As a result, only the spin singlet (i.e. antisymmetric spinor, symmetric spatial wave function) scattering parameters are measured for identical fermions.  Such is the case for the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlation measurements.  However, for non-identical particles such as $\Lambda\bar{\Lambda}$, the factor $(1+\alpha)$ could be replaced with a weighted sum of $C_2$ calculated using separate spin-dependent scattering parameters.  That calculation would use $\rho_S$, the fraction of pairs in each total spin state S, as the weight.  For statistical reasons, this analysis will eschew spin-dependent measurements of the $\Lambda\bar{\Lambda}$ scattering parameters, and instead attempt to fit for a spin-averaged value.
 
 
 \subsection{Observables}
@@ -206,9 +298,9 @@ For pion, kaon, and proton femtoscopic analyses, the scattering lengths and effe
 \subsection{Residual correlations}
 \label{sec:Residual}
 
-Attempts at fitting correlation functions should try to account for residual correlations between the particle being studied and other particles that might decay into the studied particle.  Various particles can decay into $\Lambda$ baryons, such as $\Sigma^{\rm 0}$, $\Xi^{\rm 0}$, and $\Omega^{\rm -}$.  The decay momentum between these particles and their daughter $\Lambda$ is small, such that daughter and parent carry very similar momenta.  As a result, relative-momentum correlation functions between primary particles and secondary particles such as $\Lambda$ should be sensitive to the interactions between the primary particles and the parent particles.  For example, the correlation between primary $\Lambda$ and primary $\Sigma^{\rm 0}$ should be visible, though somewhat smeared out, in the correlation between primary $\Lambda$ and secondary $\Lambda$.  Furthermore, these secondary $\Lambda$ are often difficult to distinguish from primary $\Lambda$.  Therefore, measurements of two-$\Lambda$ correlation functions will contain a mixture of primary correlations and feeddown correlations, and an attempt to parametrize the correlation functions should take this into account.  
+Attempts at fitting correlation functions should try to account for residual correlations between the particle being studied and other particles that might decay into the studied particle.  Various particles can decay into $\Lambda$ baryons, such as $\Sigma^{\rm 0}$, $\Xi^{\rm 0}$, and $\Omega^{\rm -}$.  The decay momentum between these particles and their daughter $\Lambda$ is small, such that daughter and parent carry very similar momenta.  As a result, relative-momentum correlation functions between primary particles and secondary particles can be sensitive to the interactions between the primary particles and the parent particles.  For example, the correlation between primary $\Lambda$ and primary $\Sigma^{\rm 0}$ should be visible, though somewhat smeared out, in the correlation between primary $\Lambda$ and secondary $\Lambda$.  Furthermore, these secondary $\Lambda$ are often difficult to distinguish from primary $\Lambda$.  Therefore, measurements of two-$\Lambda$ correlation functions will contain a mixture of primary correlations and feeddown correlations, and an attempt to parametrize the correlation functions should take this into account.  
 
-One example of this type of parametrization can be seen in the recent proton femtoscopy results from ALICE Pb--Pb collisions \cite{Szymanski:2012AN}.  In that study, initial attempts to fit a purely primary proton-proton correlation function failed to reproduce the shape of the data.  However, when further parametrization was introduced to take into account proton-proton correlations where one proton was primary and one came from a $\Lambda$ decay, the fit was remarkably successful.
+A example of this kind of parametrization can be seen in the recent analysis \cite{Kisiel:2014mma} of STAR p$\bar{\Lambda}$ correlation functions measured in 200 GeV Au--Au collisions.  In this study, p$\bar{\Lambda}$ and $\bar{\mathrm{p}}\Lambda$ correlations were fit with and without residual correlations.  The fits with residual correlations included feeddown and feedup contributions from numerous sources.  The study found that the fit with residual correlations measured a source size comparable to the previously measured sizes of p$\Lambda$ and $\bar{\mathrm{p}}\bar{\Lambda}$.  In contrast, the fits that did not include residual correlations measured source radii that deviated significantly from the old p$\Lambda$ and $\bar{\mathrm{p}}\bar{\Lambda}$ results.
 
 We attempt to quantify the residual contamination in this analysis by simultaneously fitting the data for both the primary correlation function and the residual correlations.  For example, $\Lambda\Lambda$ correlations with $\mathrm{\Lambda\Sigma^0}$ feeddown would be fit using 
 
@@ -216,7 +308,13 @@ We attempt to quantify the residual contamination in this analysis by simultaneo
 \label{eq:Residual}
 C_{\mathrm{meas}}(k^*_{\Lambda\Lambda})= 1 + \lambda_{\Lambda\Lambda}[C_{\Lambda\Lambda}(k^*_{\Lambda\Lambda})-1]+\lambda_{\Lambda\Sigma}[C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda})-1],
 \end{equation}
-where $$C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda}) \equiv \displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})T(k^*_{\Lambda\Sigma},k^*_{\Lambda\Lambda}),$$ $C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eq.~(\ref{eq:Lednicky}), and $T$ is a THERMINATOR \cite{Chojnacki:2011hb} transform matrix, which generates pairs of particles and determines kinematically how the $k^*$ of the pair transforms when one of the particles decays.  Figure \ref{fig:TherminatorLS} shows the transform matrix for $\Lambda\Sigma \rightarrow \Lambda\Lambda$.  Further residual correlations (e.g. from $\Sigma\Sigma \rightarrow \Lambda\Lambda$) can be included via additional terms in Equation \ref{eq:Residual}.  Efforts are underway to understand which residual correlations must be included and which can be safely neglected.  Section \ref{sec:LambdaParams} will discuss the current status of this analysis.
+where $$C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda}) \equiv \displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})T(k^*_{\Lambda\Sigma},k^*_{\Lambda\Lambda}),$$ $C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eq.~(\ref{eq:Lednicky}), and $T$ is a THERMINATOR \cite{Chojnacki:2011hb} transform matrix, which shows how the $k^*$ of pairs of particles kinematically transforms when one of the particles decays.  Figure \ref{fig:TherminatorLS} shows the transform matrix for $\Lambda\Sigma \rightarrow \Lambda\Lambda$.  Further residual correlations (e.g. from $\Sigma\Sigma \rightarrow \Lambda\Lambda$) can be included via additional terms in Equation \ref{eq:Residual}.  Efforts are underway to understand which residual correlations must be included and which can be safely neglected.  Section \ref{sec:LambdaParams} will discuss the current status of this analysis.
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-04-01-TransformMatrix-LS-LL-100bins.pdf}
+\caption[Transform matrix for $k^*_{\Lambda\Sigma} \rightarrow k^*_{\Lambda\Lambda}$]{THERMINATOR \cite{Chojnacki:2011hb} transform matrix showing how the relative momentum of $\Lambda\Sigma$ pairs transforms into relative momentum of $\Lambda\Lambda$ pairs after the $\Sigma$ decays.  The elements significantly off-diagonal may be due to a lingering bug in the transform matrix.}
+\label{fig:TherminatorLS}
+\end{figure}
 
 \section{Fitting results and systematics}
 \label{sec:FittingSystematics}
@@ -228,9 +326,9 @@ Proper fitting techniques for this analysis are still a work in progress.  In pa
 
 \subsection{Estimates of $\lambda$ parameters}
 \label{sec:LambdaParams}
-To understand the mathematical motivation behind the $\lambda$ parameters, let us consider the simple case where the signal pairs of the correlation function come from a single event.  Within this event, all combinations of reconstructed V0s are paired together and binned according to their $k^*$ values.  For this analysis, the reconstructed V0s consist of primary $\Lambda$s, secondary $\Lambda$s, and false $\Lambda$s.  Let us assume that origin of the different $\Lambda$s cannot be determined - the analysis only knows that a given V0 appears to be a $\Lambda$.  As mentioned above, the total correlation function will be a linear combination of the component correlation functions (primary-primary, primary-secondary, primary-fake, fake-fake, etc.).  The $\lambda$ parameters for each component correlation are given by the fraction of total pairs of that type.  For example, if there are ten distinct $\Lambda\Sigma$ pairs and one hundred total pairs, then $\lambda_{\Lambda\Sigma} = 1/10$.  The sum of all $\lambda$s should be unity.
+To understand the mathematical motivation behind the $\lambda$ parameters, let us consider the simple case where the signal pairs of the correlation function come from a single event.  Within this event, all combinations of reconstructed V0s are paired together and binned according to their $k^*$ values.  For this analysis, the reconstructed V0s consist of primary $\Lambda$, secondary $\Lambda$, and false $\Lambda$.  Let us assume that origin of the different $\Lambda$ cannot be determined - the analysis only knows that a given V0 appears to be a $\Lambda$.  As mentioned above, the total correlation function will be a linear combination of the component correlation functions (primary-primary, primary-secondary, primary-fake, fake-fake, etc.).  The $\lambda$ parameters for each component correlation are given by the fraction of total pairs of that type.  For example, if there are ten distinct $\Lambda\Sigma$ pairs and one hundred total pairs, then $\lambda_{\Lambda\Sigma} = 1/10$.  Ideally, the sum of all $\lambda$ should be unity.  That said, in practice one reason the sum of $\lambda$ parameters can deviate from unity is if the source is not truly a gaussian.
 
-The following equations describe the $\lambda$ parameters for different types of pairs.  For two identical particles (e.g. primary $\Lambda$s) \begin{equation}
+The following equations describe the $\lambda$ parameters for different types of pairs.  For two identical particles (e.g. primary $\Lambda$) \begin{equation}
 \label{eq:LambdaIdentical}
 \lambda_{\Lambda\Lambda} = \frac{N_\Lambda}{T}\frac{(N_\Lambda -1)/2}{(T-1)/2} = \frac{N_\Lambda}{T}\frac{(N_\Lambda -1)}{(T-1)}
 \end{equation}
@@ -238,15 +336,15 @@ where the $\Lambda$ subscript means primary $\Lambda$, $N$ is the number of part
 \begin{equation}
 \lambda_{\Lambda\Sigma} = \frac{N_\Lambda}{T} \frac{N_\Sigma}{(T-1)/2}
 \end{equation}
-where the $\Sigma$ subscript indicates $\Lambda$s from $\Sigma$ decays.  $\lambda$ can also be calculated for pairs that are distinguishable, such as primary $\Lambda$ and primary $\bar{\Lambda}$:
+where the $\Sigma$ subscript indicates $\Lambda$ from $\Sigma$ decays.  $\lambda$ can also be calculated for pairs that are distinguishable, such as primary $\Lambda$ and primary $\bar{\Lambda}$:
 \begin{equation}
 \lambda_{\Lambda\bar{\Lambda}} = \frac{N_\Lambda}{T_{\Lambda-\mathrm{type}}} \frac{N_{\bar{\Lambda}}}{T_{\bar{\Lambda}-\mathrm{type}}}
 \end{equation}
-where $T_{\Lambda-\mathrm{type}}$ is the sum of all indistinguishable particles that look like $\Lambda$s, etc.  These equations are all easily generalized to other particle pairs.
+where $T_{\Lambda-\mathrm{type}}$ is the sum of all indistinguishable particles that look like $\Lambda$, etc.  These equations are all easily generalized to other particle pairs.
 
 One should note here that the above $\lambda$ equations technically apply to some sort of single-event correlation function.  The $\lambda$ parameters measured or estimated for a million-event correlation function would roughly correspond to an event-averaged value.  Nonetheless, we can attempt to employ these formulae to obtain ballpark estimates of the $\lambda$ parameters, given estimates of the yields of each type of particle.
 
-As the goal of this analysis is to measure the correlations of primary $\Lambda$s, it is important to know the relative yields of secondary $\Lambda$s.  We can obtain an estimate \cite{Florkowski:2010zz} of the yields of different types of particles at mid-rapidity from a thermal model using
+As the goal of this analysis is to measure the correlations of primary $\Lambda$, it is important to know the relative yields of secondary $\Lambda$.  We can obtain an estimate \cite{Florkowski:2010zz} of the yields of different types of particles at mid-rapidity from a thermal model using
 \begin{equation}
 \frac{1}{m_{\mathrm{T}}}\frac{dN}{dm_{\mathrm{T}}} \propto \exp{(-m_\mathrm{T}/T)}
 \end{equation}
@@ -255,9 +353,9 @@ where the transverse mass $m_\mathrm{T} = \sqrt{m^2_{\mathrm{inv}} + p^2_{\mathr
 \frac{N_i}{N_\Lambda} \approx \frac{m_i + T}{m_\Lambda + T} \exp{((m_\Lambda - m_i)/T)}.
 \end{equation}
 
-Particles that decay into $\Lambda$ include $\Sigma^0$, $\Xi^0$, $\Xi^-$, and $\Omega^-$.  Assuming a freezeout temperature of 165 MeV, and taking into account that the $\Omega$ has a branching ratio of ~68\% and the others ~100\%, we can then estimate that for every 100 $\Lambda$s, there will be approximately 67 $\Sigma$s, 34 of each type of $\Xi$, and 3 $\Omega$s.
+Particles that decay into $\Lambda$ include $\Sigma^0$, $\Xi^0$, $\Xi^-$, and $\Omega^-$.  Assuming a freezeout temperature of 165 MeV, and taking into account that the $\Omega$ has a branching ratio of ~68\% and the others ~100\%, we can then estimate that for every 100 $\Lambda$, there will be approximately 67 $\Sigma$, 34 of each type of $\Xi$, and 3 $\Omega$.
 
-Before calculating the $\lambda$ parameters, it is also necessary to know approximately how many fake $\Lambda$s there are.  In Section \ref{sec:Recon}, we estimated that our signal quality $P$ was $P = real/(real + background) \approx 0.82$.  Taking $real$ to be the sum of all the primary and secondary $\Lambda$, we calculate that $\frac{background}{real} = P^{-1}-1 \approx 0.22$.  With the above yields totalling 238 $\Lambda$s, we would expect to see an additional 52 fake $\Lambda$s.  Based on these values, we can now estimate the $\lambda$ parameters for all pair types.
+Before calculating the $\lambda$ parameters, it is also necessary to know approximately how many fake $\Lambda$ there are.  In Section \ref{sec:Recon}, we estimated that our signal quality $P$ was $P = real/(real + background) \approx 0.82$ (Note: calculations were performed using a now outdated purity estimate).  Taking $real$ to be the sum of all the primary and secondary $\Lambda$, we calculate that $\frac{background}{real} = P^{-1}-1 \approx 0.22$.  With the above yields totalling 238 $\Lambda$, we would expect to see an additional 52 fake $\Lambda$.  Based on these values, we can now estimate the $\lambda$ parameters for all pair types.
 
 \begin{center}
 \begin{tabular}{|l|l|c|}
@@ -288,20 +386,20 @@ For the the $\Lambda\bar{\Lambda}$ analysis, estimates of the $\lambda$ paramete
 \subsection{Reconstruction efficiency effects on relative particle yields}
 \label{sec:ReconstructionEff}
 
-The above $\lambda$ estimates have been made under the assumption that primary and secondary $\Lambda$s have the same chance to be reconstructed.  However, detector efficiencies and topological reconstruction cuts can change the relative yields of each of these $\Lambda$ types.  To investigate the influence of reconstruction efficiencies on particle yields, we looked at the reconstruction rates of the different particle types using the HIJING run specified in Section \ref{sec:DataSelection}.  The MC truth yields of the V0s were examined at four stages of reconstruction:
+Note: Figures in this section will be included soon.
+
+The above $\lambda$ estimates have been made under the assumption that primary and secondary $\Lambda$ have the same chance to be reconstructed.  However, detector efficiencies and topological reconstruction cuts can change the relative yields of each of these $\Lambda$ types.  To investigate the influence of reconstruction efficiencies on particle yields, we looked at the reconstruction rates of the different particle types using the HIJING run specified in Section \ref{sec:DataSelection}.  The MC truth yields of the V0s were examined at four stages of reconstruction:
 \begin{itemize}
 \item In the raw MC event before any detector simulation was added to the MC particles.  Here the daughters of the V0s are required to be in mid-rapidity and surpass a minimum-$p_\mathrm{T}$
 \item In the V0 finder before any analysis-side reconstruction cuts were employed.
 \item After topological reconstruction cuts have been made, but before a tight mass-window cut was employed.
 \item After the tight mass-window cut was used.
 \end{itemize}
-At each stage, the MC truths of all remaining particles of the following types were counted: primary $\Lambda$s; secondary $\Lambda$s from $\Sigma^0$s, $\Xi^0$s, $\Xi^-$, $\Omega$s, and other sources; the respective anti-particles; other V0s; fake V0s reconstructed in the V0 finder; and $\mathrm{K}^0_{\mathrm{S}}$ (for comparison).  Reconstructed $\mathrm{K}^0_{\mathrm{S}}$ were required to pass standard $\mathrm{K}^0_{\mathrm{S}}$ topological and mass cuts, not $\Lambda$ cuts.  In the topological cut and mass cut stages, the fake V0 and other V0 yields reflect V0 candidates that pass either the $\Lambda$ cuts, the $\bar{\Lambda}$ cuts, or the $\mathrm{K}^0_{\mathrm{S}}$ cuts.  The resulting yields are visible in Figure \ref{fig:MCYields}.  Figure \ref{fig:FakeAndOther} shows a breakdown of what the fake and other V0s were reconstructed as (i.e. $\Lambda$, $\bar{\Lambda}$, or $\mathrm{K}^0_{\mathrm{S}}$).  For both fake V0s and other V0s, the relative abundances of the misidentified V0s are comparable to the relative abundances of the true V0s.
+At each stage, the MC truths of all remaining particles of the following types were counted: primary $\Lambda$; secondary $\Lambda$ from $\Sigma^0$, $\Xi^0$, $\Xi^-$, $\Omega$, and other sources; the respective anti-particles; other V0s; fake V0s reconstructed in the V0 finder; and $\mathrm{K}^0_{\mathrm{S}}$ (for comparison).  Reconstructed $\mathrm{K}^0_{\mathrm{S}}$ were required to pass standard $\mathrm{K}^0_{\mathrm{S}}$ topological and mass cuts, not $\Lambda$ cuts.  In the topological cut and mass cut stages, the fake V0 and other V0 yields reflect V0 candidates that pass either the $\Lambda$ cuts, the $\bar{\Lambda}$ cuts, or the $\mathrm{K}^0_{\mathrm{S}}$ cuts.  The resulting yields are visible in Figure \ref{fig:MCYields}.  Figure \ref{fig:FakeAndOther} shows a breakdown of what the fake and other V0s were reconstructed as (i.e. $\Lambda$, $\bar{\Lambda}$, or $\mathrm{K}^0_{\mathrm{S}}$).  For both fake V0s and other V0s, the relative abundances of the misidentified V0s are comparable to the relative abundances of the true V0s.
 
-%injected signals outdated
+It should be noted that this MC run has injected $\Xi^0$, $\Xi^-$, and $\Omega$ signals, but not their respective antiparticles.  The disparity is quite obvious in Figure \ref{fig:MCYieldsWithInjected}.  These injected signals are generated with a $p_\mathrm{T}$ distribution that differs from the distribution of the HIJING particles.  Because the detector efficiency is $p_\mathrm{T}$ dependant, this means that the overall measured reconstruction efficiency of these species is suspect.  The analysis was performed again with injected signals removed (see Section \ref{sec:Recon}).  Without the injected signals, reconstructed yields and efficiencies for the multi-strange particles and anti-particles are seen to be in line (Figures \ref{...} and \ref{...}).
 
-It should be noted that this MC run has injected $\Xi^0$, $\Xi^-$, and $\Omega$ signals, but not their respective antiparticles.  The disparity is quite obvious in Figure \ref{fig:MCYields}.  These injected signals are generated with a $p_\mathrm{T}$ distribution that differs from the distribution of the HIJING particles.  Because the detector efficiency is $p_\mathrm{T}$ dependant, this unfortunately means that the overall measured reconstruction efficiency of these species is suspect.  One plan for the near future is to run this analysis again and reject injected signals.  Without the injected signals, reconstruction efficiencies for the multi-strange particles and anti-particles are expected to be in line.
-
-The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  Figure \ref{fig:V0ToMassCut} shows one such ratio.  Here, one can see the fraction of V0s in the V0 finder that survived all the reconstruction cuts.  From this, one can see how successful the current topological cuts are at selecting (anti)$\Lambda$s of various origins.   If different topological cuts were made, a before-and-after comparison of this plot would show the efficacy of the new cuts at removing secondary V0s vs primary V0s.
+The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  Figure \ref{fig:V0ToMassCut} shows one such ratio.  Here, one can see the fraction of V0s in the V0 finder that survived all the reconstruction cuts.  From this, one can see how successful the current topological cuts are at selecting (anti)$\Lambda$ of various origins.  With different topological cuts made, a before-and-after comparison of this plot shows the efficacy of the new cuts at removing secondary V0s vs primary V0s, as in Figure \ref{V0ToMassCutWithDifferentVarBin}.
 
 Figure \ref{fig:OriginToMassCut} shows another ratio.  In this plot, one sees the event-averaged reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).  This efficiency encompasses not only the results of the analysis-side cuts, but also the natural tracking efficiencies of ALICE detector.  One can see that the various $\Lambda$ and $\bar{\Lambda}$ types for the most part have a reconstruction rate between 15-25\%.  These reconstruction efficiencies could be convoluted with the thermal yield calculations of Section \ref{sec:LambdaParams} to obtain corrected estimates of the yields and $\lambda$ parameters.  Further analyses of these results are in progress.
 
@@ -309,7 +407,7 @@ Figure \ref{fig:OriginToMassCut} shows another ratio.  In this plot, one sees th
 \subsection{Scattering parameters of residual pairs}
 \label{sec:ScatteringParams}
 
-As previously mentioned, little information exists about the hyperon-hyperon scattering parameters.  One goal of this analysis is to make a measurement of the $\Lambda\Lambda$ scattering lengths and effective radius.  However, the task remains to decide how to deal with the scattering parameters of all the various residual correlations, which are equally unknown.  One option would be to include separate parameters for each pair interaction.  However, this would introduce two or three new parameters (for particle-particle or particle-antiparticle, respectively) per pair type and yield a very unconstrained fit.  Another option would be to tighten cuts to remove as many of the secondary $\Lambda$s as possible.  However this route stands to significantly reduce the statistics of the fit, as primary $\Lambda$s will be lost alongside the secondary.  On top of that, reconstruction cuts are unlikely to appreciably cut out $\Sigma$ daughters, as the electromagnetic decay of the $\Sigma$ comes with a very short decay length.
+As previously mentioned, little information exists about the hyperon-hyperon scattering parameters.  One goal of this analysis is to make a measurement of the $\Lambda\Lambda$ scattering lengths and effective radius.  However, the task remains to decide how to deal with the scattering parameters of all the various residual correlations, which are equally unknown.  One option would be to include separate parameters for each pair interaction.  However, this would introduce two or three new parameters (for particle-particle or particle-antiparticle, respectively) per pair type and yield a very unconstrained fit.  Another option would be to tighten cuts to remove as many of the secondary $\Lambda$ as possible.  However this route stands to significantly reduce the statistics of the fit, as primary $\Lambda$ will be lost alongside the secondary.  On top of that, reconstruction cuts are unlikely to appreciably cut out $\Sigma$ daughters, as the electromagnetic decay of the $\Sigma$ comes with a very short decay length.
 
 Yet another option would be to ansatz that all the pairs interact with approximately the same strength as the $\Lambda\Lambda$ interaction.  The disadvantage of this method is that the final measurement will essentially yield a weighted average of the various pair scattering parameters.  However, the advantage is that it allows all pairs (primary-primary, primary-secondary, secondary-secondary) to provide relevant contributions to the correlation function.  One potential way to estimate the systematic uncertainties in this method would be to do several additional fits, wherein the scattering parameters of the other pairs are treated as being 50\%, 25\%, and 0\% (no interaction) the strength of the $\Lambda\Lambda$ parameters.
 
@@ -324,66 +422,18 @@ Discussion of Minuit fitting procedure will go here.
 
 Discussion of fit systematics will go here.
 
+\subsection{Fit results and interpretation}
+\label{sec:FitResults}
+
+Interpretation of final fit results will go here.
+
 \section{Summary}
-Results have been shown for correlation functions $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs.  The results show that like-particle pairs are enhanced at low relative momentum.  The low-$q_{\rm inv}$ suppression of the $\Lambda\bar{\Lambda}$ correlations in each of the three centrality bins may indicate pair annihilation processes reminiscent of those reported in other studies.
-
-\begin{figure}[hbtp]
-\includegraphics[scale=0.6]{2012-Aug-07-LamInvMass_Perf.pdf}
-\caption[Invariant mass distribution for reconstructed $\Lambda$]{Invariant mass distribution for reconstructed $\Lambda$ using the main analysis cuts.  The red line shows a fourth order polynomial fit to the background, which is used to estimate the number of real and accidental $\Lambda$.  The estimated ratio of real $\Lambda$ to all reconstructed $\Lambda$ in the signal region ($ 1.11 < m_{\rm inv} < 1.12136$ GeV/${\rm c^2}$) shown in this plot is approximately 0.82.  Candidate for performance status.}
-\label{fig:MassLooseCut}
-\end{figure}
-
-\begin{figure}[hbtp]
-\includegraphics[scale=0.5]{11h_V0_MassLam_TightCuts.png}
-\caption[Invariant mass distribution for reconstructed $\Lambda$ using tight cuts]{Invariant mass distribution for reconstructed $\Lambda$ using tight cuts.  Here, $sig/(sig+bkg) \approx 0.92$.}
-\label{fig:MassTightCut}
-\end{figure}
-		
+Results have been shown for correlation functions $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs.  The low- to mid-$k^*$ suppression of the $\Lambda\bar{\Lambda}$ correlations in each of the three centrality bins may indicate pair annihilation processes reminiscent of those reported in other studies.
 
 
-\begin{figure}[hbtp]
-\includegraphics[scale=0.7]{LamALamCF_LooseCuts.pdf}
-\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs in three centrality ranges.]{Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs.  Results are shown for the 0-10\%, 10-40\%, and 40-60\% centrality range.}
-\label{fig:CFMixCentralities}
-\end{figure}
 
-\begin{figure}[hbtp]
-\includegraphics[scale=0.7]{CFs_main_note.pdf}
-\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.]{Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Results are shown for the 0-10\% centrality range.}
-\label{fig:CF}
-\end{figure}
 
-\begin{figure}[hbtp]
-\includegraphics[scale=0.7]{MixCFs_No_MergeCut.pdf}
-\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs in three centrality ranges. No merging cuts]{Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs (without cut on the average separation distance of the daughter pairs).  Results are shown for the 0-10\%, 10-40\%, and 40-60\% centrality range.}
-\label{fig:CFNoMergeMix}
-\end{figure}
-
-\begin{figure}[hbtp]
-\includegraphics[scale=0.7]{Mix_Tight_cuts_ANote.pdf}
-\caption{Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs in three centrality ranges. Tight cuts.}
-\label{fig:CFTightCutsMix}
-\end{figure}
-
-\begin{figure}[hbtp]
-\includegraphics[scale=0.7]{CFs_noMergeCut_note.pdf}
-\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs. No merging cuts]{Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs (without cut on the average separation distance of the daughter pairs).  Results are shown for the 0-10\% centrality range.}
-\label{fig:CFNoMerge}
-\end{figure}
-
-\begin{figure}[hbtp]
-\includegraphics[scale=0.7]{CFs_tightcut_note.pdf}
-\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Tight cuts]{Correlation functions versus $q_{\rm inv}$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs using tight reconstruction cuts.  Results are shown for the 0-10\% centrality range.}
-\label{fig:CFTightCuts}
-\end{figure}
-
-\begin{figure}[hbtp]
-\includegraphics[scale=0.7]{2012-Jul-25-LamALamPrelim.pdf}
-\caption[Correlation functions versus $q_{\rm inv}$ for $\Lambda\bar{\Lambda}$ pairs in three centrality ranges with systematic errors.]{Correlation functions versus $q_{\rm inv}$ with systematic errors for $\Lambda\bar{\Lambda}$ pairs. Systematics are computed by fitting the absolute value of the difference between Figure \ref{fig:CFMixCentralities} and Figure \ref{fig:CFTightCutsMix} with a 5th order polynormial. Results are shown for the 0-10\%, 10-40\%, and 40-60\% centrality range.}
-\label{fig:CFMixSystematics}
-\end{figure}
-
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{bibfile}
 
 
