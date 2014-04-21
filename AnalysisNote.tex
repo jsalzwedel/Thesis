@@ -255,16 +255,31 @@ Several factors may contribute to this absence of a signal.  First of all, the p
 \subsection{General discussion of systematic errors on the correlation function level}
 \label{sec:GeneralCfSysErrorDiscussion}
 
-We will now attempt to quantify the various systematic uncertainties that may affect the correlation functions.  The goal will be to quantitatively obtain systematic error bars that can be drawn on the correlation function.  It should be noted, however, that that these error bars will not have direct quantitative implications for this analysis.  The ultimate goal of this analysis is to fit correlation functions to extract parameters.  Therefore, the final, quantitative systematic errors that this analysis will compute are the systematic errors on the fit results, rather than the errors are the correlation functions.  Errors on the fit results are not derived using the error bars on the correlation function - instead they are derived by looking at systematic shifts in the fits results found by fitting different versions of the correlation functions (e.g. correlation functions with different sets of reconstruction cuts or different pair-wise cuts).  This will be discussed in greater detail in Section \ref{sec:FitSystematics}.
+We will now attempt to identify the various systematic effects that may affect the correlation functions.  The goal will be to quantify the systematic uncertainties associated with each $k^*$ bin.      It should be noted, however, that subsequent fits to the correlation functions are not directly impacted by these error bars.  Instead, the systematics on the resulting fit parameters will be computed by refitting many versions of the correlation functions (e.g. those built with different reconstruction cuts) and comparing the results. This will be discussed in greater detail in Section \ref{sec:FitSystematics}.
 
-In this section, we will compute the systematic errors bars to be drawn on the correlation functions.  These error bars will only be used to convey the general systematic uncertainties of the measurement to the viewer.  
+One of the tools we will employ in the search for systematic effects is the TH1::Chi2Test(TH1* h1) method, which compares two histograms bin-by-bin to determine a $\chi^2$.  The test is performed assuming the hypothesis that the two histograms are Poissonian samples of the same underlying distribution.  A p-value is computed which represents the probability that a measurement could be performed that would yield results this different or more, given the hypothesis of identity.  The hypothesis of identity is rejected in instances where the p-value is lower than 0.01.
+
+In this analysis, Chi2Test() will be used to compare two uncorrelated correlation functions.  One example where this can be employed is the comparison of correlation functions constructed using data taken under different field configurations.  This analysis needs all the data available to it, so results taken under different field configurations will need to be merged to improve statistics.  But before they are combined, it must be checked that they contain compatible results.  The Chi2Test() method provides a means of characterizing the degree of similarity of the correlation functions.  
+
+Correlation functions that surpass the significance level of 0.01 will be treated as  being functionally the same within statistics, and their weighted average will be computed without recourse to systematic errors. In the instances where they do not exceed the significance level, they will be analyzed on a case-by-case basis.  In particular, we will look to see if there are any systematic differences between the correlation functions.  For example, it may be seen that the lowest ten $k^*$ bins will all be higher in one correlation function than another.  If so, the data will still be merged (so long as the results aren't dramatically different), but a systematic uncertainty will be computed and applied to the final averaged correlation function in the form of systematic error bars.
+
+When using Chi2Test() to compare correlation functions, the trouble areas that result in small p-values will likely be the lowest $k^*$ bins (which exhibit most of the interesting physics, and which also suffer the most from two-track effects), and large $k^*$ bins (close to $1 \mathrm{GeV/c}$).  The height of the the large $k^*$ bins is noticeably susceptible to statistical (or systematic) deviations in the normalization region.  The high $k^*$ bins have relatively small statistical error bars, so small deviations of normalization between correlation functions can result in large $\chi^2$ values.
+
+The study of normalized residuals (the difference between the bin contents and the expected bin contents) can be used to characterize which regions are responsible for small p-values.  This is again handled by the Chi2Test() method.  For each $k^*$ bin, a normalized residual plot shows the number of $\sigma$ differences between the two correlation functions.  This can make it easy to look for systematic differences, even in the case of small shifts at high $k^*$, which would be hard to see by eye in the raw correlation functions.
+
 
 \subsection{Systematic errors associated with different run field configurations}
 \label{sec:SystematicsFieldConfig}
 
+
+
 This section will discuss the systematic errors associated with the different field configurations ($++$ and $--$, see Section \ref{sec:DataSelection}).  Correlation functions will be constructed separately for the different field configurations.  We will then look for any non-statistical deviations in the two correlation functions.  This analysis looked at the field configurations some time ago (using old cut values, old AODs, etc), and no systematic discrepancy was found at that time.
 
 
+
+
+
+Correlation functions from the two field configurations will be compared using Chi2Test() for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$) and each 5\% centrality bin. 
 
 \subsection{Systematic errors from reconstruction cuts}
 \label{sec:SystematicsReconstruction}
