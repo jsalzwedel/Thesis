@@ -181,80 +181,9 @@ One alternative/complement to using an average separation cut would be to enforc
 \label{fig:TwoTrackRatio}
 \end{figure}
 
-\section{Correlation function results}
-\subsection{Correlation functions}
-\label{sec:RawCorrelationFunctions}
-
-%..... Discussion of correlation function data results and systematic uncertainties.  ......
 
 
-
-Correlation functions have been constructed using the entirety of the LHC11h data set.  As discussed in Section \ref{sec:CFconstruct}, events were binned in 5\% centrality bins.  When combining data from different centrality bins, care was taken to combine the correlations by taking weighted averages of the correlation functions.  
-
-The naive method of combining correlation functions involves adding numerators from different bins and adding denominators from different bins and then taking the ratio.  However, this has the pitfall of potentially combining drastically different phase spaces.  As a result, it may introduce artificial signals into the combined correlation function.  Instead of using this method, the correct method is to construct correlation functions for different bins separately.  Then one takes a weighted average of the correlation functions, using the number of numerator pairs in each correlation function as the weight:
-
-\begin{equation}
-\label{eq:CombineCF}
-C_{combined}(k^*) = (\displaystyle\sum\limits_{i} w_i C_i(k^*))/(\displaystyle\sum\limits_{i} w_i)
-\end{equation}
-where the sum is done over different correlation function bins (e.g. 0-5\% and 5-10\%) and $w_i$ is the number of numerator pairs in $C_i$.  This averaging is done on a bin-by-bin basis in $k^*$.  Note that is averaging procedure should be used in general to combine data sets with potentially different phase spaces. For example, this procedure is employed to combine data from runs utilizing the two different field orientations (see Section \ref{sec:DataSelection}).  
-
-Figures \ref{fig:CFLamLam3Cents}, \ref{fig:CFALamALam3Cents}, and \ref{fig:CFLamALam3Cents} show correlation functions for $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$ respectively.  Each plot shows three centrality ranges: 0-10\%, 10-30\%, 30-50\%. The correlations are normalized to unity in the $ 0.3 < k^* < 0.5$ GeV/c range 
-
-
-
-%  Interpretation of results can be found in Section \ref{sec:CFInterpretation}.  In this section, we will
-
-\begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamLam-3Cents.pdf}
-\caption[$\Lambda\Lambda$ correlation function for three centrality ranges]{$\Lambda\Lambda$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
-\label{fig:CFLamLam3Cents}
-\end{figure}
-
-\begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-ALamALam-3Cents.pdf}
-\caption[$\bar{\Lambda}\bar{\Lambda}$ correlation function for three centrality ranges]{$\bar{\Lambda}\bar{\Lambda}$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
-\label{fig:CFALamALam3Cents}
-\end{figure}
-
-\begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamALam-3Cents.pdf}
-\caption[$\Lambda\bar{\Lambda}$ correlation function for three centrality ranges]{$\Lambda\bar{\Lambda}$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
-\label{fig:CFLamALam3Cents}
-\end{figure}
-
-Generally speaking, the interesting part of a relative-momentum correlation function is the region below 100 or 200 MeV/c.  Structures/backgrounds may exist at large relative momentum - these structures can complicate the fitting procedure, and sometimes even direct attention to flaws in the analysis.  However, the information about the source size and two-particle interactions is predominantly encoded within the low-$k^*$ region.  For the time being, this analysis will restrict its attention to behavior in that region.
-
-The $\Lambda\bar{\Lambda}$ correlation functions (Fig.\ \ref{fig:CFLamALam3Cents}) exhibit a clear, centrality dependent suppression in the low-$k^*$ region, even with the significant statistical error bars for the 10-30\% and 30-50\% systems.  However, in the present $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ data one cannot make the case for a centrality dependent signal.  Indeed, one is hard-pressed to see a signal at all, except perhaps for a small suppression in the lowest few $k^*$ bins.  
-
-Several factors may contribute to this absence of a signal.  First of all, the physics of the identical particle systems (see Sec.\ \ref{sec:AnalyticModel}) is expected to be confined to just the few lowest bins.  There may be competing physics effects -- a suppression from quantum interference and an enhancement from the strong final state interactions -- that wash each other out.    Furthermore, two-track effects like splitting and merging show up in this region.  Optimal two-track (i.e. pair-wise) cuts are still being worked out.  The systematic errors associated with these cuts will be discussed in Section \ref{sec:SystematicsPairWise}.  The presence of residual correlations might muddle or dilute the signal region.  This will be discussed further in Section \ref{sec:Residual}.  Finally, it must be noted that these are the $k^*$ bins with the least statistics.  Some statistical improvement can be made by averaging the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ results together.  Another option is to combine centrality bins.  Because of the LHC11h centrality distribution, a minimum bias correlation function of 0-50\% is not feasible.  Instead, Figures \ref{fig:CFLamLam2Cents}, \ref{fig:CFALamALam2Cents}, and \ref{fig:CFLamALam2Cents} show the same data reduced to two bins: 0-10\% and 10-50\%.  There are also a couple fitting tricks that can be employed to mitigate the statistical limitations in these plots.  They will be discussed in Section \ref{sec:MinuitFit}.
-
-\begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamLam-2Cents.pdf}
-\caption[$\Lambda\Lambda$ correlation function for two centrality ranges]{$\Lambda\Lambda$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
-\label{fig:CFLamLam2Cents}
-\end{figure}
-
-\begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-ALamALam-2Cents.pdf}
-\caption[$\bar{\Lambda}\bar{\Lambda}$ correlation function for two centrality ranges]{$\bar{\Lambda}\bar{\Lambda}$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
-\label{fig:CFALamALam2Cents}
-\end{figure}
-
-\begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamALam-2Cents.pdf}
-\caption[$\Lambda\bar{\Lambda}$ correlation function for two centrality ranges]{$\Lambda\bar{\Lambda}$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
-\label{fig:CFLamALam2Cents}
-\end{figure}
-
-
-%********Outdated****** some of this may be salvageable
-
-%Figure \ref{fig:CFMixCentralities} shows $\Lambda\bar{\Lambda}$ correlation functions versus $q_{\rm inv}$ for three different centralities ranges.  The correlations are normalized to unity in the $ 0.3 < q_{\rm_{inv}} < 0.5$ GeV/c range.  Each correlation shows clear suppression in the low-$q_{\rm_{inv}}$ region, which is considered an effect of the baryon-antibaryon annihilation channel.  The strength of the correlation effect increases with more peripheral events, an indication that the emitting source size is shrinking for those events.
-
-%Figure \ref{fig:CF} shows correlation functions constructed in the 0-10\% centrality range for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Both correlation functions exhibit an enhancement in the low-$q_{\rm inv}$ range of 0.04 - 0.2 GeV/c.  This may be due to attractive final state interactions.  The effects of FSI and quantum statistics are expected to be seen in roughly the same $q_{\rm inv}$ range, and it is unclear at this time to what extent their effects should be competing. The enhancement of the $\bar{\Lambda}\bar{\Lambda}$ correlation function does fall off in the lowest bins, though the statistical uncertainties are such that no significant statement about the effects of quantum statistics can be made at this time.
-
-\subsection{General discussion of systematic errors on the correlation function level}
+\section{Systematic errors}
 \label{sec:GeneralCfSysErrorDiscussion}
 
 We will now attempt to identify the various systematic effects that may affect the correlation functions.  The goal will be to quantify the systematic uncertainties associated with each $k^*$ bin.  It should be noted, however, that subsequent fits to the correlation functions are not directly impacted by these error bars.  Instead, the systematics on the resulting fit parameters will be computed by refitting many versions of the correlation functions (e.g. those built with different reconstruction cuts) and comparing the results. This will be discussed in greater detail in Section \ref{sec:FitSystematics}.
@@ -1047,6 +976,79 @@ No momentum resolution correction is currently applied.  A systematic error asso
 
 \subsection{Combining different sources of systematic error}
 \label{sec:CombiningSys}
+
+\section{Correlation function results}
+\subsection{Correlation functions}
+\label{sec:RawCorrelationFunctions}
+
+%..... Discussion of correlation function data results and systematic uncertainties.  ......
+
+
+
+Correlation functions have been constructed using the entirety of the LHC11h data set.  As discussed in Section \ref{sec:CFconstruct}, events were binned in 5\% centrality bins.  When combining data from different centrality bins, care was taken to combine the correlations by taking weighted averages of the correlation functions.  
+
+The naive method of combining correlation functions involves adding numerators from different bins and adding denominators from different bins and then taking the ratio.  However, this has the pitfall of potentially combining drastically different phase spaces.  As a result, it may introduce artificial signals into the combined correlation function.  Instead of using this method, the correct method is to construct correlation functions for different bins separately.  Then one takes a weighted average of the correlation functions, using the number of numerator pairs in each correlation function as the weight:
+
+\begin{equation}
+\label{eq:CombineCF}
+C_{combined}(k^*) = (\displaystyle\sum\limits_{i} w_i C_i(k^*))/(\displaystyle\sum\limits_{i} w_i)
+\end{equation}
+where the sum is done over different correlation function bins (e.g. 0-5\% and 5-10\%) and $w_i$ is the number of numerator pairs in $C_i$.  This averaging is done on a bin-by-bin basis in $k^*$.  Note that is averaging procedure should be used in general to combine data sets with potentially different phase spaces. For example, this procedure is employed to combine data from runs utilizing the two different field orientations (see Section \ref{sec:DataSelection}).  
+
+Figures \ref{fig:CFLamLam3Cents}, \ref{fig:CFALamALam3Cents}, and \ref{fig:CFLamALam3Cents} show correlation functions for $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$ respectively.  Each plot shows three centrality ranges: 0-10\%, 10-30\%, 30-50\%. The correlations are normalized to unity in the $ 0.3 < k^* < 0.5$ GeV/c range 
+
+
+
+%  Interpretation of results can be found in Section \ref{sec:CFInterpretation}.  In this section, we will
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamLam-3Cents.pdf}
+\caption[$\Lambda\Lambda$ correlation function for three centrality ranges]{$\Lambda\Lambda$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
+\label{fig:CFLamLam3Cents}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-ALamALam-3Cents.pdf}
+\caption[$\bar{\Lambda}\bar{\Lambda}$ correlation function for three centrality ranges]{$\bar{\Lambda}\bar{\Lambda}$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
+\label{fig:CFALamALam3Cents}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamALam-3Cents.pdf}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for three centrality ranges]{$\Lambda\bar{\Lambda}$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
+\label{fig:CFLamALam3Cents}
+\end{figure}
+
+Generally speaking, the interesting part of a relative-momentum correlation function is the region below 100 or 200 MeV/c.  Structures/backgrounds may exist at large relative momentum - these structures can complicate the fitting procedure, and sometimes even direct attention to flaws in the analysis.  However, the information about the source size and two-particle interactions is predominantly encoded within the low-$k^*$ region.  For the time being, this analysis will restrict its attention to behavior in that region.
+
+The $\Lambda\bar{\Lambda}$ correlation functions (Fig.\ \ref{fig:CFLamALam3Cents}) exhibit a clear, centrality dependent suppression in the low-$k^*$ region, even with the significant statistical error bars for the 10-30\% and 30-50\% systems.  However, in the present $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ data one cannot make the case for a centrality dependent signal.  Indeed, one is hard-pressed to see a signal at all, except perhaps for a small suppression in the lowest few $k^*$ bins.  
+
+Several factors may contribute to this absence of a signal.  First of all, the physics of the identical particle systems (see Sec.\ \ref{sec:AnalyticModel}) is expected to be confined to just the few lowest bins.  There may be competing physics effects -- a suppression from quantum interference and an enhancement from the strong final state interactions -- that wash each other out.    Furthermore, two-track effects like splitting and merging show up in this region.  Optimal two-track (i.e. pair-wise) cuts are still being worked out.  The systematic errors associated with these cuts will be discussed in Section \ref{sec:SystematicsPairWise}.  The presence of residual correlations might muddle or dilute the signal region.  This will be discussed further in Section \ref{sec:Residual}.  Finally, it must be noted that these are the $k^*$ bins with the least statistics.  Some statistical improvement can be made by averaging the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ results together.  Another option is to combine centrality bins.  Because of the LHC11h centrality distribution, a minimum bias correlation function of 0-50\% is not feasible.  Instead, Figures \ref{fig:CFLamLam2Cents}, \ref{fig:CFALamALam2Cents}, and \ref{fig:CFLamALam2Cents} show the same data reduced to two bins: 0-10\% and 10-50\%.  There are also a couple fitting tricks that can be employed to mitigate the statistical limitations in these plots.  They will be discussed in Section \ref{sec:MinuitFit}.
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamLam-2Cents.pdf}
+\caption[$\Lambda\Lambda$ correlation function for two centrality ranges]{$\Lambda\Lambda$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
+\label{fig:CFLamLam2Cents}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-ALamALam-2Cents.pdf}
+\caption[$\bar{\Lambda}\bar{\Lambda}$ correlation function for two centrality ranges]{$\bar{\Lambda}\bar{\Lambda}$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
+\label{fig:CFALamALam2Cents}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamALam-2Cents.pdf}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for two centrality ranges]{$\Lambda\bar{\Lambda}$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
+\label{fig:CFLamALam2Cents}
+\end{figure}
+
+
+%********Outdated****** some of this may be salvageable
+
+%Figure \ref{fig:CFMixCentralities} shows $\Lambda\bar{\Lambda}$ correlation functions versus $q_{\rm inv}$ for three different centralities ranges.  The correlations are normalized to unity in the $ 0.3 < q_{\rm_{inv}} < 0.5$ GeV/c range.  Each correlation shows clear suppression in the low-$q_{\rm_{inv}}$ region, which is considered an effect of the baryon-antibaryon annihilation channel.  The strength of the correlation effect increases with more peripheral events, an indication that the emitting source size is shrinking for those events.
+
+%Figure \ref{fig:CF} shows correlation functions constructed in the 0-10\% centrality range for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Both correlation functions exhibit an enhancement in the low-$q_{\rm inv}$ range of 0.04 - 0.2 GeV/c.  This may be due to attractive final state interactions.  The effects of FSI and quantum statistics are expected to be seen in roughly the same $q_{\rm inv}$ range, and it is unclear at this time to what extent their effects should be competing. The enhancement of the $\bar{\Lambda}\bar{\Lambda}$ correlation function does fall off in the lowest bins, though the statistical uncertainties are such that no significant statement about the effects of quantum statistics can be made at this time.
 
 \subsection{Interpretation of correlation function results}
 \label{sec:CFInterpretation}
