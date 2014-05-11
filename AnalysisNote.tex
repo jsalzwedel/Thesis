@@ -105,12 +105,18 @@ In these figures, both the shape and magnitude of each distribution is relevant 
 
 The systematic errors associated with these cut choices are discussed in Section \ref{sec:SystematicsReconstruction}. Further discussion of the reconstruction efficiency of the different $\Lambda$ types can be found in Section \ref{sec:ReconstructionEff}.
 
-The reconstructed invariant mass distribution for $\Lambda$ can be seen in Figure \ref{fig:BothInvMass}. An approximation of the signal purity was estimated using a ratio of real and background (falsely reconstructed) counts.  The background was estimated using a fourth order polynomial.  The number of real $\Lambda$ was then estimated by counting the bin content and subtracting the background. The signal quality was found to be $real/(real + background) \approx 0.95$.
+The reconstructed invariant mass distribution for $\Lambda$ and $\bar{\Lambda}$ can be seen in Figures \ref{fig:LamInvMass} and \ref{fig:ALamInvMass}. An approximation of the signal purity was estimated using a ratio of real and background (falsely reconstructed) counts.  The background was estimated using a fourth order polynomial.  The number of real $\Lambda$ was then estimated by counting the bin content and subtracting the background. The signal quality was found to be $real/(real + background) \approx 0.95$.  $\bar{\Lambda}$ were found to have approximately the purity.  From inspection of Figures \ref{fig:LamInvMass} and \ref{fig:ALamInvMass}, the $\bar{\Lambda}/\Lambda$ ratio is estimated to be about 93\%.
 
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-Minv-Both-Data.pdf}
-\caption[$\Lambda$ and $\bar{\Lambda}$ invariant mass distributions]{Invariant mass distribution for reconstructed $\Lambda$ (left) and $\bar{\Lambda}$ (right) using the optimal analysis cuts.  The plots show V0s reconstructed from centrality integrated LHC11h data.  The red line shows a fourth order polynomial fit to the background, which is used to estimate the number of real and fake $\Lambda$.  The estimated ratio of real $\Lambda$ to all reconstructed $\Lambda$ in the signal region ($ \lvert m_{\mathrm{inv}} - m_{\mathrm{PDG}}\rvert < 3.8$ MeV/$\rm c^2$) is approximately 0.95 for both particles.}
-\label{fig:BothInvMass}
+\includegraphics[width=36pc]{Figures/2014-05-11-LamMinv-CommentCorrections.pdf}
+\caption[$\Lambda$ invariant mass distribution]{Invariant mass distribution for reconstructed $\Lambda$ using the optimal analysis cuts.  The plots show V0s reconstructed from centrality integrated LHC11h data.  The green line shows a fourth order polynomial fit to the background, which is used to estimate the number of real and fake $\Lambda$.  The estimated ratio of real $\Lambda$ to all reconstructed $\Lambda$ in the signal region ($ \lvert m_{\mathrm{inv}} - m_{\mathrm{PDG}}\rvert < 3.8$ MeV/$\rm c^2$) is approximately 0.95.}
+\label{fig:LamInvMass}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-ALamMinv-CommentCorrections.pdf}
+\caption[$\bar{\Lambda}$ invariant mass distributions]{Invariant mass distribution for reconstructed $\bar{\Lambda}$ using the optimal analysis cuts.  The plots show V0s reconstructed from centrality integrated LHC11h data.  The green line shows a fourth order polynomial fit to the background, which is used to estimate the number of real and fake $\bar{\Lambda}$.  The estimated ratio of real $\bar{\Lambda}$ to all reconstructed $\bar{\Lambda}$ in the signal region ($ \lvert m_{\mathrm{inv}} - m_{\mathrm{PDG}}\rvert < 3.8$ MeV/$\rm c^2$) is approximately 0.95.}
+\label{fig:ALamInvMass}
 \end{figure}
 
 \subsection{Shared daughter cut}
@@ -126,13 +132,13 @@ A study was done using MC event truths to determine which cut would be most succ
 \item DCA of the V0 to the primary vertex.
 \end{itemize}
 
-The process of culling V0s with shared-daughters was done by looping through V0s was done on an event-by-event basis after the V0 reconstruction process was completed.  For each V0 in the list of successfully reconstructed V0s (i.e. V0s that passed all cuts), the V0 was compared with each other V0 in the event to determine if they shared a daughter.  Two V0s "share" a daughter if both V0s have a charged daughter track with the same track ID.  When two V0s were found that shared a daughter, their values of the cut criterion were compared.  The daughter with the stricter value (e.g. smaller DCA to primary vertex) was adjudged to be the better V0 candidate, and the other V0 was flagged as "bad" for failing the shared-daughter cut.  V0s that failed the shared-daughter cut were not used in any pair construction (same event or mixed event).
+The process of culling V0s with shared-daughters was done by looping through V0s on an event-by-event basis after the V0 reconstruction process was completed.  For each V0 in the list of successfully reconstructed V0s (i.e. V0s that passed all cuts), the V0 was compared with each other V0 in the event to determine if they shared a daughter.  Two V0s "share" a daughter if both V0s have a charged daughter track with the same track ID.  When two V0s were found that shared a daughter, their values of the cut criterion were compared.  The daughter with the stricter value (e.g. smaller DCA to primary vertex) was adjudged to be the better V0 candidate, and the other V0 was flagged as "bad" for failing the shared-daughter cut.  V0s that failed the shared-daughter cut were not used in any pair construction (same event or mixed event).
 
 However, it is possible for a V0 to share a daughter or daughters with two different V0s. In the aforementioned scheme, it is therefore possible for an excessive number of V0s to fail the shared daughter cut (excessive in that some of those failed V0s only shared a daughter with another failed V0).  To avoid throwing away too many V0s, a second loop was added to shared-daughter cut method to un-flag V0s that no longer share a daughter with any "good" V0. Example: V0s "A" and "B" both share a daughter, and V0s "A" and "C" share a different daughter.  "A" has a better DCA than "B", so "B" is flagged as bad.  Then "C" is found to have a better DCA than "A", so "A" is flagged as bad.  Finally, "B" is re-flagged as good because it no longer shares a daughter with any other good V0.
 
-This method was adapted to run iteratively over the list of V0s candidates until a stable list of non-sharing V0s was found.  Then, the MC truths of each V0 (those marked "good" and those marked "bad") were examined.  With this information, it is possible to calculate the percentages of true V0s and fake V0s that are removed via this process.  This analysis was run several times, each time using a different comparison criterion from the list above.
+This method was adapted to run iteratively over the list of V0s candidates until a stable list of non-sharing V0s was found.  Then the MC truths of each V0 (those marked "good" and those marked "bad") were examined.  With this information, it is possible to calculate the percentages of true V0s and fake V0s that are removed via this process.  This analysis was run several times, each time using a different comparison criterion from the list above.
 
-Based on the MC truth study, keeping the V0 with the closest DCA to the primary vertex was found to successfully keep true V0s and remove fake V0s 87\% of the time.  In comparison, the cosine of pointing angle criteria was also successful 87\% of the time (cos$(\Theta_\mathrm{p})$ and DCA to primary vertex are strongly correlated), the DCA of daughters to each other criteria was successful 81\% of the time, and the absolute value of mass difference criteria was successful 79\% of the time.   Based on these results, the DCA to primary vertex criteria was selected to used for the shared-daughter cut before correlation function construction.
+Based on the MC truth study, keeping the V0 with the closest DCA to the primary vertex was found to successfully keep 87\% of true V0s that had shared daughters.  In comparison, the cosine of pointing angle criteria was also successful 87\% of the time (cos$(\Theta_\mathrm{p})$ and DCA to primary vertex are strongly correlated), the DCA of daughters to each other criteria was successful 81\% of the time, and the absolute value of mass difference criteria was successful 79\% of the time.   Based on these results, the DCA to primary vertex criteria was selected to used for the shared-daughter cut before correlation function construction.
 
 %On average there were two competing particles per every ... events in the MC study.  When applied to analysis of the LHC11h data, the rate was two per ....
 
@@ -142,14 +148,14 @@ One of the benefits of this cut is that it helps remove a splitting-like effect 
 \subsection{Correlation function construction and pair cuts}
 \label{sec:CFconstruct}
 
-This analysis studies two-particle correlations as a function of the one dimensional relative momentum $k^*=\frac{1}{2}q_{\mathrm{inv}}=\frac{1}{2}\abs{P(m^2_1-m^2_2)/P^2 - q}$, where $P$ and $q$ are the four-vector momentum sum and difference, respectively, and $m_1$ and $m_2$ are the masses of the two particles.  The correlation function is constructed as $C(k^*) = A(k^*)/B(k^*)$, where $A(k^*)$ is the two-particle distribution of the given event and $B(k^*)$ is the distribution of a reference event.  In practice, the signal event histogram $A(k^*)$ is constructed by binning the $k^*$ value of each pair of particles in a single event, and repeating this for each event.  The reference (or background) histogram is constructed by binning $k^*$ for pairs of particles taken from different events.  Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  There are five mixed events for each real event.  When constructing pairs of V0s from the same event, the V0s are not allowed to share a daughter with the same track id. 
+This analysis studies two-particle correlations as a function of the one dimensional relative momentum $k^*=\frac{1}{2}q_{\mathrm{inv}}=\frac{1}{2}\abs{P(m^2_1-m^2_2)/P^2 - q}$, where $P$ and $q$ are the four-vector momentum sum and difference, respectively, and $m_1$ and $m_2$ are the masses of the two particles.  The correlation function is constructed as $C(k^*) = A(k^*)/B(k^*)$, where $A(k^*)$ is the two-particle distribution of the given event and $B(k^*)$ is the distribution of a reference event.  In practice, the signal event histogram $A(k^*)$ is constructed by binning the $k^*$ value of each pair of particles in a single event, and repeating this for each event.  The reference (or background) histogram is constructed by binning $k^*$ for pairs of particles taken from different events.  Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  There are five mixed events for each real event.  When constructing pairs of V0s from the same event, the V0s are not allowed to share a daughter with the same track id. The correlation functions are normalized to unity in the $ 0.3 < k^* < 0.5$ GeV/c range.
 
 \subsection{Pair-wise cuts}
 \label{sec:PairWiseCuts}
 
 Femtoscopic studies look at the relative momentum of particles, and often the most interesting physics lies at very low relative momentum (around 0.1 GeV/c and lower).  As a result, two-track reconstruction effects such as track splitting and track merging, both of which occur for tracks with similar momenta and trajectories, can have a large effect on the final results.  Track splitting means that the track left by a single charged particle is reconstructed as two separate tracks. Track merging is when the tracks of two separate particles are reconstructed as a single track.  For V0s, splitting/merging occurs on the level of the daughter tracks, and it affects the reconstruction of the parent V0s.
 
-In this analysis, two-track reconstruction effects are combatted via a cut on the average separation of daughter tracks from different lambdas.  The average separation distance of two daughter tracks are computed at nine different radii of the TPC.  The tracks are propagated iteratively using their local coordinates and the PropagateTo function, and their global positions are determined at 85, 105, 125, 145, 165, 185, 205, 225, and 245 cm.  Initial iteration is performed in 1 cm steps, though a secondary propagation is done in 0.1 cm steps for better precision.  Same- and mixed-event pairs are binned according to this separation distance.  To obtain an estimate of the merging/splitting effects both distributions are then scaled by the number of pairs at high average separation distance (10+ cm), and a correlation function (same event pairs/ mixed event pairs) is created. 
+In this analysis, two-track reconstruction effects are combated via a cut on the average separation of daughter tracks from different lambdas.  The average separation distance of two daughter tracks are computed at nine different radii of the TPC.  The tracks are propagated iteratively using their local coordinates and the PropagateTo function, and their global positions are determined at 85, 105, 125, 145, 165, 185, 205, 225, and 245 cm.  Initial iteration is performed in 1 cm steps, though a secondary propagation is done in 0.1 cm steps for better precision.  Same- and mixed-event pairs are binned according to this separation distance.  To obtain an estimate of the merging/splitting effects both distributions are then scaled by the number of pairs at high average separation distance (10+ cm), and a correlation function (same event pairs/ mixed event pairs) is created. 
 
 To ensure that average separation distributions of mixed-event pairs are comparable to the same-event distributions, it is necessary to perform a shifting of the primary vertex for mixed events.  Doing so allows the track separations to be calculated as though both events had the same primary vertex.  Without this correction, the mixed-event distributions are biased by differences in the primary vertex location.  One could imagine an extreme example of this if one used a 20 cm wide z-vertex bin.  In that case, tracks from different events could be shifted relative to each other by as much as 20 cm.  For this analysis with 2 cm z-vertex binning, and the uncorrected average separation correlation is shown in Figure \ref{fig:TwoTrackPerf} (left panel).  In contrast, the right panel of Figure \ref{fig:TwoTrackPerf} shows the primary-vertex corrected correlation.  To get a clear account of the difference between the two, we can look at Figure \ref{fig:TwoTrackRatio}, which shows the ratio of the corrected to uncorrected correlations.  The ratio is above unity from between 0 and 4cm.  We can interpret this to mean that the vertex-corrected distribution has more splitting and less merging than we would expect from the uncorrected plot.
 
@@ -181,7 +187,57 @@ One alternative/complement to using an average separation cut would be to enforc
 \label{fig:TwoTrackRatio}
 \end{figure}
 
+\subsection{Momentum resolution correction}
+\label{sec:MomentumResCorrection}
 
+There is an inherent resolution to V0 momenta that depends on the resolution of the reconstructed daughter tracks.  Because of this limit of precision, there is also an associated resolution to the relative momentum of two V0s.  The result of this resolution is that the reconstructed relative momentum of two V0s can be greater than or less than the true relative momentum of the two particles.  This momentum resolution effect can be treated as a roughly Gaussian smearing around a given $k^*$ value.  It introduces subtle changes to the measured correlation functions which must be corrected.
+
+In this section, we will discuss the methodology used to make preliminary momentum resolution corrections.  This method captures the general features of the necessary correction, though more precise corrections and better (smaller) estimates of the associated systematic errors will be made at a later date.  The systematic errors coming from this study will be discussed in Section \ref{sec:MomentumResCorrectionsSys}.
+
+The momentum resolution correction is a multiplicative correction factor in $k^*$ that is used to modify the various correlation functions:
+\begin{equation}
+C_\mathrm{corrected}(k^*) = C_{\mathrm{experimental}}(k^*)*F_\mathrm{correction}(k^*).
+\end{equation}
+The correction factor is constructed as a ratio of the true correlation function divided by the reconstructed correlation function
+\begin{equation}
+F_\mathrm{correction}(k^*)=\frac{C_\mathrm{true}(k^*)}{C_\mathrm{recon}(k^*)}.
+\end{equation}
+This correction necessitates an assumption about the natural form of the correlation function.  We use the analytic form described in Section \ref{sec:AnalyticModel}.  The true and reconstructed correlation functions are created using simulated pair relative momenta.  It was found that using $10^6$ simulated pairs, the correction factor histograms converged to a consistent shape without requiring excessive CPU time.  The correlation functions were constructed via
+\begin{equation}
+\label{eq:Ctrue}
+C_{\mathrm{true}} = \frac{ N(k^*_{\mathrm{true}},W(C_{\Lambda\Lambda}(k^*_{\mathrm{true}})))}{N(k^*_{\mathrm{true}},1)}
+\end{equation}
+\begin{equation}
+\label{eq:Crecon}
+C_{\mathrm{recon}} = \frac{ N(k^*_{\mathrm{recon}},W(C_{\Lambda\Lambda}(k^*_{\mathrm{true}})))}{N(k^*_{\mathrm{recon}},1)},
+\end{equation}
+where the pairs $N(k^*_\mathrm{true})$ are generated to resemble the phase space (i.e denominator) distributions of the correlation function data -- roughly quadratic at low $k^*$ ($\lesssim 0.3 \ \mathrm{GeV}/c$).  The pairs $N(k^*_\mathrm{recon})$ are generated by taking each pair of $N(k^*_\mathrm{true})$ and adding to it a Gaussian correction factor to account for the momentum smearing.  The pairs are applied in the correlation function denominators with a weight of one.  They are applied in the numerator using as a weight the analytic form of the correlation function evaluated at that particular $k^*_{\mathrm{true}}$ value.  As such, $C_{\mathrm{true}}(k^*)$ resembles the assumed analytic form of the correlation function, while $C_{\mathrm{recon}}(k^*)$ shows how it looks with momentum smearing.  The correction $F(k^*)$ therefore is the factor that allows us to transform the experimentally constructed correlation functions to account for the momentum resolution effects.
+
+\begin{figure}
+\includegraphics[width=36pc]{Figures/2014-05-10-MomentumSmearingFitLL.pdf}
+\caption[Relative momentum smearing]{Relative momentum smearing ($k_{\mathrm{smearing}} = k^*_{\mathrm{reconstructed}} - k^*_{\mathrm{truth}}$) for $\Lambda\Lambda$ pairs in MC events.  The extracted width of the distribution is approximately 10 MeV/c.}
+\label{fig:MomSmearingFit}
+\end{figure}
+
+To obtain the width of the momentum smearing, a MC analysis is performed in which $k*_{\mathrm{smeared}} = k^*_{\mathrm{reconstructed}} - k^*_{\mathrm{truth}}$ is binned.  $k^*_{\mathrm{truth}}$ is determined from looking at the associated AliAODMCParticles of the reconstructed tracks.  The analysis is only performed for real V0s.  Fake V0s (as defined in Section \ref{sec:Recon}) were omitted, as they have no true momenta.  The analysis did not distinguish between primary and secondary $\Lambda$, as both are affected by momentum resolution effects and both appear in the data.  The binning was done performed only for mixed-event pairs, as those pairs will reflect the momentum resolution effects on the overall phase space without including any complications from physics interactions.  At this time, the binning was done in a centrality integrated fashion -- future studies could look to see if and how the effects differ between centralities.  After obtaining this distribution for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), the each distribution was fit with a Gaussian in order to extract a characteristic width of the momentum smearing.  One such fit can be seen in Figure \ref{fig:MomSmearingFit}.  The large $\chi^2 /\mathrm{ndf}$ indicates that the smearing isn't well described by a Gaussian.  Part of that may be due to the $p_\mathrm{T}$ and centrality integrated nature of the histogram.  Nonetheless, a Gaussian width has been extracted that roughly characterizes the width of the smearing.  Each pair type returned a width that was within a couple percent of $10\ \mathrm{MeV}/c$.
+
+As stated above, when constructing $C_\mathrm{true}$ and $C_\mathrm{recon}$, we used an analytic form of the correlation functions.  While the form is well specified (see Section \ref{sec:AnalyticModel}), it was necessary to assume values for the various parameters of the equation: radius, pair fraction ($\lambda$), scattering lengths, effective range of interaction.  Typically, thorough evaluations of the resolution correct use an iterative procedure as part of the process of fitting the correlation functions.  Values are assumed for the parameters, resolution corrections are made, and fits to the data are performed.  Then the process repeats.  As the current analysis is not yet at the stage of fitting, we've settled on a "best guess" for the values used here: radius $=2.5$ fm; $\lambda = 0.3$; real part of scattering length $= -0.5$ fm; imaginary part of scattering length $= 0$ fm for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$, and $0.5$ fm for $\Lambda\bar{\Lambda}$; and the effective range $=3$ fm.  These numbers were chosen agnostic of the centralities being fit, where very early fit attempts have estimated radii between 2.7 fm and 2.3 fm.  
+
+Figures \ref{fig:MomCorrectionFactorLLAA} and \ref{fig:MomCorrectionFactorLA} show the momentum resolution correction histograms for $\Lambda\Lambda$/$\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ respectively.  The dip in the correction factor at low $k^*$ shows that the effect of the momentum resolution on the reconstructed correlation function is to flatten (i.e. raise towards unity) the correlation function in that region).  The correction factor serves to undo that flattening.  At its largest it is about a three percent correction for $\Lambda\Lambda$/$\bar{\Lambda}\bar{\Lambda}$.  The effect is wider but also shallower for $\Lambda\bar{\Lambda}$, where at its max it is less than a one percent correction.  In this preliminary momentum resolution correction, the same resolution correction will be applied to each centrality range for a given pair type.  
+
+\begin{figure}
+\includegraphics[width=36pc]{Figures/2014-05-10-PrelimCorrectionFactorLLAA.pdf}
+\caption[Relative momentum correction factor for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$]{A histogram of the relative momentum correction factors used to correct $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlation functions.  The corrected correlation function is found by multiplying each $k^*$ bin of the experimentally measured correlation function by the associated bin of the correction factor.  The dip in the correction factor at low $k^*$ shows that the effect of the momentum resolution on the reconstructed correlation function is to flatten (i.e. raise towards unity) the correlation function in that region).  The correction factor serves to undo that flattening.  At most it is about a three percent correction.}
+\label{fig:MomCorrectionFactorLLAA}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=36pc]{Figures/2014-05-10-PrelimCorrectionFactorLA.pdf}
+\caption[Relative momentum correction factor for $\Lambda\bar{\Lambda}$]{A histogram of the relative momentum correction factors used to correct $\Lambda\bar{\Lambda}$ correlation functions.  The corrected correlation function is found by multiplying each $k^*$ bin of the experimentally measured correlation function by the associated bin of the correction factor.  Except for the lowest bin, the dip in the correction factor at low $k^*$ shows that the effect of the momentum resolution on the reconstructed correlation function is to flatten (i.e. raise towards unity) the correlation function in that region).  The correction factor serves to undo that flattening.  The effect is seen to be less than a one percent correction}
+\label{fig:MomCorrectionFactorLA}
+\end{figure}
+
+Because all the centralities are receiving the same multiplicative (and therefore commutative) correction, the shape of the final, centrality-merged, momentum-corrected correlation functions will be the same whether the correction is applied to each 5\% centrality bin or to the merged correlation functions.  For the purpose of determining systematic uncertainties, the correction will be done on the merged correlation functions.  The size and shape of the momentum smearing is highly dependent on the analytic form of the correlation function, and it is therefore dependent on the chosen values of the parameters.  This sensitivity, along with the currently centrality-independent nature of the correction, will be accounted for in the systematic uncertainties by applying a conservative (i.e. large) uncertainty for this effect.  
 
 \section{Systematic errors}
 \label{sec:GeneralCfSysErrorDiscussion}
@@ -238,7 +294,7 @@ The sections below will discuss the specific details of looking for and evaluate
 \subsection{Systematic errors associated with different run field configurations}
 \label{sec:SystematicsFieldConfig}
 
-In this section we discuss the systematic errors associated with the different field configurations ($++$ and $--$, see Section \ref{sec:DataSelection}).  Correlation functions are constructed separately for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), each 5\% centrality bin, and each field configuration.  For each centrality bin and pair type, we look for any non-statistical deviations in the correlation functions of the two field configurations via the application of Chi2Test().  Table \ref{tab:FieldPvalues} shows p-value results obtained from comparing the two different field results with Chi2Test().  For each pair type, most of the centrality bins pass the test - i.e. the correlation functions made with each field appear to sample from the same underlying distribution.  The few that do not pass have been analyzed using the fit method described in Section \ref{sec:CalculatingSysErrors} in order to quantify the systematic errors associated with their differences.  Figure \ref{fig:ExampleFieldFailureSysErrors} shows the example results fitting the ... bin for systematic errors.
+In this section we discuss the systematic errors associated with the different field configurations ($++$ and $--$, see Section \ref{sec:DataSelection}).  Correlation functions are constructed separately for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), each 5\% centrality bin, and each field configuration.  For each centrality bin and pair type, we look for any non-statistical deviations in the correlation functions of the two field configurations via the application of Chi2Test().  Table \ref{tab:FieldPvalues} shows p-value results obtained from comparing the two different field results with Chi2Test().  For each pair type, most of the centrality bins pass the test - i.e. the correlation functions made with each field appear to sample from the same underlying distribution.  The few that do not pass have been analyzed using the fit method described in Section \ref{sec:CalculatingSysErrors} in order to quantify the systematic errors associated with their differences.  %Figure \ref{fig:ExampleFieldFailureSysErrors} shows the example results fitting the ... bin for systematic errors.
 
 \begin{table}
 \begin{center}
@@ -287,11 +343,11 @@ In this section we discuss the systematic errors associated with the different f
 
 
 
-\begin{figure}
+%\begin{figure}
 %\includegraphics[width=36pc]{Figures/***.pdf}
-\caption[]{}
-\label{fig:ExampleFieldFailureSysErrors}
-\end{figure}
+%\caption[]{}
+%\label{fig:ExampleFieldFailureSysErrors}
+%\end{figure}
 
 
 
@@ -325,9 +381,10 @@ To test for systematic differences, we make correlation functions using $\Lambda
 %\label{fig:SysPionDcaCf2Diff13}
 %\end{figure}
 
-Data has been collected for variations of the following cuts: V0's DCA to primary vertex, the proton's DCA to the primary vertex, the pion's DCA to the primary vertex, the DCA of the daughters to each other, and the cosine of the V0's pointing angle.  In each case, correlation functions have been constructed differentially in 5\% centrality bins for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), and for 3 different cut values (optimal cut, slightly tighter cut, slightly looser cut).  The optimal cut correlation functions have been compared separately with each of the slightly tighter and slightly looser cuts.  The p-values associated with these tests can be seen in Tables \ref{...}.
+Data has been collected for variations of the following cuts: V0's DCA to primary vertex, the proton's DCA to the primary vertex, the pion's DCA to the primary vertex, the DCA of the daughters to each other, and the cosine of the V0's pointing angle.  In each case, correlation functions have been constructed differentially in 5\% centrality bins for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), and for 3 different cut values (optimal cut, slightly tighter cut, slightly looser cut).  The optimal cut correlation functions have been compared separately with each of the slightly tighter and slightly looser cuts.  The p-values associated with these tests can be seen in Tables \ref{tab:V0DcaPrimVertPvalueTests5mmVs4mm}-\ref{tab:V0CosPointingPvalueTests9993vs9994}.
 
 \begin{table}
+\begin{minipage}{18pc}
 \caption {V0 DCA to Primary Vertex 5 mm vs 4 mm} \label{tab:V0DcaPrimVertPvalueTests5mmVs4mm} 
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -368,16 +425,11 @@ Data has been collected for variations of the following cuts: V0's DCA to primar
    & 45-50\% & .33 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 %\caption{p-values and $\chi^2$ calculated using the TH1::Chi2Test() method for correlation functions of different field configurations.  For a given pair type and centrality bin, correlation functions, with a p-value $\geq 0.01$ are assumed to sample the same underlying distribution.  For each pair type, one or two centralities are seen to fail the p-value test.  The differences between those centrality bins have been evaluated and the systematic errors associated with those differences have been quantified.}
 \end{center}
-\end{table}
-
-
-
-
-\begin{table}
-\caption {V0 DCA to Primary Vertex 5 mm vs 6 mm} \label{tab:V0DcaPrimVertPvalueTests5mmVs4mm}
+\end{minipage}
+\begin{minipage}{18pc}
+\caption {V0 DCA to Primary Vertex 5 mm vs 6 mm} \label{tab:V0DcaPrimVertPvalueTests5mmVs6mm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
   \hline                       
@@ -417,13 +469,15 @@ Test of using basic text as a caption for the table
    & 45-50\% & .91 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
+\end{minipage}
 \end{table}
 
 
 
+
 \begin{table}
+\begin{minipage}{18pc}
 \caption {DCA of Pion Daughter to Primary Vertex, 3 mm vs 2 mm} \label{tab:DcaPionPvalueTests3mmVs2mm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -464,13 +518,9 @@ Test of using basic text as a caption for the table
    & 45-50\% & .32 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
-\end{table}
-
-
-
-\begin{table}
+\end{minipage}
+\begin{minipage}{18pc}
 \caption {DCA of Pion Daughter to Primary Vertex, 3 mm vs 4 mm} \label{tab:DcaPionPvalueTests3mmVs4mm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -511,9 +561,10 @@ Test of using basic text as a caption for the table
    & 45-50\% & .72 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
+\end{minipage}
 \end{table}
+
 
 
 
@@ -558,13 +609,14 @@ Test of using basic text as a caption for the table
    & 45-50\% & .94 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
 \end{table}
 
 
 
 \begin{table}
+\begin{minipage}{18pc}
+
 \caption {DCA of Daughters to Each Other, 4 mm vs 3 mm} \label{tab:DcaDaughtersEachOtherPvalueTests4mmVs3mm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -605,14 +657,9 @@ Test of using basic text as a caption for the table
    & 45-50\% & .54 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
-\end{table}
-
-
-
-
-\begin{table}
+\end{minipage}
+\begin{minipage}{18pc}
 \caption {DCA of Daughters to Each Other, 4 mm vs 5 mm} \label{tab:DcaDaughtersEachOtherPvalueTests4mmVs5mm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -653,14 +700,13 @@ Test of using basic text as a caption for the table
    & 45-50\% & .10 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
+\end{minipage}
 \end{table}
 
 
-
-
 \begin{table}
+\begin{minipage}{18pc}
 \caption {V0 Cosine of Pointing Angle, 0.9993 vs 0.9992} \label{tab:V0CosPointingPvalueTests9993vs9992}
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -701,14 +747,9 @@ Test of using basic text as a caption for the table
    & 45-50\% & .61 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
-\end{table}
-
-
-
-
-\begin{table}
+\end{minipage}
+\begin{minipage}{18pc}
 \caption {V0 Cosine of Pointing Angle, 0.9993 vs 0.9994} \label{tab:V0CosPointingPvalueTests9993vs9994}
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -749,20 +790,17 @@ Test of using basic text as a caption for the table
    & 45-50\% & .57 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
+\end{minipage}
 \end{table}
-
-
-
-
 
 \subsection{Systematic errors from pair-wise cuts}
 \label{sec:SystematicsPairWise}
 
-Discussion of systematic errors associated with pair-wise cuts will go here.  The general plan is to determine optimal cut values (as done in Section \ref{sec:PairWiseCuts}), and then to construct as series of correlation functions using variations away from those cut values.  Systematic errors will be assessed in the same manner as was done for the single particle reconstruction cuts in the preceding section.  It is thought that the pair-wise cuts will be a greater source of systematic error that the single particle reconstruction cuts.
+Here we list the systematic errors associated with the pair-wise average separation cuts.  As discussed in Section \ref{sec:PairWiseCuts}, the optimal cut values have been determined to be 3 cm for protons, 4 cm for pions, and 3.5 cm for same-charge non-identical particles.  Correlations functions have been constructed using these optimal cuts, as well as using .5 cm variations on these cuts.  Systematic errors have been assessed in the same manner as was done for the single particle reconstruction cuts in the preceding section.  The p-value results of the $\chi^2$ tests can be found below in Tables \ref{tab:AvgSepProtDaughters3cmVs25cm}-\ref{tab:AvgSepPionDaughters4cmVs45cm}.  Some of the p-values are effectively 0.  This occurs when small changes in the normalization of the correlation functions make the large $k^*$ backgrounds differ from each other by a little more than a $\sigma$ for each $k^*$.  This discrepancy is accounted for in the systematic error fits.  In general, the systematic errors associated with the pairwise cuts are tiny - not larger in magnitude than about $5*10^{-4}$, or about $1\%$ of the size of the correlation function in the $k^*$ range of interest.  
 
 \begin{table}
+\begin{minipage}{18pc}
 \caption{Average Separation of (Anti)Proton Daughters, 3 cm vs 2.5 cm} \label{tab:AvgSepProtDaughters3cmVs25cm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -792,11 +830,9 @@ Discussion of systematic errors associated with pair-wise cuts will go here.  Th
    & 45-50\% & 1 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
-\end{table}
-
-\begin{table}
+\end{minipage}
+\begin{minipage}{18pc}
 \caption{Average Separation of (Anti)Proton Daughters, 3 cm vs 3.5 cm} \label{tab:AvgSepProtDaughters3cmVs35cm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -826,11 +862,12 @@ Test of using basic text as a caption for the table
    & 45-50\% & 1 \\
    \hline
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
+\end{minipage}
 \end{table}
 
 \begin{table}
+\begin{minipage}{18pc}
 \caption{Average Separation of Same-Sign Daughters of $\Lambda\bar{\Lambda}$, 3.5 cm vs 3 cm} \label{tab:AvgSepProtDaughters35cmVs3cm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -849,11 +886,9 @@ Test of using basic text as a caption for the table
    & 45-50\% & 1 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
-\end{table}
-
-\begin{table}
+\end{minipage}
+\begin{minipage}{18pc}
 \caption{Average Separation of Same-Sign Daughters of $\Lambda\bar{\Lambda}$, 3.5 cm vs 4 cm} \label{tab:AvgSepProtDaughters35cmVs4cm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
@@ -872,118 +907,114 @@ Test of using basic text as a caption for the table
    & 45-50\% & 1 \\
   \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
+\end{minipage}
 \end{table}
 
+
+
 \begin{table}
-\caption {} \label{tab:}
+\begin{minipage}{18pc}
+\caption {Average Separation of Pion Daughters, 4 cm vs 3.5 cm} \label{tab:AvgSepPionDaughters4cmVs35cm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
   \hline                       
   Pair Type & Centrality Range & p-value \\
   \hline
-  $\Lambda\Lambda$ & 0-5\% &   \\
-   & 5-10\%  &  \\
-   & 10-15\% &  \\
-   & 15-20\% &  \\
-   & 20-25\% &  \\
-   & 25-30\% &  \\
-   & 30-35\% &  \\
-   & 35-40\% &  \\
-   & 40-45\% &  \\
-   & 45-50\% &  \\
+  $\Lambda\Lambda$ & 0-5\% & 1.1e-91  \\
+   & 5-10\%  & 0 \\
+   & 10-15\% & 1.2e-14 \\
+   & 15-20\% & 1.8e-16 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
    \hline
-  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% &  \\
-   & 5-10\% &  \\
-   & 10-15\% &  \\
-   & 15-20\% &  \\
-   & 20-25\% &  \\
-   & 25-30\% &  \\
-   & 30-35\% &  \\
-   & 35-40\% &  \\
-   & 40-45\% &  \\
-   & 45-50\% &  \\
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .28 \\
+   & 5-10\% & 7.6e-12 \\
+   & 10-15\% & 0.03 \\
+   & 15-20\% & 2.7e-05 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
    \hline
-  $\Lambda\bar{\Lambda}$ &  0-5\% &  \\
-   & 5-10\% &  \\
-   & 10-15\% &  \\
-   & 15-20\% &  \\
-   & 20-25\% &  \\
-   & 25-30\% &  \\
-   & 30-35\% &  \\
-   & 35-40\% &  \\
-   & 40-45\% &  \\
-   & 45-50\% &  \\
-  \hline  
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
-\end{table}
-
-\begin{table}
-\caption {} \label{tab:}
+\end{minipage}
+\begin{minipage}{18pc}
+\caption {Average Separation of Pion Daughters, 4 cm vs 4.5 cm} \label{tab:AvgSepPionDaughters4cmVs45cm}
 \begin{center}
 \begin{tabular}{| c | c | c |}
   \hline                       
   Pair Type & Centrality Range & p-value \\
   \hline
-  $\Lambda\Lambda$ & 0-5\% &   \\
-   & 5-10\%  &  \\
-   & 10-15\% &  \\
-   & 15-20\% &  \\
-   & 20-25\% &  \\
-   & 25-30\% &  \\
-   & 30-35\% &  \\
-   & 35-40\% &  \\
-   & 40-45\% &  \\
-   & 45-50\% &  \\
+  $\Lambda\Lambda$ & 0-5\% & 1.9e-16 \\
+   & 5-10\%  & .97 \\
+   & 10-15\% & 1.9e-18 \\
+   & 15-20\% & 0 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 3.9e-06 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
    \hline
-  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% &  \\
-   & 5-10\% &  \\
-   & 10-15\% &  \\
-   & 15-20\% &  \\
-   & 20-25\% &  \\
-   & 25-30\% &  \\
-   & 30-35\% &  \\
-   & 35-40\% &  \\
-   & 40-45\% &  \\
-   & 45-50\% &  \\
-   \hline
-  $\Lambda\bar{\Lambda}$ &  0-5\% &  \\
-   & 5-10\% &  \\
-   & 10-15\% &  \\
-   & 15-20\% &  \\
-   & 20-25\% &  \\
-   & 25-30\% &  \\
-   & 30-35\% &  \\
-   & 35-40\% &  \\
-   & 40-45\% &  \\
-   & 45-50\% &  \\
-  \hline  
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .41 \\
+   & 5-10\% & .17 \\
+   & 10-15\% & 2.3-20 \\
+   & 15-20\% & 1.2e-14 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+   \hline 
 \end{tabular}
-Test of using basic text as a caption for the table
 \end{center}
+\end{minipage}
 \end{table}
 
 \subsection{Systematic errors from shared-daughter cut}
 
-Discussion of the systematic uncertainties resuling from the shared daughter cut will go here.
+At this time, two femtoscopic analyses at ALICE employ a shared-daughter cut (this analysis and the $K^0_\mathrm{S}$ analysis), though each cut is implemented with independent code.  The reasons for this cut are intuitive - two V0s cannot actually have the same daughter, regardless of what might arise from the reconstruction process.  Moreover, the efficacy of the cut is high: the MC studies of this cut have shown that only 13\% real V0s with shared daughters are cut.  The removal of a V0 (real or fake) removes all of the same-event and mixed-event pairs that would have included that V0.  In most cases, this amounts to an improved purity of the correlation function, since there are fewer pairs of fake and therefore uncorrelated particles.  There also a removal of a splitting-like effect - in this case the "split" is an extra V0 close in momentum space to the first.  While the two "split" V0s will never be paired together, both are paired with other V0s, resulting in extra pair counts in roughly the same $k^*$ bins.  Those extra pairs are removed by virtue of the shared daughter cut.
+
+While the benefits of the shared-daughter cut are apparent,
+and the disadvantages seem to be minimal (even when you cut a real V0, you a left with a fake V0 that is close in phase space), investigations are still underway to determine what the sources of systematic uncertainty may arise from this cut, and how to quantify that uncertainty.
 
 \subsection{Systematic errors from momentum resolution correction}
+\label{sec:MomentumResCorrectionsSys}
 
-No momentum resolution correction is currently applied.  A systematic error associated with that correction (or current lack thereof) will be evaluated and placed here.
+As discussed in Section \ref{sec:MomentumResCorrection}, sources of systematic uncertainty in this correction come from using $p_\mathrm{T}$- and centrality-integrated measurements of the relative momentum smearing.  One correction is applied to all centrality bins, and that correction is made assuming a source radius of $2.5$ fm. Generally speaking, the effect of momentum smearing will be larger the larger the various correlation function parameters are.  Those parameters include the source radii, the $\lambda$ (pair-fraction) parameter, the scattering lengths, and the effective range of interaction.  Depending on the centrality, early fits to the radii suggest that values between $2.2$ fm and $2.7$ fm could be reasonable.  The choice of the $\lambda$ parameter strongly affects the magnitude of the correction.  With a $\lambda$ of 0.3, the correction is about $3\%$ for $\Lambda\Lambda$.  But with an (unreasonable) $\lambda$ of 1, the correction is closer to $20\%$.  The choice of $\lambda$ parameter is complicated by the existence of secondary $\Lambda$ and residual correlations (see Section \ref{sec:Residual}).  For this analysis, $\lambda = 0.3$ was chosen such that the simulated, momentum-smeared correlation function roughly matched the data with a y-intercept of $\sim 0.9$.
+
+A more precise measurement of the necessary correction could be done (and will eventually be done) more directly with the HIJING MC data.  Instead of extracting a roughly Gaussian relative momentum smearing width from Figure \ref{fig:MomSmearingFit} and crudely simulating the $k^*_{\mathrm{true}} \rightarrow k^*_{\mathrm{recon}}$ smearing, the correlation functions $C_{\mathrm{true}}$ and  $C_{\mathrm{true}}$ (Eqs.\ \ref{eq:Ctrue} and \ref{eq:Crecon}) can be constructed directly from analysis of the MC data.  There, the correlation functions are binned using the known $k^*_{\mathrm{true}}$ and $k^*_{\mathrm{recon}}$.  The same weight factors are used as described in Section \ref{sec:MomentumResCorrection}.  The disadvantage of that method is that it requires assumptions of the various correlation function parameters at run-time, and so it requires significantly more analysis grid time as the parameters are tweaked.  However, that method is also considered to give more precise results.
+
+The $K^0_\mathrm{S}K^0_\mathrm{S}$ femtoscopic analysis has explored both of these methods.  In that analysis, it found that the method employed here (extracting a simple Gaussian smearing width and using it to simulate the momentum smearing) overestimated the momentum correction factor by up to a factor of 4 relative to the more precise method (i.e. a 4\% effect rather than a 1\% effect).  The similarity of the $K^0_\mathrm{S}K^0_\mathrm{S}$ analysis and the $\Lambda\Lambda$ analysis (both study V0 femtoscopy) suggests that the momentum resolution correction factor is overestimated here as well.
+
+Given the issues listed above, it is possible for the resolution correction made here to be over or underestimated. At this point in the analysis, we willmake a rough estimate of a symmetric systematic uncertainty for each correlation function, calculated using
+\begin{equation}
+\sigma_{\mathrm{sys}}(k^*) = \frac{1}{4}\abs{C_{\mathrm{uncorrected}} (k^*) - C_{\mathrm{corrected}}(k^*)}.
+\end{equation}
+The corrections are performed on centrality merged (and pair type merged, in the case of the $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ data) correlation functions.  The uncertainty is taken then from the difference between the corrected and uncorrected versions of these merged plots.
 
 \subsection{Combining different sources of systematic error}
 \label{sec:CombiningSys}
 
+Systematic errors have been evaluated for each type of cut, each pair type, and each centrality bin.  For a given centrality bin and pair type, the histograms containing those errors have been added in quadrature for each $k^*$ bin.  The resulting summed histogram is the systematic uncertainty for that centrality bin and pair type.
+
+When correlation functions for multiple centrality bins are merged together, the errors for each centrality bin are added in quadrature (for each $k^*$ bin) and then averaged over the number of centrality bins.  Similarly, when combining the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ results, the systematic errors for each centrality range are added in quadrature and then divided by two.  Subsequently, the systematic errors associated with the momentum resolution correction of each correlation function is added in quadrature with the rest of the errors.
+
+The resulting correlation functions with combined systematic errors are shown in in Section \ref{sec:CorrelationFunctions}.
+
+
 \section{Correlation function results}
 \subsection{Correlation functions}
-\label{sec:RawCorrelationFunctions}
-
-%..... Discussion of correlation function data results and systematic uncertainties.  ......
-
-
+\label{sec:CorrelationFunctions}
 
 Correlation functions have been constructed using the entirety of the LHC11h data set.  As discussed in Section \ref{sec:CFconstruct}, events were binned in 5\% centrality bins.  When combining data from different centrality bins, care was taken to combine the correlations by taking weighted averages of the correlation functions.  
 
@@ -993,56 +1024,51 @@ The naive method of combining correlation functions involves adding numerators f
 \label{eq:CombineCF}
 C_{combined}(k^*) = (\displaystyle\sum\limits_{i} w_i C_i(k^*))/(\displaystyle\sum\limits_{i} w_i)
 \end{equation}
-where the sum is done over different correlation function bins (e.g. 0-5\% and 5-10\%) and $w_i$ is the number of numerator pairs in $C_i$.  This averaging is done on a bin-by-bin basis in $k^*$.  Note that is averaging procedure should be used in general to combine data sets with potentially different phase spaces. For example, this procedure is employed to combine data from runs utilizing the two different field orientations (see Section \ref{sec:DataSelection}).  
+where the sum is done over different correlation function bins (e.g. 0-5\% and 5-10\%) and $w_i$ is the number of numerator pairs in $C_i$.  This averaging is done on a bin-by-bin basis in $k^*$.  Note that this averaging procedure should be used in general to combine data sets with potentially different phase spaces. For example, this procedure is employed to combine data from runs utilizing the two different field orientations (see Section \ref{sec:DataSelection}).  It is also employed when combining $\Lambda\Lambda$ data with $\bar{\Lambda}\bar{\Lambda}$ data.  For each centrality range (0-10\%, 10-30\%, and 30-50\%), the correlation functions of the two pair types were found to be consistent with each other (p-values of 0.26, 0.02, and 0.43 respectively).  Therefore, no additional systematic error was assessed to come out of their merging.
 
-Figures \ref{fig:CFLamLam3Cents}, \ref{fig:CFALamALam3Cents}, and \ref{fig:CFLamALam3Cents} show correlation functions for $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$ respectively.  Each plot shows three centrality ranges: 0-10\%, 10-30\%, 30-50\%. The correlations are normalized to unity in the $ 0.3 < k^* < 0.5$ GeV/c range 
-
-
-
-%  Interpretation of results can be found in Section \ref{sec:CFInterpretation}.  In this section, we will
+Figures \ref{fig:CFLamLamALamALam010}, \ref{fig:CFLamLamALamALam1030}, and \ref{fig:CFLamLamALamALam3050} show combined $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  Figures \ref{fig:CFLamALam010}, \ref{fig:CFLamALam1030}, and \ref{fig:CFLamALam3050} show $\Lambda\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  Each plot includes the combined systematic errors discussed in Section \ref{sec:GeneralCfSysErrorDiscussion}.
 
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamLam-3Cents.pdf}
-\caption[$\Lambda\Lambda$ correlation function for three centrality ranges]{$\Lambda\Lambda$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
-\label{fig:CFLamLam3Cents}
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-010-CommentCorrections.pdf}
+\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 0-10\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 0-10\% centrality range with statistical and systematic errors.  A dip at low $k^*$ is seen which is expected from quantum interference.}
+\label{fig:CFLamLamALamALam010}
+\end{figure}
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-1030-CommentCorrections-WithSTAR.pdf}
+\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  A dip at low $k^*$ is seen which is expected from quantum interference.  Preliminary STAR data for $\Lambda\Lambda$ is shown for comparison.  For the same plot without STAR data, see Figure \ref{fig:AppendixCFLamLamALamALam1030}.}
+\label{fig:CFLamLamALamALam1030STAR}
+\end{figure}
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-3050-CommentCorrections.pdf}
+\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 30-50\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 30-50\% centrality range with statistical and systematic errors.  A hint of a dip at low $k^*$ may be seen, which would be expected from quantum interference.}
+\label{fig:CFLamLamALamALam3050}
 \end{figure}
 
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-ALamALam-3Cents.pdf}
-\caption[$\bar{\Lambda}\bar{\Lambda}$ correlation function for three centrality ranges]{$\bar{\Lambda}\bar{\Lambda}$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
-\label{fig:CFALamALam3Cents}
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLA-010-CommentCorrections.pdf}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for the 0-10\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 0-10\% centrality range with statistical and systematic errors.  A wide suppression is seen which is indicative of annihilative effects.}
+\label{fig:CFLamALam010}
 \end{figure}
-
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamALam-3Cents.pdf}
-\caption[$\Lambda\bar{\Lambda}$ correlation function for three centrality ranges]{$\Lambda\bar{\Lambda}$ correlation function plotted for three centrality ranges: 0-10\%, 10-30\%, 30-50\%.}
-\label{fig:CFLamALam3Cents}
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLA-1030-CommentCorrections.pdf}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  A wide suppression is seen which is indicative of annihilative effects.}
+\label{fig:CFLamALam1030}
 \end{figure}
-
-Generally speaking, the interesting part of a relative-momentum correlation function is the region below 100 or 200 MeV/c.  Structures/backgrounds may exist at large relative momentum - these structures can complicate the fitting procedure, and sometimes even direct attention to flaws in the analysis.  However, the information about the source size and two-particle interactions is predominantly encoded within the low-$k^*$ region.  For the time being, this analysis will restrict its attention to behavior in that region.
-
-The $\Lambda\bar{\Lambda}$ correlation functions (Fig.\ \ref{fig:CFLamALam3Cents}) exhibit a clear, centrality dependent suppression in the low-$k^*$ region, even with the significant statistical error bars for the 10-30\% and 30-50\% systems.  However, in the present $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ data one cannot make the case for a centrality dependent signal.  Indeed, one is hard-pressed to see a signal at all, except perhaps for a small suppression in the lowest few $k^*$ bins.  
-
-Several factors may contribute to this absence of a signal.  First of all, the physics of the identical particle systems (see Sec.\ \ref{sec:AnalyticModel}) is expected to be confined to just the few lowest bins.  There may be competing physics effects -- a suppression from quantum interference and an enhancement from the strong final state interactions -- that wash each other out.    Furthermore, two-track effects like splitting and merging show up in this region.  Optimal two-track (i.e. pair-wise) cuts are still being worked out.  The systematic errors associated with these cuts will be discussed in Section \ref{sec:SystematicsPairWise}.  The presence of residual correlations might muddle or dilute the signal region.  This will be discussed further in Section \ref{sec:Residual}.  Finally, it must be noted that these are the $k^*$ bins with the least statistics.  Some statistical improvement can be made by averaging the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ results together.  Another option is to combine centrality bins.  Because of the LHC11h centrality distribution, a minimum bias correlation function of 0-50\% is not feasible.  Instead, Figures \ref{fig:CFLamLam2Cents}, \ref{fig:CFALamALam2Cents}, and \ref{fig:CFLamALam2Cents} show the same data reduced to two bins: 0-10\% and 10-50\%.  There are also a couple fitting tricks that can be employed to mitigate the statistical limitations in these plots.  They will be discussed in Section \ref{sec:MinuitFit}.
-
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamLam-2Cents.pdf}
-\caption[$\Lambda\Lambda$ correlation function for two centrality ranges]{$\Lambda\Lambda$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
-\label{fig:CFLamLam2Cents}
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLA-3050-CommentCorrections.pdf}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for the 30-50\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 30-50\% centrality range with statistical and systematic errors.  A wide suppression is seen which is indicative of annihilative effects.}
+\label{fig:CFLamALam3050}
 \end{figure}
 
-\begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-ALamALam-2Cents.pdf}
-\caption[$\bar{\Lambda}\bar{\Lambda}$ correlation function for two centrality ranges]{$\bar{\Lambda}\bar{\Lambda}$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
-\label{fig:CFALamALam2Cents}
-\end{figure}
+\subsection{Interpretation of correlation function results}
+\label{sec:CFInterpretation}
 
-\begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-03-31-CF-LamALam-2Cents.pdf}
-\caption[$\Lambda\bar{\Lambda}$ correlation function for two centrality ranges]{$\Lambda\bar{\Lambda}$ correlation function replotted for two centrality ranges: 0-10\%, 10-50\%.}
-\label{fig:CFLamALam2Cents}
-\end{figure}
 
+Generally speaking, the interesting part of a relative-momentum correlation function is the region below 100 or 200 MeV/c.  Non-unity structures/backgrounds may be visible at large relative momentum - these structures can complicate the fitting procedure, and sometimes even direct attention to flaws in the analysis.  They can also exist in the low-relative momentum region, though there they are generally assumed (or at least hoped) to be small.  However, the information about the source size and two-particle interactions is predominantly encoded within the low-$k^*$ region.  For the time being, this analysis will restrict its attention to behavior in that region.
+
+The $\Lambda\bar{\Lambda}$ correlation functions (Figures\ \ref{fig:CFLamALam010}, \ref{fig:CFLamALam1030}, and \ref{fig:CFLamALam3050}) exhibit a clear, centrality dependent suppression in the low-$k^*$ region, even with the significant statistical error bars for the 10-30\% and 30-50\% systems.  A signal is also visible in the $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ data, though it is smaller in magnitude and localized to a narrower $k^*$ region. For reference, Preliminary STAR $\Lambda\Lambda$ results from 200 GeV Au--Au, 0-40\% centrality are also plotted \cite{Shah:2012ps}.
+
+Several factors may contribute to the small size of this signal.  First of all, the physics of the identical particle systems (see Sec.\ \ref{sec:AnalyticModel}) is expected to be confined to just the few lowest bins.  There may be competing physics effects -- a suppression from quantum interference and an enhancement from the strong final state interactions -- that wash each other out.  Furthermore, two-track effects like splitting and merging show up in this region, though they are assumed to be well-corrected for by the aforementioned pair-wise cuts.  The presence of residual correlations might muddle or dilute the signal region.  This will be discussed further in Section \ref{sec:Residual}.  Finally, it must be noted that these are the $k^*$ bins with the least statistics.  There are also a couple of fitting tricks that can be employed to mitigate the statistical limitations in these plots.  They will be discussed in Section \ref{sec:MinuitFit}.
 
 %********Outdated****** some of this may be salvageable
 
@@ -1050,10 +1076,7 @@ Several factors may contribute to this absence of a signal.  First of all, the p
 
 %Figure \ref{fig:CF} shows correlation functions constructed in the 0-10\% centrality range for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ pairs.  Both correlation functions exhibit an enhancement in the low-$q_{\rm inv}$ range of 0.04 - 0.2 GeV/c.  This may be due to attractive final state interactions.  The effects of FSI and quantum statistics are expected to be seen in roughly the same $q_{\rm inv}$ range, and it is unclear at this time to what extent their effects should be competing. The enhancement of the $\bar{\Lambda}\bar{\Lambda}$ correlation function does fall off in the lowest bins, though the statistical uncertainties are such that no significant statement about the effects of quantum statistics can be made at this time.
 
-\subsection{Interpretation of correlation function results}
-\label{sec:CFInterpretation}
 
-Finalized correlation functions with systematic errors will go here, as well as interpretation of correlation function shape, centrality dependence, and pair-type dependence.  
 
 \section{1D analytic model}
 \label{sec:AnalyticModel}
@@ -1086,7 +1109,7 @@ For pion, kaon, and proton femtoscopic analyses, the scattering lengths and effe
 \subsection{Residual correlations}
 \label{sec:Residual}
 
-Attempts at fitting correlation functions should try to account for residual correlations between the particle being studied and other particles that might decay into the studied particle.  Various particles can decay into $\Lambda$ baryons, such as $\Sigma^{\rm 0}$, $\Xi^{\rm 0}$, and $\Omega^{\rm -}$.  The decay momentum between these particles and their daughter $\Lambda$ is small, such that daughter and parent carry very similar momenta.  As a result, relative-momentum correlation functions between primary particles and secondary particles can be sensitive to the interactions between the primary particles and the parent particles.  For example, the correlation between primary $\Lambda$ and primary $\Sigma^{\rm 0}$ should be visible, though somewhat smeared out, in the correlation between primary $\Lambda$ and secondary $\Lambda$.  Furthermore, these secondary $\Lambda$ are often difficult to distinguish from primary $\Lambda$.  Therefore, measurements of two-$\Lambda$ correlation functions will contain a mixture of primary correlations and feeddown correlations, and an attempt to parametrize the correlation functions should take this into account.  
+Attempts at fitting correlation functions should try to account for residual correlations between the particle being studied and other particles that might decay into the studied particle.  Various particles can decay into $\Lambda$ baryons, such as $\Sigma^{\rm 0}$, $\Xi^{\rm 0}$, and $\Omega^{\rm -}$.  The decay momentum difference between these particles and their daughter $\Lambda$ is small, such that daughter and parent carry very similar momenta.  As a result, relative-momentum correlation functions between primary particles and secondary particles can be sensitive to the interactions between the primary particles and the parent particles.  For example, the correlation between primary $\Lambda$ and primary $\Sigma^{\rm 0}$ should be visible, though somewhat smeared out, in the correlation between primary $\Lambda$ and secondary $\Lambda$.  Furthermore, these secondary $\Lambda$ are often difficult to distinguish from primary $\Lambda$.  Therefore, measurements of two-$\Lambda$ correlation functions will contain a mixture of primary correlations and feeddown correlations, and an attempt to parametrize the correlation functions should take this into account.  
 
 A example of this kind of parametrization can be seen in the recent analysis \cite{Kisiel:2014mma} of STAR p$\bar{\Lambda}$ correlation functions measured in 200 GeV Au--Au collisions.  In this study, p$\bar{\Lambda}$ and $\bar{\mathrm{p}}\Lambda$ correlations were fit with and without residual correlations.  The fits with residual correlations included feeddown and feedup contributions from numerous sources.  The study found that the fit with residual correlations measured a source size comparable to the previously measured sizes of p$\Lambda$ and $\bar{\mathrm{p}}\bar{\Lambda}$.  In contrast, the fits that did not include residual correlations measured source radii that deviated significantly from the old p$\Lambda$ and $\bar{\mathrm{p}}\bar{\Lambda}$ results.  One conclusion from that study was that it is important to make a precise characterization of the $\lambda$ parameters associated with each type of pair contribution.  As mentioned above in Section \ref{sec:Observables}, the $\lambda$ parameter can be interpreted as the fraction of total pairs associated with that pair type.  Quantitatively, it is included in the fit as shown in Equation \ref{eq:Residual} below.
 
@@ -1179,7 +1202,7 @@ For the the $\Lambda\bar{\Lambda}$ analysis, estimates of the $\lambda$ paramete
 \subsection{Reconstruction efficiency effects on relative particle yields}
 \label{sec:ReconstructionEff}
 
-Note: This section is still under construction.  While the details eventually contained here will be important for fitting correlation functions, these details not particularly relevant for the construction of the correlation functions (i.e. the results under approval for Quark Matter 2014).
+Note: This section is still under construction.  While the details eventually contained here will be important for fitting correlation functions, these details not particularly relevant for the construction of the correlation functions (i.e. the results under approval for Quark Matter 2014).  The plots have yet to be finalized - they will be added later.
 
 The above $\lambda$ estimates have been made under the assumption that primary and secondary $\Lambda$ have the same chance to be reconstructed.  However, detector efficiencies and topological reconstruction cuts can change the relative yields of each of these $\Lambda$ types.  To investigate the influence of reconstruction efficiencies on particle yields, we looked at the reconstruction rates of the different particle types using the HIJING run specified in Section \ref{sec:DataSelection}.  The MC truth yields of the V0s were examined at three stages of reconstruction:
 \begin{itemize}
@@ -1203,7 +1226,7 @@ underlying HIJING particles.  Because the efficacy of the various reconstruction
 
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/2014-04-20-Efficiency-WithInjectedSignals-OldCuts_2013-09-04Run.pdf}
-\caption[$Lambda$ reconstruction efficiencies with injected signals]{Average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species.  Reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  The analysis was performed for HIJING events with injected hyperon signals.  The events included injected $\Lambda$, $\bar{\Lambda}$, $\Xi$, and $\Omega$, but no $\bar{\Xi}$ or $\bar{Omega}$.  A clear disparity can be seen between the reconstruction efficiencies of $\Lambda_{\Xi}$ and $\Lambda_{\Omega}$ and their respective antiparticles.  This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.}
+\caption[$Lambda$ reconstruction efficiencies with injected signals]{Average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species.  Reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  The analysis was performed for HIJING events with injected hyperon signals.  The events included injected $\Lambda$, $\bar{\Lambda}$, $\Xi$, and $\Omega$, but no $\bar{\Xi}$ or $\bar{\Omega}$.  A clear disparity can be seen between the reconstruction efficiencies of $\Lambda_{\Xi}$ and $\Lambda_{\Omega}$ and their respective antiparticles.  This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.}
 \label{fig:MCEfficiencyWithInjected}
 \end{figure}
 
@@ -1241,8 +1264,56 @@ Results have been shown for correlation functions $\Lambda\Lambda$, $\bar{\Lambd
 
 \section{Appendix}
 \subsection{Plots for Quark Matter 2014 approval}
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-LamMinv-CommentCorrections.pdf}
+\caption[$\Lambda$ invariant mass distribution]{Invariant mass distribution for reconstructed $\Lambda$ using the optimal analysis cuts.  The plots show V0s reconstructed from centrality integrated LHC11h data.  The green line shows a fourth order polynomial fit to the background, which is used to estimate the number of real and fake $\Lambda$.  The estimated ratio of real $\Lambda$ to all reconstructed $\Lambda$ in the signal region ($ \lvert m_{\mathrm{inv}} - m_{\mathrm{PDG}}\rvert < 3.8$ MeV/$\rm c^2$) is approximately 0.95.}
+\label{fig:AppendixLamInvMass}
+\end{figure}
 
-\subsection{Plots currently approved}
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-ALamMinv-CommentCorrections.pdf}
+\caption[$\bar{\Lambda}$ invariant mass distributions]{Invariant mass distribution for reconstructed $\bar{\Lambda}$ using the optimal analysis cuts.  The plots show V0s reconstructed from centrality integrated LHC11h data.  The green line shows a fourth order polynomial fit to the background, which is used to estimate the number of real and fake $\bar{\Lambda}$.  The estimated ratio of real $\bar{\Lambda}$ to all reconstructed $\bar{\Lambda}$ in the signal region ($ \lvert m_{\mathrm{inv}} - m_{\mathrm{PDG}}\rvert < 3.8$ MeV/$\rm c^2$) is approximately 0.95.}
+\label{fig:AppendixALamInvMass}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-010-CommentCorrections.pdf}
+\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 0-10\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 0-10\% centrality range with statistical and systematic errors.  A dip at low $k^*$ is seen which is expected from quantum interference.}
+\label{fig:AppendixCFLamLamALamALam010}
+\end{figure}
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-1030-CommentCorrections.pdf}
+\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  A dip at low $k^*$ is seen which is expected from quantum interference.}
+\label{fig:AppendixCFLamLamALamALam1030}
+\end{figure}
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-1030-CommentCorrections-WithSTAR.pdf}
+\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  A dip at low $k^*$ is seen which is expected from quantum interference.  Preliminary STAR data for $\Lambda\Lambda$ is shown for comparison.}
+\label{fig:AppendixCFLamLamALamALam1030STAR}
+\end{figure}
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-3050-CommentCorrections.pdf}
+\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 30-50\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 30-50\% centrality range with statistical and systematic errors.  A hint of a dip at low $k^*$ may be seen, which would be expected from quantum interference.}
+\label{fig:AppendixCFLamLamALamALam3050}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLA-010-CommentCorrections.pdf}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for the 0-10\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 0-10\% centrality range with statistical and systematic errors.  A wide suppression is seen which is indicative of annihilative effects.}
+\label{fig:AppendixCFLamALam010}
+\end{figure}
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLA-1030-CommentCorrections.pdf}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  A wide suppression is seen which is indicative of annihilative effects.}
+\label{fig:AppendixCFLamALam1030}
+\end{figure}
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-05-11-CfLA-3050-CommentCorrections.pdf}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for the 30-50\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 30-50\% centrality range with statistical and systematic errors.  A wide suppression is seen which is indicative of annihilative effects.}
+\label{fig:AppendixCFLamALam3050}
+\end{figure}
+
+%\subsection{Plots currently approved}
 
 
 \bibliographystyle{unsrt}
