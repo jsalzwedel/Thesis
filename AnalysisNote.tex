@@ -35,7 +35,7 @@ Analysis was also performed on the LHC12a17a\_fix Monte Carlo HIJING run, which 
 
 In all cases, the z-position of the primary vertex was required to be within 10 cm of the center of the ALICE detector for an event to be selected.  
 
-No centrality flattening is currently employed in the analysis of this data, though it is planned to be completed eventually.  Centrality flattening is a procedure by which some events are rejected to ensure that all centralities within a given centrality window (e.g. $0-10\%$) are represented with equal frequency.  Centrality flattening is not expected to have a significant impact on the correlation function results.
+No centrality flattening is currently employed in the analysis of this data, though it is planned to be completed eventually.  Centrality flattening is a procedure by which some events are rejected to ensure that all centralities within a given centrality window (e.g. $0-10\%$) are represented with equal frequency.  Centrality flattening is not expected to have a significant impact on the correlation function results, as it merely remove some statistics to make each 1\% centrality bin more evenly weighted in the resulting data.  For instance, before flattening, the ALICE Pb---Pb $K^0_\mathrm{s}K^0_\mathrm{s}$ analysis had an average centrality of 4.9\% for the 0-10\% correlation function.  After flattening, the average became 5\%.  This should result in essentially no change to extracted radii or scattering lengths.
 
 \subsection{Detector use}
 Both the data analysis as well as the MC analysis utilized information from several different detectors.  Event centrality was measured using the V0 detector with a timing cut from the Zero Degree Calorimeter.  The Inner Tracking System (ITS), Time Projection Chamber (TPC), Transition Radiation Detector (TRD), and Time of Flight detector together provided global tracking for the daughter particles.  Particle identification (PID) was performed using the TPC, as well as using the Time of Flight detector (TOF) when possible.
@@ -71,7 +71,7 @@ Each V0 is then subjected to the following cuts:
 \item For both $\Lambda$ and $\bar{\Lambda}$, the reconstructed invariant mass was required to fall within $\abs{m_\mathrm{inv}-m_\mathrm{PDG}} < 3.8$ MeV.  Note that this cut value was determined by inspection of the $p_\mathrm{T}$-integrated invariant mass peak.  Future investigation of $p_\mathrm{T}$-dependent invariant mass peak and subsequently enforcing a $p_\mathrm{T}$-dependent cut could lead to better background reduction.  Also, close inspection of Figure \ref{fig:BothInvMass} shows that the peak multiplicity occurs at a mass slightly higher (several tenths of an MeV) than the PDG mass value.  As such, it may be better to use an invariant mass window centered around the reconstructed peak value, rather than the PDG mass.  This will also be investigated in the future.
 \end{itemize}
 
-The optimal cut values were determined by comparing cut distributions of reconstructed $\Lambda$ in Monte Carlo HIJING events (including simulated detector effects).  The data set (LHC12a17a\_fix) included injected strange signals (extra $\Lambda$, $\bar{\Lambda}$, $\Xi$, and $\Omega$ in each event).  Initially, V0s were reconstructed without distinguishing between injected signals and particles from the underlying event.  However, a disparity was seen between the average reconstruction efficiency of mulitistrange hyperons and antihyperons (see Sec.\ \ref{sec:ReconstructionEff} for more details).  The analysis was then performed with the injected signals removed, and the disparity went away.  A primary particle (AliAODMCParticle) was considered injected if it had AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$. Likewise, a secondary particle (e.g. $\Lambda$ resulting from decay of a $\Sigma$ baryon) was considered injected if it's mother particle had AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$.  Subsequent Monte Carlo analyses have been performed with the injected signals removed.
+The optimal cut values were determined by comparing cut distributions of reconstructed $\Lambda$ in Monte Carlo HIJING events (including simulated detector effects).  The data set (LHC12a17a\_fix) included injected strange signals (extra $\Lambda$, $\bar{\Lambda}$, $\Xi$, and $\Omega$ in each event).  Initially, V0s were reconstructed without distinguishing between injected signals and particles from the underlying event.  However, a disparity was seen between the average reconstruction efficiency of mulitistrange hyperons and antihyperons (see Sec.\ \ref{sec:InjectedMCSignals} for more details).  The analysis was then performed with the injected signals removed, and the disparity went away.  A primary particle (AliAODMCParticle) was considered injected if it had AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$. Likewise, a secondary particle (e.g. $\Lambda$ resulting from decay of a $\Sigma$ baryon) was considered injected if it's mother particle had AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$.  Subsequent Monte Carlo analyses have been performed with the injected signals removed.
 
 $\Lambda$ were reconstructed and their corresponding AliAODMCParticle objects were consulted in order to classify the $\Lambda$ into different categories: Real, primary $\Lambda$; secondary $\Lambda$ coming from decays of $\Sigma$ (or $\Sigma$ excited states); secondary $\Lambda$ coming from decays of $\Xi$, $\Omega$, and other sources; fake $\Lambda$; and $K^0_\mathrm{s}$ that have been misidentified as $\Lambda$.  For each cut parameter (e.g. cosine of pointing angle), a plot was made showing the distributions of V0 candidates of the various types.  These plots contain only the parameter distributions of candidates that pass all the other cuts.  Figures \ref{fig:LambdaCutDists1} and \ref{fig:LambdaCutDists2} show these distributions for the different $\Lambda$ types.  Figures \ref{fig:AntiLambdaCutDists1} and \ref{fig:AntiLambdaCutDists2} show the equivalent results for $\bar{\Lambda}$.
 
@@ -118,6 +118,12 @@ The reconstructed invariant mass distribution for $\Lambda$ and $\bar{\Lambda}$ 
 \caption[$\bar{\Lambda}$ invariant mass distributions]{Invariant mass distribution for reconstructed $\bar{\Lambda}$ using the optimal analysis cuts.  The plots show V0s reconstructed from centrality integrated LHC11h data.  The green line shows a fourth order polynomial fit to the background, which is used to estimate the number of real and fake $\bar{\Lambda}$.  The estimated ratio of real $\bar{\Lambda}$ to all reconstructed $\bar{\Lambda}$ in the signal region ($ \lvert m_{\mathrm{inv}} - m_{\mathrm{PDG}}\rvert < 3.8$ MeV/$\rm c^2$) is approximately 0.95.}
 \label{fig:ALamInvMass}
 \end{figure}
+
+\subsection{Decay radius (XY) cut}
+The V0 finder includes a default decay radius cut of 0.9 cm, which removes V0s with a radial decay length less than that value.  This helps mitigate issues such as high track density which can complicate reconstruction.  This analysis currently only uses the default cut, though it is possible that a tighter cut could yield improved $\Lambda$ purity without severely impacting the available statistics.  The default cut will continue to be employed for now, but alternate cut values will be investigated in the future.  
+
+Changes in this cut are expected to have only small effects on the correlation functions themselves.  As will be described later in this note, fits of correlation functions have a $\lambda$ parameter which accounts for the pair-purity (roughly the square of the single particle purity).  In any case, a few percent increase in purity should not drastically impact the shape of the correlation functions.
+
 
 \subsection{Shared daughter cut}
 
@@ -246,7 +252,7 @@ We will now attempt to identify the various systematic effects that may affect t
 
 \subsection{Consistency checks for uncorrelated histograms}
 \label{sec:ConsistencyCheckUncorrelated}
-One of the tools we will employ in the search for systematic effects is the TH1::Chi2Test(TH1* h1) method, which compares two histograms bin-by-bin to determine a $\chi^2$.  The test is performed assuming the hypothesis that the two histograms are Poissonian samples of the same underlying distribution.  A p-value is computed which represents the probability that a measurement could be performed that would yield results this different or more, given the hypothesis of identity.  The hypothesis of identity is rejected in instances where the p-value is lower than 0.01. At that threshold, less than one percent of tests will fail of data sets sampled from the same underlying distribution.  This corresponds to rejecting the hypothesis of identity for data samples that differ by roughly $3 \sigma$.
+One of the tools we will employ in the search for systematic effects is the TH1::Chi2Test(TH1* h1) method, which compares two histograms bin-by-bin to determine a $\chi^2$.  The test is performed assuming the hypothesis that the two histograms are Poissonian samples of the same underlying distribution.  A p-value is computed which represents the probability that a measurement could be performed that would yield results this different or more, given the hypothesis of identity.  The hypothesis of identity is rejected in instances where the p-value is lower than 0.01. At that threshold, less than one percent of tests will fail of data sets sampled from the same underlying distribution.  This corresponds to rejecting the hypothesis of identity for data samples that differ by roughly $3 \sigma$.  The 0.01 metric is somewhat arbitrary - it was chosen to be small enough that pure statistical fluctuations should not often lead to false or unnecessary systematic errors.  For example, if a p-value of 0.1 were used instead, this would result in roughly 10\% of "good" results failing the test and contributing to the uncertainty, which would lead to a gross overestimation of the total systematic error.  Similarly, a threshold of 0.001 would probably underestimate the error.  Thus, 0.01 was chosen.
 
 In this analysis, Chi2Test() will be used to compare two correlation functions which are uncorrelated with each other (uncorrelated in the sense that they are completed independent data samples).  One example where this can be employed is the comparison of correlation functions constructed using data taken under different field configurations.  This analysis needs all the data available to it, so results taken under different field configurations will need to be merged to improve statistics.  But before they are combined, it must be checked that they contain compatible results.  The Chi2Test() method provides a means of characterizing the degree of similarity of the correlation functions.  
 
@@ -996,7 +1002,7 @@ A more precise measurement of the necessary correction could be done (and will e
 
 The $K^0_\mathrm{S}K^0_\mathrm{S}$ femtoscopic analysis has explored both of these methods.  In that analysis, it found that the method employed here (extracting a simple Gaussian smearing width and using it to simulate the momentum smearing) overestimated the momentum correction factor by up to a factor of 4 relative to the more precise method (i.e. a 4\% effect rather than a 1\% effect).  The similarity of the $K^0_\mathrm{S}K^0_\mathrm{S}$ analysis and the $\Lambda\Lambda$ analysis (both study V0 femtoscopy) suggests that the momentum resolution correction factor is overestimated here as well.
 
-Given the issues listed above, it is possible for the resolution correction made here to be over or underestimated. At this point in the analysis, we willmake a rough estimate of a symmetric systematic uncertainty for each correlation function, calculated using
+Given the issues listed above, it is possible for the resolution correction made here to be over or underestimated. At this point in the analysis, we will make a rough estimate of a symmetric systematic uncertainty for each correlation function, calculated using
 \begin{equation}
 \sigma_{\mathrm{sys}}(k^*) = \frac{1}{4}\abs{C_{\mathrm{uncorrected}} (k^*) - C_{\mathrm{corrected}}(k^*)}.
 \end{equation}
@@ -1005,12 +1011,132 @@ The corrections are performed on centrality merged (and pair type merged, in the
 \subsection{Combining different sources of systematic error}
 \label{sec:CombiningSys}
 
-Systematic errors have been evaluated for each type of cut, each pair type, and each centrality bin.  For a given centrality bin and pair type, the histograms containing those errors have been added in quadrature for each $k^*$ bin.  The resulting summed histogram is the systematic uncertainty for that centrality bin and pair type.
+Systematic errors have been evaluated for each type of cut, each pair type, and each centrality bin.  For a given centrality bin and pair type, the histograms containing those errors have been added in quadrature for each $k^*$ bin.  The resulting summed histogram is the systematic uncertainty for that centrality bin and pair type.  Tables \ref{tab:SysErrorSourcesLL} - \ref{tab:SysErrorSourcesLA} are provided to give ballpark estimates of the systematic errors from each source.  The tables show the average (over each $k^*$ bin) error size for a given uncertainty source, as well as the largest value of error found in any $k^*$ bin.
 
 When correlation functions for multiple centrality bins are merged together, the errors for each centrality bin are added in quadrature (for each $k^*$ bin) and then averaged over the number of centrality bins.  Similarly, when combining the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ results, the systematic errors for each centrality range are added in quadrature and then divided by two.  Subsequently, the systematic errors associated with the momentum resolution correction of each correlation function is added in quadrature with the rest of the errors.
 
-The resulting correlation functions with combined systematic errors are shown in in Section \ref{sec:CorrelationFunctions}.
+The resulting correlation functions with combined systematic errors are shown in Section \ref{sec:CorrelationFunctions}.
 
+\begin{table}
+\caption[Systematic error contributions for $\Lambda\Lambda$] {Systematic error contributions for $\Lambda\Lambda$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLL} 
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & Error Source & Average Error & Max Error \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & Avg Sep Prot & 1.8e-5 & 5.7e-5 \\
+   &         & Avg Sep Pion & 2.1e-5 & 8.7e-5 \\
+   &         & Avg Sep Prot & 1.1e-5 & 3.7e-5 \\
+   &         & Avg Sep Pion & 1.3e-5 & 6.6e-5 \\
+   & 5-10\%  & Avg Sep Prot & 9.4e-6 & 4.8e-5 \\
+   &         & Avg Sep Pion & 8.6e-6 & 1.0e-5 \\
+   & 10-15\% & $\cos(\Theta_{\mathrm{P}})$ & 4.4e-4 & 1.9e-3 \\
+   &         & $B$ Fields & 5.2e-3 & 2.4e-2 \\
+   &         & Avg Sep Prot & 3.0e-5 & 7.0e-5 \\
+   &         & Avg Sep Pion & 2.9e-5 & 8.6e-5 \\
+   &         & Avg Sep Pion & 4.9e-5 & 1.8e-4 \\
+   & 15-20\% & Avg Sep Pion & 3.5e-5 &  1.2e-4 \\
+   &         & Avg Sep Pion & 4.3e-5 & 1.5e-4 \\
+   & 20-25\% & $\cos(\Theta_{\mathrm{P}})$ & 1.0e-3 & 9.6e-3 \\
+   &         & Avg Sep Prot & 1.1e-4 & 7.1e-4 \\
+   & 25-30\% & V0 DCA & 9.9e-4 & 1.9e-3\\
+   &	         & Pion DCA & 1.4e-3 & 7.0e-3\\
+   &         & Avg Sep Pion & 7.5e-5 & 4.6e-4 \\
+   & 30-35\% & Pion DCA & 2.4e-3 & 2.7e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.4e-3 & 1.5e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 6.8e-4 & 2.9e-3 \\
+   & 35-40\% & $\cos(\Theta_{\mathrm{P}})$ & 1.1e-3 & 7.3e-3 \\
+   & 40-45\% & Pion DCA & 1.9e-3 & 6.3e-3 \\
+   &         & Prot DCA & 9.6e-3 & 1.2e-1 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.4e-3 & 5.1e-3 \\ 
+   & 45-50\% & V0 DCA & 3.7e-3 & 9.9e-3 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 3.9e-3 & 4.1e-2 \\
+   \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}
+\caption[Systematic error contributions for $\bar{\Lambda}\bar{\Lambda}$] {Systematic error contributions for $\bar{\Lambda}\bar{\Lambda}$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesAA} 
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+  \hline                         
+  Pair Type & Centrality Range & Error Source & Average Error & Max Error \\
+  \hline 
+  $\bar{\Lambda}\bar{\Lambda}$ & 0-5\% & Pion DCA & 5.4e-4 & 4.6e-3 \\
+   &        & Daughter DCA & 7.7e-4 & 7.4e-3 \\
+   &        & Avg Sep Prot & 2.1e-5 & 5.5e-5 \\
+   &         & Avg Sep Prot & 1.8e-5 & 5.2e-5 \\
+   & 5-10\% & Pion DCA & 2.0e-4 & 2.0e-3 \\
+   &         & Avg Sep Prot & 1.0e-5 & 1.1e-5 \\
+   &         & Avg Sep Pion & 8.4e-6 & 1.4e-5 \\
+   & 10-15\% & Avg Sep Prot & 9.9e-6 & 3.8e-5 \\
+   &         & Avg Sep Pion & 2.5e-5 & 8.6e-5 \\
+   & 15-20\% & Avg Sep Prot & 1.7e-4 & 1.0e-3 \\
+   &         & Avg Sep Pion & 4.1e-5 & 1.5e-4 \\
+   &         & Avg Sep Pion & 6.0e-5 & 2.2e-4 \\
+   & 20-25\% & Prot DCA & 2.6e-3 & 2.1e-2 \\
+   &         & $B$ Fields & 9.1e-3 & 3.6e-2 \\
+   & 25-30\% & $\cos(\Theta_{\mathrm{P}})$ & 5.1e-4 & 3.7e-3 \\
+   & 30-35\% & Pion DCA & 1.6e-3 & 1.3e-2 \\
+   &         & $B$ Fields & 1.4e-2 & 9.3e-2 \\
+   &         & Avg Sep Prot & 8.3e-5 & 4.9e-4 \\
+   & 35-40\% & V0 DCA & 2.8e-3 & 1.1e-2 \\
+   &         & Pion DCA & 2.4e-4 & 2.7e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 2.8e-3 & 2.1e-2 \\
+   & 40-45\% & Pion DCA & 3.5e-3 & 3.4e-3 \\
+   &         & Pion DCA & 3.3e-3 & 3.9e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.2e-3 & 9.7e-3 \\
+   & 45-50\% & V0 DCA & 1.1e-2 & 1.2e-1 \\
+   &         & Pion DCA & 3.6e-3 & 3.2e-3 \\
+   &         & Pion DCA & 6.7e-3 & 4.8e-2 \\
+   &         & Daughte DCA & 4.0e-3 & 2.7e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 2.7e-3 & 1.0e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.8e-3 & 9.3e-3 \\
+   \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}
+\caption[Systematic error contributions for $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$] {Systematic error contributions for $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLLAA} 
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & Error Source & Average Error & Max Error \\
+  \hline
+  $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ & Momentum Res & 0-10\% & 2.9e-4 & 8.2e-3 \\
+   & 10-30\% & Momentum Res & 2.6e-4 & 8.3e-3 \\
+   & 30-50\% & Momentum Res & 2.7e-3 & 8.3e-3 \\
+  \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}
+\caption[Systematic error contributions for $\Lambda\bar{\Lambda}$] {Systematic error contributions for $\Lambda\bar{\Lambda}$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLA} 
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+  \hline                        
+  Pair Type & Centrality Range & Error Source & Average Error & Max Error \\
+  \hline  
+  $\Lambda\bar{\Lambda}$ &  0-5\% & V0 DCA & 2.8e-4 & 2.2e-3 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.6e-4 & 1.6e-3 \\
+   &         & Avg Sep Prot & 2.6e-6 & 6.7e-6 \\
+   & 5-10\%  & Avg Sep Prot & 6.4e-6 & 9.2e-6 \\
+   & 10-15\% & Avg Sep Prot & 8.5e-6 & 3.7e-5 \\
+   & 15-20\% & $B$ Field & 4.3e-3 & 1.9e-2 \\
+   & 20-25\% & $\cos(\Theta_{\mathrm{P}})$ & 5.4e-4 & 5.2e-3 \\
+   & 25-30\% & V0 DCA & 6.2e-4 & 3.2e-3 \\
+   & 30-35\% & Nothing & &  \\
+   & 35-40\% & Nothing & &  \\
+   & 40-45\% & Pion DCA & 8.6e-4 & 2.1e-3  \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.9e-3 & 2.4e-2 \\
+   & 45-50\% & Nothing & &  \\
+   & 0-10\%  & Momentum Res & 1.6e-4 & 1.4e-3 \\
+   & 10-30\% & Momentum Res & 1.1e-3 & 4.9e-3 \\
+   & 30-50\% & Momentum Res & 6.0e-4 & 6.0e-3 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{table}
 
 \section{Correlation function results}
 \subsection{Correlation functions}
@@ -1026,7 +1152,7 @@ C_{combined}(k^*) = (\displaystyle\sum\limits_{i} w_i C_i(k^*))/(\displaystyle\s
 \end{equation}
 where the sum is done over different correlation function bins (e.g. 0-5\% and 5-10\%) and $w_i$ is the number of numerator pairs in $C_i$.  This averaging is done on a bin-by-bin basis in $k^*$.  Note that this averaging procedure should be used in general to combine data sets with potentially different phase spaces. For example, this procedure is employed to combine data from runs utilizing the two different field orientations (see Section \ref{sec:DataSelection}).  It is also employed when combining $\Lambda\Lambda$ data with $\bar{\Lambda}\bar{\Lambda}$ data.  For each centrality range (0-10\%, 10-30\%, and 30-50\%), the correlation functions of the two pair types were found to be consistent with each other (p-values of 0.26, 0.02, and 0.43 respectively).  Therefore, no additional systematic error was assessed to come out of their merging.
 
-Figures \ref{fig:CFLamLamALamALam010}, \ref{fig:CFLamLamALamALam1030}, and \ref{fig:CFLamLamALamALam3050} show combined $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  Figures \ref{fig:CFLamALam010}, \ref{fig:CFLamALam1030}, and \ref{fig:CFLamALam3050} show $\Lambda\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  Each plot includes the combined systematic errors discussed in Section \ref{sec:GeneralCfSysErrorDiscussion}.
+Figures \ref{fig:CFLamLamALamALam010}, \ref{fig:CFLamLamALamALam1030STAR}, and \ref{fig:CFLamLamALamALam3050} show combined $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  Figures \ref{fig:CFLamALam010}, \ref{fig:CFLamALam1030}, and \ref{fig:CFLamALam3050} show $\Lambda\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  Each plot includes the combined systematic errors discussed in Section \ref{sec:GeneralCfSysErrorDiscussion}.
 
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-010-CommentCorrections.pdf}
@@ -1217,7 +1343,7 @@ The results of Figure \ref{fig:MCYields} can be better interpreted by taking the
 Figure \ref{fig:OriginToMassCut} shows another ratio.  In this plot, one sees the event-averaged reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).  This efficiency encompasses not only the results of the analysis-side cuts, but also the natural tracking efficiencies of ALICE detector.  One can see that the various $\Lambda$ and $\bar{\Lambda}$ types for the most part have a reconstruction rate between 15-25\%.  These reconstruction efficiencies could be convoluted with the thermal yield calculations of Section \ref{sec:LambdaParams} to obtain corrected estimates of the yields and $\lambda$ parameters.  Further analyses of these results are in progress.
 
 \subsection{A note on injected Monte Carlo signals}
-\label{sec:ReconstructionEff}
+\label{sec:InjectedMCSignals}
 
 It should be noted that this MC run, LHC12a17a\_fix, has injected $\Xi^0$, $\Xi^-$, and $\Omega$ signals, but not their respective antiparticles.  The disparity can be seen in Figure \ref{fig:MCEfficiencyWithInjected}, which shows the average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species. The reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  A clear disparity can be seen between the reconstruction efficiencies of $\Lambda_{\Xi}$ and $\Lambda_{\Omega}$ and their respective antiparticles.  (This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.)
 
@@ -1231,7 +1357,7 @@ underlying HIJING particles.  Because the efficacy of the various reconstruction
 \end{figure}
 
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-04-20-Efficiency-WithInjectedSignals-OldCuts_2013-09-04Run.pdf}
+\includegraphics[width=36pc]{Figures/2014-04-20-Efficiency-NoInjectedSignals-OldCuts_2013-11-19Run.pdf}
 \caption[$Lambda$ reconstruction efficiencies without injected signals]{Average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species.  Reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  The analysis was performed for HIJING events with injected hyperon signals.  However, injected hyperon signals have been excluded from this plot.  The various secondary $\Lambda$ are seen to have approximately the same reconstruction efficiency as respective antiparticles.  This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.}
 \label{fig:MCEfficiencyNoInjected}
 \end{figure}
