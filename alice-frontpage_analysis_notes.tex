@@ -21,6 +21,19 @@
 \linenumbers
 \setlength\linenumbersep{5pt}
 \renewcommand\linenumberfont{\normalfont\tiny\sffamily\color{gray}}
+
+% clickable table of contents
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=blue,  %choose some color if you want links to stand out
+   	%linkcolor={blue!50!black},
+    %citecolor={green!50!black},
+    %urlcolor={blue!80!black}
+}
+
 %
 \begin{document}%
 %%%%%%%%%%%%% ptdr definitions %%%%%%%%%%%%%%%%%%%%%
@@ -43,7 +56,7 @@
 }
 \author{Email: jai.salzwedel@cern.ch}
 %
-\ShortAuthor{ALICE Internal Note 2014}      % appears on left page headers, do not change
+\ShortAuthor{ALICE Internal Note 2015}      % appears on left page headers, do not change
 %
 \begin{abstract}
 Two-$\Lambda$ momentum correlation functions measured in PbPb collisions at $\sqrt{s_{NN}}=2.76$ TeV by the ALICE collaboration are presented.  Results are shown for $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ pairs.
