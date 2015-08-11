@@ -7,7 +7,6 @@
 %\title{}
 %\begin{document}
 
-
 \providecommand{\abs}[1]{\left\lvert#1\right\rvert}
 \tableofcontents
 \listoffigures
@@ -43,7 +42,8 @@ Both the data analysis as well as the MC analysis utilized information from seve
 \subsection{Analysis code}
 The analysis task used is called AliAnalysisV0Lam.cxx, with the V0 reconstruction code included in AliAnalysisV0LamCutProcessing.cxx.  The code for this analyis is not currently committed to AliRoot.
 
-\subsection{$\Lambda$ reconstruction}
+\subsection{\texorpdfstring{$\Lambda$}{Lambda} reconstruction}
+%\subsection{$\Lambda$ reconstruction}
 \label{sec:Recon}
 
 $\Lambda$ are neutral particles, and as such we do not directly detect them.  Instead, $\Lambda$ are topologically reconstructed by looking for the daughter tracks that they decay into.  The general term for particles reconstructed this way (including $\bar{\Lambda}$ and $K^0_\mathrm{s}$) is V0.
@@ -101,7 +101,7 @@ $\Lambda$ were reconstructed and their corresponding AliAODMCParticle objects we
 
 For the construction of Figures \ref{fig:LambdaCutDists1},\ref{fig:LambdaCutDists2},\ref{fig:AntiLambdaCutDists1}, and \ref{fig:AntiLambdaCutDists2}, each $\Lambda$ type was preselected using AliAODMCParticle information, and only V0 candidates of that type were reconstructed in that analysis run. This was done for ease of histogramming the distributions.  Roughly equal numbers events were analyzed for each run type, with the exception of the analysis of the primary $\Lambda$.  That analysis run utilized only about half the data set.  Therefore, the primary $\Lambda$ ($\bar{\Lambda}$) distributions in Figures \ref{fig:LambdaCutDists1},\ref{fig:LambdaCutDists2},\ref{fig:AntiLambdaCutDists1}, and \ref{fig:AntiLambdaCutDists2} have been scaled by a factor of 2 to compensate.
 
-In these figures, both the shape and magnitude of each distribution is relevant for determining the cuts. For each cut type, a cut value was selected such that a looser cut would differentially accept more fake or secondary $\Lambda$ than primary $\Lambda$. Ideally, these cuts would be selected to reduce the inclusion of all types of secondary $\Lambda$.  However, it can be seen from the distributions that $\Lambda$ that come from $\Sigma$ decay display virtually the same cut parameter distribution shapes as primary $\Lambda$.  Only the magnitude of the $\Sigma$ curves differ from the primary $\Lambda$ curves.  This is due to the short decay length of the $\Sigma$ decay: $c\tau \approx 20$ pm for $\Sigma^0$ , and $c\tau \approx 6$ fm for $\Sigma$(1385). As a result, secondary $\Lambda$ from $\Sigma$ look identical to primary $\Lambda$, and they cannot be selectively removed from the analysis.
+In these figures, both the shape and magnitude of each distribution is relevant for determining the cuts. For each cut type, a cut value was selected such that a looser cut would differentially accept more fake or secondary $\Lambda$ than primary $\Lambda$. Ideally, these cuts would be selected to reduce the inclusion of all types of secondary $\Lambda$.  However, it can be seen from the distributions that $\Lambda$ that come from $\Sigma$ decay display virtually the same cut parameter distribution shapes as primary $\Lambda$.  Only the magnitude of the $\Sigma$ curves differ from the primary $\Lambda$ curves.  This is due to the short decay length of the $\Sigma$ decay: $c\tau \approx 20$ pm for $\Sigma^0$ , and $c\tau \approx 6$ fm for $\Sigma$(1385). As a result, secondary $\Lambda$ from $\Sigma$ look identical to primary $\Lambda$ from the perspective of topological cuts, and they cannot be selectively removed from the analysis.
 
 The systematic errors associated with these cut choices are discussed in Section \ref{sec:SystematicsReconstruction}. Further discussion of the reconstruction efficiency of the different $\Lambda$ types can be found in Section \ref{sec:ReconstructionEff}.
 
@@ -184,7 +184,7 @@ One alternative/complement to using an average separation cut would be to enforc
 \begin{minipage}{18pc}
 \includegraphics[width=18pc]{Figures/2013-09-15-TwoTrackPerfCorrected.pdf}
 \end{minipage} 
-\caption[Two-track reconstruction effects]{\label{fig:TwoTrackPerf}Correlation function versus average separation distance in the TPC for proton daughters.  Constructed using same-event pairs over uncorrected mixed-event pairs.  Both splitting (enhancement) and merging (suppression) effects are visible. The left panel shows the distribution with uncorrected mixed-event pairs, while the right panel shows the distributions with proper primary-vertex correction treatment.}
+\caption[Two-track reconstruction effects]{\label{fig:TwoTrackPerf}Correlation function versus average separation distance in the TPC for proton daughters.  Constructed using same-event pairs over uncorrected mixed-event pairs.  Both splitting (enhancement) and merging (suppression) effects are visible. The left panel shows the distribution with uncorrected mixed-event pairs, while the right panel shows the distributions with proper primary vertex correction treatment.}
 \end{figure}
 
 \begin{figure}[hbtp]
@@ -1296,7 +1296,7 @@ Proper fitting techniques for this analysis are still a work in progress.  In pa
 
 %Discussion of current status of fit results and systematic uncertainties.  Report measured systematics as well as possible sources of systematics yet to be explored.
 
-\subsection{Estimates of $\lambda$ parameters}
+\subsection{Estimates of \texorpdfstring{$\lambda$}{lambda} parameters}
 \label{sec:LambdaParams}
 
 In this section, we attempt to make a very rough, preliminary estimate of the relevant $\lambda$ parameters involved in this calculation.  A more refined estimate could be made by convoluting ALICE particle spectra with analysis-specific reconstruction efficiencies to determine analysis-specific yields of the various particle types.  That avenue will be discussed more in Section \ref{sec:ReconstructionEff}. 
