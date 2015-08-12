@@ -1,0 +1,138 @@
+\section{Fitting results and systematics}
+\label{sec:FittingSystematics}
+
+
+
+\subsection{Fitting via Gaussian residual method}
+
+
+
+\subsection{Fitting via the transform method}
+
+Proper fitting techniques for this analysis are still a work in progress.  In particular, efforts are being made to evaluate the extent to which residual correlations permeate the measured correlation functions.  In this analysis, the importance of residual correlations can be characterized by two sets of parameters.  The scattering lengths $f_0$ of the residual pair describe the strength of the residual pair interaction, such that a larger $\abs{f_0}$ will generally lead to a more pronounced residual correlation function.  Meanwhile, the pair purity $\lambda$ of each pair type describes the relative contribution of each individual correlation function (i.e. primary or residual) to the total correlation function, as described in Section \ref{sec:Residual}. The following sections will discuss how these two parameters are evaluated in this analysis.
+
+
+%Discussion of current status of fit results and systematic uncertainties.  Report measured systematics as well as possible sources of systematics yet to be explored.
+
+\subsection{Estimates of \texorpdfstring{$\lambda$}{lambda} parameters}
+\label{sec:LambdaParams}
+
+In this section, we attempt to make a very rough, preliminary estimate of the relevant $\lambda$ parameters involved in this calculation.  A more refined estimate could be made by convoluting ALICE particle spectra with analysis-specific reconstruction efficiencies to determine analysis-specific yields of the various particle types.  That avenue will be discussed more in Section \ref{sec:ReconstructionEff}. 
+
+To understand the mathematical motivation behind the $\lambda$ parameters, let us consider the simple case where the signal pairs of the correlation function come from a single event.  Within this event, all combinations of reconstructed V0s are paired together and binned according to their $k^*$ values.  For this analysis, the reconstructed V0s consist of primary $\Lambda$, secondary $\Lambda$, and false $\Lambda$.  Let us assume that origin of the different $\Lambda$ cannot be determined - the analysis only knows that a given V0 appears to be a $\Lambda$.  As mentioned above, the total correlation function will be a linear combination of the component correlation functions (primary-primary, primary-secondary, primary-fake, fake-fake, etc.).  The $\lambda$ parameters for each component correlation are given by the fraction of total pairs of that type.  For example, if there are ten distinct $\Lambda\Sigma$ pairs and one hundred total pairs, then $\lambda_{\Lambda\Sigma} = 1/10$.  Ideally, the sum of all $\lambda$ should be unity.  That said, in practice one reason the sum of $\lambda$ parameters can deviate from unity is if the source is not truly a gaussian.
+
+The following equations describe a combinatoric approach for estimating the $\lambda$ parameters for different types of pairs.  For two identical particles (e.g. primary $\Lambda$) \begin{equation}
+\label{eq:LambdaIdentical}
+\lambda_{\Lambda\Lambda} = \frac{N_\Lambda}{T}\frac{(N_\Lambda -1)/2}{(T-1)/2} = \frac{N_\Lambda}{T}\frac{(N_\Lambda -1)}{(T-1)}
+\end{equation}
+where the $\Lambda$ subscript means primary $\Lambda$, $N$ is the number of particles of that type, $T$ is the total number of all indistinguishable particles, and the factors of $1/2$ remove double counting.  For two different, indistinguishable particles (e.g. a primary $\Lambda$ and a $\Lambda$ from a $\Sigma^0$ decay)
+\begin{equation}
+\lambda_{\Lambda\Sigma} = \frac{N_\Lambda}{T} \frac{N_\Sigma}{(T-1)/2}
+\end{equation}
+where the $\Sigma$ subscript indicates $\Lambda$ from $\Sigma$ decays.  $\lambda$ can also be calculated for pairs that are distinguishable, such as primary $\Lambda$ and primary $\bar{\Lambda}$:
+\begin{equation}
+\lambda_{\Lambda\bar{\Lambda}} = \frac{N_\Lambda}{T_{\Lambda-\mathrm{type}}} \frac{N_{\bar{\Lambda}}}{T_{\bar{\Lambda}-\mathrm{type}}}
+\end{equation}
+where $T_{\Lambda-\mathrm{type}}$ is the sum of all indistinguishable particles that look like $\Lambda$, etc.  These equations are all easily generalized to other particle pairs.
+
+One should note here that the above $\lambda$ equations technically apply to some sort of single-event correlation function.  The $\lambda$ parameters measured or estimated for a million-event correlation function would roughly correspond to an event-averaged value.  Nonetheless, we can attempt to employ these formulae to obtain ballpark estimates of the $\lambda$ parameters, given estimates of the yields of each type of particle.
+
+As the goal of this analysis is to measure the correlations of primary $\Lambda$, it is important to know the relative yields of secondary $\Lambda$.  We can obtain an estimate \cite{Florkowski:2010zz} of the yields of different types of particles at mid-rapidity from a thermal model using
+\begin{equation}
+\frac{1}{m_{\mathrm{T}}}\frac{dN}{dm_{\mathrm{T}}} \propto \exp{(-m_\mathrm{T}/T)}
+\end{equation}
+where the transverse mass $m_\mathrm{T} = \sqrt{m^2_{\mathrm{inv}} + p^2_{\mathrm{T}}}$ and $T$ is the chemical-feezeout temperature.  Integrating over $m_\mathrm{T}$ gives $N \propto (m_\mathrm{inv} + T) \exp{(-m_\mathrm{inv}/T)}$.  Therefore, the yield of any particle species $i$ relative to the $\Lambda$ yield is
+\begin{equation}
+\frac{N_i}{N_\Lambda} \approx \frac{m_i + T}{m_\Lambda + T} \exp{((m_\Lambda - m_i)/T)}.
+\end{equation}
+
+Particles that decay into $\Lambda$ include $\Sigma^0$, $\Xi^0$, $\Xi^-$, and $\Omega^-$.  Assuming a freezeout temperature of 165 MeV, and taking into account that the $\Omega$ has a branching ratio of ~68\% and the others ~100\%, we can then estimate that for every 100 $\Lambda$, there will be approximately 67 $\Sigma$, 34 of each type of $\Xi$, and 3 $\Omega$.
+
+Before calculating the $\lambda$ parameters, it is also necessary to know approximately how many fake $\Lambda$ there are.  In Section \ref{sec:Recon}, we estimated that our signal quality $P$ was $P = real/(real + background) \approx 0.82$ (Note: calculations were performed using a now outdated purity estimate).  Taking $real$ to be the sum of all the primary and secondary $\Lambda$, we calculate that $\frac{background}{real} = P^{-1}-1 \approx 0.22$.  With the above yields totalling 238 $\Lambda$, we would expect to see an additional 52 fake $\Lambda$.  Based on these values, we can now estimate the $\lambda$ parameters for all pair types.
+
+\begin{center}
+\begin{tabular}{|l|l|c|}
+\hline
+					& 	$\lambda$	&	Cumulative total \\ \hline
+$\Lambda\Lambda$   	&	0.12			&	0.12 \\ \hline
+$\Lambda\Sigma^0$  	&	0.16			&	0.28 \\ \hline
+$\Lambda\Xi^0$     	&	0.08			&	0.36 \\ \hline
+$\Lambda\Xi^-$     	&	0.08			&	0.44 \\ \hline
+$\Lambda\Omega$    	&	0.007		&	0.45 \\ \hline
+$\Sigma^0\Sigma^0$ 	&	0.05			&	0.50 \\ \hline
+$\Sigma^0\Xi^0$    	&	0.05			&	0.55 \\ \hline
+$\Sigma^0\Xi^-$    	&	0.05			&	0.61 \\ \hline
+$\Sigma^0\Omega$   	&	0.004		&	0.61 \\ \hline
+$\Xi^0\Xi^0$       	&	0.01			&	0.63 \\ \hline
+$\Xi^0\Xi^-$ 		&	0.03			&	0.65 \\ \hline
+$\Xi^0\Omega$ 		&	0.002		&	0.66 \\ \hline
+$\Xi^-\Xi^-$ 		&	0.01			&	0.67 \\ \hline
+$\Xi^-\Omega$ 		&	0.002		&	0.67 \\ \hline
+$\Omega\Omega$ 		&	0.00			&	0.67 \\ \hline
+\end{tabular}
+\end{center}
+
+These estimates have several interesting characteristics.  First, the sum of the primary correlation all the residual correlations totals to 0.67.  The other 33\% is lost to the background.  Note that feedup from residual p$\Lambda$ correlations would be included in this 33\%, though feedup has otherwise not yet been explored in this analysis. Another striking feature of these data is that the contribution from $\Lambda\Sigma$ is actually larger than the contribution from $\Lambda\Lambda$.  In other words, if the hyperon yields and reconstruction efficiencies of the true PbPb data are reminiscent of the yields above, then this analysis is measuring the $\Lambda\Sigma$ correlation more than the $\Lambda\Lambda$ correlation.  It should also be noted that contributions from $\Lambda\Xi$, $\Sigma\Sigma$, and $\Sigma\Xi$ are appreciable.
+
+For the the $\Lambda\bar{\Lambda}$ analysis, estimates of the $\lambda$ parameters work out to be approximately the same as in the table above.
+
+\subsection{Reconstruction efficiency effects on relative particle yields}
+\label{sec:ReconstructionEff}
+
+Note: This section is still under construction.  While the details eventually contained here will be important for fitting correlation functions, these details not particularly relevant for the construction of the correlation functions (i.e. the results under approval for Quark Matter 2014).  The plots have yet to be finalized - they will be added later.
+
+The above $\lambda$ estimates have been made under the assumption that primary and secondary $\Lambda$ have the same chance to be reconstructed.  However, detector efficiencies and topological reconstruction cuts can change the relative yields of each of these $\Lambda$ types.  To investigate the influence of reconstruction efficiencies on particle yields, we looked at the reconstruction rates of the different particle types using the HIJING run specified in Section \ref{sec:DataSelection}.  The MC truth yields of the V0s were examined at three stages of reconstruction:
+\begin{itemize}
+\item In the raw MC event before any detector simulation was added to the MC particles.  Here the daughters of the V0s are required to be in mid-rapidity and surpass a minimum $p_\mathrm{T}$ value.
+\item In the V0 finder before any analysis-side reconstruction cuts were employed.
+\item After topological reconstruction cuts were made.
+\end{itemize}
+At each stage, the MC truths of all remaining particles of the following types were counted: primary $\Lambda$; secondary $\Lambda$ from $\Sigma^0$, $\Sigma^*$, $\Xi^0$, $\Xi^-$, $\Omega$, and other sources; the respective anti-particles; $\mathrm{K}^0_{\mathrm{S}}$ misidentified as $\Lambda$ or $\bar{\Lambda}$; other misidentified V0s; and fake V0s reconstructed in the V0 finder.  The resulting yields are visible in Figure \ref{fig:MCYields}.
+
+The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  Figure \ref{fig:V0ToMassCut} shows one such ratio.  Here, one can see the fraction of V0s in the V0 finder that survived all the reconstruction cuts.  From this, one can see how successful the current topological cuts are at selecting (anti)$\Lambda$ of various origins.  With different topological cuts made, a before-and-after comparison of this plot shows the efficacy of the new cuts at removing secondary V0s vs primary V0s, as in Figure \ref{V0ToMassCutWithDifferentVarBin}.
+
+Figure \ref{fig:OriginToMassCut} shows another ratio.  In this plot, one sees the event-averaged reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).  This efficiency encompasses not only the results of the analysis-side cuts, but also the natural tracking efficiencies of ALICE detector.  One can see that the various $\Lambda$ and $\bar{\Lambda}$ types for the most part have a reconstruction rate between 15-25\%.  These reconstruction efficiencies could be convoluted with the thermal yield calculations of Section \ref{sec:LambdaParams} to obtain corrected estimates of the yields and $\lambda$ parameters.  Further analyses of these results are in progress.
+
+\subsection{A note on injected Monte Carlo signals}
+\label{sec:InjectedMCSignals}
+
+It should be noted that this MC run, LHC12a17a\_fix, has injected $\Xi^0$, $\Xi^-$, and $\Omega$ signals, but not their respective antiparticles.  The disparity can be seen in Figure \ref{fig:MCEfficiencyWithInjected}, which shows the average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species. The reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  A clear disparity can be seen between the reconstruction efficiencies of $\Lambda_{\Xi}$ and $\Lambda_{\Omega}$ and their respective antiparticles.  (This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.)
+
+The origin of this disparity has not been investigated in great detail, though it is suspected that the disparity arises from differences between the $p_\mathrm{T}$ spectra of the injected V0s and the 
+underlying HIJING particles.  Because the efficacy of the various reconstruction cuts and the detector efficiency is $p_\mathrm{T}$ dependant, the average reconstruction efficiency of injected particles may differ from the base HIJING particles.  Figure \ref{fig:MCEfficiencyWithInjected} therefore shows a disparity between multistrange hyperon and antihyperon efficiency because the hyperons include a mix of injected and underlying particles, while the antihyperons come only from the underlying event. The analysis was performed again with injected signals removed (see Figure \ref{fig:MCEfficiencyNoInjected}).  Without the injected signals, reconstruction efficiencies for the multi-strange particles and anti-particles are seen to be in line.  Subsequent studies of reconstruction cuts and efficiency were performed without injected signals such that secondary $\Lambda$ and $\bar{\Lambda}$ efficiencies would be consistent.
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-04-20-Efficiency-WithInjectedSignals-OldCuts_2013-09-04Run.pdf}
+\caption[$Lambda$ reconstruction efficiencies with injected signals]{Average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species.  Reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  The analysis was performed for HIJING events with injected hyperon signals.  The events included injected $\Lambda$, $\bar{\Lambda}$, $\Xi$, and $\Omega$, but no $\bar{\Xi}$ or $\bar{\Omega}$.  A clear disparity can be seen between the reconstruction efficiencies of $\Lambda_{\Xi}$ and $\Lambda_{\Omega}$ and their respective antiparticles.  This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.}
+\label{fig:MCEfficiencyWithInjected}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-04-20-Efficiency-NoInjectedSignals-OldCuts_2013-11-19Run.pdf}
+\caption[$Lambda$ reconstruction efficiencies without injected signals]{Average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species.  Reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  The analysis was performed for HIJING events with injected hyperon signals.  However, injected hyperon signals have been excluded from this plot.  The various secondary $\Lambda$ are seen to have approximately the same reconstruction efficiency as respective antiparticles.  This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.}
+\label{fig:MCEfficiencyNoInjected}
+\end{figure}
+
+\subsection{Scattering parameters of residual pairs}
+\label{sec:ScatteringParams}
+
+As previously mentioned, little information exists about the hyperon-hyperon scattering parameters.  One goal of this analysis is to make a measurement of the $\Lambda\Lambda$ scattering lengths and effective radius.  However, the task remains to decide how to deal with the scattering parameters of all the various residual correlations, which are equally unknown.  One option would be to include separate parameters for each pair interaction.  However, this would introduce two or three new parameters (for particle-particle or particle-antiparticle, respectively) per pair type and yield a very unconstrained fit.  Another option would be to tighten cuts to remove as many of the secondary $\Lambda$ as possible.  However this route stands to significantly reduce the statistics of the fit, as primary $\Lambda$ will be lost alongside the secondary.  On top of that, reconstruction cuts are unlikely to appreciably cut out $\Sigma$ daughters, as the electromagnetic decay of the $\Sigma$ comes with a very short decay length.
+
+Yet another option would be to ansatz that all the pairs interact with approximately the same strength as the $\Lambda\Lambda$ interaction.  The disadvantage of this method is that the final measurement will essentially yield a weighted average of the various pair scattering parameters.  However, the advantage is that it allows all pairs (primary-primary, primary-secondary, secondary-secondary) to provide relevant contributions to the correlation function.  One potential way to estimate the systematic uncertainties in this method would be to do several additional fits, wherein the scattering parameters of the other pairs are treated as being 50\%, 25\%, and 0\% (no interaction) the strength of the $\Lambda\Lambda$ parameters.
+
+\subsection{Minuit fitting}
+\label{sec:MinuitFit}
+
+%Include practical treatment of fit parameters here. Residual correlation scattering lengths, simultaneous fitting.  Normalization factor vs polynomial background.
+Discussion of Minuit fitting procedure will go here.
+
+\subsection{Fit systematics}
+\label{sec:FitSystematics}
+
+Discussion of fit systematics will go here.
+
+\subsection{Fit results and interpretation}
+\label{sec:FitResults}
+
+Interpretation of final fit results will go here.
+

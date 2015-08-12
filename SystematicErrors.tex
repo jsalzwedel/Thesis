@@ -1,0 +1,893 @@
+\section{Systematic errors}
+\label{sec:GeneralCfSysErrorDiscussion}
+
+We will now attempt to identify the various systematic effects that may affect the correlation functions.  The goal will be to quantify the systematic uncertainties associated with each $k^*$ bin.  It should be noted, however, that subsequent fits to the correlation functions are not directly impacted by these error bars.  Instead, the systematics on the resulting fit parameters will be computed by refitting many versions of the correlation functions (e.g. those built with different reconstruction cuts) and comparing the results. This will be discussed in greater detail in Section \ref{sec:FitSystematics}.
+
+\subsection{Consistency checks for uncorrelated histograms}
+\label{sec:ConsistencyCheckUncorrelated}
+One of the tools we will employ in the search for systematic effects is the TH1::Chi2Test(TH1* h1) method, which compares two histograms bin-by-bin to determine a $\chi^2$.  The test is performed assuming the hypothesis that the two histograms are Poissonian samples of the same underlying distribution.  A p-value is computed which represents the probability that a measurement could be performed that would yield results this different or more, given the hypothesis of identity.  The hypothesis of identity is rejected in instances where the p-value is lower than 0.01. At that threshold, less than one percent of tests will fail of data sets sampled from the same underlying distribution.  This corresponds to rejecting the hypothesis of identity for data samples that differ by roughly $3 \sigma$.  The 0.01 metric is somewhat arbitrary - it was chosen to be small enough that pure statistical fluctuations should not often lead to false or unnecessary systematic errors.  For example, if a p-value of 0.1 were used instead, this would result in roughly 10\% of "good" results failing the test and contributing to the uncertainty, which would lead to a gross overestimation of the total systematic error.  Similarly, a threshold of 0.001 would probably underestimate the error.  Thus, 0.01 was chosen.
+
+In this analysis, Chi2Test() will be used to compare two correlation functions which are uncorrelated with each other (uncorrelated in the sense that they are completed independent data samples).  One example where this can be employed is the comparison of correlation functions constructed using data taken under different field configurations.  This analysis needs all the data available to it, so results taken under different field configurations will need to be merged to improve statistics.  But before they are combined, it must be checked that they contain compatible results.  The Chi2Test() method provides a means of characterizing the degree of similarity of the correlation functions.  
+
+Correlation functions that surpass the significance level of 0.01 will be treated as being functionally the same within statistics, and their weighted average will be computed without recourse to systematic uncertainty. In the instances where they do not exceed the significance level, they will be analyzed on a case-by-case basis.  In particular, we will look to see if there are any systematic differences between the correlation functions.  For example, it may be seen that the lowest ten $k^*$ bins will all be higher in one correlation function than another.  If so, the data will still be merged (so long as the results aren't dramatically different), but a systematic uncertainty will be computed and applied to the final averaged correlation function in the form of systematic error bars.  Section \ref{sec:CalculatingSysErrors} describes how these uncertainties are calculated.  
+
+When using Chi2Test() to compare correlation functions, the trouble areas that result in small p-values will likely be the lowest $k^*$ bins (which exhibit most of the interesting physics, and which also suffer the most from two-track effects), and large $k^*$ bins (close to $1 \mathrm{GeV/c}$).  The height of the the large $k^*$ bins is noticeably susceptible to statistical (or systematic) deviations in the normalization region.  The high $k^*$ bins have relatively small statistical error bars, so small deviations of normalization between correlation functions can result in large $\chi^2$ values.  The correlation functions are all normalized to unity in the $0.3 < k^* < 0.5 \mathrm{GeV}/c$ range, so there are unlikely to be significant deviations seen in that range.  
+
+It is important to emphasize that Chi2Test() is only appropriate for comparing two uncorrelated histograms.  In the case of correlated histograms (e.g. correlation functions constructed using slightly different two-track cuts or different reconstruction cuts), a different method must be used to test the histograms for consistency.  
+
+
+\subsection{Consistency checks for correlated histograms}
+\label{sec:ConsistencyCheckCorrelated}
+Chi2Test() cannot be used to compare correlated data because the test is performed assuming the statistical error bars on the two histograms are independent.  That is obviously not the case for two histograms that differ in their data only be a few percent.  In this analysis, we perform consistency checks of correlated data in the following fashion:
+
+\begin{enumerate}
+\item Take the difference between the two correlation function histograms $\Delta C(k^*) = C_1(k^*) - C_2(k^*)$, using $C_1\rightarrow$ Add($C_2$,$-1$).  The resulting histogram shows the usually small differences between the two data sets.
+\item Here, ROOT incorrectly adds the errors in quadrature.  To fix this, manually set the error bars using $\sigma_{\Delta}(k^*) = \sqrt{ \abs{ \sigma_1^2(k^*) - \sigma_2^2(k^*) }}$.  This error is correct in the specific case (found here) that one histogram is entirely a subdivision of the other.
+\item If there are no significant discrepancies or systematic differences between the two original correlation functions, the difference histogram should be consistent with zero.  We can test this using TH1::Chisquare(TF1*), and fit the data with the function $y=0$.  Chisquare() returns the $\chi^2$ value of the fit.
+\item We acquire a p-value for this consistency check using TMath::Prob(Double chi2, int ndf), which takes as input the $\chi^2$ from the fit and the number of $k^*$ bins as the number of degrees of freedom.  
+\item Finally, we evaluate the two correlation functions as either consistent or inconsistent depending on if they pass or fail the p-value test.  A p-value $\geq 0.01$ passes.  
+\item All pairs of histograms with p-values below that threshold are considered to have significant differences.  All such pairs are considered to introduce a $k^*$-dependent systematic error for the correlation function measurement in that particular centrality bin.  The method for evaluating the size of that systematic error is described in the following section.
+\end{enumerate}
+
+Using the steps listed above, we can evaluate if subtle changes to the cuts employed in correlation function construction change the resulting data in any significant way.  
+
+%The study of normalized residuals (the difference between the bin contents and the expected bin contents) can be used to characterize which regions are responsible for small p-values.  This is again handled by the Chi2Test() method.  For each $k^*$ bin, a normalized residual plot shows the number of $\sigma$ differences between the two correlation functions.  This can make it easy to look for systematic differences, even in the case of small shifts at high $k^*$, which would be hard to see by eye in the raw correlation functions.
+
+\subsection{Calculating systematic errors for data sets that fail p-value tests}
+\label{sec:CalculatingSysErrors}
+
+The general scheme for calculating systematic uncertainties is to take the difference between two correlation functions (which have failed a p-value test), and then fit that difference with a polynomial.  For each $k^*$ bin, the absolute value of the fit polynomial evaluated at the center of that bin is taken as the error for that bin.  The specifics of the procedure will be described in more detail below.
+
+This procedure of using fits to extract systematic error is intended to produce representatively large systematic errors when there are systematic differences between the correlation functions.  It is further intended to produce small systematic errors when the (large or small) differences between the correlation functions are essentially statistical fluctuations.  For example, $\Delta C(k^*)$ exhibits a clear, systematic upward shift in a particular $k^*$ range, the fit will be pulled upward in that region.  In contrast, if $\Delta C(k^*)$ has large deviations away from zero, but those deviations are distributed roughly randomly above and below zero, then the fit should be small in magnitude (and therefore give a small systematic error).   
+
+Initial attempts to use this fit method resulted in systematic error bars that grew in size with the statistical error bars.  That is, the measured systematic and statistical errors seemed strongly correlated.  To reduce the statistical dependence of the fitting procedure, the correlation functions were rebinned to have fewer bins (and more statistics in each bin) before fitting.
+
+Both uncorrelated data (Sec.\ \ref{sec:ConsistencyCheckUncorrelated}) and correlated data (Sec.\ \ref{sec:ConsistencyCheckCorrelated}) are fit in essentially the same way.  In both instances, the relevant correlation functions are reconstructed using rebinned numerators and denominators via TH1::Rebin(int).  Rebin(4) reduces the number of bins in the correlation functions by a factor of four.  The resulting rebinned correlation functions maintain the same general features and shape of the original correlation functions, but statistical fluctuations are significantly damped down. This was found to generally reduce the size of the error fit function, compared with fitting un-rebinned data.  
+
+The difference of the two rebinned correlation functions is calculated as $\Delta C_{\mathrm{rebin}}(k^*) = C_{1,\mathrm{rebin}}(k^*) - C_{2,\mathrm{rebin}}(k^*)$.  For correlated data, the statistical uncertainties of $\Delta C(k^*)$ are calculated as described in Section \ref{sec:ConsistencyCheckCorrelated}.  Otherwise, ROOT correctly handles the statistical uncertainties for uncorrelated data.
+
+$\Delta C_{\mathrm{rebin}}(k^*)$ is then fit with a fifth order polynomial.  The polynomial is converted into a histogram with the same number of $k^*$ bins as the original, un-rebinned correlation functions.  Finally, the contents of each bin is set to its absolute value.  The values of this histogram are taken to be the symmetric systematic errors associated with the particular failed correlation function consistency check.
+
+The sections below will discuss the specific details of looking for and evaluated systematic errors associated with different magnetic field configurations of the detector, different V0 reconstruction cuts, and different two-track cuts. Section \ref{sec:CombiningSys} will discuss how the different sources of systematic error are combined and applied to the final correlation functions.
+
+\subsection{Systematic errors associated with different run field configurations}
+\label{sec:SystematicsFieldConfig}
+
+In this section we discuss the systematic errors associated with the different field configurations ($++$ and $--$, see Section \ref{sec:DataSelection}).  Correlation functions are constructed separately for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), each 5\% centrality bin, and each field configuration.  For each centrality bin and pair type, we look for any non-statistical deviations in the correlation functions of the two field configurations via the application of Chi2Test().  Table \ref{tab:FieldPvalues} shows p-value results obtained from comparing the two different field results with Chi2Test().  For each pair type, most of the centrality bins pass the test - i.e. the correlation functions made with each field appear to sample from the same underlying distribution.  The few that do not pass have been analyzed using the fit method described in Section \ref{sec:CalculatingSysErrors} in order to quantify the systematic errors associated with their differences.  %Figure \ref{fig:ExampleFieldFailureSysErrors} shows the example results fitting the ... bin for systematic errors.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & .95  \\
+   & 5-10\%  & .38 \\
+   & 10-15\% & 3.4e-05 \\
+   & 15-20\% & .71 \\
+   & 20-25\% & .43 \\
+   & 25-30\% & .62 \\
+   & 30-35\% & .59 \\
+   & 35-40\% & .06 \\
+   & 40-45\% & .61 \\
+   & 45-50\% & .31 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .24 \\
+   & 5-10\% & .03 \\
+   & 10-15\% & .04 \\
+   & 15-20\% & .02 \\
+   & 20-25\% & .003 \\
+   & 25-30\% & .87 \\
+   & 30-35\% & .001 \\
+   & 35-40\% & .02 \\
+   & 40-45\% & .15 \\
+   & 45-50\% & .31 \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & .87 \\
+   & 5-10\% & .10 \\
+   & 10-15\% & .25 \\
+   & 15-20\% & 4.1e-05 \\
+   & 20-25\% & .04 \\
+   & 25-30\% & .11 \\
+   & 30-35\% & .44 \\
+   & 35-40\% & .03 \\
+   & 40-45\% & .26 \\
+   & 45-50\% & .011 \\
+  \hline  
+\end{tabular}
+\label{tab:FieldPvalues}
+\caption{p-values and $\chi^2$ calculated using the TH1::Chi2Test() method for correlation functions of different field configurations.  For a given pair type and centrality bin, correlation functions, with a p-value $\geq 0.01$ are assumed to sample the same underlying distribution.  For each pair type, one or two centralities are seen to fail the p-value test.  The differences between those centrality bins have been evaluated and the systematic errors associated with those differences have been quantified.}
+\end{center}
+\end{table}
+
+
+
+%\begin{figure}
+%\includegraphics[width=36pc]{Figures/***.pdf}
+%\caption[]{}
+%\label{fig:ExampleFieldFailureSysErrors}
+%\end{figure}
+
+
+
+\subsection{Systematic errors from reconstruction cuts}
+\label{sec:SystematicsReconstruction}
+
+In this section we discuss the systematic errors associated with the V0 reconstruction cuts (e.g. cosine of pointing angle, DCA to primary vertex, etc.).  In the investigation of this uncertainty, the first step was to determine the optimal cut values used.  This was done as discussed in Section \ref{sec:Recon}.  For example, the optimal cut value chosen for the DCA of daughter tracks to each other was 4 mm (daughters tracks were required to pass within that distance of each other).  This value was obtained by examination of Figure \ref{fig:LambdaCutDists2}.  However, there is some leeway in determining the optimal cut value.  Perhaps the true optimal value should be 3 mm or 5 mm.  All three values appear reasonable from inspection of Figure \ref{fig:LambdaCutDists2}.  Ideally, using any of the three values should result in approximately the correlation functions, with the only differences being statistical in nature and not systematic.  
+
+To test for systematic differences, we make correlation functions using $\Lambda$ ($\bar{\Lambda}$) reconstructed with these different cut values.  At any given time, one cut type (e.g.\ DCA of proton daughter to primary vertex) will be varied away from the designated optimal value, while the other cut types (e.g.\ cosine of pointing angle) are fixed to their respective optimal values. The constructed correlation functions share much of the same data, so they are highly correlated with each other.  It is therefore appropriate to compare them to each other using the TH1::Chisquare() method described in Section \ref{sec:ConsistencyCheckCorrelated}.  Pairs of correlation functions that pass the p-value test (p-value $\geq 0.01$) are said not to have any associated systematic error.  Those correlation functions that do fail the p-value test are assigned a systematic error as described in Section \ref{sec:CalculatingSysErrors}.
+
+
+
+%After correlation functions are constructed for each variation in the particular cut value, the different versions of the correlation functions will be compared via
+%\begin{equation}
+%\label{eqn:SysReconCfDiff}
+%\Delta C(k^*) = C_1(k^*)-C_2(k^*)
+%\end{equation}
+%where $C_1$ and $C_2$ are correlation functions constructed with different cut values.  Operationally, this is done by taking the difference of correlation function histograms.  Then any systematic differences between the plots can be seen on a bin-by-bin basis.  We will say that there is a systematic error associated with a cut if this difference yields an obvious systematic shift up or down for a section of neighboring $k^*$ bins.  If there is no systematic shift, we have two options.  One option is to judge that there is no systematic error associated with that particular cut.  The other option is to make a much larger variation in the cut value (using a value that is obviously not optimal) to see if that results in a systematic shift in the correlation function.  If it does, we would then somehow attempt to extrapolate from those differences to determine the systematic error.  However, it is not obvious at this time how that extrapolation process would proceed.
+
+%We'll now walk through an example of this method using the cut on the DCA of the pion to the primary vertex.  From examination of Figure \ref{fig:LambdaCutDists2}, it was determined that the optimal cut was to require the pions to have a DCA to primary vertex $> 3$ mm. Figure \ref{fig:SysPionDcaCf2Diff13} shows the results of calculating the correlation functions with 2 mm (left panel) and 4 mm (right panel), and then subtracting the resulting correlation function from the 3 mm CF.  This has been done for the 0-10\% centrality bin.  The error bars shown have been propagated by ROOT and they give a rough sense of the scale of the statistical errors on the original (unsubtracted) correlation functions.  However, in the context of the data in Figure \ref{fig:SysPionDcaCf2Diff13} they are also misleading, since the correlation functions being subtracted from one another have highly correlated statistics.  To judge whether there is any systematic error associated with this cut choice, we look to see if there is any correlated shift of $k^*$ bins away from zero.  No correlated shift is visible in either plot; the deviations from zero appear to be characteristic of statistical fluctuations.  Thus we judge that for this particular pair type ($\bar{\Lambda}\bar{\Lambda}$), centrality bin (0-10\%), and cut type (pion DCA to primary vertex), there is no significant systematic error associated with the cut.
+
+%\begin{figure}[h]
+%\begin{minipage}{18pc}
+
+%\includegraphics[width=18pc]{Figures/2014-04-01-SysPionDca-Cf2Diff1.pdf}
+%\end{minipage}\hspace{2pc}
+%\begin{minipage}{18pc}
+%\includegraphics[width=18pc]{Figures/2014-04-01-SysPionDca-Cf2Diff1.pdf}
+%\end{minipage} 
+%\caption[$\Delta C(k^*)$ for $\bar{\Lambda}\bar{\Lambda}$ correlation functions with different pion DCA cuts]{Difference between $\bar{\Lambda}\bar{\Lambda}$ correlation functions calculated with 3 mm pion DCA cut (optimal cut) and slightly different DCA cuts (Left: 2 mm.  Right: 4 mm) for the 0-10\% centrality bin.  Difference calculated as $\Delta C(k^*) = C_{3 \mathrm{mm}}(k^*)-C_{2,4 \mathrm{mm}}(k^*)$.  No systematic upward or downward shift is seen in either case.  These plots will be replaced with plots showing the correct statistical error, calculated via $\sigma_{\Delta}^2 = \abs{\sigma_1^2 - \sigma_2^2}$.}
+%\label{fig:SysPionDcaCf2Diff13}
+%\end{figure}
+
+Data has been collected for variations of the following cuts: V0's DCA to primary vertex, the proton's DCA to the primary vertex, the pion's DCA to the primary vertex, the DCA of the daughters to each other, and the cosine of the V0's pointing angle.  In each case, correlation functions have been constructed differentially in 5\% centrality bins for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), and for 3 different cut values (optimal cut, slightly tighter cut, slightly looser cut).  The optimal cut correlation functions have been compared separately with each of the slightly tighter and slightly looser cuts.  The p-values associated with these tests can be seen in Tables \ref{tab:V0DcaPrimVertPvalueTests5mmVs4mm}-\ref{tab:V0CosPointingPvalueTests9993vs9994}.
+
+\begin{table}
+\begin{minipage}{18pc}
+\caption {V0 DCA to Primary Vertex 5 mm vs 4 mm} \label{tab:V0DcaPrimVertPvalueTests5mmVs4mm} 
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & .06  \\
+   & 5-10\%  & .56 \\
+   & 10-15\% & .26 \\
+   & 15-20\% & .44 \\
+   & 20-25\% & .07 \\
+   & 25-30\% & 1.8e-04 \\
+   & 30-35\% & .24 \\
+   & 35-40\% & .72 \\
+   & 40-45\% & .94 \\
+   & 45-50\% & .17 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .81 \\
+   & 5-10\% & .39 \\
+   & 10-15\% & .22 \\
+   & 15-20\% & .18 \\
+   & 20-25\% & .96 \\
+   & 25-30\% & .38 \\
+   & 30-35\% & .27 \\
+   & 35-40\% & 1.8e-04 \\
+   & 40-45\% & .11 \\
+   & 45-50\% & 7.6e-05 \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & .21 \\
+   & 5-10\% & .13 \\
+   & 10-15\% & .71 \\
+   & 15-20\% & .97 \\
+   & 20-25\% & .32 \\
+   & 25-30\% & .95 \\
+   & 30-35\% & .09 \\
+   & 35-40\% & .82 \\
+   & 40-45\% & .39 \\
+   & 45-50\% & .33 \\
+  \hline  
+\end{tabular}
+%\caption{p-values and $\chi^2$ calculated using the TH1::Chi2Test() method for correlation functions of different field configurations.  For a given pair type and centrality bin, correlation functions, with a p-value $\geq 0.01$ are assumed to sample the same underlying distribution.  For each pair type, one or two centralities are seen to fail the p-value test.  The differences between those centrality bins have been evaluated and the systematic errors associated with those differences have been quantified.}
+\end{center}
+\end{minipage}
+\begin{minipage}{18pc}
+\caption {V0 DCA to Primary Vertex 5 mm vs 6 mm} \label{tab:V0DcaPrimVertPvalueTests5mmVs6mm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% &  .82 \\
+   & 5-10\%  & .19 \\
+   & 10-15\% & .73 \\
+   & 15-20\% & .55 \\
+   & 20-25\% & .07 \\
+   & 25-30\% & .97 \\
+   & 30-35\% & .94 \\
+   & 35-40\% & .87 \\
+   & 40-45\% & .03 \\
+   & 45-50\% & 3.7e-06 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .91 \\
+   & 5-10\% & .38 \\
+   & 10-15\% & .90 \\
+   & 15-20\% & .20 \\
+   & 20-25\% & .04 \\
+   & 25-30\% & .68 \\
+   & 30-35\% & .55 \\
+   & 35-40\% & .27 \\
+   & 40-45\% & .86 \\
+   & 45-50\% & .28 \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & 2.5e-13 \\
+   & 5-10\% & .23 \\
+   & 10-15\% & .84 \\
+   & 15-20\% & .25 \\
+   & 20-25\% & .07 \\
+   & 25-30\% & .006 \\
+   & 30-35\% & .49 \\
+   & 35-40\% & .41 \\
+   & 40-45\% & .51 \\
+   & 45-50\% & .91 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+
+
+
+
+\begin{table}
+\begin{minipage}{18pc}
+\caption {DCA of Pion Daughter to Primary Vertex, 3 mm vs 2 mm} \label{tab:DcaPionPvalueTests3mmVs2mm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & .10 \\
+   & 5-10\%  & .92 \\
+   & 10-15\% & .14 \\
+   & 15-20\% & .56 \\
+   & 20-25\% & .10 \\
+   & 25-30\% & .25 \\
+   & 30-35\% & 3.2e-16 \\
+   & 35-40\% & .41 \\
+   & 40-45\% & .2 \\
+   & 45-50\% & .36 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & 6.7e-4 \\
+   & 5-10\% & .73 \\
+   & 10-15\% & .16 \\
+   & 15-20\% & .04 \\
+   & 20-25\% & .23 \\
+   & 25-30\% & .11 \\
+   & 30-35\% & 2.9e-147 \\
+   & 35-40\% & 0.73 \\
+   & 40-45\% & 1.7e-11 \\
+   & 45-50\% &  1.1e-10 \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & .79 \\
+   & 5-10\% & .80 \\
+   & 10-15\% & .63 \\
+   & 15-20\% & .76 \\
+   & 20-25\% & .28 \\
+   & 25-30\% & .98 \\
+   & 30-35\% & .14 \\
+   & 35-40\% & .24 \\
+   & 40-45\% & 3.0e-16 \\
+   & 45-50\% & .32 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{minipage}
+\begin{minipage}{18pc}
+\caption {DCA of Pion Daughter to Primary Vertex, 3 mm vs 4 mm} \label{tab:DcaPionPvalueTests3mmVs4mm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & .18 \\
+   & 5-10\%  & .98 \\
+   & 10-15\% & .30 \\
+   & 15-20\% & .26 \\
+   & 20-25\% & .31 \\
+   & 25-30\% & 3.6e-4 \\
+   & 30-35\% & .01 \\
+   & 35-40\% & .02 \\
+   & 40-45\% & .002 \\
+   & 45-50\% & .60 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .30 \\
+   & 5-10\% & 2.9e-4 \\
+   & 10-15\% & .32 \\
+   & 15-20\% & .31 \\
+   & 20-25\% & .06 \\
+   & 25-30\% & .38 \\
+   & 30-35\% & .78 \\
+   & 35-40\% & 1.1e-10 \\
+   & 40-45\% & 2.9e-4 \\
+   & 45-50\% & 3.1e-09 \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & .99 \\
+   & 5-10\% & .96 \\
+   & 10-15\% & .24 \\
+   & 15-20\% & .11 \\
+   & 20-25\% & .62 \\
+   & 25-30\% & .55 \\
+   & 30-35\% & .67 \\
+   & 35-40\% & .01 \\
+   & 40-45\% & .29 \\
+   & 45-50\% & .72 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+
+
+
+
+\begin{table}
+\caption {DCA of Proton Daughter to Primary Vertex, 1 mm vs 2 mm} \label{tab:DcaProtonPvalueTests1mmVs2mm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & .04 \\
+   & 5-10\%  & .16 \\
+   & 10-15\% & .74 \\
+   & 15-20\% & .53 \\
+   & 20-25\% & .02 \\
+   & 25-30\% & .86 \\
+   & 30-35\% & .03 \\
+   & 35-40\% & .06 \\
+   & 40-45\% & .001 \\
+   & 45-50\% & .45 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .20 \\
+   & 5-10\% & .40 \\
+   & 10-15\% & .75 \\
+   & 15-20\% & .84 \\
+   & 20-25\% & .007 \\
+   & 25-30\% & .84 \\
+   & 30-35\% & .98 \\
+   & 35-40\% & .06 \\
+   & 40-45\% & .38 \\
+   & 45-50\% & .29 \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & .96 \\
+   & 5-10\% & .82 \\
+   & 10-15\% & .79 \\
+   & 15-20\% & .67 \\
+   & 20-25\% & .54 \\
+   & 25-30\% & .03 \\
+   & 30-35\% & .41 \\
+   & 35-40\% & .22 \\
+   & 40-45\% & .52 \\
+   & 45-50\% & .94 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+\begin{table}
+\begin{minipage}{18pc}
+
+\caption {DCA of Daughters to Each Other, 4 mm vs 3 mm} \label{tab:DcaDaughtersEachOtherPvalueTests4mmVs3mm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & .12 \\
+   & 5-10\%  & .58 \\
+   & 10-15\% & .10 \\
+   & 15-20\% & .18 \\
+   & 20-25\% & .08 \\
+   & 25-30\% & .34 \\
+   & 30-35\% & .65 \\
+   & 35-40\% & .97 \\
+   & 40-45\% & .25 \\
+   & 45-50\% & .04 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .16 \\
+   & 5-10\% & .73 \\
+   & 10-15\% & .90 \\
+   & 15-20\% & .79 \\
+   & 20-25\% & .09 \\
+   & 25-30\% & 1.0 \\
+   & 30-35\% & .42 \\
+   & 35-40\% & .13 \\
+   & 40-45\% & .52 \\
+   & 45-50\% & .48 \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & .06 \\
+   & 5-10\% & .14 \\
+   & 10-15\% & .87 \\
+   & 15-20\% & .49 \\
+   & 20-25\% & .08 \\
+   & 25-30\% & .80 \\
+   & 30-35\% & .03 \\
+   & 35-40\% & .23 \\
+   & 40-45\% & .39 \\
+   & 45-50\% & .54 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{minipage}
+\begin{minipage}{18pc}
+\caption {DCA of Daughters to Each Other, 4 mm vs 5 mm} \label{tab:DcaDaughtersEachOtherPvalueTests4mmVs5mm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & .87 \\
+   & 5-10\%  & .51 \\
+   & 10-15\% & .14 \\
+   & 15-20\% & .66 \\
+   & 20-25\% & .53 \\
+   & 25-30\% & .56 \\
+   & 30-35\% & .12 \\
+   & 35-40\% & .04 \\
+   & 40-45\% & .93 \\
+   & 45-50\% & .37 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & 5.4e-4 \\
+   & 5-10\% & .89 \\
+   & 10-15\% & .61 \\
+   & 15-20\% & .65 \\
+   & 20-25\% & .20 \\
+   & 25-30\% & .58 \\
+   & 30-35\% & .08 \\
+   & 35-40\% & .76 \\
+   & 40-45\% & .47 \\
+   & 45-50\% & 6.6e-15 \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & .31 \\
+   & 5-10\% & .37 \\
+   & 10-15\% & .36 \\
+   & 15-20\% & .22 \\
+   & 20-25\% & .75 \\
+   & 25-30\% & .07 \\
+   & 30-35\% & .69 \\
+   & 35-40\% & .05 \\
+   & 40-45\% & .44 \\
+   & 45-50\% & .10 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+
+
+\begin{table}
+\begin{minipage}{18pc}
+\caption {V0 Cosine of Pointing Angle, 0.9993 vs 0.9992} \label{tab:V0CosPointingPvalueTests9993vs9992}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & .18 \\
+   & 5-10\%  & .38 \\
+   & 10-15\% & .36 \\
+   & 15-20\% & .45 \\
+   & 20-25\% & .54 \\
+   & 25-30\% & .05 \\
+   & 30-35\% & .002 \\
+   & 35-40\% & 1.2e-15 \\
+   & 40-45\% & .02 \\
+   & 45-50\% & .93 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .49 \\
+   & 5-10\% & .81 \\
+   & 10-15\% & .58 \\
+   & 15-20\% & .35 \\
+   & 20-25\% & .60 \\
+   & 25-30\% & 2.9e-63 \\
+   & 30-35\% & .93 \\
+   & 35-40\% & .25 \\
+   & 40-45\% & 5.3e-07 \\
+   & 45-50\% & 8.3e-08 \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & .06 \\
+   & 5-10\% & .46 \\
+   & 10-15\% & .85 \\
+   & 15-20\% & .83 \\
+   & 20-25\% & .004 \\
+   & 25-30\% & .82 \\
+   & 30-35\% & .60 \\
+   & 35-40\% & .75 \\
+   & 40-45\% & .49 \\
+   & 45-50\% & .61 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{minipage}
+\begin{minipage}{18pc}
+\caption {V0 Cosine of Pointing Angle, 0.9993 vs 0.9994} \label{tab:V0CosPointingPvalueTests9993vs9994}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & .57 \\
+   & 5-10\%  & .99 \\
+   & 10-15\% & .003 \\
+   & 15-20\% & .45 \\
+   & 20-25\% & 1.2e-08 \\
+   & 25-30\% & .08 \\
+   & 30-35\% & 1.5e-08 \\
+   & 35-40\% & .37 \\
+   & 40-45\% & 3.2e-22 \\
+   & 45-50\% & 3.6e-11 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .13 \\
+   & 5-10\% & .46 \\
+   & 10-15\% & .04 \\
+   & 15-20\% & .46 \\
+   & 20-25\% & .05 \\
+   & 25-30\% & .52 \\
+   & 30-35\% & .78 \\
+   & 35-40\% & 3.4e-14 \\
+   & 40-45\% & .11 \\
+   & 45-50\% & 1.1e-41 \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & 2.7e-05 \\
+   & 5-10\% & .82 \\
+   & 10-15\% & .12 \\
+   & 15-20\% & .77 \\
+   & 20-25\% & .45 \\
+   & 25-30\% & .62 \\
+   & 30-35\% & .21 \\
+   & 35-40\% & .70 \\
+   & 40-45\% & 5.1e-16 \\
+   & 45-50\% & .57 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+
+\subsection{Systematic errors from pair-wise cuts}
+\label{sec:SystematicsPairWise}
+
+Here we list the systematic errors associated with the pair-wise average separation cuts.  As discussed in Section \ref{sec:PairWiseCuts}, the optimal cut values have been determined to be 3 cm for protons, 4 cm for pions, and 3.5 cm for same-charge non-identical particles.  Correlations functions have been constructed using these optimal cuts, as well as using .5 cm variations on these cuts.  Systematic errors have been assessed in the same manner as was done for the single particle reconstruction cuts in the preceding section.  The p-value results of the $\chi^2$ tests can be found below in Tables \ref{tab:AvgSepProtDaughters3cmVs25cm}-\ref{tab:AvgSepPionDaughters4cmVs45cm}.  Some of the p-values are effectively 0.  This occurs when small changes in the normalization of the correlation functions make the large $k^*$ backgrounds differ from each other by a little more than a $\sigma$ for each $k^*$.  This discrepancy is accounted for in the systematic error fits.  In general, the systematic errors associated with the pairwise cuts are tiny - not larger in magnitude than about $5*10^{-4}$, or about $1\%$ of the size of the correlation function in the $k^*$ range of interest.  
+
+\begin{table}
+\begin{minipage}{18pc}
+\caption{Average Separation of (Anti)Proton Daughters, 3 cm vs 2.5 cm} \label{tab:AvgSepProtDaughters3cmVs25cm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & 7.8e-09 \\
+   & 5-10\%  & .04 \\
+   & 10-15\% & .07 \\
+   & 15-20\% & .96 \\
+   & 20-25\% & .85 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 0.77 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & 5.9e-15 \\
+   & 5-10\% & .41 \\
+   & 10-15\% & 1 \\
+   & 15-20\% & 2.0e-04 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 6.3e-06 \\
+   & 35-40\% & .87 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{minipage}
+\begin{minipage}{18pc}
+\caption{Average Separation of (Anti)Proton Daughters, 3 cm vs 3.5 cm} \label{tab:AvgSepProtDaughters3cmVs35cm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & 5.3e-04 \\
+   & 5-10\%  & .004 \\
+   & 10-15\% & 1.5e-24 \\
+   & 15-20\% & 1 \\
+   & 20-25\% & 3.4e-12 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & 9.3e-44 \\
+   & 5-10\% & .003 \\
+   & 10-15\% & 5.9e-26 \\
+   & 15-20\% & 1 \\
+   & 20-25\% & 0.85 \\
+   & 25-30\% & .99 \\
+   & 30-35\% & .26 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+   \hline
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+
+\begin{table}
+\begin{minipage}{18pc}
+\caption{Average Separation of Same-Sign Daughters of $\Lambda\bar{\Lambda}$, 3.5 cm vs 3 cm} \label{tab:AvgSepProtDaughters35cmVs3cm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & .96 \\
+   & 5-10\% & .01 \\
+   & 10-15\% & .004 \\
+   & 15-20\% & 1 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{minipage}
+\begin{minipage}{18pc}
+\caption{Average Separation of Same-Sign Daughters of $\Lambda\bar{\Lambda}$, 3.5 cm vs 4 cm} \label{tab:AvgSepProtDaughters35cmVs4cm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+   \hline
+  $\Lambda\bar{\Lambda}$ &  0-5\% & 8.5e-13 \\
+   & 5-10\% & 5.6e-57 \\
+   & 10-15\% & .57 \\
+   & 15-20\% & .50 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+
+
+
+\begin{table}
+\begin{minipage}{18pc}
+\caption {Average Separation of Pion Daughters, 4 cm vs 3.5 cm} \label{tab:AvgSepPionDaughters4cmVs35cm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & 1.1e-91  \\
+   & 5-10\%  & 0 \\
+   & 10-15\% & 1.2e-14 \\
+   & 15-20\% & 1.8e-16 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .28 \\
+   & 5-10\% & 7.6e-12 \\
+   & 10-15\% & 0.03 \\
+   & 15-20\% & 2.7e-05 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+   \hline
+\end{tabular}
+\end{center}
+\end{minipage}
+\begin{minipage}{18pc}
+\caption {Average Separation of Pion Daughters, 4 cm vs 4.5 cm} \label{tab:AvgSepPionDaughters4cmVs45cm}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & p-value \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & 1.9e-16 \\
+   & 5-10\%  & .97 \\
+   & 10-15\% & 1.9e-18 \\
+   & 15-20\% & 0 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 3.9e-06 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+   \hline
+  $\bar{\Lambda}\bar{\Lambda}$ &  0-5\% & .41 \\
+   & 5-10\% & .17 \\
+   & 10-15\% & 2.3-20 \\
+   & 15-20\% & 1.2e-14 \\
+   & 20-25\% & 1 \\
+   & 25-30\% & 1 \\
+   & 30-35\% & 1 \\
+   & 35-40\% & 1 \\
+   & 40-45\% & 1 \\
+   & 45-50\% & 1 \\
+   \hline 
+\end{tabular}
+\end{center}
+\end{minipage}
+\end{table}
+
+\subsection{Systematic errors from shared-daughter cut}
+
+At this time, two femtoscopic analyses at ALICE employ a shared-daughter cut (this analysis and the $K^0_\mathrm{S}$ analysis), though each cut is implemented with independent code.  The reasons for this cut are intuitive - two V0s cannot actually have the same daughter, regardless of what might arise from the reconstruction process.  Moreover, the efficacy of the cut is high: the MC studies of this cut have shown that only 13\% real V0s with shared daughters are cut.  The removal of a V0 (real or fake) removes all of the same-event and mixed-event pairs that would have included that V0.  In most cases, this amounts to an improved purity of the correlation function, since there are fewer pairs of fake and therefore uncorrelated particles.  There also a removal of a splitting-like effect - in this case the "split" is an extra V0 close in momentum space to the first.  While the two "split" V0s will never be paired together, both are paired with other V0s, resulting in extra pair counts in roughly the same $k^*$ bins.  Those extra pairs are removed by virtue of the shared daughter cut.
+
+While the benefits of the shared-daughter cut are apparent,
+and the disadvantages seem to be minimal (even when you cut a real V0, you a left with a fake V0 that is close in phase space), investigations are still underway to determine what the sources of systematic uncertainty may arise from this cut, and how to quantify that uncertainty.
+
+\subsection{Systematic errors from momentum resolution correction}
+\label{sec:MomentumResCorrectionsSys}
+
+As discussed in Section \ref{sec:MomentumResCorrection}, sources of systematic uncertainty in this correction come from using $p_\mathrm{T}$- and centrality-integrated measurements of the relative momentum smearing.  One correction is applied to all centrality bins, and that correction is made assuming a source radius of $2.5$ fm. Generally speaking, the effect of momentum smearing will be larger the larger the various correlation function parameters are.  Those parameters include the source radii, the $\lambda$ (pair-fraction) parameter, the scattering lengths, and the effective range of interaction.  Depending on the centrality, early fits to the radii suggest that values between $2.2$ fm and $2.7$ fm could be reasonable.  The choice of the $\lambda$ parameter strongly affects the magnitude of the correction.  With a $\lambda$ of 0.3, the correction is about $3\%$ for $\Lambda\Lambda$.  But with an (unreasonable) $\lambda$ of 1, the correction is closer to $20\%$.  The choice of $\lambda$ parameter is complicated by the existence of secondary $\Lambda$ and residual correlations (see Section \ref{sec:Residual}).  For this analysis, $\lambda = 0.3$ was chosen such that the simulated, momentum-smeared correlation function roughly matched the data with a y-intercept of $\sim 0.9$.
+
+A more precise measurement of the necessary correction could be done (and will eventually be done) more directly with the HIJING MC data.  Instead of extracting a roughly Gaussian relative momentum smearing width from Figure \ref{fig:MomSmearingFit} and crudely simulating the $k^*_{\mathrm{true}} \rightarrow k^*_{\mathrm{recon}}$ smearing, the correlation functions $C_{\mathrm{true}}$ and  $C_{\mathrm{true}}$ (Eqs.\ \ref{eq:Ctrue} and \ref{eq:Crecon}) can be constructed directly from analysis of the MC data.  There, the correlation functions are binned using the known $k^*_{\mathrm{true}}$ and $k^*_{\mathrm{recon}}$.  The same weight factors are used as described in Section \ref{sec:MomentumResCorrection}.  The disadvantage of that method is that it requires assumptions of the various correlation function parameters at run-time, and so it requires significantly more analysis grid time as the parameters are tweaked.  However, that method is also considered to give more precise results.
+
+The $K^0_\mathrm{S}K^0_\mathrm{S}$ femtoscopic analysis has explored both of these methods.  In that analysis, it found that the method employed here (extracting a simple Gaussian smearing width and using it to simulate the momentum smearing) overestimated the momentum correction factor by up to a factor of 4 relative to the more precise method (i.e. a 4\% effect rather than a 1\% effect).  The similarity of the $K^0_\mathrm{S}K^0_\mathrm{S}$ analysis and the $\Lambda\Lambda$ analysis (both study V0 femtoscopy) suggests that the momentum resolution correction factor is overestimated here as well.
+
+Given the issues listed above, it is possible for the resolution correction made here to be over or underestimated. At this point in the analysis, we will make a rough estimate of a symmetric systematic uncertainty for each correlation function, calculated using
+\begin{equation}
+\sigma_{\mathrm{sys}}(k^*) = \frac{1}{4}\abs{C_{\mathrm{uncorrected}} (k^*) - C_{\mathrm{corrected}}(k^*)}.
+\end{equation}
+The corrections are performed on centrality merged (and pair type merged, in the case of the $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ data) correlation functions.  The uncertainty is taken then from the difference between the corrected and uncorrected versions of these merged plots.
+
+\subsection{Combining different sources of systematic error}
+\label{sec:CombiningSys}
+
+Systematic errors have been evaluated for each type of cut, each pair type, and each centrality bin.  For a given centrality bin and pair type, the histograms containing those errors have been added in quadrature for each $k^*$ bin.  The resulting summed histogram is the systematic uncertainty for that centrality bin and pair type.  Tables \ref{tab:SysErrorSourcesLL} - \ref{tab:SysErrorSourcesLA} are provided to give ballpark estimates of the systematic errors from each source.  The tables show the average (over each $k^*$ bin) error size for a given uncertainty source, as well as the largest value of error found in any $k^*$ bin.
+
+When correlation functions for multiple centrality bins are merged together, the errors for each centrality bin are added in quadrature (for each $k^*$ bin) and then averaged over the number of centrality bins.  Similarly, when combining the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ results, the systematic errors for each centrality range are added in quadrature and then divided by two.  Subsequently, the systematic errors associated with the momentum resolution correction of each correlation function is added in quadrature with the rest of the errors.
+
+The resulting correlation functions with combined systematic errors are shown in Section \ref{sec:CorrelationFunctions}.
+
+\begin{table}
+\caption[Systematic error contributions for $\Lambda\Lambda$] {Systematic error contributions for $\Lambda\Lambda$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLL} 
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & Error Source & Average Error & Max Error \\
+  \hline
+  $\Lambda\Lambda$ & 0-5\% & Avg Sep Prot & 1.8e-5 & 5.7e-5 \\
+   &         & Avg Sep Pion & 2.1e-5 & 8.7e-5 \\
+   &         & Avg Sep Prot & 1.1e-5 & 3.7e-5 \\
+   &         & Avg Sep Pion & 1.3e-5 & 6.6e-5 \\
+   & 5-10\%  & Avg Sep Prot & 9.4e-6 & 4.8e-5 \\
+   &         & Avg Sep Pion & 8.6e-6 & 1.0e-5 \\
+   & 10-15\% & $\cos(\Theta_{\mathrm{P}})$ & 4.4e-4 & 1.9e-3 \\
+   &         & $B$ Fields & 5.2e-3 & 2.4e-2 \\
+   &         & Avg Sep Prot & 3.0e-5 & 7.0e-5 \\
+   &         & Avg Sep Pion & 2.9e-5 & 8.6e-5 \\
+   &         & Avg Sep Pion & 4.9e-5 & 1.8e-4 \\
+   & 15-20\% & Avg Sep Pion & 3.5e-5 &  1.2e-4 \\
+   &         & Avg Sep Pion & 4.3e-5 & 1.5e-4 \\
+   & 20-25\% & $\cos(\Theta_{\mathrm{P}})$ & 1.0e-3 & 9.6e-3 \\
+   &         & Avg Sep Prot & 1.1e-4 & 7.1e-4 \\
+   & 25-30\% & V0 DCA & 9.9e-4 & 1.9e-3\\
+   &	         & Pion DCA & 1.4e-3 & 7.0e-3\\
+   &         & Avg Sep Pion & 7.5e-5 & 4.6e-4 \\
+   & 30-35\% & Pion DCA & 2.4e-3 & 2.7e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.4e-3 & 1.5e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 6.8e-4 & 2.9e-3 \\
+   & 35-40\% & $\cos(\Theta_{\mathrm{P}})$ & 1.1e-3 & 7.3e-3 \\
+   & 40-45\% & Pion DCA & 1.9e-3 & 6.3e-3 \\
+   &         & Prot DCA & 9.6e-3 & 1.2e-1 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.4e-3 & 5.1e-3 \\ 
+   & 45-50\% & V0 DCA & 3.7e-3 & 9.9e-3 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 3.9e-3 & 4.1e-2 \\
+   \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}
+\caption[Systematic error contributions for $\bar{\Lambda}\bar{\Lambda}$] {Systematic error contributions for $\bar{\Lambda}\bar{\Lambda}$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesAA} 
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+  \hline                         
+  Pair Type & Centrality Range & Error Source & Average Error & Max Error \\
+  \hline 
+  $\bar{\Lambda}\bar{\Lambda}$ & 0-5\% & Pion DCA & 5.4e-4 & 4.6e-3 \\
+   &        & Daughter DCA & 7.7e-4 & 7.4e-3 \\
+   &        & Avg Sep Prot & 2.1e-5 & 5.5e-5 \\
+   &         & Avg Sep Prot & 1.8e-5 & 5.2e-5 \\
+   & 5-10\% & Pion DCA & 2.0e-4 & 2.0e-3 \\
+   &         & Avg Sep Prot & 1.0e-5 & 1.1e-5 \\
+   &         & Avg Sep Pion & 8.4e-6 & 1.4e-5 \\
+   & 10-15\% & Avg Sep Prot & 9.9e-6 & 3.8e-5 \\
+   &         & Avg Sep Pion & 2.5e-5 & 8.6e-5 \\
+   & 15-20\% & Avg Sep Prot & 1.7e-4 & 1.0e-3 \\
+   &         & Avg Sep Pion & 4.1e-5 & 1.5e-4 \\
+   &         & Avg Sep Pion & 6.0e-5 & 2.2e-4 \\
+   & 20-25\% & Prot DCA & 2.6e-3 & 2.1e-2 \\
+   &         & $B$ Fields & 9.1e-3 & 3.6e-2 \\
+   & 25-30\% & $\cos(\Theta_{\mathrm{P}})$ & 5.1e-4 & 3.7e-3 \\
+   & 30-35\% & Pion DCA & 1.6e-3 & 1.3e-2 \\
+   &         & $B$ Fields & 1.4e-2 & 9.3e-2 \\
+   &         & Avg Sep Prot & 8.3e-5 & 4.9e-4 \\
+   & 35-40\% & V0 DCA & 2.8e-3 & 1.1e-2 \\
+   &         & Pion DCA & 2.4e-4 & 2.7e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 2.8e-3 & 2.1e-2 \\
+   & 40-45\% & Pion DCA & 3.5e-3 & 3.4e-3 \\
+   &         & Pion DCA & 3.3e-3 & 3.9e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.2e-3 & 9.7e-3 \\
+   & 45-50\% & V0 DCA & 1.1e-2 & 1.2e-1 \\
+   &         & Pion DCA & 3.6e-3 & 3.2e-3 \\
+   &         & Pion DCA & 6.7e-3 & 4.8e-2 \\
+   &         & Daughte DCA & 4.0e-3 & 2.7e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 2.7e-3 & 1.0e-2 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.8e-3 & 9.3e-3 \\
+   \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}
+\caption[Systematic error contributions for $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$] {Systematic error contributions for $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLLAA} 
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+  \hline                       
+  Pair Type & Centrality Range & Error Source & Average Error & Max Error \\
+  \hline
+  $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ & Momentum Res & 0-10\% & 2.9e-4 & 8.2e-3 \\
+   & 10-30\% & Momentum Res & 2.6e-4 & 8.3e-3 \\
+   & 30-50\% & Momentum Res & 2.7e-3 & 8.3e-3 \\
+  \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{table}
+\caption[Systematic error contributions for $\Lambda\bar{\Lambda}$] {Systematic error contributions for $\Lambda\bar{\Lambda}$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLA} 
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+  \hline                        
+  Pair Type & Centrality Range & Error Source & Average Error & Max Error \\
+  \hline  
+  $\Lambda\bar{\Lambda}$ &  0-5\% & V0 DCA & 2.8e-4 & 2.2e-3 \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.6e-4 & 1.6e-3 \\
+   &         & Avg Sep Prot & 2.6e-6 & 6.7e-6 \\
+   & 5-10\%  & Avg Sep Prot & 6.4e-6 & 9.2e-6 \\
+   & 10-15\% & Avg Sep Prot & 8.5e-6 & 3.7e-5 \\
+   & 15-20\% & $B$ Field & 4.3e-3 & 1.9e-2 \\
+   & 20-25\% & $\cos(\Theta_{\mathrm{P}})$ & 5.4e-4 & 5.2e-3 \\
+   & 25-30\% & V0 DCA & 6.2e-4 & 3.2e-3 \\
+   & 30-35\% & Nothing & &  \\
+   & 35-40\% & Nothing & &  \\
+   & 40-45\% & Pion DCA & 8.6e-4 & 2.1e-3  \\
+   &         & $\cos(\Theta_{\mathrm{P}})$ & 1.9e-3 & 2.4e-2 \\
+   & 45-50\% & Nothing & &  \\
+   & 0-10\%  & Momentum Res & 1.6e-4 & 1.4e-3 \\
+   & 10-30\% & Momentum Res & 1.1e-3 & 4.9e-3 \\
+   & 30-50\% & Momentum Res & 6.0e-4 & 6.0e-3 \\
+  \hline  
+\end{tabular}
+\end{center}
+\end{table}
+

@@ -1,0 +1,28 @@
+\section{1D analytic model}
+\label{sec:AnalyticModel}
+%\subsection{Analytical model}
+With the assumption of a spherically gaussian source of width $R$, the 1D femtoscopic correlation functions can be calculated analytically \cite{lednicky82} using 
+
+\begin{equation}
+C(k^*)= 1 + C_1(k^*)+C_2(k^*).
+\end{equation}
+$C_1$ describes plane-wave quantum interference:
+\begin{equation}
+C_1(k^*) = \alpha e^{-4k^{*2}R^2}
+\end{equation}
+where $\alpha = (-1)^{2j}/(2j+1)$ for identical particles with spins $j$, and $\alpha = 0$ for non-identical particles.  $C_2$ describes the s-wave strong final state interaction of the particles:
+\begin{equation}
+\label{eq:Lednicky}
+C_2(k^*)= (1+\alpha)\left[\frac{1}{2}\abs{\frac{f(k^*)}{R}}^2(1-\frac{d_0}{2\sqrt{\pi}R})+\frac{2\Re f(k^*)}{\sqrt{\pi}R}F_1(2k^*R)-\frac{\Im f(k^*)}{R}F_2(2k^*R)\right]
+%C_2(k^*)= 1+ \displaystyle\sum\limits_{S}\rho_S\left[\frac{1}{2}\abs{\frac{f^S(k^*)}{R}}^2(1-\frac{d_0^S}{2\sqrt{\pi}R})+\frac{2\Re f^S(k^*)}{\sqrt{\pi}R}F_1(2k^*R)-\frac{\Im f^S(k^*)}{R}F_2(2k^*R)\right]
+\end{equation}
+where $F_1(z) = \int_0^z \! \mathrm{d}x \, e^{x^2-z^2}/z$,  $F_2(z) = (1-e^{-z^2})/z$, and $R$ is the source size. The $(1+\alpha)$ pre-factor accounts for the relevant (non/anti-)symmetrizaton effects.  $f(k^*)=(1/f_0+\frac{1}{2}d_0k^*-ik^*)^{-1}$ is the s-wave scattering amplitude, written using the effective range approximation.  The scattering amplitude is dependent upon the effective range of interaction $d_0$, as well as the complex scattering length $f_0$.  The real part of the scattering amplitude can contribute either a positive or a negative correlation, but either way the effect is relatively narrow in $k^*$ (on the order of about one hundred MeV/$c$).  The imaginary part of the scattering amplitude accounts for inelastic processes of baryon-antibaryon annihilation.  Introducing a non-zero imaginary part to the scattering length produces a wide (hundreds of MeV/$c$) negative correlation.  For charged particles, an additional factor \cite{Aamodt:2011kd} is necessary to account for the Coulomb interaction.
+
+Technically, the scattering length and effective range are spin dependent.  It should be noted that in the case of identical fermions, "the contributions of s-wave interaction of identical nucleons to the correlation function goes to zero [for summary spin state S = 1] (identical nucleons with parallel spins cannot be in the s-wave state)" \cite{lednicky82}.  As a result, only the spin singlet (i.e. antisymmetric spinor, symmetric spatial wave function) scattering parameters are measured for identical fermions.  Such is the case for the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlation measurements.  However, for non-identical particles such as $\Lambda\bar{\Lambda}$, the factor $(1+\alpha)$ could be replaced with a weighted sum of $C_2$ calculated using separate spin-dependent scattering parameters.  That calculation would use $\rho_S$, the fraction of pairs in each total spin state S, as the weight.  For statistical reasons, this analysis will eschew spin-dependent measurements of the $\Lambda\bar{\Lambda}$ scattering parameters, and instead attempt to fit for a spin-averaged value.
+
+
+\subsection{Observables}
+\label{sec:Observables}
+For pion, kaon, and proton femtoscopic analyses, the scattering lengths and effective radius of interaction are well specified by years of scattering data, and they can be fixed to the known values.  In the case of lambda-(anti-)lambda femtoscopy, the interaction is heretofore largely unstudied.  For this analysis, the scattering lengths and effective radius are left as free parameters.  Another free parameter is the $\lambda$ parameter, which is roughly a measure of the pair purity.  For example, $\lambda_{\Lambda\Lambda}$ would correspond to the ratio of number of true primary $\Lambda\Lambda$ pairs to the total number of pairs in the correlation function. The remaining fraction is comprised of all the other combinations of pair types, such as pairs where one $\Lambda$ is real and primary and the other is fake, or pairs between primary and secondary lambdas.  The latter case will be described further in Section \ref{sec:Residual}.  The last fit parameter is $R_{\rm inv}$, which characterizes the one dimensional size of the emitting source.  
+
+
