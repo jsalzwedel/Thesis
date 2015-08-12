@@ -4,3 +4,7 @@
 *.dvi
 *.lof
 *.toc
+*.bbl
+*.blg
+*.out
+*.gz
