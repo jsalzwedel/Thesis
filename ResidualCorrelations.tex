@@ -1,34 +1,58 @@
 \section{Residual correlations}
 \label{sec:Residual}
 
-Attempts at fitting correlation functions should try to account for residual correlations between the particle being studied and other particles that might decay into the studied particle.  Various particles can decay into $\Lambda$ baryons, such as $\Sigma^{\rm 0}$, $\Xi^{\rm 0}$, and $\Omega^{\rm -}$.  The decay momentum difference between these particles and their daughter $\Lambda$ is small, such that daughter and parent carry very similar momenta.  As a result, relative-momentum correlation functions between primary particles and secondary particles can be sensitive to the interactions between the primary particles and the parent particles.  For example, the correlation between primary $\Lambda$ and primary $\Sigma^{\rm 0}$ should be visible, though somewhat smeared out, in the correlation between primary $\Lambda$ and secondary $\Lambda$.  Furthermore, these secondary $\Lambda$ are often difficult to distinguish from primary $\Lambda$.  Therefore, measurements of two-$\Lambda$ correlation functions will contain a mixture of primary correlations and feeddown correlations, and an attempt to parametrize the correlation functions should take this into account.  
+Attempts at fitting correlation functions should try to account for residual correlations between the particle being studied and other particles that might decay into the studied particle.  
+Various particles can decay into $\Lambda$ baryons, such as $\Sigma^{\rm 0}$, $\Xi^{\rm 0}$, and $\Omega^{\rm -}$.  
+The decay momentum difference between these particles and their daughter $\Lambda$ is small, such that daughter and parent carry very similar momenta.  
+As a result, relative-momentum correlation functions between primary particles and secondary particles can be sensitive to the interactions between the primary particles and the parent particles.  
+For example, the correlation between primary $\Lambda$ and primary $\Sigma^{\rm 0}$ should be visible, though somewhat smeared out, in the correlation between primary $\Lambda$ and secondary $\Lambda$.  
+Furthermore, these secondary $\Lambda$ are often difficult to distinguish from primary $\Lambda$.  
+Therefore, measurements of two-$\Lambda$ correlation functions will contain a mixture of primary correlations and feeddown correlations, and an attempt to parametrize the correlation functions should take this into account.  
 
-In this analysis note, we will discuss two different methods of accounting for these residual correlations.  In the "Transformed residuals method", the Lednicky equation is used to estimate the shape of the residual correlations \emph{before} they decay (e.g. to estimate the shape of the $\Lambda\Sigma$ correlation function in the $\Lambda\Sigma$ relative momentum space).  This pre-feeddown correlation is then smeared into a residual correlation function (in the $\Lambda\Lambda$ momentum space) using a transform matrix that accounts for the kinematic effects of the decay of one or both of the particles.  Different sources of residual correlations are determined separately and then summed together with the primary-primary correlation in the fit procedure.
+In this analysis note, we will discuss two different methods of accounting for these residual correlations.  
+In the "Transformed residuals method", the Lednicky equation is used to estimate the shape of the residual correlations \emph{before} they decay (e.g. to estimate the shape of the $\Lambda\Sigma$ correlation function in the $\Lambda\Sigma$ relative momentum space).  
+This pre-feeddown correlation is then smeared into a residual correlation function (in the $\Lambda\Lambda$ momentum space) using a transform matrix that accounts for the kinematic effects of the decay of one or both of the particles.  
+Different sources of residual correlations are determined separately and then summed together with the primary-primary correlation in the fit procedure.
 
-In contrast, the "Gaussian residuals method" attempts to describe the full residual correlation effect phenomenologically.  Rather than precisely describe each component of residual correlation, the total residual correlation is described with a Gaussian parametrization.  %In essence, the residual correlations described by the transform method are roughly Gaussian, so the Gaussian parametrization 
+In contrast, the "Gaussian residuals method" attempts to describe the full residual correlation effect phenomenologically.  
+Rather than precisely describe each component of residual correlation, the total residual correlation is described with a Gaussian parametrization.  
+%In essence, the residual correlations described by the transform method are roughly Gaussian, so the Gaussian parametrization 
 
 
 \subsection{Transformed residuals method}
 \label{sec:TransformedResiduals}
 
 
-One example of transformed residuals parametrization can be seen in the recent analysis \cite{Kisiel:2014mma} of STAR p$\bar{\Lambda}$ correlation functions measured in 200 GeV Au--Au collisions.  In this study, p$\bar{\Lambda}$ and $\bar{\mathrm{p}}\Lambda$ correlations were fit with and without residual correlations.  The fits with residual correlations included feeddown and feedup contributions from numerous sources.  The study found that the fit with residual correlations measured a source size comparable to the previously measured sizes of p$\Lambda$ and $\bar{\mathrm{p}}\bar{\Lambda}$.  In contrast, the fits that did not include residual correlations measured source radii that deviated significantly from the old p$\Lambda$ and $\bar{\mathrm{p}}\bar{\Lambda}$ results.  One conclusion from that study was that it is important to make a precise characterization of the $\lambda$ parameters associated with each type of pair contribution.  As mentioned above in Section \ref{sec:Observables}, the $\lambda$ parameter can be interpreted as the fraction of total pairs associated with that pair type.  Quantitatively, it is included in the fit as shown in Equation \ref{eq:Residual} below.
+One example of transformed residuals parametrization can be seen in the recent analysis \cite{Kisiel:2014mma} of STAR p$\bar{\Lambda}$ correlation functions measured in 200 GeV Au--Au collisions.  
+In this study, p$\bar{\Lambda}$ and $\bar{\mathrm{p}}\Lambda$ correlations were fit with and without residual correlations.  
+The fits with residual correlations included feeddown and feedup contributions from numerous sources.  
+The study found that the fit with residual correlations measured a source size comparable to the previously measured sizes of p$\Lambda$ and $\bar{\mathrm{p}}\bar{\Lambda}$.  
+In contrast, the fits that did not include residual correlations measured source radii that deviated significantly from the old p$\Lambda$ and $\bar{\mathrm{p}}\bar{\Lambda}$ results.  
+One conclusion from that study was that it is important to make a precise characterization of the $\lambda$ parameters associated with each type of pair contribution.  
+As mentioned above in Section \ref{sec:Observables}, the $\lambda$ parameter can be interpreted as the fraction of total pairs associated with that pair type.  
+Quantitatively, it is included in the fit as shown in Equation \ref{eq:Residual} below.
 
-We attempt to quantify the residual contamination in this analysis by simultaneously fitting the data for both the primary correlation function and the residual correlations.  For example, $\Lambda\Lambda$ correlations with $\mathrm{\Lambda\Sigma^0}$ feeddown would be fit using 
+We attempt to quantify the residual contamination in this analysis by simultaneously fitting the data for both the primary correlation function and the residual correlations.  
+For example, $\Lambda\Lambda$ correlations with $\mathrm{\Lambda\Sigma^0}$ feeddown would be fit using 
 
 \begin{equation}
 \label{eq:Residual}
 C_{\mathrm{meas}}(k^*_{\Lambda\Lambda})= 1 + \lambda_{\Lambda\Lambda}[C_{\Lambda\Lambda}(k^*_{\Lambda\Lambda})-1]+\lambda_{\Lambda\Sigma}[C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda})-1],
 \end{equation}
-where $$C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda}) \equiv \displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})T(k^*_{\Lambda\Sigma},k^*_{\Lambda\Lambda}),$$ $C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eq.~(\ref{eq:Lednicky}), and $T$ is a THERMINATOR \cite{Chojnacki:2011hb} transform matrix, which shows how the $k^*$ of pairs of particles kinematically transforms when one of the particles decays.  Figure \ref{fig:TherminatorLS} shows the transform matrix for $\Lambda\Sigma \rightarrow \Lambda\Lambda$.  In this simple case with only two pair types ($\Lambda\Lambda$ and $\Lambda\Sigma$), the $\lambda$ parameters could either be fixed to some estimated experimental value, or they could be left as free fit parameters.
+where $$C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda}) \equiv \displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})T(k^*_{\Lambda\Sigma},k^*_{\Lambda\Lambda}),$$ $C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eq.~(\ref{eq:Lednicky}), and $T$ is a THERMINATOR \cite{Chojnacki:2011hb} transform matrix, which shows how the $k^*$ of pairs of particles kinematically transforms when one of the particles decays.  
+Figure \ref{fig:TherminatorLS} shows the transform matrix for $\Lambda\Sigma \rightarrow \Lambda\Lambda$.  
+In this simple case with only two pair types ($\Lambda\Lambda$ and $\Lambda\Sigma$), the $\lambda$ parameters could either be fixed to some estimated experimental value, or they could be left as free fit parameters.
 
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/2014-04-01-TransformMatrix-LS-LL-100bins.pdf}
-\caption[Transform matrix for $k^*_{\Lambda\Sigma} \rightarrow k^*_{\Lambda\Lambda}$]{THERMINATOR \cite{Chojnacki:2011hb} transform matrix showing how the relative momentum of $\Lambda\Sigma$ pairs transforms into relative momentum of $\Lambda\Lambda$ pairs after the $\Sigma$ decays.  The elements significantly off-diagonal may be due to a lingering bug in the construction of the transform matrix.}
+\caption[Transform matrix for $k^*_{\Lambda\Sigma} \rightarrow k^*_{\Lambda\Lambda}$]{THERMINATOR \cite{Chojnacki:2011hb} transform matrix showing how the relative momentum of $\Lambda\Sigma$ pairs transforms into relative momentum of $\Lambda\Lambda$ pairs after the $\Sigma$ decays.  
+The elements significantly off-diagonal may be due to a lingering bug in the construction of the transform matrix.}
 \label{fig:TherminatorLS}
 \end{figure}
 
-Further residual correlations (e.g. from $\Sigma\Sigma \rightarrow \Lambda\Lambda$) can be included via additional terms in Equation \ref{eq:Residual}.  Efforts are under way to understand which residual correlations must be included and which can be safely neglected.  Section \ref{sec:LambdaParams} will discuss the current status of this analysis. 
+Further residual correlations (e.g. from $\Sigma\Sigma \rightarrow \Lambda\Lambda$) can be included via additional terms in Equation \ref{eq:Residual}.  
+Efforts are under way to understand which residual correlations must be included and which can be safely neglected.  
+Section \ref{sec:LambdaParams} will discuss the current status of this analysis. 
 
 \subsection{Gaussian residuals method}
 \label{sec:GaussianResiduals}
