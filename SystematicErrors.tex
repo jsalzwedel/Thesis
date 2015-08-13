@@ -1,59 +1,121 @@
 \section{Systematic errors}
 \label{sec:GeneralCfSysErrorDiscussion}
 
-We will now attempt to identify the various systematic effects that may affect the correlation functions.  The goal will be to quantify the systematic uncertainties associated with each $k^*$ bin.  It should be noted, however, that subsequent fits to the correlation functions are not directly impacted by these error bars.  Instead, the systematics on the resulting fit parameters will be computed by refitting many versions of the correlation functions (e.g. those built with different reconstruction cuts) and comparing the results. This will be discussed in greater detail in Section \ref{sec:FitSystematics}.
+We will now attempt to identify the various systematic effects that may affect the correlation functions.  
+The goal will be to quantify the systematic uncertainties associated with each $k^*$ bin.  
+It should be noted, however, that subsequent fits to the correlation functions are not directly impacted by these error bars.  
+Instead, the systematics on the resulting fit parameters will be computed by refitting many versions of the correlation functions (e.g. those built with different reconstruction cuts) and comparing the results. 
+This will be discussed in greater detail in Section \ref{sec:FitSystematics}.
 
 \subsection{Consistency checks for uncorrelated histograms}
 \label{sec:ConsistencyCheckUncorrelated}
-One of the tools we will employ in the search for systematic effects is the TH1::Chi2Test(TH1* h1) method, which compares two histograms bin-by-bin to determine a $\chi^2$.  The test is performed assuming the hypothesis that the two histograms are Poissonian samples of the same underlying distribution.  A p-value is computed which represents the probability that a measurement could be performed that would yield results this different or more, given the hypothesis of identity.  The hypothesis of identity is rejected in instances where the p-value is lower than 0.01. At that threshold, less than one percent of tests will fail of data sets sampled from the same underlying distribution.  This corresponds to rejecting the hypothesis of identity for data samples that differ by roughly $3 \sigma$.  The 0.01 metric is somewhat arbitrary - it was chosen to be small enough that pure statistical fluctuations should not often lead to false or unnecessary systematic errors.  For example, if a p-value of 0.1 were used instead, this would result in roughly 10\% of "good" results failing the test and contributing to the uncertainty, which would lead to a gross overestimation of the total systematic error.  Similarly, a threshold of 0.001 would probably underestimate the error.  Thus, 0.01 was chosen.
+One of the tools we will employ in the search for systematic effects is the TH1::Chi2Test(TH1* h1) method, which compares two histograms bin-by-bin to determine a $\chi^2$.  
+The test is performed assuming the hypothesis that the two histograms are Poissonian samples of the same underlying distribution.  
+A p-value is computed which represents the probability that a measurement could be performed that would yield results this different or more, given the hypothesis of identity.  
+The hypothesis of identity is rejected in instances where the p-value is lower than 0.01. 
+At that threshold, less than one percent of tests will fail of data sets sampled from the same underlying distribution.  
+This corresponds to rejecting the hypothesis of identity for data samples that differ by roughly $3 \sigma$.  
+The 0.01 metric is somewhat arbitrary - it was chosen to be small enough that pure statistical fluctuations should not often lead to false or unnecessary systematic errors.  
+For example, if a p-value of 0.1 were used instead, this would result in roughly 10\% of "good" results failing the test and contributing to the uncertainty, which would lead to a gross overestimation of the total systematic error.  
+Similarly, a threshold of 0.001 would probably underestimate the error.  
+Thus, 0.01 was chosen.
 
-In this analysis, Chi2Test() will be used to compare two correlation functions which are uncorrelated with each other (uncorrelated in the sense that they are completed independent data samples).  One example where this can be employed is the comparison of correlation functions constructed using data taken under different field configurations.  This analysis needs all the data available to it, so results taken under different field configurations will need to be merged to improve statistics.  But before they are combined, it must be checked that they contain compatible results.  The Chi2Test() method provides a means of characterizing the degree of similarity of the correlation functions.  
+In this analysis, Chi2Test() will be used to compare two correlation functions which are uncorrelated with each other (uncorrelated in the sense that they are completed independent data samples).  
+One example where this can be employed is the comparison of correlation functions constructed using data taken under different field configurations.  
+This analysis needs all the data available to it, so results taken under different field configurations will need to be merged to improve statistics.  
+But before they are combined, it must be checked that they contain compatible results.  
+The Chi2Test() method provides a means of characterizing the degree of similarity of the correlation functions.  
 
-Correlation functions that surpass the significance level of 0.01 will be treated as being functionally the same within statistics, and their weighted average will be computed without recourse to systematic uncertainty. In the instances where they do not exceed the significance level, they will be analyzed on a case-by-case basis.  In particular, we will look to see if there are any systematic differences between the correlation functions.  For example, it may be seen that the lowest ten $k^*$ bins will all be higher in one correlation function than another.  If so, the data will still be merged (so long as the results aren't dramatically different), but a systematic uncertainty will be computed and applied to the final averaged correlation function in the form of systematic error bars.  Section \ref{sec:CalculatingSysErrors} describes how these uncertainties are calculated.  
+Correlation functions that surpass the significance level of 0.01 will be treated as being functionally the same within statistics, and their weighted average will be computed without recourse to systematic uncertainty. 
+In the instances where they do not exceed the significance level, they will be analyzed on a case-by-case basis.  
+In particular, we will look to see if there are any systematic differences between the correlation functions.  
+For example, it may be seen that the lowest ten $k^*$ bins will all be higher in one correlation function than another.  
+If so, the data will still be merged (so long as the results aren't dramatically different), but a systematic uncertainty will be computed and applied to the final averaged correlation function in the form of systematic error bars.  
+Section \ref{sec:CalculatingSysErrors} describes how these uncertainties are calculated.  
 
-When using Chi2Test() to compare correlation functions, the trouble areas that result in small p-values will likely be the lowest $k^*$ bins (which exhibit most of the interesting physics, and which also suffer the most from two-track effects), and large $k^*$ bins (close to $1 \mathrm{GeV/c}$).  The height of the the large $k^*$ bins is noticeably susceptible to statistical (or systematic) deviations in the normalization region.  The high $k^*$ bins have relatively small statistical error bars, so small deviations of normalization between correlation functions can result in large $\chi^2$ values.  The correlation functions are all normalized to unity in the $0.3 < k^* < 0.5 \mathrm{GeV}/c$ range, so there are unlikely to be significant deviations seen in that range.  
+When using Chi2Test() to compare correlation functions, the trouble areas that result in small p-values will likely be the lowest $k^*$ bins (which exhibit most of the interesting physics, and which also suffer the most from two-track effects), and large $k^*$ bins (close to $1 \mathrm{GeV/c}$).  
+The height of the the large $k^*$ bins is noticeably susceptible to statistical (or systematic) deviations in the normalization region.  
+The high $k^*$ bins have relatively small statistical error bars, so small deviations of normalization between correlation functions can result in large $\chi^2$ values.  
+The correlation functions are all normalized to unity in the $0.3 < k^* < 0.5 \mathrm{GeV}/c$ range, so there are unlikely to be significant deviations seen in that range.  
 
-It is important to emphasize that Chi2Test() is only appropriate for comparing two uncorrelated histograms.  In the case of correlated histograms (e.g. correlation functions constructed using slightly different two-track cuts or different reconstruction cuts), a different method must be used to test the histograms for consistency.  
+It is important to emphasize that Chi2Test() is only appropriate for comparing two uncorrelated histograms.  
+In the case of correlated histograms (e.g. correlation functions constructed using slightly different two-track cuts or different reconstruction cuts), a different method must be used to test the histograms for consistency.  
 
 
 \subsection{Consistency checks for correlated histograms}
 \label{sec:ConsistencyCheckCorrelated}
-Chi2Test() cannot be used to compare correlated data because the test is performed assuming the statistical error bars on the two histograms are independent.  That is obviously not the case for two histograms that differ in their data only be a few percent.  In this analysis, we perform consistency checks of correlated data in the following fashion:
+Chi2Test() cannot be used to compare correlated data because the test is performed assuming the statistical error bars on the two histograms are independent.  
+That is obviously not the case for two histograms that differ in their data only be a few percent.  
+In this analysis, we perform consistency checks of correlated data in the following fashion:
 
 \begin{enumerate}
-\item Take the difference between the two correlation function histograms $\Delta C(k^*) = C_1(k^*) - C_2(k^*)$, using $C_1\rightarrow$ Add($C_2$,$-1$).  The resulting histogram shows the usually small differences between the two data sets.
-\item Here, ROOT incorrectly adds the errors in quadrature.  To fix this, manually set the error bars using $\sigma_{\Delta}(k^*) = \sqrt{ \abs{ \sigma_1^2(k^*) - \sigma_2^2(k^*) }}$.  This error is correct in the specific case (found here) that one histogram is entirely a subdivision of the other.
-\item If there are no significant discrepancies or systematic differences between the two original correlation functions, the difference histogram should be consistent with zero.  We can test this using TH1::Chisquare(TF1*), and fit the data with the function $y=0$.  Chisquare() returns the $\chi^2$ value of the fit.
+\item Take the difference between the two correlation function histograms $\Delta C(k^*) = C_1(k^*) - C_2(k^*)$, using $C_1\rightarrow$ Add($C_2$,$-1$).  
+The resulting histogram shows the usually small differences between the two data sets.
+\item Here, ROOT incorrectly adds the errors in quadrature.  
+To fix this, manually set the error bars using $\sigma_{\Delta}(k^*) = \sqrt{ \abs{ \sigma_1^2(k^*) - \sigma_2^2(k^*) }}$.  
+This error is correct in the specific case (found here) that one histogram is entirely a subdivision of the other.
+\item If there are no significant discrepancies or systematic differences between the two original correlation functions, the difference histogram should be consistent with zero.  
+We can test this using TH1::Chisquare(TF1*), and fit the data with the function $y=0$.  
+Chisquare() returns the $\chi^2$ value of the fit.
 \item We acquire a p-value for this consistency check using TMath::Prob(Double chi2, int ndf), which takes as input the $\chi^2$ from the fit and the number of $k^*$ bins as the number of degrees of freedom.  
-\item Finally, we evaluate the two correlation functions as either consistent or inconsistent depending on if they pass or fail the p-value test.  A p-value $\geq 0.01$ passes.  
-\item All pairs of histograms with p-values below that threshold are considered to have significant differences.  All such pairs are considered to introduce a $k^*$-dependent systematic error for the correlation function measurement in that particular centrality bin.  The method for evaluating the size of that systematic error is described in the following section.
+\item Finally, we evaluate the two correlation functions as either consistent or inconsistent depending on if they pass or fail the p-value test.  
+A p-value $\geq 0.01$ passes.  
+\item All pairs of histograms with p-values below that threshold are considered to have significant differences.  
+All such pairs are considered to introduce a $k^*$-dependent systematic error for the correlation function measurement in that particular centrality bin.  
+The method for evaluating the size of that systematic error is described in the following section.
 \end{enumerate}
 
 Using the steps listed above, we can evaluate if subtle changes to the cuts employed in correlation function construction change the resulting data in any significant way.  
 
-%The study of normalized residuals (the difference between the bin contents and the expected bin contents) can be used to characterize which regions are responsible for small p-values.  This is again handled by the Chi2Test() method.  For each $k^*$ bin, a normalized residual plot shows the number of $\sigma$ differences between the two correlation functions.  This can make it easy to look for systematic differences, even in the case of small shifts at high $k^*$, which would be hard to see by eye in the raw correlation functions.
+%The study of normalized residuals (the difference between the bin contents and the expected bin contents) can be used to characterize which regions are responsible for small p-values.  
+This is again handled by the Chi2Test() method.  
+For each $k^*$ bin, a normalized residual plot shows the number of $\sigma$ differences between the two correlation functions.  
+This can make it easy to look for systematic differences, even in the case of small shifts at high $k^*$, which would be hard to see by eye in the raw correlation functions.
 
 \subsection{Calculating systematic errors for data sets that fail p-value tests}
 \label{sec:CalculatingSysErrors}
 
-The general scheme for calculating systematic uncertainties is to take the difference between two correlation functions (which have failed a p-value test), and then fit that difference with a polynomial.  For each $k^*$ bin, the absolute value of the fit polynomial evaluated at the center of that bin is taken as the error for that bin.  The specifics of the procedure will be described in more detail below.
+The general scheme for calculating systematic uncertainties is to take the difference between two correlation functions (which have failed a p-value test), and then fit that difference with a polynomial.  
+For each $k^*$ bin, the absolute value of the fit polynomial evaluated at the center of that bin is taken as the error for that bin.  
+The specifics of the procedure will be described in more detail below.
 
-This procedure of using fits to extract systematic error is intended to produce representatively large systematic errors when there are systematic differences between the correlation functions.  It is further intended to produce small systematic errors when the (large or small) differences between the correlation functions are essentially statistical fluctuations.  For example, $\Delta C(k^*)$ exhibits a clear, systematic upward shift in a particular $k^*$ range, the fit will be pulled upward in that region.  In contrast, if $\Delta C(k^*)$ has large deviations away from zero, but those deviations are distributed roughly randomly above and below zero, then the fit should be small in magnitude (and therefore give a small systematic error).   
+This procedure of using fits to extract systematic error is intended to produce representatively large systematic errors when there are systematic differences between the correlation functions.  
+It is further intended to produce small systematic errors when the (large or 
+small) differences between the correlation functions are essentially statistical fluctuations.  
+For example, $\Delta C(k^*)$ exhibits a clear, systematic upward shift in a particular $k^*$ range, the fit will be pulled upward in that region. 
+In contrast, if $\Delta C(k^*)$ has large deviations away from zero, but those deviations are distributed roughly randomly above and below zero, then the fit should be small in magnitude (and therefore give a small systematic error).   
 
-Initial attempts to use this fit method resulted in systematic error bars that grew in size with the statistical error bars.  That is, the measured systematic and statistical errors seemed strongly correlated.  To reduce the statistical dependence of the fitting procedure, the correlation functions were rebinned to have fewer bins (and more statistics in each bin) before fitting.
+Initial attempts to use this fit method resulted in systematic error bars that grew in size with the statistical error bars.  
+That is, the measured systematic and statistical errors seemed strongly correlated.  
+To reduce the statistical dependence of the fitting procedure, the correlation functions were rebinned to have fewer bins (and more statistics in each bin) before fitting.
 
-Both uncorrelated data (Sec.\ \ref{sec:ConsistencyCheckUncorrelated}) and correlated data (Sec.\ \ref{sec:ConsistencyCheckCorrelated}) are fit in essentially the same way.  In both instances, the relevant correlation functions are reconstructed using rebinned numerators and denominators via TH1::Rebin(int).  Rebin(4) reduces the number of bins in the correlation functions by a factor of four.  The resulting rebinned correlation functions maintain the same general features and shape of the original correlation functions, but statistical fluctuations are significantly damped down. This was found to generally reduce the size of the error fit function, compared with fitting un-rebinned data.  
+Both uncorrelated data (Sec.\ \ref{sec:ConsistencyCheckUncorrelated}) and correlated data (Sec.\ \ref{sec:ConsistencyCheckCorrelated}) are fit in essentially the same way.  
+In both instances, the relevant correlation functions are reconstructed using rebinned numerators and denominators via TH1::Rebin(int).  Rebin(4) reduces the number of bins in the correlation functions by a factor of four.  
+The resulting rebinned correlation functions maintain the same general features and shape of the original correlation functions, but statistical fluctuations are significantly damped down. 
+This was found to generally reduce the size of the error fit function, compared with fitting un-rebinned data.  
 
-The difference of the two rebinned correlation functions is calculated as $\Delta C_{\mathrm{rebin}}(k^*) = C_{1,\mathrm{rebin}}(k^*) - C_{2,\mathrm{rebin}}(k^*)$.  For correlated data, the statistical uncertainties of $\Delta C(k^*)$ are calculated as described in Section \ref{sec:ConsistencyCheckCorrelated}.  Otherwise, ROOT correctly handles the statistical uncertainties for uncorrelated data.
+The difference of the two rebinned correlation functions is calculated as $\Delta C_{\mathrm{rebin}}(k^*) = C_{1,\mathrm{rebin}}(k^*) - C_{2,\mathrm{rebin}}(k^*)$.  
+For correlated data, the statistical uncertainties of $\Delta C(k^*)$ are calculated as described in Section \ref{sec:ConsistencyCheckCorrelated}.  
+Otherwise, ROOT correctly handles the statistical uncertainties for uncorrelated data.
 
-$\Delta C_{\mathrm{rebin}}(k^*)$ is then fit with a fifth order polynomial.  The polynomial is converted into a histogram with the same number of $k^*$ bins as the original, un-rebinned correlation functions.  Finally, the contents of each bin is set to its absolute value.  The values of this histogram are taken to be the symmetric systematic errors associated with the particular failed correlation function consistency check.
+$\Delta C_{\mathrm{rebin}}(k^*)$ is then fit with a fifth order polynomial.  
+The polynomial is converted into a histogram with the same number of $k^*$ bins as the original, un-rebinned correlation functions.  
+Finally, the contents of each bin is set to its absolute value.  
+The values of this histogram are taken to be the symmetric systematic errors associated with the particular failed correlation function consistency check.
 
-The sections below will discuss the specific details of looking for and evaluated systematic errors associated with different magnetic field configurations of the detector, different V0 reconstruction cuts, and different two-track cuts. Section \ref{sec:CombiningSys} will discuss how the different sources of systematic error are combined and applied to the final correlation functions.
+The sections below will discuss the specific details of looking for and evaluated systematic errors associated with different magnetic field configurations of the detector, different V0 reconstruction cuts, and different two-track cuts. 
+Section \ref{sec:CombiningSys} will discuss how the different sources of systematic error are combined and applied to the final correlation functions.
 
 \subsection{Systematic errors associated with different run field configurations}
 \label{sec:SystematicsFieldConfig}
 
-In this section we discuss the systematic errors associated with the different field configurations ($++$ and $--$, see Section \ref{sec:DataSelection}).  Correlation functions are constructed separately for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), each 5\% centrality bin, and each field configuration.  For each centrality bin and pair type, we look for any non-statistical deviations in the correlation functions of the two field configurations via the application of Chi2Test().  Table \ref{tab:FieldPvalues} shows p-value results obtained from comparing the two different field results with Chi2Test().  For each pair type, most of the centrality bins pass the test - i.e. the correlation functions made with each field appear to sample from the same underlying distribution.  The few that do not pass have been analyzed using the fit method described in Section \ref{sec:CalculatingSysErrors} in order to quantify the systematic errors associated with their differences.  %Figure \ref{fig:ExampleFieldFailureSysErrors} shows the example results fitting the ... bin for systematic errors.
+In this section we discuss the systematic errors associated with the different field configurations ($++$ and $--$, see Section \ref{sec:DataSelection}).  
+Correlation functions are constructed separately for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), each 5\% centrality bin, and each field configuration.  
+For each centrality bin and pair type, we look for any non-statistical deviations in the correlation functions of the two field configurations via the application of Chi2Test().  
+Table \ref{tab:FieldPvalues} shows p-value results obtained from comparing the two different field results with Chi2Test().  
+For each pair type, most of the centrality bins pass the test - i.e. the correlation functions made with each field appear to sample from the same underlying distribution.  
+The few that do not pass have been analyzed using the fit method described in Section \ref{sec:CalculatingSysErrors} in order to quantify the systematic errors associated with their differences.  
+%Figure \ref{fig:ExampleFieldFailureSysErrors} shows the example results fitting the ... bin for systematic errors.
 
 \begin{table}
 \begin{center}
@@ -96,7 +158,10 @@ In this section we discuss the systematic errors associated with the different f
   \hline  
 \end{tabular}
 \label{tab:FieldPvalues}
-\caption{p-values and $\chi^2$ calculated using the TH1::Chi2Test() method for correlation functions of different field configurations.  For a given pair type and centrality bin, correlation functions, with a p-value $\geq 0.01$ are assumed to sample the same underlying distribution.  For each pair type, one or two centralities are seen to fail the p-value test.  The differences between those centrality bins have been evaluated and the systematic errors associated with those differences have been quantified.}
+\caption{p-values and $\chi^2$ calculated using the TH1::Chi2Test() method for correlation functions of different field configurations.  
+For a given pair type and centrality bin, correlation functions, with a p-value $\geq 0.01$ are assumed to sample the same underlying distribution.  
+For each pair type, one or two centralities are seen to fail the p-value test.  
+The differences between those centrality bins have been evaluated and the systematic errors associated with those differences have been quantified.}
 \end{center}
 \end{table}
 
@@ -113,9 +178,19 @@ In this section we discuss the systematic errors associated with the different f
 \subsection{Systematic errors from reconstruction cuts}
 \label{sec:SystematicsReconstruction}
 
-In this section we discuss the systematic errors associated with the V0 reconstruction cuts (e.g. cosine of pointing angle, DCA to primary vertex, etc.).  In the investigation of this uncertainty, the first step was to determine the optimal cut values used.  This was done as discussed in Section \ref{sec:Recon}.  For example, the optimal cut value chosen for the DCA of daughter tracks to each other was 4 mm (daughters tracks were required to pass within that distance of each other).  This value was obtained by examination of Figure \ref{fig:LambdaCutDists2}.  However, there is some leeway in determining the optimal cut value.  Perhaps the true optimal value should be 3 mm or 5 mm.  All three values appear reasonable from inspection of Figure \ref{fig:LambdaCutDists2}.  Ideally, using any of the three values should result in approximately the correlation functions, with the only differences being statistical in nature and not systematic.  
+In this section we discuss the systematic errors associated with the V0 reconstruction cuts (e.g. cosine of pointing angle, DCA to primary vertex, etc.).  
+In the investigation of this uncertainty, the first step was to determine the optimal cut values used.  
+This was done as discussed in Section \ref{sec:Recon}.  For example, the optimal cut value chosen for the DCA of daughter tracks to each other was 4 mm (daughters tracks were required to pass within that distance of each other).  
+This value was obtained by examination of Figure \ref{fig:LambdaCutDists2}.  However, there is some leeway in determining the optimal cut value.  
+Perhaps the true optimal value should be 3 mm or 5 mm.  All three values appear reasonable from inspection of Figure \ref{fig:LambdaCutDists2}.  
+Ideally, using any of the three values should result in approximately the correlation functions, with the only differences being statistical in nature and not systematic.  
 
-To test for systematic differences, we make correlation functions using $\Lambda$ ($\bar{\Lambda}$) reconstructed with these different cut values.  At any given time, one cut type (e.g.\ DCA of proton daughter to primary vertex) will be varied away from the designated optimal value, while the other cut types (e.g.\ cosine of pointing angle) are fixed to their respective optimal values. The constructed correlation functions share much of the same data, so they are highly correlated with each other.  It is therefore appropriate to compare them to each other using the TH1::Chisquare() method described in Section \ref{sec:ConsistencyCheckCorrelated}.  Pairs of correlation functions that pass the p-value test (p-value $\geq 0.01$) are said not to have any associated systematic error.  Those correlation functions that do fail the p-value test are assigned a systematic error as described in Section \ref{sec:CalculatingSysErrors}.
+To test for systematic differences, we make correlation functions using $\Lambda$ ($\bar{\Lambda}$) reconstructed with these different cut values. 
+At any given time, one cut type (e.g.\ DCA of proton daughter to primary vertex) will be varied away from the designated optimal value, while the other cut types (e.g.\ cosine of pointing angle) are fixed to their respective optimal values. 
+The constructed correlation functions share much of the same data, so they are highly correlated with each other.  
+It is therefore appropriate to compare them to each other using the TH1::Chisquare() method described in Section \ref{sec:ConsistencyCheckCorrelated}.  
+Pairs of correlation functions that pass the p-value test (p-value $\geq 0.01$) are said not to have any associated systematic error.  
+Those correlation functions that do fail the p-value test are assigned a systematic error as described in Section \ref{sec:CalculatingSysErrors}.
 
 
 
@@ -140,7 +215,10 @@ To test for systematic differences, we make correlation functions using $\Lambda
 %\label{fig:SysPionDcaCf2Diff13}
 %\end{figure}
 
-Data has been collected for variations of the following cuts: V0's DCA to primary vertex, the proton's DCA to the primary vertex, the pion's DCA to the primary vertex, the DCA of the daughters to each other, and the cosine of the V0's pointing angle.  In each case, correlation functions have been constructed differentially in 5\% centrality bins for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), and for 3 different cut values (optimal cut, slightly tighter cut, slightly looser cut).  The optimal cut correlation functions have been compared separately with each of the slightly tighter and slightly looser cuts.  The p-values associated with these tests can be seen in Tables \ref{tab:V0DcaPrimVertPvalueTests5mmVs4mm}-\ref{tab:V0CosPointingPvalueTests9993vs9994}.
+Data has been collected for variations of the following cuts: V0's DCA to primary vertex, the proton's DCA to the primary vertex, the pion's DCA to the primary vertex, the DCA of the daughters to each other, and the cosine of the V0's pointing angle.  
+In each case, correlation functions have been constructed differentially in 5\% centrality bins for each pair type ($\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$), and for 3 different cut values (optimal cut, slightly tighter cut, slightly looser cut).  
+The optimal cut correlation functions have been compared separately with each of the slightly tighter and slightly looser cuts.  
+The p-values associated with these tests can be seen in Tables \ref{tab:V0DcaPrimVertPvalueTests5mmVs4mm}-\ref{tab:V0CosPointingPvalueTests9993vs9994}.
 
 \begin{table}
 \begin{minipage}{18pc}
@@ -184,7 +262,10 @@ Data has been collected for variations of the following cuts: V0's DCA to primar
    & 45-50\% & .33 \\
   \hline  
 \end{tabular}
-%\caption{p-values and $\chi^2$ calculated using the TH1::Chi2Test() method for correlation functions of different field configurations.  For a given pair type and centrality bin, correlation functions, with a p-value $\geq 0.01$ are assumed to sample the same underlying distribution.  For each pair type, one or two centralities are seen to fail the p-value test.  The differences between those centrality bins have been evaluated and the systematic errors associated with those differences have been quantified.}
+%\caption{p-values and $\chi^2$ calculated using the TH1::Chi2Test() method for correlation functions of different field configurations.  
+%For a given pair type and centrality bin, correlation functions, with a p-value $\geq 0.01$ are assumed to sample the same underlying distribution.  
+%For each pair type, one or two centralities are seen to fail the p-value test.  
+%The differences between those centrality bins have been evaluated and the systematic errors associated with those differences have been quantified.}
 \end{center}
 \end{minipage}
 \begin{minipage}{18pc}
@@ -556,7 +637,15 @@ Data has been collected for variations of the following cuts: V0's DCA to primar
 \subsection{Systematic errors from pair-wise cuts}
 \label{sec:SystematicsPairWise}
 
-Here we list the systematic errors associated with the pair-wise average separation cuts.  As discussed in Section \ref{sec:PairWiseCuts}, the optimal cut values have been determined to be 3 cm for protons, 4 cm for pions, and 3.5 cm for same-charge non-identical particles.  Correlations functions have been constructed using these optimal cuts, as well as using .5 cm variations on these cuts.  Systematic errors have been assessed in the same manner as was done for the single particle reconstruction cuts in the preceding section.  The p-value results of the $\chi^2$ tests can be found below in Tables \ref{tab:AvgSepProtDaughters3cmVs25cm}-\ref{tab:AvgSepPionDaughters4cmVs45cm}.  Some of the p-values are effectively 0.  This occurs when small changes in the normalization of the correlation functions make the large $k^*$ backgrounds differ from each other by a little more than a $\sigma$ for each $k^*$.  This discrepancy is accounted for in the systematic error fits.  In general, the systematic errors associated with the pairwise cuts are tiny - not larger in magnitude than about $5*10^{-4}$, or about $1\%$ of the size of the correlation function in the $k^*$ range of interest.  
+Here we list the systematic errors associated with the pair-wise average separation cuts.  
+As discussed in Section \ref{sec:PairWiseCuts}, the optimal cut values have been determined to be 3 cm for protons, 4 cm for pions, and 3.5 cm for same-charge non-identical particles.  
+Correlations functions have been constructed using these optimal cuts, as well as using .5 cm variations on these cuts.  
+Systematic errors have been assessed in the same manner as was done for the single particle reconstruction cuts in the preceding section.  
+The p-value results of the $\chi^2$ tests can be found below in Tables \ref{tab:AvgSepProtDaughters3cmVs25cm}-\ref{tab:AvgSepPionDaughters4cmVs45cm}.  
+Some of the p-values are effectively 0.  
+This occurs when small changes in the normalization of the correlation functions make the large $k^*$ backgrounds differ from each other by a little more than a $\sigma$ for each $k^*$.  
+This discrepancy is accounted for in the systematic error fits. 
+In general, the systematic errors associated with the pairwise cuts are tiny - not larger in magnitude than about $5*10^{-4}$, or about $1\%$ of the size of the correlation function in the $k^*$ range of interest.  
 
 \begin{table}
 \begin{minipage}{18pc}
@@ -741,7 +830,14 @@ Here we list the systematic errors associated with the pair-wise average separat
 
 \subsection{Systematic errors from shared-daughter cut}
 
-At this time, two femtoscopic analyses at ALICE employ a shared-daughter cut (this analysis and the $K^0_\mathrm{S}$ analysis), though each cut is implemented with independent code.  The reasons for this cut are intuitive - two V0s cannot actually have the same daughter, regardless of what might arise from the reconstruction process.  Moreover, the efficacy of the cut is high: the MC studies of this cut have shown that only 13\% real V0s with shared daughters are cut.  The removal of a V0 (real or fake) removes all of the same-event and mixed-event pairs that would have included that V0.  In most cases, this amounts to an improved purity of the correlation function, since there are fewer pairs of fake and therefore uncorrelated particles.  There also a removal of a splitting-like effect - in this case the "split" is an extra V0 close in momentum space to the first.  While the two "split" V0s will never be paired together, both are paired with other V0s, resulting in extra pair counts in roughly the same $k^*$ bins.  Those extra pairs are removed by virtue of the shared daughter cut.
+At this time, two femtoscopic analyses at ALICE employ a shared-daughter cut (this analysis and the $K^0_\mathrm{S}$ analysis), though each cut is implemented with independent code.  
+The reasons for this cut are intuitive - two V0s cannot actually have the same daughter, regardless of what might arise from the reconstruction process.  
+Moreover, the efficacy of the cut is high: the MC studies of this cut have shown that only 13\% real V0s with shared daughters are cut.  
+The removal of a V0 (real or fake) removes all of the same-event and mixed-event pairs that would have included that V0.  
+In most cases, this amounts to an improved purity of the correlation function, since there are fewer pairs of fake and therefore uncorrelated particles.  
+There also a removal of a splitting-like effect - in this case the "split" is an extra V0 close in momentum space to the first.  
+While the two "split" V0s will never be paired together, both are paired with other V0s, resulting in extra pair counts in roughly the same $k^*$ bins.  
+Those extra pairs are removed by virtue of the shared daughter cut.
 
 While the benefits of the shared-daughter cut are apparent,
 and the disadvantages seem to be minimal (even when you cut a real V0, you a left with a fake V0 that is close in phase space), investigations are still underway to determine what the sources of systematic uncertainty may arise from this cut, and how to quantify that uncertainty.
@@ -749,29 +845,54 @@ and the disadvantages seem to be minimal (even when you cut a real V0, you a lef
 \subsection{Systematic errors from momentum resolution correction}
 \label{sec:MomentumResCorrectionsSys}
 
-As discussed in Section \ref{sec:MomentumResCorrection}, sources of systematic uncertainty in this correction come from using $p_\mathrm{T}$- and centrality-integrated measurements of the relative momentum smearing.  One correction is applied to all centrality bins, and that correction is made assuming a source radius of $2.5$ fm. Generally speaking, the effect of momentum smearing will be larger the larger the various correlation function parameters are.  Those parameters include the source radii, the $\lambda$ (pair-fraction) parameter, the scattering lengths, and the effective range of interaction.  Depending on the centrality, early fits to the radii suggest that values between $2.2$ fm and $2.7$ fm could be reasonable.  The choice of the $\lambda$ parameter strongly affects the magnitude of the correction.  With a $\lambda$ of 0.3, the correction is about $3\%$ for $\Lambda\Lambda$.  But with an (unreasonable) $\lambda$ of 1, the correction is closer to $20\%$.  The choice of $\lambda$ parameter is complicated by the existence of secondary $\Lambda$ and residual correlations (see Section \ref{sec:Residual}).  For this analysis, $\lambda = 0.3$ was chosen such that the simulated, momentum-smeared correlation function roughly matched the data with a y-intercept of $\sim 0.9$.
+As discussed in Section \ref{sec:MomentumResCorrection}, sources of systematic uncertainty in this correction come from using $p_\mathrm{T}$- and centrality-integrated measurements of the relative momentum smearing.  
+One correction is applied to all centrality bins, and that correction is made assuming a source radius of $2.5$ fm. 
+Generally speaking, the effect of momentum smearing will be larger the larger the various correlation function parameters are.  
+Those parameters include the source radii, the $\lambda$ (pair-fraction) parameter, the scattering lengths, and the effective range of interaction.  
+Depending on the centrality, early fits to the radii suggest that values between $2.2$ fm and $2.7$ fm could be reasonable.  
+The choice of the $\lambda$ parameter strongly affects the magnitude of the correction.  
+With a $\lambda$ of 0.3, the correction is about $3\%$ for $\Lambda\Lambda$.  
+But with an (unreasonable) $\lambda$ of 1, the correction is closer to $20\%$.  
+The choice of $\lambda$ parameter is complicated by the existence of secondary $\Lambda$ and residual correlations (see Section \ref{sec:Residual}).  
+For this analysis, $\lambda = 0.3$ was chosen such that the simulated, momentum-smeared correlation function roughly matched the data with a y-intercept of $\sim 0.9$.
 
-A more precise measurement of the necessary correction could be done (and will eventually be done) more directly with the HIJING MC data.  Instead of extracting a roughly Gaussian relative momentum smearing width from Figure \ref{fig:MomSmearingFit} and crudely simulating the $k^*_{\mathrm{true}} \rightarrow k^*_{\mathrm{recon}}$ smearing, the correlation functions $C_{\mathrm{true}}$ and  $C_{\mathrm{true}}$ (Eqs.\ \ref{eq:Ctrue} and \ref{eq:Crecon}) can be constructed directly from analysis of the MC data.  There, the correlation functions are binned using the known $k^*_{\mathrm{true}}$ and $k^*_{\mathrm{recon}}$.  The same weight factors are used as described in Section \ref{sec:MomentumResCorrection}.  The disadvantage of that method is that it requires assumptions of the various correlation function parameters at run-time, and so it requires significantly more analysis grid time as the parameters are tweaked.  However, that method is also considered to give more precise results.
+A more precise measurement of the necessary correction could be done (and will eventually be done) more directly with the HIJING MC data.  
+Instead of extracting a roughly Gaussian relative momentum smearing width from Figure \ref{fig:MomSmearingFit} and crudely simulating the $k^*_{\mathrm{true}} \rightarrow k^*_{\mathrm{recon}}$ smearing, the correlation functions $C_{\mathrm{true}}$ and  $C_{\mathrm{true}}$ (Eqs.\ \ref{eq:Ctrue} and \ref{eq:Crecon}) can be constructed directly from analysis of the MC data.  
+There, the correlation functions are binned using the known $k^*_{\mathrm{true}}$ and $k^*_{\mathrm{recon}}$.  
+The same weight factors are used as described in Section \ref{sec:MomentumResCorrection}.  
+The disadvantage of that method is that it requires assumptions of the various correlation function parameters at run-time, and so it requires significantly more analysis grid time as the parameters are tweaked.  
+However, that method is also considered to give more precise results.
 
-The $K^0_\mathrm{S}K^0_\mathrm{S}$ femtoscopic analysis has explored both of these methods.  In that analysis, it found that the method employed here (extracting a simple Gaussian smearing width and using it to simulate the momentum smearing) overestimated the momentum correction factor by up to a factor of 4 relative to the more precise method (i.e. a 4\% effect rather than a 1\% effect).  The similarity of the $K^0_\mathrm{S}K^0_\mathrm{S}$ analysis and the $\Lambda\Lambda$ analysis (both study V0 femtoscopy) suggests that the momentum resolution correction factor is overestimated here as well.
+The $K^0_\mathrm{S}K^0_\mathrm{S}$ femtoscopic analysis has explored both of these methods.  
+In that analysis, it found that the method employed here (extracting a simple Gaussian smearing width and using it to simulate the momentum smearing) overestimated the momentum correction factor by up to a factor of 4 relative to the more precise method (i.e. a 4\% effect rather than a 1\% effect).  
+The similarity of the $K^0_\mathrm{S}K^0_\mathrm{S}$ analysis and the $\Lambda\Lambda$ analysis (both study V0 femtoscopy) suggests that the momentum resolution correction factor is overestimated here as well.
 
-Given the issues listed above, it is possible for the resolution correction made here to be over or underestimated. At this point in the analysis, we will make a rough estimate of a symmetric systematic uncertainty for each correlation function, calculated using
+Given the issues listed above, it is possible for the resolution correction made here to be over or underestimated. 
+At this point in the analysis, we will make a rough estimate of a symmetric systematic uncertainty for each correlation function, calculated using
 \begin{equation}
 \sigma_{\mathrm{sys}}(k^*) = \frac{1}{4}\abs{C_{\mathrm{uncorrected}} (k^*) - C_{\mathrm{corrected}}(k^*)}.
 \end{equation}
-The corrections are performed on centrality merged (and pair type merged, in the case of the $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ data) correlation functions.  The uncertainty is taken then from the difference between the corrected and uncorrected versions of these merged plots.
+The corrections are performed on centrality merged (and pair type merged, in the case of the $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ data) correlation functions.  
+The uncertainty is taken then from the difference between the corrected and uncorrected versions of these merged plots.
 
 \subsection{Combining different sources of systematic error}
 \label{sec:CombiningSys}
 
-Systematic errors have been evaluated for each type of cut, each pair type, and each centrality bin.  For a given centrality bin and pair type, the histograms containing those errors have been added in quadrature for each $k^*$ bin.  The resulting summed histogram is the systematic uncertainty for that centrality bin and pair type.  Tables \ref{tab:SysErrorSourcesLL} - \ref{tab:SysErrorSourcesLA} are provided to give ballpark estimates of the systematic errors from each source.  The tables show the average (over each $k^*$ bin) error size for a given uncertainty source, as well as the largest value of error found in any $k^*$ bin.
+Systematic errors have been evaluated for each type of cut, each pair type, and each centrality bin.  
+For a given centrality bin and pair type, the histograms containing those errors have been added in quadrature for each $k^*$ bin.  
+The resulting summed histogram is the systematic uncertainty for that centrality bin and pair type.  
+Tables \ref{tab:SysErrorSourcesLL} - \ref{tab:SysErrorSourcesLA} are provided to give ballpark estimates of the systematic errors from each source.  
+The tables show the average (over each $k^*$ bin) error size for a given uncertainty source, as well as the largest value of error found in any $k^*$ bin.
 
-When correlation functions for multiple centrality bins are merged together, the errors for each centrality bin are added in quadrature (for each $k^*$ bin) and then averaged over the number of centrality bins.  Similarly, when combining the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ results, the systematic errors for each centrality range are added in quadrature and then divided by two.  Subsequently, the systematic errors associated with the momentum resolution correction of each correlation function is added in quadrature with the rest of the errors.
+When correlation functions for multiple centrality bins are merged together, the errors for each centrality bin are added in quadrature (for each $k^*$ bin) and then averaged over the number of centrality bins.  
+Similarly, when combining the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ results, the systematic errors for each centrality range are added in quadrature and then divided by two.  
+Subsequently, the systematic errors associated with the momentum resolution correction of each correlation function is added in quadrature with the rest of the errors.
 
 The resulting correlation functions with combined systematic errors are shown in Section \ref{sec:CorrelationFunctions}.
 
 \begin{table}
-\caption[Systematic error contributions for $\Lambda\Lambda$] {Systematic error contributions for $\Lambda\Lambda$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLL} 
+\caption[Systematic error contributions for $\Lambda\Lambda$] {Systematic error contributions for $\Lambda\Lambda$.  
+If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLL} 
 \begin{center}
 \begin{tabular}{| c | c | c | c | c |}
   \hline                       
@@ -809,7 +930,8 @@ The resulting correlation functions with combined systematic errors are shown in
 \end{center}
 \end{table}
 \begin{table}
-\caption[Systematic error contributions for $\bar{\Lambda}\bar{\Lambda}$] {Systematic error contributions for $\bar{\Lambda}\bar{\Lambda}$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesAA} 
+\caption[Systematic error contributions for $\bar{\Lambda}\bar{\Lambda}$] {Systematic error contributions for $\bar{\Lambda}\bar{\Lambda}$.  
+If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesAA} 
 \begin{center}
 \begin{tabular}{| c | c | c | c | c |}
   \hline                         
@@ -850,7 +972,8 @@ The resulting correlation functions with combined systematic errors are shown in
 \end{center}
 \end{table}
 \begin{table}
-\caption[Systematic error contributions for $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$] {Systematic error contributions for $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLLAA} 
+\caption[Systematic error contributions for $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$] {Systematic error contributions for $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$.  
+If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLLAA} 
 \begin{center}
 \begin{tabular}{| c | c | c | c | c |}
   \hline                       
@@ -864,7 +987,8 @@ The resulting correlation functions with combined systematic errors are shown in
 \end{center}
 \end{table}
 \begin{table}
-\caption[Systematic error contributions for $\Lambda\bar{\Lambda}$] {Systematic error contributions for $\Lambda\bar{\Lambda}$.  If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLA} 
+\caption[Systematic error contributions for $\Lambda\bar{\Lambda}$] {Systematic error contributions for $\Lambda\bar{\Lambda}$.  
+If a particular centrality failed p-value tests for tighter and looser cuts of a particular cut type, it will have two sources of error for that cut type.} \label{tab:SysErrorSourcesLA} 
 \begin{center}
 \begin{tabular}{| c | c | c | c | c |}
   \hline                        
