@@ -2,47 +2,67 @@
 \subsection{Correlation functions}
 \label{sec:CorrelationFunctions}
 
-Correlation functions have been constructed using the entirety of the LHC11h data set.  As discussed in Section \ref{sec:CFconstruct}, events were binned in 5\% centrality bins.  When combining data from different centrality bins, care was taken to combine the correlations by taking weighted averages of the correlation functions.  
+Correlation functions have been constructed using the entirety of the LHC11h data set.  
+As discussed in Section \ref{sec:CFconstruct}, events were binned in 5\% centrality bins.  
+When combining data from different centrality bins, care was taken to combine the correlations by taking weighted averages of the correlation functions.  
 
-The naive method of combining correlation functions involves adding numerators from different bins and adding denominators from different bins and then taking the ratio.  However, this has the pitfall of potentially combining drastically different phase spaces.  As a result, it may introduce artificial signals into the combined correlation function.  Instead of using this method, the correct method is to construct correlation functions for different bins separately.  Then one takes a weighted average of the correlation functions, using the number of numerator pairs in each correlation function as the weight:
+The naive method of combining correlation functions involves adding numerators from different bins and adding denominators from different bins and then taking the ratio.  
+However, this has the pitfall of potentially combining drastically different phase spaces.  
+As a result, it may introduce artificial signals into the combined correlation function.  
+Instead of using this method, the correct method is to construct correlation functions for different bins separately.  
+Then one takes a weighted average of the correlation functions, using the number of numerator pairs in each correlation function as the weight:
 
 \begin{equation}
 \label{eq:CombineCF}
 C_{combined}(k^*) = (\displaystyle\sum\limits_{i} w_i C_i(k^*))/(\displaystyle\sum\limits_{i} w_i)
 \end{equation}
-where the sum is done over different correlation function bins (e.g. 0-5\% and 5-10\%) and $w_i$ is the number of numerator pairs in $C_i$.  This averaging is done on a bin-by-bin basis in $k^*$.  Note that this averaging procedure should be used in general to combine data sets with potentially different phase spaces. For example, this procedure is employed to combine data from runs utilizing the two different field orientations (see Section \ref{sec:DataSelection}).  It is also employed when combining $\Lambda\Lambda$ data with $\bar{\Lambda}\bar{\Lambda}$ data.  For each centrality range (0-10\%, 10-30\%, and 30-50\%), the correlation functions of the two pair types were found to be consistent with each other (p-values of 0.26, 0.02, and 0.43 respectively).  Therefore, no additional systematic error was assessed to come out of their merging.
+where the sum is done over different correlation function bins (e.g. 0-5\% and 5-10\%) and $w_i$ is the number of numerator pairs in $C_i$.  
+This averaging is done on a bin-by-bin basis in $k^*$.  
+Note that this averaging procedure should be used in general to combine data sets with potentially different phase spaces. 
+For example, this procedure is employed to combine data from runs utilizing the two different field orientations (see Section \ref{sec:DataSelection}).  
+It is also employed when combining $\Lambda\Lambda$ data with $\bar{\Lambda}\bar{\Lambda}$ data.  For each centrality range (0-10\%, 10-30\%, and 30-50\%), the correlation functions of the two pair types were found to be consistent with each other (p-values of 0.26, 0.02, and 0.43 respectively).  
+Therefore, no additional systematic error was assessed to come out of their merging.
 
-Figures \ref{fig:CFLamLamALamALam010}, \ref{fig:CFLamLamALamALam1030STAR}, and \ref{fig:CFLamLamALamALam3050} show combined $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  Figures \ref{fig:CFLamALam010}, \ref{fig:CFLamALam1030}, and \ref{fig:CFLamALam3050} show $\Lambda\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  Each plot includes the combined systematic errors discussed in Section \ref{sec:GeneralCfSysErrorDiscussion}.
+Figures \ref{fig:CFLamLamALamALam010}, \ref{fig:CFLamLamALamALam1030STAR}, and \ref{fig:CFLamLamALamALam3050} show combined $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  
+Figures \ref{fig:CFLamALam010}, \ref{fig:CFLamALam1030}, and \ref{fig:CFLamALam3050} show $\Lambda\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  
+Each plot includes the combined systematic errors discussed in Section \ref{sec:GeneralCfSysErrorDiscussion}.
 
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-010-CommentCorrections.pdf}
-\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 0-10\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 0-10\% centrality range with statistical and systematic errors.  A dip at low $k^*$ is seen which is expected from quantum interference.}
+\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 0-10\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 0-10\% centrality range with statistical and systematic errors.  
+A dip at low $k^*$ is seen which is expected from quantum interference.}
 \label{fig:CFLamLamALamALam010}
 \end{figure}
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-1030-CommentCorrections-WithSTAR.pdf}
-\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  A dip at low $k^*$ is seen which is expected from quantum interference.  Preliminary STAR data for $\Lambda\Lambda$ is shown for comparison.  For the same plot without STAR data, see Figure \ref{fig:AppendixCFLamLamALamALam1030}.}
+\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  
+A dip at low $k^*$ is seen which is expected from quantum interference.  Preliminary STAR data for $\Lambda\Lambda$ is shown for comparison.  
+For the same plot without STAR data, see Figure \ref{fig:AppendixCFLamLamALamALam1030}.}
 \label{fig:CFLamLamALamALam1030STAR}
 \end{figure}
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-3050-CommentCorrections.pdf}
-\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 30-50\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 30-50\% centrality range with statistical and systematic errors.  A hint of a dip at low $k^*$ may be seen, which would be expected from quantum interference.}
+\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 30-50\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 30-50\% centrality range with statistical and systematic errors.  
+A hint of a dip at low $k^*$ may be seen, which would be expected from quantum interference.}
 \label{fig:CFLamLamALamALam3050}
 \end{figure}
 
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/2014-05-11-CfLA-010-CommentCorrections.pdf}
-\caption[$\Lambda\bar{\Lambda}$ correlation function for the 0-10\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 0-10\% centrality range with statistical and systematic errors.  A wide suppression is seen which is indicative of annihilative effects.}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for the 0-10\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 0-10\% centrality range with statistical and systematic errors.  
+A wide suppression is seen which is indicative of annihilative effects.}
 \label{fig:CFLamALam010}
 \end{figure}
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/2014-05-11-CfLA-1030-CommentCorrections.pdf}
-\caption[$\Lambda\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  A wide suppression is seen which is indicative of annihilative effects.}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  
+A wide suppression is seen which is indicative of annihilative effects.}
 \label{fig:CFLamALam1030}
 \end{figure}
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/2014-05-11-CfLA-3050-CommentCorrections.pdf}
-\caption[$\Lambda\bar{\Lambda}$ correlation function for the 30-50\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 30-50\% centrality range with statistical and systematic errors.  A wide suppression is seen which is indicative of annihilative effects.}
+\caption[$\Lambda\bar{\Lambda}$ correlation function for the 30-50\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 30-50\% centrality range with statistical and systematic errors.  
+A wide suppression is seen which is indicative of annihilative effects.}
 \label{fig:CFLamALam3050}
 \end{figure}
 
@@ -50,11 +70,25 @@ Figures \ref{fig:CFLamLamALamALam010}, \ref{fig:CFLamLamALamALam1030STAR}, and \
 \label{sec:CFInterpretation}
 
 
-Generally speaking, the interesting part of a relative-momentum correlation function is the region below 100 or 200 MeV/c.  Non-unity structures/backgrounds may be visible at large relative momentum - these structures can complicate the fitting procedure, and sometimes even direct attention to flaws in the analysis.  They can also exist in the low-relative momentum region, though there they are generally assumed (or at least hoped) to be small.  However, the information about the source size and two-particle interactions is predominantly encoded within the low-$k^*$ region.  For the time being, this analysis will restrict its attention to behavior in that region.
+Generally speaking, the interesting part of a relative-momentum correlation function is the region below 100 or 200 MeV/c.  
+Non-unity structures/backgrounds may be visible at large relative momentum - these structures can complicate the fitting procedure, and sometimes even direct attention to flaws in the analysis.  
+They can also exist in the low-relative momentum region, though there they are generally assumed (or at least hoped) to be small.  
+However, the information about the source size and two-particle interactions is predominantly encoded within the low-$k^*$ region.  
+For the time being, this analysis will restrict its attention to behavior in that region.
 
-The $\Lambda\bar{\Lambda}$ correlation functions (Figures\ \ref{fig:CFLamALam010}, \ref{fig:CFLamALam1030}, and \ref{fig:CFLamALam3050}) exhibit a clear, centrality dependent suppression in the low-$k^*$ region, even with the significant statistical error bars for the 10-30\% and 30-50\% systems.  A signal is also visible in the $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ data, though it is smaller in magnitude and localized to a narrower $k^*$ region. For reference, Preliminary STAR $\Lambda\Lambda$ results from 200 GeV Au--Au, 0-40\% centrality are also plotted \cite{Shah:2012ps}.
+The $\Lambda\bar{\Lambda}$ correlation functions (Figures\ \ref{fig:CFLamALam010}, \ref{fig:CFLamALam1030}, and \ref{fig:CFLamALam3050}) exhibit a clear, centrality dependent suppression in the low-$k^*$ region, even with the significant statistical error bars for the 10-30\% and 30-50\% systems.  
+A signal is also visible in the $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ data, though it is smaller in magnitude and localized to a narrower $k^*$ region. 
+For reference, Preliminary STAR $\Lambda\Lambda$ results from 200 GeV Au--Au, 0-40\% centrality are also plotted \cite{Shah:2012ps}.
 
-Several factors may contribute to the small size of this signal.  First of all, the physics of the identical particle systems (see Sec.\ \ref{sec:AnalyticModel}) is expected to be confined to just the few lowest bins.  There may be competing physics effects -- a suppression from quantum interference and an enhancement from the strong final state interactions -- that wash each other out.  Furthermore, two-track effects like splitting and merging show up in this region, though they are assumed to be well-corrected for by the aforementioned pair-wise cuts.  The presence of residual correlations might muddle or dilute the signal region.  This will be discussed further in Section \ref{sec:Residual}.  Finally, it must be noted that these are the $k^*$ bins with the least statistics.  There are also a couple of fitting tricks that can be employed to mitigate the statistical limitations in these plots.  They will be discussed in Section \ref{sec:MinuitFit}.
+Several factors may contribute to the small size of this signal.  
+First of all, the physics of the identical particle systems (see Sec.\ \ref{sec:AnalyticModel}) is expected to be confined to just the few lowest bins.  
+There may be competing physics effects -- a suppression from quantum interference and an enhancement from the strong final state interactions -- that wash each other out.  
+Furthermore, two-track effects like splitting and merging show up in this region, though they are assumed to be well-corrected for by the aforementioned pair-wise cuts.  
+The presence of residual correlations might muddle or dilute the signal region.  
+This will be discussed further in Section \ref{sec:Residual}.  
+Finally, it must be noted that these are the $k^*$ bins with the least statistics.  
+There are also a couple of fitting tricks that can be employed to mitigate the statistical limitations in these plots.  
+They will be discussed in Section \ref{sec:MinuitFit}.
 
 %********Outdated****** some of this may be salvageable
 
