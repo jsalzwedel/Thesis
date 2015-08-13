@@ -1,6 +1,7 @@
 \section{Fitting results and systematics}
 \label{sec:FittingSystematics}
 
+A crucial part of the analysis is the treatment of residual correlations in the fit procedure.
 
 
 \subsection{Fitting via Gaussian residual method}
@@ -9,8 +10,8 @@
 
 \subsection{Fitting via the transform method}
 
-Proper fitting techniques for this analysis are still a work in progress.  
-In particular, efforts are being made to evaluate the extent to which residual correlations permeate the measured correlation functions.  
+%Proper fitting techniques for this analysis are still a work in progress.  
+%In particular, efforts are being made to evaluate the extent to which residual correlations permeate the measured correlation functions.  
 In this analysis, the importance of residual correlations can be characterized by two sets of parameters.  
 The scattering lengths $f_0$ of the residual pair describe the strength of the residual pair interaction, such that a larger $\abs{f_0}$ will generally lead to a more pronounced residual correlation function.  
 Meanwhile, the pair purity $\lambda$ of each pair type describes the relative contribution of each individual correlation function (i.e. primary or residual) to the total correlation function, as described in Section \ref{sec:Residual}. 
@@ -23,13 +24,24 @@ The following sections will discuss how these two parameters are evaluated in th
 \subsection{Estimates of \texorpdfstring{$\lambda$}{lambda} parameters}
 \label{sec:LambdaParams}
 
-In this section, we attempt to make a very rough, preliminary estimate of the relevant $\lambda$ parameters involved in this calculation.  
-A more refined estimate could be made by convoluting ALICE particle spectra with analysis-specific reconstruction efficiencies to determine analysis-specific yields of the various particle types.  
-That avenue will be discussed more in Section \ref{sec:ReconstructionEff}. 
+In this section, we estimate of the relevant $\lambda$ parameters involved in fitting these systems.  
+$\lambda$ can roughly be understood to be the pair purity of the system that is being fit, i.e. the fraction of true pairs over total pairs.  
+There are additional factors that can affect $\lambda$ such as source coherence or non-gaussianity of underlying source, but these complications will be neglected in the present analysis.
+
+Many femtoscopic analyses utilize a single $\lambda$ value in their fit procedure as an indication of their overall pair purity.  
+This is fine in the cases where the impure pairs (i.e. the other $1 - \lambda$ fraction of pairs) are uncorrelated.
+But if there are correlated pairs in that background, then it becomes necessary estimate their contributions to the correlation function.
+Additional $\lambda$ parameters can be attributed to each source of correlated impurity according to the fraction of total pairs of that type.
+In principle, all these $\lambda$ can be left as free fit parameters.
+In practice, that results in fits that are far too unconstrained to converge properly.
+In this analysis, we will estimate the $\lambda$ parameter coming from each different source of primary and secondary $\Lambda$ pairs, and use those numbers as fixed parameters in the fit.
+
+%A more refined estimate could be made by convoluting ALICE particle spectra with analysis-specific reconstruction efficiencies to determine analysis-specific yields of the various particle types.  
+%That avenue will be discussed more in Section \ref{sec:ReconstructionEff}. 
 
 To understand the mathematical motivation behind the $\lambda$ parameters, let us consider the simple case where the signal pairs of the correlation function come from a single event.  
 Within this event, all combinations of reconstructed V0s are paired together and binned according to their $k^*$ values.  
-For this analysis, the reconstructed V0s consist of primary $\Lambda$, secondary $\Lambda$, and false $\Lambda$.  
+For this analysis, the reconstructed V0s consist of primary $\Lambda$, secondary $\Lambda$, and fake $\Lambda$.  
 Let us assume that origin of the different $\Lambda$ cannot be determined - the analysis only knows that a given V0 appears to be a $\Lambda$.  
 As mentioned above, the total correlation function will be a linear combination of the component correlation functions (primary-primary, primary-secondary, primary-fake, fake-fake, etc.).  
 The $\lambda$ parameters for each component correlation are given by the fraction of total pairs of that type.  
