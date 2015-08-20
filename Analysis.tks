@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TexmakerSession quickmode="3">
-    <document bookmark1="0" bookmark2="0" master="true" bookmark3="0" line="13" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/alice-frontpage_analysis_notes.tex" hasfocus="true"/>
-    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/SystematicErrors.tex" hasfocus="false"/>
-    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/Introduction.tex" hasfocus="false"/>
-    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/AnalyticModel.tex" hasfocus="false"/>
-    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/ResidualCorrelations.tex" hasfocus="false"/>
-    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/Summary.tex" hasfocus="false"/>
-    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="7" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/AnalysisNote.tex" hasfocus="false"/>
-    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/Fitting.tex" hasfocus="false"/>
-    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/Appendix.tex" hasfocus="false"/>
-    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/DataAnalysis.tex" hasfocus="false"/>
-    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/Presentations and Papers/Analysis_Notes/CurrentNote/CorrelationFunctions.tex" hasfocus="false"/>
+    <document bookmark1="0" bookmark2="0" master="true" bookmark3="0" line="13" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/alice-frontpage_analysis_notes.tex" hasfocus="true"/>
+    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/SystematicErrors.tex" hasfocus="false"/>
+    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Introduction.tex" hasfocus="false"/>
+    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/AnalyticModel.tex" hasfocus="false"/>
+    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/ResidualCorrelations.tex" hasfocus="false"/>
+    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Summary.tex" hasfocus="false"/>
+    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="7" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/AnalysisNote.tex" hasfocus="false"/>
+    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Fitting.tex" hasfocus="false"/>
+    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Appendix.tex" hasfocus="false"/>
+    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/DataAnalysis.tex" hasfocus="false"/>
+    <document bookmark1="0" bookmark2="0" master="false" bookmark3="0" line="0" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/CorrelationFunctions.tex" hasfocus="false"/>
 </TexmakerSession>
