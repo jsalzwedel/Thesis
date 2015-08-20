@@ -18,112 +18,6 @@ The following sections will discuss how these two parameters are evaluated in th
 %Discussion of current status of fit results and systematic uncertainties.  
 %Report measured systematics as well as possible sources of systematics yet to be explored.
 
-\subsection{Estimates of \texorpdfstring{$\lambda$}{lambda} parameters}
-\label{sec:LambdaParams}
-
-In this section, we estimate of the relevant $\lambda$ parameters involved in fitting these systems.  
-$\lambda$ can roughly be understood to be the pair purity of the system that is being fit, i.e.\ the fraction of true pairs over total pairs.  
-There are additional factors that can affect $\lambda$ such as source coherence or non-gaussianity of underlying source, but these complications will be neglected in this analysis.
-
-Many femtoscopic analyses utilize a single $\lambda$ value in their fit procedure as an indication of their overall pair purity.  
-This is fine in the cases where the impure pairs (i.e.\ the other $1 - \lambda$ fraction of pairs) are uncorrelated.
-But if there are residual correlations, then it becomes necessary estimate their contributions to the correlation function.
-Additional $\lambda$ parameters can be attributed to each residual correlation according to the fraction of total pairs of that type.
-In principle, all these $\lambda$ can be left as free fit parameters.
-In practice, that results in fits that are far too unconstrained to converge properly.
-In this analysis, we will estimate the $\lambda$ parameters for each relevant residual correlation, and use those numbers as fixed parameters in the fit.
-
-%A more refined estimate could be made by convoluting ALICE particle spectra with analysis-specific reconstruction efficiencies to determine analysis-specific yields of the various particle types.  
-%That avenue will be discussed more in Section \ref{sec:ReconstructionEff}. 
-
-To understand the mathematical motivation behind the $\lambda$ parameters, let us consider the simple case where the signal pairs of the correlation function come from a single event.  
-Within this event, all combinations of reconstructed V0s are paired together and binned according to their $k^*$ values.  
-For this simple example, let's assume that the reconstructed V0s consist of primary $\Lambda$, secondary $\Lambda$, and fake $\Lambda$.  
-Let us assume that origin of the different $\Lambda$ cannot be determined - the analysis only knows that a given V0 appears to be a $\Lambda$.  
-As mentioned above, the total correlation function will be a linear combination of the component correlation functions (primary-primary, primary-secondary, primary-fake, fake-fake, etc.).  
-The $\lambda$ parameters for each component correlation are given by the fraction of total pairs of that type.  
-For example, if there are ten distinct $\Lambda\Sigma$ pairs and one hundred total pairs, then $\lambda_{\Lambda\Sigma} = 1/10$.  
-If all pair types are accounted for, 
-\begin{equation}
-\label{eq:SumLambdaUnity}
-\sum\limits_{ij}\lambda_{ij} = 1.
-\end{equation}
-
-The following equations describe a combinatoric approach for estimating the $\lambda$ parameters for different types of pairs.  
-For two identical particles (e.g. both primary $\Lambda$) 
-\begin{equation}
-\label{eq:LambdaIdentical}
-\lambda_{ii} = \frac{N_i}{T}\frac{(N_i -1)/2}{(T-1)/2} = \frac{N_i}{T}\frac{(N_i -1)}{(T-1)}
-\end{equation}
-where $N_i$ is the number of particles of species $i$, $T = \sum\limits_i N_i$ is the total number of particles, and the factors of $1/2$ remove double counting.  
-For two particles with different origins (e.g. a primary $\Lambda$ and a $\Lambda$ from a $\Sigma^0$ decay)
-\begin{equation}
-\lambda_{ij} = \frac{N_i}{T} \frac{N_j}{(T-1)/2}
-\end{equation}
-for $i \neq j$.  
-$\lambda$ can also be calculated for pairs that are distinguishable, such as primary $\Lambda$ and primary $\bar{\Lambda}$:
-\begin{equation}
-\lambda_{i\bar{j}} = \frac{N_i N_{\bar{j}}}{T\bar{T}}
-\end{equation}
-where $T$ is the sum of all indistinguishable particles and $\bar{T}$ is the sum of all indistinguishable antiparticles.
-
-One should note here that the above $\lambda$ equations technically apply to some sort of single-event correlation function.  
-The $\lambda$ parameters measured or estimated for a million-event correlation function would roughly correspond to an event-averaged value.  
-Nonetheless, we can attempt to employ these formulae to obtain ballpark estimates of the $\lambda$ parameters, given estimates of the yields of each type of particle.
-
-As the goal of this analysis is to measure the correlations of primary $\Lambda$, it is important to know the relative yields of secondary $\Lambda$.  
-We can obtain an estimate \cite{Florkowski:2010zz} of the yields of different types of particles at mid-rapidity from a thermal model using
-\begin{equation}
-\frac{1}{m_{\mathrm{T}}}\frac{dN}{dm_{\mathrm{T}}} \propto \exp{(-m_\mathrm{T}/T)}
-\end{equation}
-where the transverse mass $m_\mathrm{T} = \sqrt{m^2_{\mathrm{inv}} + p^2_{\mathrm{T}}}$ and $T$ is the chemical-feezeout temperature.  
-Integrating over $m_\mathrm{T}$ gives $N \propto (m_\mathrm{inv} + T) \exp{(-m_\mathrm{inv}/T)}$.  
-Therefore, the yield of any particle species $i$ relative to the $\Lambda$ yield is
-\begin{equation}
-\frac{N_i}{N_\Lambda} \approx \frac{m_i + T}{m_\Lambda + T} \exp{((m_\Lambda - m_i)/T)}.
-\end{equation}
-
-Particles that decay into $\Lambda$ include $\Sigma^0$, $\Xi^0$, $\Xi^-$, and $\Omega^-$.  
-Assuming a freezeout temperature of 165 MeV, and taking into account that the $\Omega$ has a branching ratio of ~68\% and the others ~100\%, we can then estimate that for every 100 $\Lambda$, there will be approximately 67 $\Sigma$, 34 of each type of $\Xi$, and 3 $\Omega$.
-
-Before calculating the $\lambda$ parameters, it is also necessary to know approximately how many fake $\Lambda$ there are.  
-In Section \ref{sec:Recon}, we estimated that our signal quality $P$ was $P = real/(real + background) \approx 0.82$ (Note: calculations were performed using a now outdated purity estimate).  
-Taking $real$ to be the sum of all the primary and secondary $\Lambda$, we calculate that $\frac{background}{real} = P^{-1}-1 \approx 0.22$.  
-With the above yields totalling 238 $\Lambda$, we would expect to see an additional 52 fake $\Lambda$.  
-Based on these values, we can now estimate the $\lambda$ parameters for all pair types.
-
-\begin{center}
-\begin{tabular}{|l|l|c|}
-\hline
-					& 	$\lambda$	&	Cumulative total \\ \hline
-$\Lambda\Lambda$   	&	0.12			&	0.12 \\ \hline
-$\Lambda\Sigma^0$  	&	0.16			&	0.28 \\ \hline
-$\Lambda\Xi^0$     	&	0.08			&	0.36 \\ \hline
-$\Lambda\Xi^-$     	&	0.08			&	0.44 \\ \hline
-$\Lambda\Omega$    	&	0.007		&	0.45 \\ \hline
-$\Sigma^0\Sigma^0$ 	&	0.05			&	0.50 \\ \hline
-$\Sigma^0\Xi^0$    	&	0.05			&	0.55 \\ \hline
-$\Sigma^0\Xi^-$    	&	0.05			&	0.61 \\ \hline
-$\Sigma^0\Omega$   	&	0.004		&	0.61 \\ \hline
-$\Xi^0\Xi^0$       	&	0.01			&	0.63 \\ \hline
-$\Xi^0\Xi^-$ 		&	0.03			&	0.65 \\ \hline
-$\Xi^0\Omega$ 		&	0.002		&	0.66 \\ \hline
-$\Xi^-\Xi^-$ 		&	0.01			&	0.67 \\ \hline
-$\Xi^-\Omega$ 		&	0.002		&	0.67 \\ \hline
-$\Omega\Omega$ 		&	0.00			&	0.67 \\ \hline
-\end{tabular}
-\end{center}
-
-These estimates have several interesting characteristics.  
-First, the sum of the primary correlation all the residual correlations totals to 0.67.  
-The other 33\% is lost to the background.  
-Note that feedup from residual p$\Lambda$ correlations would be included in this 33\%, though feedup has otherwise not yet been explored in this analysis. 
-Another striking feature of these data is that the contribution from $\Lambda\Sigma$ is actually larger than the contribution from $\Lambda\Lambda$.  
-In other words, if the hyperon yields and reconstruction efficiencies of the true PbPb data are reminiscent of the yields above, then this analysis is measuring the $\Lambda\Sigma$ correlation more than the $\Lambda\Lambda$ correlation.  
-It should also be noted that contributions from $\Lambda\Xi$, $\Sigma\Sigma$, and $\Sigma\Xi$ are appreciable.
-
-For the the $\Lambda\bar{\Lambda}$ analysis, estimates of the $\lambda$ parameters work out to be approximately the same as in the table above.
-
 \subsection{Reconstruction efficiency effects on relative particle yields}
 \label{sec:ReconstructionEff}
 
@@ -193,6 +87,131 @@ The various secondary $\Lambda$ are seen to have approximately the same reconstr
 This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.}
 \label{fig:MCEfficiencyNoInjected}
 \end{figure}
+
+\subsection{Thermal yield estimates}
+\label{sec:ThermalYields}
+
+THERMINATOR, using efficiencies, yields, fakes
+
+
+\subsection{Estimates of \texorpdfstring{$\lambda$}{lambda} parameters}
+\label{sec:LambdaParams}
+
+In this section, we estimate of the relevant $\lambda$ parameters involved in fitting these systems.  
+$\lambda$ can roughly be understood to be the pair purity of the system that is being fit, i.e.\ the fraction of true pairs over total pairs.  
+There are additional factors that can affect $\lambda$ such as source coherence or non-gaussianity of underlying source, but these complications will be neglected in this analysis.
+
+Many femtoscopic analyses utilize a single $\lambda$ value in their fit procedure as an indication of their overall pair purity.  
+This is fine in the cases where the impure pairs (i.e.\ the other $1 - \lambda$ fraction of pairs) are uncorrelated.
+But if there are residual correlations, then it becomes necessary estimate their contributions to the correlation function.
+Additional $\lambda$ parameters can be attributed to each residual correlation according to the fraction of total pairs of that type.
+In principle, all these $\lambda$ can be left as free fit parameters.
+In practice, that results in fits that are far too unconstrained to converge properly.
+In this analysis, we will estimate the $\lambda$ parameters for each relevant residual correlation, and use those numbers as fixed parameters in the fit.
+
+%A more refined estimate could be made by convoluting ALICE particle spectra with analysis-specific reconstruction efficiencies to determine analysis-specific yields of the various particle types.  
+%That avenue will be discussed more in Section \ref{sec:ReconstructionEff}. 
+
+To understand the mathematical motivation behind the $\lambda$ parameters, let us consider the simple case where the signal pairs of the correlation function come from a single event.  
+Within this event, all combinations of reconstructed V0s are paired together and binned according to their $k^*$ values.  
+For this simple example, let's assume that the reconstructed V0s consist of primary $\Lambda$, secondary $\Lambda$, and fake $\Lambda$.  
+Let us assume that origin of the different $\Lambda$ cannot be determined - the analysis only knows that a given V0 appears to be a $\Lambda$.  
+As mentioned above, the total correlation function will be a linear combination of the component correlation functions (primary-primary, primary-secondary, primary-fake, fake-fake, etc.).  
+The $\lambda$ parameters for each component correlation are given by the fraction of total pairs of that type.  
+For example, if there are ten distinct $\Lambda\Sigma$ pairs and one hundred total pairs, then $\lambda_{\Lambda\Sigma} = 1/10$.  
+If all pair types are accounted for, 
+\begin{equation}
+\label{eq:SumLambdaUnity}
+\sum\limits_{ij}\lambda_{ij} = 1.
+\end{equation}
+
+We can use the following equations to estimate the $\lambda$ parameters for different types of pairs. 
+These equations take the general form 
+\begin{equation}
+\lambda = \frac{\mathrm{Specific Pairs}}{\mathrm{Total Pairs}},
+\end{equation}
+where the calculations for numbers of pairs are simple combinatorics.  If more than one event is being used (as is the case in the data), the equation becomes
+\begin{equation}
+\lambda = \frac{\langle\mathrm{Specific Pairs}\rangle}{\langle\mathrm{Total Pairs}\rangle},
+\end{equation}
+where the average is done over events.
+
+The $\lambda$ parameter for two identical particles (e.g. both primary $\Lambda$) is given by
+\begin{equation}
+\label{eq:LambdaIdentical}
+\lambda_{ii} = \frac{N_i}{T}\frac{(N_i -1)/2}{(T-1)/2} = \frac{N_i}{T}\frac{(N_i -1)}{(T-1)}
+\end{equation}
+where $N_i$ is the number of particles of species $i$, $T = \sum\limits_i N_i$ is the total number of particles, and the factors of $1/2$ remove double counting.  
+For two particles with different origins (e.g. a primary $\Lambda$ and a $\Lambda$ from a $\Sigma^0$ decay)
+\begin{equation}
+\lambda_{ij} = \frac{N_i}{T} \frac{N_j}{(T-1)/2}
+\end{equation}
+for $i \neq j$.  
+$\lambda$ can also be calculated for pairs that are distinguishable, such as primary $\Lambda$ and primary $\bar{\Lambda}$:
+\begin{equation}
+\lambda_{i\bar{j}} = \frac{N_i N_{\bar{j}}}{T\bar{T}}
+\end{equation}
+where $T$ is the sum of all indistinguishable particles and $\bar{T}$ is the sum of all indistinguishable antiparticles.
+
+
+
+%One should note here that the above $\lambda$ equations technically apply to some sort of single-event correlation function.  
+%The $\lambda$ parameters measured or estimated for a million-event correlation function would roughly correspond to an event-averaged value.  
+%Nonetheless, we can attempt to employ these formulae to obtain ballpark estimates of the $\lambda$ parameters, given estimates of the yields of each type of particle.
+%
+%As the goal of this analysis is to measure the correlations of primary $\Lambda$, it is important to know the relative yields of secondary $\Lambda$.  
+%We can obtain an estimate \cite{Florkowski:2010zz} of the yields of different types of particles at mid-rapidity from a thermal model using
+%\begin{equation}
+%\frac{1}{m_{\mathrm{T}}}\frac{dN}{dm_{\mathrm{T}}} \propto \exp{(-m_\mathrm{T}/T)}
+%\end{equation}
+%where the transverse mass $m_\mathrm{T} = \sqrt{m^2_{\mathrm{inv}} + p^2_{\mathrm{T}}}$ and $T$ is the chemical-feezeout temperature.  
+%Integrating over $m_\mathrm{T}$ gives $N \propto (m_\mathrm{inv} + T) \exp{(-m_\mathrm{inv}/T)}$.  
+%Therefore, the yield of any particle species $i$ relative to the $\Lambda$ yield is
+%\begin{equation}
+%\frac{N_i}{N_\Lambda} \approx \frac{m_i + T}{m_\Lambda + T} \exp{((m_\Lambda - m_i)/T)}.
+%\end{equation}
+%
+%Particles that decay into $\Lambda$ include $\Sigma^0$, $\Xi^0$, $\Xi^-$, and $\Omega^-$.  
+%Assuming a freezeout temperature of 165 MeV, and taking into account that the $\Omega$ has a branching ratio of ~68\% and the others ~100\%, we can then estimate that for every 100 $\Lambda$, there will be approximately 67 $\Sigma$, 34 of each type of $\Xi$, and 3 $\Omega$.
+%
+%Before calculating the $\lambda$ parameters, it is also necessary to know approximately how many fake $\Lambda$ there are.  
+%In Section \ref{sec:Recon}, we estimated that our signal quality $P$ was $P = real/(real + background) \approx 0.82$ (Note: calculations were performed using a now outdated purity estimate).  
+%Taking $real$ to be the sum of all the primary and secondary $\Lambda$, we calculate that $\frac{background}{real} = P^{-1}-1 \approx 0.22$.  
+%With the above yields totalling 238 $\Lambda$, we would expect to see an additional 52 fake $\Lambda$.  
+%Based on these values, we can now estimate the $\lambda$ parameters for all pair types.
+%
+%\begin{center}
+%\begin{tabular}{|l|l|c|}
+%\hline
+%					& 	$\lambda$	&	Cumulative total \\ \hline
+%$\Lambda\Lambda$   	&	0.12			&	0.12 \\ \hline
+%$\Lambda\Sigma^0$  	&	0.16			&	0.28 \\ \hline
+%$\Lambda\Xi^0$     	&	0.08			&	0.36 \\ \hline
+%$\Lambda\Xi^-$     	&	0.08			&	0.44 \\ \hline
+%$\Lambda\Omega$    	&	0.007		&	0.45 \\ \hline
+%$\Sigma^0\Sigma^0$ 	&	0.05			&	0.50 \\ \hline
+%$\Sigma^0\Xi^0$    	&	0.05			&	0.55 \\ \hline
+%$\Sigma^0\Xi^-$    	&	0.05			&	0.61 \\ \hline
+%$\Sigma^0\Omega$   	&	0.004		&	0.61 \\ \hline
+%$\Xi^0\Xi^0$       	&	0.01			&	0.63 \\ \hline
+%$\Xi^0\Xi^-$ 		&	0.03			&	0.65 \\ \hline
+%$\Xi^0\Omega$ 		&	0.002		&	0.66 \\ \hline
+%$\Xi^-\Xi^-$ 		&	0.01			&	0.67 \\ \hline
+%$\Xi^-\Omega$ 		&	0.002		&	0.67 \\ \hline
+%$\Omega\Omega$ 		&	0.00			&	0.67 \\ \hline
+%\end{tabular}
+%\end{center}
+%
+%These estimates have several interesting characteristics.  
+%First, the sum of the primary correlation all the residual correlations totals to 0.67.  
+%The other 33\% is lost to the background.  
+%Note that feedup from residual p$\Lambda$ correlations would be included in this 33\%, though feedup has otherwise not yet been explored in this analysis. 
+%Another striking feature of these data is that the contribution from $\Lambda\Sigma$ is actually larger than the contribution from $\Lambda\Lambda$.  
+%In other words, if the hyperon yields and reconstruction efficiencies of the true PbPb data are reminiscent of the yields above, then this analysis is measuring the $\Lambda\Sigma$ correlation more than the $\Lambda\Lambda$ correlation.  
+%It should also be noted that contributions from $\Lambda\Xi$, $\Sigma\Sigma$, and $\Sigma\Xi$ are appreciable.
+%
+%For the the $\Lambda\bar{\Lambda}$ analysis, estimates of the $\lambda$ parameters work out to be approximately the same as in the table above.
+
 
 \subsection{Scattering parameters of residual pairs}
 \label{sec:ScatteringParams}
