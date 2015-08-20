@@ -1,12 +1,9 @@
-\section{Fitting results and systematics}
-\label{sec:FittingSystematics}
+\section{Fit Procedure}
+\label{sec:FitProcedure}
+
+In this section, we discuss ... 
 
 A crucial part of the analysis is the treatment of residual correlations in the fit procedure.
-
-
-\subsection{Fitting via Gaussian residual method}
-
-
 
 \subsection{Fitting via the transform method}
 
@@ -25,47 +22,50 @@ The following sections will discuss how these two parameters are evaluated in th
 \label{sec:LambdaParams}
 
 In this section, we estimate of the relevant $\lambda$ parameters involved in fitting these systems.  
-$\lambda$ can roughly be understood to be the pair purity of the system that is being fit, i.e. the fraction of true pairs over total pairs.  
-There are additional factors that can affect $\lambda$ such as source coherence or non-gaussianity of underlying source, but these complications will be neglected in the present analysis.
+$\lambda$ can roughly be understood to be the pair purity of the system that is being fit, i.e.\ the fraction of true pairs over total pairs.  
+There are additional factors that can affect $\lambda$ such as source coherence or non-gaussianity of underlying source, but these complications will be neglected in this analysis.
 
 Many femtoscopic analyses utilize a single $\lambda$ value in their fit procedure as an indication of their overall pair purity.  
-This is fine in the cases where the impure pairs (i.e. the other $1 - \lambda$ fraction of pairs) are uncorrelated.
-But if there are correlated pairs in that background, then it becomes necessary estimate their contributions to the correlation function.
-Additional $\lambda$ parameters can be attributed to each source of correlated impurity according to the fraction of total pairs of that type.
+This is fine in the cases where the impure pairs (i.e.\ the other $1 - \lambda$ fraction of pairs) are uncorrelated.
+But if there are residual correlations, then it becomes necessary estimate their contributions to the correlation function.
+Additional $\lambda$ parameters can be attributed to each residual correlation according to the fraction of total pairs of that type.
 In principle, all these $\lambda$ can be left as free fit parameters.
 In practice, that results in fits that are far too unconstrained to converge properly.
-In this analysis, we will estimate the $\lambda$ parameter coming from each different source of primary and secondary $\Lambda$ pairs, and use those numbers as fixed parameters in the fit.
+In this analysis, we will estimate the $\lambda$ parameters for each relevant residual correlation, and use those numbers as fixed parameters in the fit.
 
 %A more refined estimate could be made by convoluting ALICE particle spectra with analysis-specific reconstruction efficiencies to determine analysis-specific yields of the various particle types.  
 %That avenue will be discussed more in Section \ref{sec:ReconstructionEff}. 
 
 To understand the mathematical motivation behind the $\lambda$ parameters, let us consider the simple case where the signal pairs of the correlation function come from a single event.  
 Within this event, all combinations of reconstructed V0s are paired together and binned according to their $k^*$ values.  
-For this analysis, the reconstructed V0s consist of primary $\Lambda$, secondary $\Lambda$, and fake $\Lambda$.  
+For this simple example, let's assume that the reconstructed V0s consist of primary $\Lambda$, secondary $\Lambda$, and fake $\Lambda$.  
 Let us assume that origin of the different $\Lambda$ cannot be determined - the analysis only knows that a given V0 appears to be a $\Lambda$.  
 As mentioned above, the total correlation function will be a linear combination of the component correlation functions (primary-primary, primary-secondary, primary-fake, fake-fake, etc.).  
 The $\lambda$ parameters for each component correlation are given by the fraction of total pairs of that type.  
 For example, if there are ten distinct $\Lambda\Sigma$ pairs and one hundred total pairs, then $\lambda_{\Lambda\Sigma} = 1/10$.  
-Ideally, the sum of all $\lambda$ should be unity.  
-That said, in practice one reason the sum of $\lambda$ parameters can deviate from unity is if the source is not truly a gaussian.
+If all pair types are accounted for, 
+\begin{equation}
+\label{eq:SumLambdaUnity}
+\sum\limits_{ij}\lambda_{ij} = 1.
+\end{equation}
 
 The following equations describe a combinatoric approach for estimating the $\lambda$ parameters for different types of pairs.  
-For two identical particles (e.g. primary $\Lambda$) \begin{equation}
-\label{eq:LambdaIdentical}
-\lambda_{\Lambda\Lambda} = \frac{N_\Lambda}{T}\frac{(N_\Lambda -1)/2}{(T-1)/2} = \frac{N_\Lambda}{T}\frac{(N_\Lambda -1)}{(T-1)}
-\end{equation}
-where the $\Lambda$ subscript means primary $\Lambda$, $N$ is the number of particles of that type, $T$ is the total number of all indistinguishable particles, and the factors of $1/2$ remove double counting.  
-For two different, indistinguishable particles (e.g. a primary $\Lambda$ and a $\Lambda$ from a $\Sigma^0$ decay)
+For two identical particles (e.g. both primary $\Lambda$) 
 \begin{equation}
-\lambda_{\Lambda\Sigma} = \frac{N_\Lambda}{T} \frac{N_\Sigma}{(T-1)/2}
+\label{eq:LambdaIdentical}
+\lambda_{ii} = \frac{N_i}{T}\frac{(N_i -1)/2}{(T-1)/2} = \frac{N_i}{T}\frac{(N_i -1)}{(T-1)}
 \end{equation}
-where the $\Sigma$ subscript indicates $\Lambda$ from $\Sigma$ decays.  
+where $N_i$ is the number of particles of species $i$, $T = \sum\limits_i N_i$ is the total number of particles, and the factors of $1/2$ remove double counting.  
+For two particles with different origins (e.g. a primary $\Lambda$ and a $\Lambda$ from a $\Sigma^0$ decay)
+\begin{equation}
+\lambda_{ij} = \frac{N_i}{T} \frac{N_j}{(T-1)/2}
+\end{equation}
+for $i \neq j$.  
 $\lambda$ can also be calculated for pairs that are distinguishable, such as primary $\Lambda$ and primary $\bar{\Lambda}$:
 \begin{equation}
-\lambda_{\Lambda\bar{\Lambda}} = \frac{N_\Lambda}{T_{\Lambda-\mathrm{type}}} \frac{N_{\bar{\Lambda}}}{T_{\bar{\Lambda}-\mathrm{type}}}
+\lambda_{i\bar{j}} = \frac{N_i N_{\bar{j}}}{T\bar{T}}
 \end{equation}
-where $T_{\Lambda-\mathrm{type}}$ is the sum of all indistinguishable particles that look like $\Lambda$, etc.  
-These equations are all easily generalized to other particle pairs.
+where $T$ is the sum of all indistinguishable particles and $\bar{T}$ is the sum of all indistinguishable antiparticles.
 
 One should note here that the above $\lambda$ equations technically apply to some sort of single-event correlation function.  
 The $\lambda$ parameters measured or estimated for a million-event correlation function would roughly correspond to an event-averaged value.  
@@ -215,14 +215,4 @@ One potential way to estimate the systematic uncertainties in this method would 
 
 %Include practical treatment of fit parameters here. Residual correlation scattering lengths, simultaneous fitting.  Normalization factor vs polynomial background.
 Discussion of Minuit fitting procedure will go here.
-
-\subsection{Fit systematics}
-\label{sec:FitSystematics}
-
-Discussion of fit systematics will go here.
-
-\subsection{Fit results and interpretation}
-\label{sec:FitResults}
-
-Interpretation of final fit results will go here.
 
