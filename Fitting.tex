@@ -21,22 +21,35 @@ The following sections will discuss how these two parameters are evaluated in th
 \subsection{Reconstruction efficiency effects on relative particle yields}
 \label{sec:ReconstructionEff}
 
-Note: This section is still under construction.  
-While the details eventually contained here will be important for fitting correlation functions, these details not particularly relevant for the construction of the correlation functions (i.e. the results under approval for Quark Matter 2014).  
-The plots have yet to be finalized - they will be added later.
+In this section we discuss how to use Monte Carlo events with detector effects to estimate reconstruction efficiency.  
+The reconstruction efficiency will be an important component in our subsequent estimation of $\lambda$ parameters.
 
-The above $\lambda$ estimates have been made under the assumption that primary and secondary $\Lambda$ have the same chance to be reconstructed.  
-However, detector efficiencies and topological reconstruction cuts can change the relative yields of each of these $\Lambda$ types.  
+$\Lambda$ arise from many different sources.
+There are primary $\Lambda$; $\Lambda$ resulting from $\Sigma$ decays and the decays of short-lived resonances, which cannot be distinguished from primary $\Lambda$; and $Lambda$ coming from the weak decays of $\Xi$ and $\Omega$ baryons, some of which can be removed via topological cuts.
+Detector efficiencies and topological reconstruction cuts alter the yields of $\Lambda$ from these various sources in different ways.
 To investigate the influence of reconstruction efficiencies on particle yields, we looked at the reconstruction rates of the different particle types using the HIJING run specified in Section \ref{sec:DataSelection}.  
-The MC truth yields of the V0s were examined at three stages of reconstruction:
-\begin{itemize}
+The MC-truth yields of the V0s were examined at three stages of reconstruction:
+\begin{enumerate}
 \item In the raw MC event before any detector simulation was added to the MC particles.  
-Here the daughters of the V0s are required to be in mid-rapidity and surpass a minimum $p_\mathrm{T}$ value.
+Here the daughters of the V0s are required to be in mid-rapidity and surpass a minimum $p_\mathrm{T}$ value, so as to only look at findable V0s.
 \item In the V0 finder before any analysis-side reconstruction cuts were employed.
 \item After topological reconstruction cuts were made.
-\end{itemize}
+\end{enumerate}
 At each stage, the MC truths of all remaining particles of the following types were counted: primary $\Lambda$; secondary $\Lambda$ from $\Sigma^0$, $\Sigma^*$, $\Xi^0$, $\Xi^-$, $\Omega$, and other sources; the respective anti-particles; $\mathrm{K}^0_{\mathrm{S}}$ misidentified as $\Lambda$ or $\bar{\Lambda}$; other misidentified V0s; and fake V0s reconstructed in the V0 finder.  
 The resulting yields are visible in Figure \ref{fig:MCYields}.
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2014-02-03-MCYields.pdf}
+\caption[$\Lambda$ MC Yields at Different Reconstruction Stages]{
+MC truth yields of $\Lambda$ at different stages of reconstruction.
+The x-axis shows the parentage of the reconstructed particle. 
+The $\Lambda$ and $\bar{\Lambda}$ bins are primary particle yields.  
+Other bins show the number of $\Lambda$ ($\bar{\Lambda}$) that come from decays of other particles. 
+The $\mathrm{K^0_s}$ bin shows the number of kaons that were misidentified as $\Lambda$ and $\bar{\Lambda}$.
+The black points show the yields that exist in the underlying event, the red points show the true parentage of V0-candidates that have been found by the offline V0 finder, and the blue points show yields after all topological reconstruction cuts have been imposed.
+Only midrapidity particles that exceed a minimum $p_\mathrm{T}$ cut have been examined, and injected signals have been excluded from this analysis.}
+\label{fig:MCYields}
+\end{figure}
 
 The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  
 Figure \ref{fig:V0ToMassCut} shows one such ratio.  Here, one can see the fraction of V0s in the V0 finder that survived all the reconstruction cuts.  
