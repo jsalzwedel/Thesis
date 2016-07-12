@@ -1,0 +1,35 @@
+\subsection{General Details}
+\label{sec:GeneralDetails}
+
+\subsubsection{Data selection}
+\label{sec:DataSelection}
+The analysis was performed on 31 July, 2013 using AliRoot v5-04-64-AN. The data were from PbPb collisions at $\sqrt{s_{NN}}=2.76$  TeV taken from the LHC11h (AOD115) pass 2 reconstruction. 
+Runs were selected if they were listed with a pass 2 global quality of 1 ("Good run") in the Run Condition Table. 
+Approximately 66 million combined central, semi-central and minimum bias events were analyzed. 
+The following runs were used, which comprise both the positive (++) and negative magnetic (--) field orientations:
+
+170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308, 170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, 170203, 170193, 170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084, 170083, 170081, 170040, 170027, 169965, 169923, 169859, 169858, 169855, 169846, 169838, 169837, 169835, 169591, 169590, 169588, 169587, 169586, 169557, 169555, 169554, 169553, 169550, 169515, 169512, 169506, 169504, 169498, 169475, 169420, 169419, 169418, 169417, 169415, 169411, 169238, 169167, 169160, 169156, 169148, 169145, 169144, 169138, 169099, 169094, 169091, 169045, 169044, 169040, 169035, 168992, 168988, 168826, 168777, 168514, 168512, 168511, 168467, 168464, 168460, 168458, 168362, 168361, 168342, 168341, 168325, 168322, 168311, 168310, 168115, 168108, 168107, 168105, 168076, 168069, 167988, 167987, 167985, 167920, 167915
+
+Analysis was also performed on the LHC12a17a\_fix Monte Carlo HIJING run, which corresponds to the ++ field orientation events of the LHC11h anchors.  
+Approximately 650 thousand events were analyzed from runs
+
+170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308, 170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, 170203, 170193, 170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084, 170083, 170081, 170040, 170027, 169965, 169923, 169859, 169858, 169855, 169846, 169838, 169837, 169835
+
+In all cases, the z-position of the primary vertex was required to be within 10 cm of the center of the ALICE detector for an event to be selected.  
+
+No centrality flattening is currently employed in the analysis of this data, though it is planned to be completed eventually.  
+Centrality flattening is a procedure by which some events are rejected to ensure that all centralities within a given centrality window (e.g. $0-10\%$) are represented with equal frequency.  
+Centrality flattening is not expected to have a significant impact on the correlation function results, as it merely remove some statistics to make each 1\% centrality bin more evenly weighted in the resulting data.  
+For instance, before flattening, the ALICE Pb---Pb $K^0_\mathrm{s}K^0_\mathrm{s}$ analysis had an average centrality of 4.9\% for the 0-10\% correlation function.  
+After flattening, the average became 5\%.  
+This should result in essentially no change to extracted radii or scattering lengths.
+
+\subsubsection{Detector use}
+Both the data analysis as well as the MC analysis utilized information from several different detectors.  
+Event centrality was measured using the V0 detector with a timing cut from the Zero Degree Calorimeter.  
+The Inner Tracking System (ITS), Time Projection Chamber (TPC), Transition Radiation Detector (TRD), and Time of Flight detector together provided global tracking for the daughter particles.  
+Particle identification (PID) was performed using the TPC, as well as using the Time of Flight detector (TOF) when possible.
+
+\subsubsection{Analysis code}
+The analysis task used is called AliAnalysisV0Lam.cxx, with the V0 reconstruction code included in AliAnalysisV0LamCutProcessing.cxx.  
+The code for this analyis is not currently committed to AliRoot.
