@@ -842,38 +842,38 @@ Those extra pairs are removed by virtue of the shared daughter cut.
 While the benefits of the shared-daughter cut are apparent,
 and the disadvantages seem to be minimal (even when you cut a real V0, you a left with a fake V0 that is close in phase space), investigations are still underway to determine what the sources of systematic uncertainty may arise from this cut, and how to quantify that uncertainty.
 
-\subsection{Systematic errors from momentum resolution correction}
-\label{sec:MomentumResCorrectionsSys}
-
-As discussed in Section \ref{sec:MomentumResCorrection}, sources of systematic uncertainty in this correction come from using $p_\mathrm{T}$- and centrality-integrated measurements of the relative momentum smearing.  
-One correction is applied to all centrality bins, and that correction is made assuming a source radius of $2.5$ fm. 
-Generally speaking, the effect of momentum smearing will be larger the larger the various correlation function parameters are.  
-Those parameters include the source radii, the $\lambda$ (pair-fraction) parameter, the scattering lengths, and the effective range of interaction.  
-Depending on the centrality, early fits to the radii suggest that values between $2.2$ fm and $2.7$ fm could be reasonable.  
-The choice of the $\lambda$ parameter strongly affects the magnitude of the correction.  
-With a $\lambda$ of 0.3, the correction is about $3\%$ for $\Lambda\Lambda$.  
-But with an (unreasonable) $\lambda$ of 1, the correction is closer to $20\%$.  
-The choice of $\lambda$ parameter is complicated by the existence of secondary $\Lambda$ and residual correlations (see Section \ref{sec:Residual}).  
-For this analysis, $\lambda = 0.3$ was chosen such that the simulated, momentum-smeared correlation function roughly matched the data with a y-intercept of $\sim 0.9$.
-
-A more precise measurement of the necessary correction could be done (and will eventually be done) more directly with the HIJING MC data.  
-Instead of extracting a roughly Gaussian relative momentum smearing width from Figure \ref{fig:MomSmearingFit} and crudely simulating the $k^*_{\mathrm{true}} \rightarrow k^*_{\mathrm{recon}}$ smearing, the correlation functions $C_{\mathrm{true}}$ and  $C_{\mathrm{true}}$ (Eqs.\ \ref{eq:Ctrue} and \ref{eq:Crecon}) can be constructed directly from analysis of the MC data.  
-There, the correlation functions are binned using the known $k^*_{\mathrm{true}}$ and $k^*_{\mathrm{recon}}$.  
-The same weight factors are used as described in Section \ref{sec:MomentumResCorrection}.  
-The disadvantage of that method is that it requires assumptions of the various correlation function parameters at run-time, and so it requires significantly more analysis grid time as the parameters are tweaked.  
-However, that method is also considered to give more precise results.
-
-The $K^0_\mathrm{S}K^0_\mathrm{S}$ femtoscopic analysis has explored both of these methods.  
-In that analysis, it found that the method employed here (extracting a simple Gaussian smearing width and using it to simulate the momentum smearing) overestimated the momentum correction factor by up to a factor of 4 relative to the more precise method (i.e. a 4\% effect rather than a 1\% effect).  
-The similarity of the $K^0_\mathrm{S}K^0_\mathrm{S}$ analysis and the $\Lambda\Lambda$ analysis (both study V0 femtoscopy) suggests that the momentum resolution correction factor is overestimated here as well.
-
-Given the issues listed above, it is possible for the resolution correction made here to be over or underestimated. 
-At this point in the analysis, we will make a rough estimate of a symmetric systematic uncertainty for each correlation function, calculated using
-\begin{equation}
-\sigma_{\mathrm{sys}}(k^*) = \frac{1}{4}\abs{C_{\mathrm{uncorrected}} (k^*) - C_{\mathrm{corrected}}(k^*)}.
-\end{equation}
-The corrections are performed on centrality merged (and pair type merged, in the case of the $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ data) correlation functions.  
-The uncertainty is taken then from the difference between the corrected and uncorrected versions of these merged plots.
+%\subsection{Systematic errors from momentum resolution correction}
+%\label{sec:MomentumResCorrectionsSys}
+%
+%As discussed in Section \ref{sec:MomentumResCorrection}, sources of systematic uncertainty in this correction come from using $p_\mathrm{T}$- and centrality-integrated measurements of the relative momentum smearing.  
+%One correction is applied to all centrality bins, and that correction is made assuming a source radius of $2.5$ fm. 
+%Generally speaking, the effect of momentum smearing will be larger the larger the various correlation function parameters are.  
+%Those parameters include the source radii, the $\lambda$ (pair-fraction) parameter, the scattering lengths, and the effective range of interaction.  
+%Depending on the centrality, early fits to the radii suggest that values between $2.2$ fm and $2.7$ fm could be reasonable.  
+%The choice of the $\lambda$ parameter strongly affects the magnitude of the correction.  
+%With a $\lambda$ of 0.3, the correction is about $3\%$ for $\Lambda\Lambda$.  
+%But with an (unreasonable) $\lambda$ of 1, the correction is closer to $20\%$.  
+%The choice of $\lambda$ parameter is complicated by the existence of secondary $\Lambda$ and residual correlations (see Section \ref{sec:Residual}).  
+%For this analysis, $\lambda = 0.3$ was chosen such that the simulated, momentum-smeared correlation function roughly matched the data with a y-intercept of $\sim 0.9$.
+%
+%A more precise measurement of the necessary correction could be done (and will eventually be done) more directly with the HIJING MC data.  
+%Instead of extracting a roughly Gaussian relative momentum smearing width from Figure \ref{fig:MomSmearingFit} and crudely simulating the $k^*_{\mathrm{true}} \rightarrow k^*_{\mathrm{recon}}$ smearing, the correlation functions $C_{\mathrm{true}}$ and  $C_{\mathrm{true}}$ (Eqs.\ \ref{eq:Ctrue} and \ref{eq:Crecon}) can be constructed directly from analysis of the MC data.  
+%There, the correlation functions are binned using the known $k^*_{\mathrm{true}}$ and $k^*_{\mathrm{recon}}$.  
+%The same weight factors are used as described in Section \ref{sec:MomentumResCorrection}.  
+%The disadvantage of that method is that it requires assumptions of the various correlation function parameters at run-time, and so it requires significantly more analysis grid time as the parameters are tweaked.  
+%However, that method is also considered to give more precise results.
+%
+%The $K^0_\mathrm{S}K^0_\mathrm{S}$ femtoscopic analysis has explored both of these methods.  
+%In that analysis, it found that the method employed here (extracting a simple Gaussian smearing width and using it to simulate the momentum smearing) overestimated the momentum correction factor by up to a factor of 4 relative to the more precise method (i.e. a 4\% effect rather than a 1\% effect).  
+%The similarity of the $K^0_\mathrm{S}K^0_\mathrm{S}$ analysis and the $\Lambda\Lambda$ analysis (both study V0 femtoscopy) suggests that the momentum resolution correction factor is overestimated here as well.
+%
+%Given the issues listed above, it is possible for the resolution correction made here to be over or underestimated. 
+%At this point in the analysis, we will make a rough estimate of a symmetric systematic uncertainty for each correlation function, calculated using
+%\begin{equation}
+%\sigma_{\mathrm{sys}}(k^*) = \frac{1}{4}\abs{C_{\mathrm{uncorrected}} (k^*) - C_{\mathrm{corrected}}(k^*)}.
+%\end{equation}
+%The corrections are performed on centrality merged (and pair type merged, in the case of the $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ data) correlation functions.  
+%The uncertainty is taken then from the difference between the corrected and uncorrected versions of these merged plots.
 
 \subsection{Combining different sources of systematic error}
 \label{sec:CombiningSys}
