@@ -2,3 +2,24 @@
 \label{sec:MomResCorrectFit}
 
 Momentum resolution correction info...
+
+Using a HIJING MC data set, we created a two-dimensional histogram of $k^*_\mathrm{true}$ vs $k^*_\mathrm{recon}$ for pairs of $\Lambda$.
+We removed fake $\Lambda$ from the analysis.
+However, because momentum resolution smearing affects the daughters of both primary and secondary $\Lambda$, and because we were in need of a large number of pairs, we did not distinguish between primary and secondary $\Lambda$.
+We used mixed event pairs rather than same event pairs to ensure we had sufficient statistics.
+
+% Figure for LL
+% Figure for AA?
+% Figure for LA
+
+% Show figures with and without log-scale
+
+Figures \ref{fig:MomResLL} show the possible phase space for how relative momentum can be smeared.
+Each row of each figure is normalized separately.
+Given a pair with a particular true $k^*$ value, the likelihood of that pair having a particular reconstructed $k^*$ value is given by the weights in the associated bin of the histogram.
+
+It is important to note that these histograms describe how a $k^*_\mathrm{true}$ distribution can be smeared into a $k^*_\mathrm{recon}$ distribution, but not the reverse process.
+The reverse process (unsmearing), would be described by the matrix inverse of these histograms.
+Unfortunately, attempts to invert the matrices yield significant aliasing, and the results cannot be used.
+
+However, these momentum resolution matrices can be used to smear the theoretical prediction (i.e. the fit) from $k^*_\mathrm{true}$--space into $k^*_\mathrm{recon}$--space using exactly the same procedure described above for residual correlation smearing.
