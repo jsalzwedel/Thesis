@@ -3,7 +3,7 @@
 
 Momentum resolution correction info...
 
-Using a HIJING MC data set, we created a two-dimensional histogram of $k^*_\mathrm{true}$ vs $k^*_\mathrm{recon}$ for pairs of $\Lambda$.
+Using a HIJING MC data set, we created a two-dimensional histogram of $k^*_\mathrm{gen}$ vs $k^*_\mathrm{recon}$ for pairs of $\Lambda$.
 We removed fake $\Lambda$ from the analysis.
 However, because momentum resolution smearing affects the daughters of both primary and secondary $\Lambda$, and because we were in need of a large number of pairs, we did not distinguish between primary and secondary $\Lambda$.
 We used mixed event pairs rather than same event pairs to ensure we had sufficient statistics.
@@ -18,8 +18,50 @@ Figures \ref{fig:MomResLL} show the possible phase space for how relative moment
 Each row of each figure is normalized separately.
 Given a pair with a particular true $k^*$ value, the likelihood of that pair having a particular reconstructed $k^*$ value is given by the weights in the associated bin of the histogram.
 
-It is important to note that these histograms describe how a $k^*_\mathrm{true}$ distribution can be smeared into a $k^*_\mathrm{recon}$ distribution, but not the reverse process.
-The reverse process (unsmearing), would be described by the matrix inverse of these histograms.
+It is important to note that these histograms describe how a $k^*_\mathrm{gen}$ distribution can be smeared into a $k^*_\mathrm{recon}$ distribution, but not the reverse process (unsmearing).
+Unsmearing would be described by the matrix inverse of these histograms.
 Unfortunately, attempts to invert the matrices yield significant aliasing, and the results cannot be used.
 
-However, these momentum resolution matrices can be used to smear the theoretical prediction (i.e. the fit) from $k^*_\mathrm{true}$--space into $k^*_\mathrm{recon}$--space using exactly the same procedure described above for residual correlation smearing.
+That said, these momentum resolution matrices can be used to smear the theoretical prediction (i.e. the fit) from $k^*_\mathrm{gen}$--space into $k^*_\mathrm{recon}$--space using exactly the same procedure described above for residual correlation smearing:
+\begin{equation}
+\label{eq:MomResSmear}
+C(k^*_{\mathrm{rec}}) \equiv \frac{\displaystyle\sum\limits_{k^*_{\mathrm{gen}}}M(k^*_{\mathrm{rec}},k^*_{\mathrm{gen}})C(k^*_{\mathrm{gen}})}{\displaystyle\sum\limits_{k^*_{\mathrm{gen}}}M(k^*_{\mathrm{rec}},k^*_{\mathrm{gen}})}.
+\end{equation} 
+Here, $M(k^*_{\mathrm{rec}},k^*_{\mathrm{gen}})$ is the momentum resolution smearing matrix.
+One can perform this transformation on the fit function to ensure that both the data and the fit have the same smearing. 
+
+There are two main benefits to treating the momentum resolution effects in this way. 
+First, it is no longer necessary to run an iterative analysis (see Section \ref{sec:MomentumResCorrectionCF}). 
+This method requires a one--time analysis of Monte Carlo data to produce the momentum resolution smearing matrix. 
+Second, the resolution correction can be incorporated directly into the fit procedure as an intermediate step between calculating the fit function and taking the $\chi^2$ difference with the data.
+
+Momentum resolution affects daughter tracks, and as such the primary or secondary nature of the parent $\Lambda$ is irrelevant.
+Therefore, when smearing the fit function, momentum resolution smearing should be applied after residual correlation smearing. 
+In fact, as both types of smearing are effectively forms of matrix algebra, the two smearing effects can be rolled together. 
+In that case, $C(k^*_\mathrm{gen})$ in Eqn.\ \ref{eq:MomResSmear} is the theoretical correlation function for some pair type expressed in terms of $k^*_{\Lambda\Lambda}$, as given by Eqn.\ \ref{eq:ResCorSmear}.
+
+Combined together, they give (in the case of $\Lambda\Sigma$ feeddown)
+\begin{equation}
+C_{\Lambda\Sigma}(k^{*\Lambda\Lambda}_{\mathrm{rec}}) \equiv \frac{\displaystyle\sum\limits_{k^{*\Lambda\Lambda}_{\mathrm{gen}}}M(k^{*\Lambda\Lambda}_{\mathrm{rec}},k^{*\Lambda\Lambda}_{\mathrm{gen}})
+ \frac{\displaystyle\sum\limits_{k^{*\Lambda\Sigma}_{\mathrm{gen}}}T(k^{*\Lambda\Lambda}_\mathrm{gen},k^{*\Lambda\Sigma}_{\mathrm{gen}})C_{\Lambda\Sigma}(k^{*\Lambda\Sigma}_{\mathrm{gen}})}{\displaystyle\sum\limits_{k^{*\Lambda\Sigma}_{\mathrm{gen}}}T(k^{*\Lambda\Lambda}_\mathrm{gen},k^{*\Lambda\Sigma}_{\mathrm{gen}})}
+}{\displaystyle\sum\limits_{k^{*\Lambda\Lambda}_{\mathrm{gen}}}M(k^{*\Lambda\Lambda}_{\mathrm{rec}},k^{*\Lambda\Lambda}_{\mathrm{gen}})}.
+\end{equation}
+
+This becomes much cleaner if we introduce the partially-normalized (i.e.\ along one axis) matrices
+\begin{equation}
+\tilde{M}(k^*_{\mathrm{rec}},k^*_{\mathrm{gen}}) \equiv \frac{M(k^*_{\mathrm{rec}},k^*_{\mathrm{gen}})}{\displaystyle\sum\limits_{k^*_{\mathrm{gen}}}M(k^*_{\mathrm{rec}},k^*_{\mathrm{gen}})}
+\end{equation}
+and
+\begin{equation}
+\tilde{T}(k^*_{\Lambda\Lambda},k^*_{\Lambda\Sigma}) \equiv \frac{T(k^*_{\Lambda\Lambda},k^*_{\Lambda\Sigma})}{\displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}T(k^*_{\Lambda\Lambda},k^*_{\Lambda\Sigma})}.
+\end{equation}
+Then we get the more compact
+\begin{equation}
+C_{\Lambda\Sigma}(k^{*\Lambda\Lambda}_{\mathrm{rec}}) = \displaystyle\sum\limits_{k^{*\Lambda\Lambda}_{\mathrm{gen}}}\tilde{M}(k^{*\Lambda\Lambda}_{\mathrm{rec}},k^{*\Lambda\Lambda}_{\mathrm{gen}})\displaystyle\sum\limits_{k^{*\Lambda\Sigma}_{\mathrm{gen}}}\tilde{T}(k^{*\Lambda\Lambda}_\mathrm{gen},k^{*\Lambda\Sigma}_{\mathrm{gen}})C_{\Lambda\Sigma}(k^{*\Lambda\Sigma}_{\mathrm{gen}})
+\end{equation}
+
+
+Note that as there are multiple residual correlation transform matrices (one for each pair that decays into $\Lambda\Lambda$, there are an equal number of full smearing matrices.
+For consistency, we treat the momentum resolution smearing of primary $\Lambda\Lambda$ as a full smearing matrix, though here the residual correlation matrix would be the identity matrix.
+
+ 
