@@ -1,7 +1,8 @@
 \subsection{Momentum resolution corrections}
 \label{sec:MomResCorrectFit}
 
-Momentum resolution correction info...
+As discussed in Section \ref{sec:MomentumResCorrectionCF}, we are correcting for the momentum resolution of tracks at the fit level. 
+In this section, we examine the effect of momentum resolution on relative momentum distributions, we walk through the math of correcting the theoretical prediction, and we describe how the correction is implemented in practice.
 
 Using a HIJING MC data set, we created a two-dimensional histogram of $k^*_\mathrm{gen}$ vs $k^*_\mathrm{recon}$ for pairs of $\Lambda$.
 We removed fake $\Lambda$ from the analysis.
@@ -72,7 +73,8 @@ S(k^{*\Lambda\Lambda}_{\mathrm{rec}},k^{*\Lambda\Sigma}_{\mathrm{gen}}) \equiv \
 \end{equation}
 
 As there are multiple residual correlation transform matrices (one for each pair that decays into $\Lambda\Lambda$, there are an equal number of full smearing matrices $S$.
-For consistency, we also treat the momentum resolution smearing of primary $\Lambda\Lambda$ as a full smearing matrix, though here the residual correlation matrix $\tilde{T}$ would be the identity matrix.
+For consistency, we also treat the momentum resolution smearing of primary $\Lambda\Lambda$ as a full smearing matrix, though here the residual correlation matrix $\tilde{T}$ would be the identity matrix. 
+Figures \ref{fig:SmearMatrixLL} show the full smear matrices $S$.
 
 \subsubsection{Implementation in fit}
 
