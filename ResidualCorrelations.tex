@@ -39,7 +39,12 @@ For example, $\Lambda\Lambda$ correlations with $\mathrm{\Lambda\Sigma^0}$ feedd
 \label{eq:Residual}
 C_{\mathrm{meas}}(k^*_{\Lambda\Lambda})= 1 + \lambda_{\Lambda\Lambda}[C_{\Lambda\Lambda}(k^*_{\Lambda\Lambda})-1]+\lambda_{\Lambda\Sigma}[C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda})-1],
 \end{equation}
-where $$C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda}) \equiv \frac{\displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})T(k^*_{\Lambda\Sigma},k^*_{\Lambda\Lambda})}{\displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}T(k^*_{\Lambda\Sigma},k^*_{\Lambda\Lambda})},$$ $C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eq.~(\ref{eq:Lednicky}), and $T$ is a THERMINATOR \cite{Chojnacki:2011hb} transform matrix, which shows how the $k^*$ of pairs of particles kinematically transforms when one of the particles decays.  
+where 
+\begin{equation}
+\label{eq:ResCorSmear}
+C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda}) \equiv \frac{\displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}T(k^*_{\Lambda\Lambda},k^*_{\Lambda\Sigma})C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})}{\displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}T(k^*_{\Lambda\Lambda},k^*_{\Lambda\Sigma})},
+\end{equation}
+$C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eq.~(\ref{eq:Lednicky}), and $T$ is a THERMINATOR \cite{Chojnacki:2011hb} transform matrix, which shows how the $k^*$ of pairs of particles kinematically transforms when one of the particles decays.  
 Figure \ref{fig:TherminatorLS} shows the transform matrix for $\Lambda\Sigma \rightarrow \Lambda\Lambda$.  
 In this simple case with only two pair types ($\Lambda\Lambda$ and $\Lambda\Sigma$), the $\lambda$ parameters could either be fixed to some estimated experimental value, or they could be left as free fit parameters.
 
