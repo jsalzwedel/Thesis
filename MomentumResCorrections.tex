@@ -35,6 +35,8 @@ First, it is no longer necessary to run an iterative analysis (see Section \ref{
 This method requires a one--time analysis of Monte Carlo data to produce the momentum resolution smearing matrix. 
 Second, the resolution correction can be incorporated directly into the fit procedure as an intermediate step between calculating the fit function and taking the $\chi^2$ difference with the data.
 
+\subsubsection{Smear matrices}
+
 Momentum resolution affects daughter tracks, and as such the primary or secondary nature of the parent $\Lambda$ is irrelevant.
 Therefore, when smearing the fit function, momentum resolution smearing should be applied after residual correlation smearing. 
 In fact, as both types of smearing are effectively forms of matrix algebra, the two smearing effects can be rolled together. 
@@ -59,9 +61,23 @@ Then we get the more compact
 \begin{equation}
 C_{\Lambda\Sigma}(k^{*\Lambda\Lambda}_{\mathrm{rec}}) = \displaystyle\sum\limits_{k^{*\Lambda\Lambda}_{\mathrm{gen}}}\tilde{M}(k^{*\Lambda\Lambda}_{\mathrm{rec}},k^{*\Lambda\Lambda}_{\mathrm{gen}})\displaystyle\sum\limits_{k^{*\Lambda\Sigma}_{\mathrm{gen}}}\tilde{T}(k^{*\Lambda\Lambda}_\mathrm{gen},k^{*\Lambda\Sigma}_{\mathrm{gen}})C_{\Lambda\Sigma}(k^{*\Lambda\Sigma}_{\mathrm{gen}})
 \end{equation}
+We can contract the $k^{*\Lambda\Lambda}_\mathrm{gen}$ indices to get
+\begin{equation}
+\label{eq:FullSmearing}
+C_{\Lambda\Sigma}(k^{*\Lambda\Lambda}_{\mathrm{rec}}) = \displaystyle\sum\limits_{k^{*\Lambda\Sigma}_{\mathrm{gen}}}S(k^{*\Lambda\Lambda}_{\mathrm{rec}},k^{*\Lambda\Sigma}_{\mathrm{gen}})C_{\Lambda\Sigma}(k^{*\Lambda\Sigma}_{\mathrm{gen}}),
+\end{equation}
+where 
+\begin{equation}
+S(k^{*\Lambda\Lambda}_{\mathrm{rec}},k^{*\Lambda\Sigma}_{\mathrm{gen}}) \equiv \displaystyle\sum\limits_{k^{*\Lambda\Lambda}_{\mathrm{gen}}}\tilde{M}(k^{*\Lambda\Lambda}_{\mathrm{rec}},k^{*\Lambda\Lambda}_{\mathrm{gen}})\tilde{T}(k^{*\Lambda\Lambda}_\mathrm{gen},k^{*\Lambda\Sigma}_{\mathrm{gen}}).
+\end{equation}
 
+As there are multiple residual correlation transform matrices (one for each pair that decays into $\Lambda\Lambda$, there are an equal number of full smearing matrices $S$.
+For consistency, we also treat the momentum resolution smearing of primary $\Lambda\Lambda$ as a full smearing matrix, though here the residual correlation matrix $\tilde{T}$ would be the identity matrix.
 
-Note that as there are multiple residual correlation transform matrices (one for each pair that decays into $\Lambda\Lambda$, there are an equal number of full smearing matrices.
-For consistency, we treat the momentum resolution smearing of primary $\Lambda\Lambda$ as a full smearing matrix, though here the residual correlation matrix would be the identity matrix.
+\subsubsection{Implementation in fit}
+
+When calculating the fit function, the contribution from the primary correlation function $C_{\Lambda\Lambda}(k^*_{\Lambda\Lambda})$ and each residual correlation  ($C_{ij}(k^*_{ij})$) is first calculated according to Eqn.\ \ref{eq:Lednicky}.
+Then each contribution is smeared with its own smear matrix via Eqn.\ \ref{eq:FullSmearing}.
+Finally, each contribution is combined using the $\lambda$ weights according to Eqn. \ref{eq:Residual}.
 
  
