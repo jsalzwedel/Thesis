@@ -27,7 +27,7 @@ Rather than precisely describe each component of residual correlation, the full 
 \label{sec:TransformedResiduals}
 
 
-One example of transformed residuals parametrization can be seen in the recent analysis \cite{Kisiel:2014mma} of STAR p$\bar{\Lambda}$ correlation functions measured in 200 GeV Au--Au collisions.  
+One example of the transformed residuals method can be seen in the recent analysis \cite{Kisiel:2014mma} of STAR p$\bar{\Lambda}$ correlation functions measured in 200 GeV Au--Au collisions.  
 In this study, p$\bar{\Lambda}$ and $\bar{\mathrm{p}}\Lambda$ correlations were fit with and without residual correlations.  
 The fits with residual correlations included feeddown and feedup contributions from numerous sources.  
 The study found that the fit with residual correlations measured a source size comparable to the previously measured sizes of p$\Lambda$ and $\bar{\mathrm{p}}\bar{\Lambda}$.  
@@ -48,20 +48,34 @@ where
 \label{eq:ResCorSmear}
 C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda}) \equiv \frac{\displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}T(k^*_{\Lambda\Lambda},k^*_{\Lambda\Sigma})C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})}{\displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}T(k^*_{\Lambda\Lambda},k^*_{\Lambda\Sigma})},
 \end{equation}
-$C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eq.~(\ref{eq:Lednicky}), and $T$ is a THERMINATOR \cite{Chojnacki:2011hb} transform matrix, which shows how the $k^*$ of pairs of particles kinematically transforms when one of the particles decays.  
+$C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eq.~(\ref{eq:Lednicky}), and $T$ is a transform matrix generated with THERMINATOR \cite{Chojnacki:2011hb}, which shows how the $k^*$ of pairs of particles kinematically transforms when one of the particles decays.  
 Figure \ref{fig:TherminatorLS} shows the transform matrix for $\Lambda\Sigma \rightarrow \Lambda\Lambda$.  
 In this simple case with only two pair types ($\Lambda\Lambda$ and $\Lambda\Sigma$), the $\lambda$ parameters could either be fixed to some estimated experimental value, or they could be left as free fit parameters.
 
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-04-01-TransformMatrix-LS-LL-100bins.pdf}
-\caption[Transform matrix for $k^*_{\Lambda\Sigma} \rightarrow k^*_{\Lambda\Lambda}$]{THERMINATOR \cite{Chojnacki:2011hb} transform matrix showing how the relative momentum of $\Lambda\Sigma$ pairs transforms into relative momentum of $\Lambda\Lambda$ pairs after the $\Sigma$ decays.  
-The elements significantly off-diagonal may be due to a lingering bug in the construction of the transform matrix.}
+\begin{center}
+\includegraphics[width=24pc]{Figures/TransformMatrices/2016-7-20-TransformMatrixSigmaLambdaNormLog.pdf}
+\end{center}
+\caption[Transform matrix for $k^*_{\Lambda\Sigma} \rightarrow k^*_{\Lambda\Lambda}$]{THERMINATOR \cite{Chojnacki:2011hb} transform matrix showing how the relative momentum of $\Lambda\Sigma$ pairs transforms into relative momentum of $\Lambda\Lambda$ pairs after the $\Sigma$ decays.}
 \label{fig:TherminatorLS}
 \end{figure}
 
-Further residual correlations (e.g. from $\Sigma\Sigma \rightarrow \Lambda\Lambda$) can be included via additional terms in Equation \ref{eq:Residual}.  
+Further residual correlations (e.g. from $\Sigma\Sigma \rightarrow \Lambda\Lambda$) can be included via additional terms in Eqn.\ \ref{eq:Residual}.  
+Figures \ref{...}--\ref{...} show normalized residual correlations for $\Sigma^0\Lambda$, $\Sigma^0\Sigma^0$, $\Sigma^0\Xi^{0}$, $\Sigma^0\Xi^{-}$, $\Xi^0\Lambda$ $\Xi^{-}\Lambda$, and $\Xi^0\Xi^{-}$. See Section \ref{sec:SmearMath} for details about the normalization.
+The antihyperon decays $\bar{Y} \rightarrow \bar{\Lambda}$ have the same kinematics as the hyperon decays, so these transform matrices are also used for their respective antiparticle-antiparticle and particle-antiparticle pairs.
+
+\begin{figure}[hbtp]
+\begin{center}
+\includegraphics[width=24pc]{Figures/TransformMatrices/2016-7-20-TransformMatrixSigmaSigmaNormLog.pdf}
+\end{center}
+\caption[Transform matrix for $k^*_{\Sigma^0\Sigma^0} \rightarrow k^*_{\Lambda\Lambda}$]{THERMINATOR \cite{Chojnacki:2011hb} transform matrix showing how the relative momentum of $\Sigma\Sigma$ pairs transforms into relative momentum of $\Lambda\Lambda$ pairs after both $\Sigma$ have decayed.}
+\label{fig:TherminatorSS}
+\end{figure}
+
+
 See Section \ref{sec:LambdaParams} for estimates of $\lambda$ parameters as well as estimates of which residual correlations must be included and which can be safely neglected.  
 Because each residual correlation is calculated using the Lednicky equation, it is necessary to estimate, fit, or otherwise constrain the femtoscopic radius, $R$, and scattering parameters, $f_0$ and $d_0$, of the residual correlation pair.
+Those constraints are described further in Section \ref{sec:ScatteringParams}.
 
 \subsubsection{Gaussian residuals method}
 \label{sec:GaussianResiduals}
