@@ -6,8 +6,35 @@ As stated earlier, $\lambda_\mathrm{XY}$ loosely describes the fraction of pairs
 In this analysis, there are too many contributions from different types of pairs to leave the various $\lambda$ as free parameters.
 Instead, we will estimate them beforehand and use those estimates as fixed inputs in our fit procedure.
 
+First, we will develop a model for calculating $\lambda$ parameters. 
 In order to do these $\lambda$ calculations, we will need estimates of typical Pb---Pb event yields for $\Lambda$ and $\Lambda$ parent species.
 We also need to know how detector reconstruction efficiencies affect the reconstruction rate of $\Lambda$ of different origins.
+
+\subsubsection{Model of $\lambda$ parameters}
+\label{sec:LambdaModel}
+
+The experimental correlation function is defined as 
+$$C_{\mathrm{Exp}}(k^*) \equiv \frac{1}{\gamma} \frac{A(k^*)}{B(k^*)},$$
+ where $A(k^*)$ is the same-event relative momentum distribution, $B(k^*)$ is the mixed-event relative momentum distribution, and $\gamma$ is a normalization factor defined to set the high-$k^*$ background region to unity.
+ 
+ 
+In what follows, we will investigate the elements of this in order to ...
+We will now investigate $A(k^*)$ and $B(k^*)$. 
+
+
+Let us define $\alpha$ as the number of pairs in an event, and $f_i$ as the fraction of $\Lambda\Lambda$ pairs that originated as type $i$ (e.g. $\Lambda\Sigma^0$ or $\Xi^-\Xi^0$). 
+Next we define $D_i(k^*)$ as a sample of the normalized phase-space distribution $\frac{\mathrm{d}N}{\mathrm{d}k^*}$ of pair type $i$. 
+For a particular event $j$, we can write the relative momentum distribution as
+$$A_j(k^*) = \sum_i^m \alpha_j f_{ij} D_{ij}(k^*),$$
+Then the total relative momentum distribution, composed of many events, can be written as
+$$A(k^*) = \sum_j^n \sum_i^m \alpha_j f_{ij} D_{ij}(k^*),$$
+where $n$ is the total number of events.
+Similarly, the total relative momentum distribution for mixed-event pairs can be written as
+$$B(k^*) = \sum_j^l \sum_i^m \beta_j g_{ij} E_{ij}(k^*),$$
+where $\beta_j$ is the number of total number of pairs in mixed event $j$, $l$ is the total number of mixed events, $g_{ij}$ is the fraction of pairs of type $i$ in event $j$, and $E_{ij}(k^*)$ is the normalized, underlying relative momentum distribution.
+Let us assume that $D_i(k^*)$ is factorizable into femtoscopic physics effects and phase space factors, such that
+$$\frac{D_i(k^*)}{E_i(k^*)} = C_i(k^*),$$
+where $C_i(k^*)$ is the correlation function one would measure for pair type $i$ if one could detect them with perfect purity.
 
 \subsubsection{Thermal yield estimates}
 \label{sec:ThermalYields}
