@@ -14,27 +14,79 @@ We also need to know how detector reconstruction efficiencies affect the reconst
 \label{sec:LambdaModel}
 
 The experimental correlation function is defined as 
-$$C_{\mathrm{Exp}}(k^*) \equiv \frac{1}{\gamma} \frac{A(k^*)}{B(k^*)},$$
- where $A(k^*)$ is the same-event relative momentum distribution, $B(k^*)$ is the mixed-event relative momentum distribution, and $\gamma$ is a normalization factor defined to set the high-$k^*$ background region to unity.
- 
- 
-In what follows, we will investigate the elements of this in order to ...
-We will now investigate $A(k^*)$ and $B(k^*)$. 
+\begin{equation}
+\label{eq:ExpCorrelationFunction}
+C_{\mathrm{Exp}}(k^*) \equiv \frac{1}{\gamma} \frac{A(k^*)}{B(k^*)},
+\end{equation}
+where $A(k^*)$ is the same-event relative momentum distribution, $B(k^*)$ is the mixed-event relative momentum distribution, and $\gamma$ is a normalization factor defined to set the high-$k^*$ background region to unity. 
+In what follows, we will investigate the relationship between $A(k^*)$ and $B(k^*)$. 
 
 
-Let us define $\alpha$ as the number of pairs in an event, and $f_i$ as the fraction of $\Lambda\Lambda$ pairs that originated as type $i$ (e.g. $\Lambda\Sigma^0$ or $\Xi^-\Xi^0$). 
-Next we define $D_i(k^*)$ as a sample of the normalized phase-space distribution $\frac{\mathrm{d}N}{\mathrm{d}k^*}$ of pair type $i$. 
-For a particular event $j$, we can write the relative momentum distribution as
-$$A_j(k^*) = \sum_i^m \alpha_j f_{ij} D_{ij}(k^*),$$
+Let us define $N_{ij}$ as the number of $\Lambda\Lambda$ pairs that originated as type $i$ (e.g. $\Lambda\Sigma^0$ or $\Xi^-\Xi^0$) in event $j$.
+Next we define $D_{ij}(k^*)$ as the normalized phase-space distribution $\frac{\mathrm{d}N}{\mathrm{d}k^*}$ of pair type $i$ in event $j$. 
+Putting these together, we can write the total relative momentum distribution for a single event as
+$$A_j(k^*) = \sum_i^m N_{ij} D_{ij}(k^*),$$
+where $m$ is the number of different pair types.
 Then the total relative momentum distribution, composed of many events, can be written as
-$$A(k^*) = \sum_j^n \sum_i^m \alpha_j f_{ij} D_{ij}(k^*),$$
+$$A(k^*) = \sum_j^n \sum_i^m N_{ij} D_{ij}(k^*),$$
 where $n$ is the total number of events.
 Similarly, the total relative momentum distribution for mixed-event pairs can be written as
-$$B(k^*) = \sum_j^l \sum_i^m \beta_j g_{ij} E_{ij}(k^*),$$
-where $\beta_j$ is the number of total number of pairs in mixed event $j$, $l$ is the total number of mixed events, $g_{ij}$ is the fraction of pairs of type $i$ in event $j$, and $E_{ij}(k^*)$ is the normalized, underlying relative momentum distribution.
-Let us assume that $D_i(k^*)$ is factorizable into femtoscopic physics effects and phase space factors, such that
-$$\frac{D_i(k^*)}{E_i(k^*)} = C_i(k^*),$$
-where $C_i(k^*)$ is the correlation function one would measure for pair type $i$ if one could detect them with perfect purity.
+$$B(k^*) = \sum_j^{n'} \sum_i^m N_{ij}' E_{ij}(k^*),$$
+where $N_{ij}'$ is the number of pairs of type $i$ in mixed-event $j$, $n'$ is the total number of mixed-events, and $E_{ij}(k^*)$ is the normalized, underlying relative momentum distribution.
+
+Synthesizing Eqns.\ \ref{eq:GeneralizedLambda} and \ref{eq:ExpCorrelationFunction} yields
+\begin{equation}
+C_{\mathrm{Exp}} = \frac{1}{\gamma} \frac{A(k^*)}{B(k^*)} = \frac{1}{\gamma}\frac{\sum_j^n \sum_i^m N_{ij} D_{ij}(k^*)}{\sum_j^{n'} \sum_i^m N_{ij}' E_{ij}(k^*)} =  \sum_{i}^{m} \lambda_{i} C_{i}(k^*).
+\end{equation}
+We can look at the component for each type of pair separately:
+\begin{equation}
+\lambda_i C_i(k^*) = \frac{1}{\gamma}\frac{\sum_j^n N_{ij} D_{ij}(k^*)}{\sum_j^{n'} \sum_i^m N_{ij}' E_{ij}(k^*)}.
+\end{equation}
+
+We now make several assumptions. First, it is commonly assumed that the same-event relative momentum distribution is factorizable into a term describing the femtoscopic physics effects and a term describing the simple phase-space of relative momentum (i.e.\ the convolution of two single-particle momentum phase spaces). 
+In that case, we can write
+\begin{equation}
+\label{eq:DEqualCE}
+D_i(k^*) = C_i(k^*)E_i(k^*),
+\end{equation}
+where $C_i(k^*)$ is the correlation function one would measure for pair type $i$ if one could detect said pairs with perfect purity.
+Second, we assume that the same-event phase space distribution of a pair type $D_{ij}(k^*)$ is constant across all events that have the same centrality and z-vertex binning. Then we can pull $D_{ij}$ out of the summation, dropping the event index $j$:
+\begin{equation}
+\lambda_i C_i(k^*) = \frac{1}{\gamma}\frac{D_{i}(k^*)\sum_j^n N_{ij} }{\sum_j^{n'} \sum_i^m N_{ij}' E_{ij}(k^*)}.
+\end{equation}
+Third, we assume that the mixed-event pair phase space $E_{ij}(k^*)$, which only describes the combinatorics of pair relative momentum, is constant across all pair types and all events. Then we can pull out $E_{ij}$ as well:
+\begin{equation}
+\lambda_i C_i(k^*) = \frac{1}{\gamma}\frac{D_{i}(k^*)\sum_j^n N_{ij} }{E_{i}(k^*)\sum_j^{n'} \sum_i^m N_{ij}'}.
+\end{equation}
+Next, we divide out $C_i(k^*) = D_i(k^*) /E_i(k^*)$ on both sides of the equation to get an expression for $\lambda_i$
+\begin{equation}
+\label{eq:LambdaPartialSolution}
+\lambda_i= \frac{1}{\gamma}\frac{\sum_j^n N_{ij} }{\sum_j^{n'} \sum_i^m N_{ij}'}.
+\end{equation}
+Subject to a choice of normalization parameter $\gamma$, this is an expression for $\lambda$ framed entirely in terms of numbers of pairs of particles in events.  Such an expression can be evaluated using representative Monte Carlo events.
+
+We can clean this expression up further.  It is common practice to use integrated pair counts for correlation function normalization. Often, the numerators and denominators are normalized separately:
+\begin{equation}
+C(k^*) = \frac{A(k^*)/\sum_j^n \sum_i^m N_{ij}}{B(k^*)/\sum_j^{n'} \sum_i^m N_{ij}'}
+\end{equation}
+This leads to the normalization parameter
+\begin{equation}
+\gamma = \frac{\sum_j^n \sum_i^m N_{ij}}{\sum_j^{n'} \sum_i^m N_{ij}'}.
+\end{equation}
+Substituting this into Eqn.\ \ref{eq:LambdaPartialSolution} yields 
+\begin{equation}
+\lambda_i = \frac{\sum_j^{n'} \sum_i^m N_{ij}'} {\sum_j^n \sum_i^m N_{ij}} \frac{\sum_j^n N_{ij} }{\sum_j^{n'} \sum_i^m N_{ij}'} = \frac{\sum_j^n N_{ij} }{\sum_j^n \sum_i^m N_{ij}}
+\end{equation}
+We see that the number of mixed-event pairs drops out of the equation entirely. We can introduce a $1/n$ factor to both the numerator and denominator to get
+\begin{equation}
+\lambda_i = \frac{\frac{1}{n}\sum_j^n N_{ij} }{\frac{1}{n}\sum_j^n \sum_i^m N_{ij}}.
+\end{equation}
+The expression $\frac{1}{n} \sum_j^n$ is, of course, an event averaging. We finally conclude that
+\begin{equation}
+\label{eq:LambdaParSolution}
+\lambda_i = \frac{\langle N_{ij}\rangle_{\mathrm{event}}} {\langle\sum_i^m N_{ij}\rangle_{\mathrm{event}}}.
+\end{equation}
+In plain terms, the $\lambda$ parameter for pair type $i$ can be computed as the ratio of the average number of pairs of that type per event to the average number of total pairs in an event. The following sections will discuss how we used Monte Carlo data to estimate these numbers.
 
 \subsubsection{Thermal yield estimates}
 \label{sec:ThermalYields}
@@ -50,7 +102,7 @@ THERMINATOR, using efficiencies, yields, fakes
 \label{sec:ReconstructionEff}
 
 In this section we discuss how to use Monte Carlo events with detector effects to estimate reconstruction efficiency.  
-The reconstruction efficiency will be an important component in our subsequent estimation of $\lambda$ parameters.
+The reconstruction efficiency will be an important component in our subsequent e $g_{ij}$ is the fraction of pairs of type $i$ in event $j$,stimation of $\lambda$ parameters.
 
 $\Lambda$ arise from many different sources.
 There are primary $\Lambda$; $\Lambda$ resulting from $\Sigma$ decays and the decays of short-lived resonances, which cannot be distinguished from primary $\Lambda$; and $Lambda$ coming from the weak decays of $\Xi$ and $\Omega$ baryons, some of which can be removed via topological cuts.
