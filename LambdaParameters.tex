@@ -84,25 +84,54 @@ We see that the number of mixed-event pairs drops out of the equation entirely. 
 The expression $\frac{1}{n} \sum_j^n$ is, of course, an event averaging. We finally conclude that
 \begin{equation}
 \label{eq:LambdaParSolution}
-\lambda_i = \frac{\langle N_{ij}\rangle_{\mathrm{event}}} {\langle\sum_i^m N_{ij}\rangle_{\mathrm{event}}}.
+\lambda_i = \frac{\langle N_{i}\rangle_{\mathrm{event}}} {\langle\sum_i^m N_{i}\rangle_{\mathrm{event}}}.
 \end{equation}
-In plain terms, the $\lambda$ parameter for pair type $i$ can be computed as the ratio of the average number of pairs of that type per event to the average number of total pairs in an event. The following sections will discuss how we used Monte Carlo data to estimate these numbers.
+In plain terms, the $\lambda$ parameter for pair type $i$ can be computed as the ratio of the average number of pairs of that type per event to the average number of total pairs per event. 
+The following sections will discuss how we use Monte Carlo data to estimate these numbers.
 
 \subsubsection{Thermal yield estimates}
 \label{sec:ThermalYields}
 
-THERMINATOR, using efficiencies, yields, fakes
+%THERMINATOR, using efficiencies, yields, fakes
 
+In order to compute the average numbers of pairs per event, as discussed in the previous section, we need two things: a Monte Carlo generator with reliable particle yields, and many events. 
+HIJING is notoriously unreliable for producing accurate hyperon spectra.  
+HIJING Pb---Pb events are generated from a superposition of PYTHIA p---p collisions, so they lack the strangeness saturation of a fully thermalized medium.  
+Instead of HIJING, we'll use THERMINATOR 2 (THERMal heavy IoN generATOR version 2)  \cite{Chojnacki:2011hb} to generate events.
 
+% description of therminator, thermal yields, hypersurfaces, parameters, rapidity
 
+Using THERMINATOR, we generated \# events. In those events, we find all the primary and secondary $\Lambda$. 
+For each $\Lambda$ we find in a THERMINATOR event, we generate a random number between 0 and 1. 
+We ignore the $\Lambda$ if the generated number is higher than the $\Lambda$'s estimated reconstruction efficiency (see Section \ref{sec:ReconstructionEff} for more details on efficiency estimates). 
+We tally the reconstructed $\Lambda$ and note the origin of each $\Lambda$.
+We also add fake $\Lambda$ counts to each event to account for reconstruction purity.
+As discussed in Section \ref{sec:Recon}, we have an approximately 95\% purity.
+To add fakes, we look at the average number of real particles tallied per event, and determine the average number of fakes corresponding to a 5\% impurity.
+Then for each event, we generate a number of fakes according to a Poissonian distrubution peaked at the estimated value.
+Finally we use the tallied $\Lambda$ to compute the number of pairs of each type per event (including real-real, real-fake, and fake-fake), along with the total number of pairs in each event, and we record that information.
+Events with no pairs (i.e. events that have one or fewer reconstructed $\Lambda$) are not included in event averaging, as they are skipped in the correlation function measurement of the real data.
 
+% Plot or table of avg yields, fakes, etc. Before and after efficiencies.
 
+%The results of the calculations can be found in Section \ref{sec:LambdaParamEstimates}.
 
 \subsubsection{Reconstruction efficiency effects on relative particle yields}
 \label{sec:ReconstructionEff}
 
 In this section we discuss how to use Monte Carlo events with detector effects to estimate reconstruction efficiency.  
 The reconstruction efficiency will be an important component in our subsequent estimation of $\lambda$ parameters.
+
+
+%However, in real data we do not reconstruct perfect thermal spectra of particles. 
+%Instead, the yields are tempered by reconstruction efficiencies, which naturally results in smaller measured yields and thus smaller numbers of pairs.
+%In the present analysis, the $\Lambda$ topological reconstruction cuts have been selected to preferentially remove secondary $\Lambda$ coming from $\Xi$ and $\Omega$ decays (see Section \ref{sec:Recon}).
+%Thus, the reconstruction efficiency of a $\Lambda$ depends on the $\Lambda$'s origin.
+%To account for the effects of reconstruction efficiency on the $\lambda$ parameters, we artificially introduce reconstruction efficiencies into the THERMINATOR data. 
+%Section \ref{sec:ReconstructionEff} describes how the efficiencies have been estimated. In short, we find that $\Lambda$ of all backgrounds have an approximately 15\% chance of being reconstructed.
+
+
+
 
 $\Lambda$ arise from many different sources.
 There are primary $\Lambda$; $\Lambda$ resulting from $\Sigma$ decays and the decays of short-lived resonances, which cannot be distinguished from primary $\Lambda$; and $Lambda$ coming from the weak decays of $\Xi$ and $\Omega$ baryons, some of which can be removed via topological cuts.
