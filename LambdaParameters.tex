@@ -92,14 +92,13 @@ The following sections will discuss how we use Monte Carlo data to estimate thes
 \subsubsection{Thermal yield estimates}
 \label{sec:ThermalYields}
 
-%THERMINATOR, using efficiencies, yields, fakes
+% Plots
 
 In order to compute the average numbers of pairs per event, as discussed in the previous section, we need two things: a Monte Carlo generator with reliable particle yields, and many events. 
 HIJING is notoriously unreliable for producing accurate hyperon spectra.  
 HIJING Pb---Pb events are generated from a superposition of PYTHIA p---p collisions, so they lack the strangeness saturation of a fully thermalized medium.  
 Instead of HIJING, we'll use THERMINATOR 2 (THERMal heavy IoN generATOR version 2)  \cite{Chojnacki:2011hb} to generate events.
 
-% description of therminator, thermal yields, hypersurfaces, parameters, rapidity
 THERMINATOR 2 is a Monte Carlo event generator designed to use statistical hadronization to produce hadronic freeze-out spectra of relativistic heavy-ion collisions. 
 The user selects a hypersurface model and freeze-out model (several of which are included in the package) as well as rapidity range and the type of primordial particle multiplicity distrubtion (e.g.\ Poissonian). 
 One of the crucial features of THERMINATOR is the inclusion of a large number of resonances from the particle data tables. 
@@ -112,7 +111,7 @@ Under that assumption, we can treat the daughters of these resonances as primary
 
 In this analysis, we used the Lhyquid3v freeze-out model for 2.76 TeV Pb--Pb events. This freeze-out model is not packaged with THERMINATOR 2 --- it was obtained via correspondance with the group that authored the THERMINATOR 2 package.
 There are several hypersurfaces available for this model.
-We chose the one with the most-central impact parameter, $b = 2.3$ fm, and a hadronic freeze-out temperature of 140 MeV
+We chose the one with the most-central impact parameter, $b = 2.3$ fm, and a hadronic freeze-out temperature of 140 MeV.
 While the default is to use a rapidity window of $\pm$ 12 units, we set our rapidity window to $\pm$ 2 units to conserve disk space.
 
 Using THERMINATOR, we generated 2000 events. 
@@ -129,7 +128,9 @@ Events with no pairs (i.e. events that had one or fewer reconstructed $\Lambda$)
 
 % Plot or table of avg yields, fakes, etc. Before and after efficiencies.
 
-%The results of the calculations can be found in Section \ref{sec:LambdaParamEstimates}.
+
+The following section describes how we estimated the reconstruction efficiencies that were used in this process.
+The results of the $\lambda$ parameter calculations can be found in \ref{sec:LambdaParamEstimates}.
 
 \subsubsection{Reconstruction efficiency effects on relative particle yields}
 \label{sec:ReconstructionEff}
