@@ -100,17 +100,32 @@ HIJING Pb---Pb events are generated from a superposition of PYTHIA p---p collisi
 Instead of HIJING, we'll use THERMINATOR 2 (THERMal heavy IoN generATOR version 2)  \cite{Chojnacki:2011hb} to generate events.
 
 % description of therminator, thermal yields, hypersurfaces, parameters, rapidity
+THERMINATOR 2 is a Monte Carlo event generator designed to use statistical hadronization to produce hadronic freeze-out spectra of relativistic heavy-ion collisions. 
+The user selects a hypersurface model and freeze-out model (several of which are included in the package) as well as rapidity range and the type of primordial particle multiplicity distrubtion (e.g.\ Poissonian). 
+One of the crucial features of THERMINATOR is the inclusion of a large number of resonances from the particle data tables. 
+These play an important role in the analysis, as a sizable number of these resonances decay into hyperons, thus boosting the hyperon yields. 
+The resonances that undergo strong-decay into hyperons do so on time-scales on the order of $\mathrm{fm}/\mathrm{c}$ or tens of $\mathrm{fm}/\mathrm{c}$. 
+These decays happen on the same time-scale as the hadronic rescattering phase, so it is possible that the particle has decayed into its hyperon daughter before kinetic freeze-out. 
+In that case, it is the final-state interaction of the hyperon daughter that is relevant to femtoscopic analyses, not the interactions of the resonant parent.  
+In this analysis, we will assume that all short-lived resonances decay before kinetic freezeout. 
+Under that assumption, we can treat the daughters of these resonances as primary particles. 
 
-Using THERMINATOR, we generated \# events. In those events, we find all the primary and secondary $\Lambda$. 
-For each $\Lambda$ we find in a THERMINATOR event, we generate a random number between 0 and 1. 
-We ignore the $\Lambda$ if the generated number is higher than the $\Lambda$'s estimated reconstruction efficiency (see Section \ref{sec:ReconstructionEff} for more details on efficiency estimates). 
-We tally the reconstructed $\Lambda$ and note the origin of each $\Lambda$.
-We also add fake $\Lambda$ counts to each event to account for reconstruction purity.
+In this analysis, we used the Lhyquid3v freeze-out model for 2.76 TeV Pb--Pb events. This freeze-out model is not packaged with THERMINATOR 2 --- it was obtained via correspondance with the group that authored the THERMINATOR 2 package.
+There are several hypersurfaces available for this model.
+We chose the one with the most-central impact parameter, $b = 2.3$ fm, and a hadronic freeze-out temperature of 140 MeV
+While the default is to use a rapidity window of $\pm$ 12 units, we set our rapidity window to $\pm$ 2 units to conserve disk space.
+
+Using THERMINATOR, we generated 2000 events. 
+In those events, we found all the primary and secondary $\Lambda$, ignoring those that fall outside the pseudorapidity and $p_\mathrm{T}$ cuts used in the data collection.
+For each $\Lambda$ we found in a THERMINATOR event, we generated a random number between 0 and 1. 
+We ignored the $\Lambda$ if the generated number was higher than the $\Lambda$'s estimated reconstruction efficiency (see Section \ref{sec:ReconstructionEff} for more details on efficiency estimates). 
+We tallied the reconstructed $\Lambda$ and noted the origin of each $\Lambda$.
+We also added fake $\Lambda$ counts to each event to account for reconstruction purity.
 As discussed in Section \ref{sec:Recon}, we have an approximately 95\% purity.
-To add fakes, we look at the average number of real particles tallied per event, and determine the average number of fakes corresponding to a 5\% impurity.
-Then for each event, we generate a number of fakes according to a Poissonian distrubution peaked at the estimated value.
-Finally we use the tallied $\Lambda$ to compute the number of pairs of each type per event (including real-real, real-fake, and fake-fake), along with the total number of pairs in each event, and we record that information.
-Events with no pairs (i.e. events that have one or fewer reconstructed $\Lambda$) are not included in event averaging, as they are skipped in the correlation function measurement of the real data.
+To add fakes, we looked at the average number of real particles tallied per event, and determined the average number of fakes corresponding to a 5\% impurity.
+Then for each event, we generated a number of fakes according to a Poissonian distrubution peaked at the estimated value.
+Finally we used the tallied $\Lambda$ to compute the number of pairs of each type per event (including real-real, real-fake, and fake-fake), along with the total number of pairs in each event, and we recorded that information.
+Events with no pairs (i.e. events that had one or fewer reconstructed $\Lambda$) were not included in event averaging, as they are skipped in the correlation function measurement of the real data.
 
 % Plot or table of avg yields, fakes, etc. Before and after efficiencies.
 
