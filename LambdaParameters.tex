@@ -135,23 +135,23 @@ The results of the $\lambda$ parameter calculations can be found in \ref{sec:Lam
 \subsubsection{Reconstruction efficiency effects on relative particle yields}
 \label{sec:ReconstructionEff}
 
-In this section we discuss how to use Monte Carlo events with detector effects to estimate reconstruction efficiency.  
-The reconstruction efficiency will be an important component in our subsequent estimation of $\lambda$ parameters.
+  
 
+In the previous section, we described how we used the THERMINATOR 2 event generator to estimate yields of primary and secondary $\Lambda$.
+Those yields were produced according to a statistical hadronization model.
+However, in real data we do not reconstruct perfect thermal spectra of particles. 
+Instead, the yields are tempered by reconstruction efficiencies.
+The ALICE detector's does not have perfect track resolution, so some tracks are misidentified or lost.
+We also employ topological reconstruction cuts to remove fake $\Lambda$ candidates.
+Because of the finite detector resolution, some of the real $\Lambda$ are removed as well.
+In addition, the $\Lambda$ topological reconstruction cuts have been selected to preferentially remove secondary $\Lambda$ coming from $\Xi$ and $\Omega$ decays (see Section \ref{sec:Recon}).
+This is not 100\% effective at removing secondary $\Lambda$, and it also causes some primary $\Lambda$ to be thrown out.
+Finally, the branching ratio of the $\Lambda$ weak decay results in roughly a third of the $\Lambda$ decaying into untrackable neutral particles.
+These effects naturally result in smaller measured yields and thus smaller quantities of pairs.
+The reconstruction efficiency is an important component of our estimation of $\lambda$ parameters.
+To account for the effects of reconstruction efficiency on the $\lambda$ parameters, we artificially introduced reconstruction efficiencies into the THERMINATOR data. 
+In this section, we discuss how we used Monte Carlo HIJING events with detector effects to estimate these reconstruction efficiencies.
 
-%However, in real data we do not reconstruct perfect thermal spectra of particles. 
-%Instead, the yields are tempered by reconstruction efficiencies, which naturally results in smaller measured yields and thus smaller numbers of pairs.
-%In the present analysis, the $\Lambda$ topological reconstruction cuts have been selected to preferentially remove secondary $\Lambda$ coming from $\Xi$ and $\Omega$ decays (see Section \ref{sec:Recon}).
-%Thus, the reconstruction efficiency of a $\Lambda$ depends on the $\Lambda$'s origin.
-%To account for the effects of reconstruction efficiency on the $\lambda$ parameters, we artificially introduce reconstruction efficiencies into the THERMINATOR data. 
-%Section \ref{sec:ReconstructionEff} describes how the efficiencies have been estimated. In short, we find that $\Lambda$ of all backgrounds have an approximately 15\% chance of being reconstructed.
-
-
-
-
-$\Lambda$ arise from many different sources.
-There are primary $\Lambda$; $\Lambda$ resulting from $\Sigma$ decays and the decays of short-lived resonances, which cannot be distinguished from primary $\Lambda$; and $Lambda$ coming from the weak decays of $\Xi$ and $\Omega$ baryons, some of which can be removed via topological cuts.
-Detector efficiencies and topological reconstruction cuts alter the yields of $\Lambda$ from these various sources in different ways.
 To investigate the influence of reconstruction efficiencies on particle yields, we looked at the reconstruction rates of the different particle types using the HIJING run specified in Section \ref{sec:DataSelection}.  
 The MC-truth yields of the V0s were examined at three stages of reconstruction:
 \begin{enumerate}
