@@ -118,7 +118,34 @@ Using THERMINATOR, we generated 2000 events.
 In those events, we found all the primary and secondary $\Lambda$, ignoring those that fall outside the pseudorapidity and $p_\mathrm{T}$ cuts used in the data collection.
 For each $\Lambda$ we found in a THERMINATOR event, we generated a random number between 0 and 1. 
 We ignored the $\Lambda$ if the generated number was higher than the $\Lambda$'s estimated reconstruction efficiency (see Section \ref{sec:ReconstructionEff} for more details on efficiency estimates). 
-We tallied the reconstructed $\Lambda$ and noted the origin of each $\Lambda$.
+We tallied the reconstructed $\Lambda$ and noted the origin of each $\Lambda$.  
+The results without efficiency corrections are visible in Figure \ref{fig:LambdaYieldsNoEfficiency}. 
+The results with efficiency corrections can be seen in Figure \ref{fig:LambdaYieldsWithEfficiency}.
+
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2016-08-05-LambdaYieldsNoEfficiency.pdf}
+\caption[$\Lambda$ yields from THERMINATOR 2 without efficiency corrections]{test
+test
+}
+\label{fig:LambdaYieldsNoEfficiency}
+\end{figure}
+
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/2016-08-05-LambdaYieldsWithEfficiency.pdf}
+\caption[$\Lambda$ yields from THERMINATOR 2 with efficiency corrections]{
+
+}
+\label{fig:LambdaYieldsWithEfficiency}
+\end{figure}
+
+
+
+
+
+
+
 We also added fake $\Lambda$ counts to each event to account for reconstruction purity.
 As discussed in Section \ref{sec:Recon}, we have an approximately 95\% purity.
 To add fakes, we looked at the average number of real particles tallied per event, and determined the average number of fakes corresponding to a 5\% impurity.
