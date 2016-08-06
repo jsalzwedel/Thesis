@@ -118,24 +118,28 @@ Using THERMINATOR, we generated 2000 events.
 In those events, we found all the primary and secondary $\Lambda$, ignoring those that fall outside the pseudorapidity and $p_\mathrm{T}$ cuts used in the data collection.
 For each $\Lambda$ we found in a THERMINATOR event, we generated a random number between 0 and 1. 
 We ignored the $\Lambda$ if the generated number was higher than the $\Lambda$'s estimated reconstruction efficiency (see Section \ref{sec:ReconstructionEff} for more details on efficiency estimates). 
-We tallied the reconstructed $\Lambda$ and noted the origin of each $\Lambda$.  
+We tallied the reconstructed $\Lambda$ and noted the origin of each $\Lambda$. 
+We also added fake $\Lambda$ counts to each event to account for reconstruction purity.
+As discussed in Section \ref{sec:Recon}, we have an approximately 95\% purity.
+To add fakes, we looked at the average number of real particles tallied per event, and determined the average number of fakes corresponding to a 5\% impurity.
+Then for each event, we generated a number of fakes according to a Poissonian distrubution peaked at the estimated value.
 The results without efficiency corrections are visible in Figure \ref{fig:LambdaYieldsNoEfficiency}. 
 The results with efficiency corrections can be seen in Figure \ref{fig:LambdaYieldsWithEfficiency}.
 
 
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2016-08-05-LambdaYieldsNoEfficiency.pdf}
-\caption[$\Lambda$ yields from THERMINATOR 2 without efficiency corrections]{test
-test
+\includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-06-LambdaYieldsNoEfficiency.pdf}
+\caption[$\Lambda$ yields from THERMINATOR 2 without efficiency corrections]{
+Expected yield of $\Lambda$ in each event arising from different sources, as predicted by the thermal hadronization model in THERMINATOR 2 \cite{Chojnacki:2011hb}. The x-axis shows the different origins: primary $\Lambda$, secondary $\Lambda$ coming from various hyperons, and fakes (misidentified particles).  $\Lambda$ coming from the strong decay of short-lived resonances are included in the primary $\Lambda$ count. The number of fakes in each event are generated via a Poissonian distribution, assuming an $\approx 5$\% impurity. Reconstruction inefficiencies, which naturally reduce the number of reconstructed particles, are not included in this plot.
 }
 \label{fig:LambdaYieldsNoEfficiency}
 \end{figure}
 
 
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2016-08-05-LambdaYieldsWithEfficiency.pdf}
+\includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-06-LambdaYieldsWithEfficiency.pdf}
 \caption[$\Lambda$ yields from THERMINATOR 2 with efficiency corrections]{
-
+Expected yield of $\Lambda$ in each event arising from different sources, as predicted by the thermal hadronization model in THERMINATOR 2 \cite{Chojnacki:2011hb}. The x-axis shows the different origins: primary $\Lambda$, secondary $\Lambda$ coming from various hyperons, and fakes (misidentified particles).  $\Lambda$ coming from the strong decay of short-lived resonances are included in the primary $\Lambda$ count. The number of fakes in each event are generated via a Poissonian distribution, assuming an $\approx 5$\% impurity. Reconstruction efficiency corrections (estimated in Section \ref{sec:ReconstructionEff}) are included in these yields.
 }
 \label{fig:LambdaYieldsWithEfficiency}
 \end{figure}
@@ -143,13 +147,6 @@ test
 
 
 
-
-
-
-We also added fake $\Lambda$ counts to each event to account for reconstruction purity.
-As discussed in Section \ref{sec:Recon}, we have an approximately 95\% purity.
-To add fakes, we looked at the average number of real particles tallied per event, and determined the average number of fakes corresponding to a 5\% impurity.
-Then for each event, we generated a number of fakes according to a Poissonian distrubution peaked at the estimated value.
 Finally we used the tallied $\Lambda$ to compute the number of pairs of each type per event (including real-real, real-fake, and fake-fake), along with the total number of pairs in each event, and we recorded that information.
 Events with no pairs (i.e. events that had one or fewer reconstructed $\Lambda$) were not included in event averaging, as they are skipped in the correlation function measurement of the real data.
 
