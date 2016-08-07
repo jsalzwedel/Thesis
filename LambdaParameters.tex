@@ -94,16 +94,16 @@ The following sections will discuss how we use Monte Carlo data to estimate thes
 
 % Plots
 
-In order to compute the average numbers of pairs per event, as discussed in the previous section, we need two things: a Monte Carlo generator with reliable particle yields, and many events. 
+In order to compute the average numbers of pairs per event, as discussed in the previous section, we need two things: a Monte Carlo generator with reliable particle yields and many events. 
 HIJING is notoriously unreliable for producing accurate hyperon spectra.  
 HIJING Pb---Pb events are generated from a superposition of PYTHIA p---p collisions, so they lack the strangeness saturation of a fully thermalized medium.  
 Instead of HIJING, we'll use THERMINATOR 2 (THERMal heavy IoN generATOR version 2)  \cite{Chojnacki:2011hb} to generate events.
 
 THERMINATOR 2 is a Monte Carlo event generator designed to use statistical hadronization to produce hadronic freeze-out spectra of relativistic heavy-ion collisions. 
-The user selects a hypersurface model and freeze-out model (several of which are included in the package) as well as rapidity range and the type of primordial particle multiplicity distrubtion (e.g.\ Poissonian). 
+The user selects a hypersurface model and freeze-out model (several of which are included in the package), as well as rapidity range and the type of primordial particle multiplicity distribution (e.g.\ Poissonian). 
 One of the crucial features of THERMINATOR is the inclusion of a large number of resonances from the particle data tables. 
 These play an important role in the analysis, as a sizable number of these resonances decay into hyperons, thus boosting the hyperon yields. 
-The resonances that undergo strong-decay into hyperons do so on time-scales on the order of $\mathrm{fm}/\mathrm{c}$ or tens of $\mathrm{fm}/\mathrm{c}$. 
+The resonances that undergo strong-decay into hyperons do so on time-scales on the order of $\mathrm{fm}/c$ or tens of $\mathrm{fm}/c$. 
 These decays happen on the same time-scale as the hadronic rescattering phase, so it is possible that the particle has decayed into its hyperon daughter before kinetic freeze-out. 
 In that case, it is the final-state interaction of the hyperon daughter that is relevant to femtoscopic analyses, not the interactions of the resonant parent.  
 In this analysis, we will assume that all short-lived resonances decay before kinetic freezeout. 
@@ -117,11 +117,11 @@ While the default is to use a rapidity window of $\pm$ 12 units, we set our rapi
 Using THERMINATOR, we generated 2000 events. 
 In those events, we found all the primary and secondary $\Lambda$, ignoring those that fall outside the pseudorapidity and $p_\mathrm{T}$ cuts used in the data collection.
 For each $\Lambda$ we found in a THERMINATOR event, we generated a random number between 0 and 1. 
-We ignored the $\Lambda$ if the generated number was higher than the $\Lambda$'s estimated reconstruction efficiency (see Section \ref{sec:ReconstructionEff} for more details on efficiency estimates). 
-We tallied the reconstructed $\Lambda$ and noted the origin of each $\Lambda$. 
+We ignored the $\Lambda$ if the generated number was higher than the $\Lambda$'s estimated reconstruction efficiency of $\sim15\%$ (see Section \ref{sec:ReconstructionEff} for more details on efficiency estimates). 
+We tallied the reconstructed $\Lambda$ and noted their origins. 
 We also added fake $\Lambda$ counts to each event to account for reconstruction purity.
 As discussed in Section \ref{sec:Recon}, we have an approximately 95\% purity.
-To add fakes, we looked at the average number of real particles tallied per event, and determined the average number of fakes corresponding to a 5\% impurity.
+To add fakes, we looked at the average number of real particles tallied per event and determined the average number of fakes corresponding to a 5\% impurity.
 Then for each event, we generated a number of fakes according to a Poissonian distrubution peaked at the estimated value.
 The results without efficiency corrections are visible in Figure \ref{fig:LambdaYieldsNoEfficiency}. 
 The results with efficiency corrections can be seen in Figure \ref{fig:LambdaYieldsWithEfficiency}.
@@ -165,7 +165,7 @@ In the previous section, we described how we used the THERMINATOR 2 event genera
 Those yields were produced according to a statistical hadronization model.
 However, in real data we do not reconstruct perfect thermal spectra of particles. 
 Instead, the yields are tempered by reconstruction efficiencies.
-The ALICE detector's does not have perfect track resolution, so some tracks are misidentified or lost.
+The ALICE detector does not have perfect track resolution, so some tracks are misidentified or lost.
 We also employ topological reconstruction cuts to remove fake $\Lambda$ candidates.
 Because of the finite detector resolution, some of the real $\Lambda$ are removed as well.
 In addition, the $\Lambda$ topological reconstruction cuts have been selected to preferentially remove secondary $\Lambda$ coming from $\Xi$ and $\Omega$ decays (see Section \ref{sec:Recon}).
@@ -174,13 +174,13 @@ Finally, the branching ratio of the $\Lambda$ weak decay results in roughly a th
 These effects naturally result in smaller measured yields and thus smaller quantities of pairs.
 The reconstruction efficiency is an important component of our estimation of $\lambda$ parameters.
 To account for the effects of reconstruction efficiency on the $\lambda$ parameters, we artificially introduced reconstruction efficiencies into the THERMINATOR data. 
-In this section, we discuss how we used Monte Carlo HIJING events with detector effects to estimate these reconstruction efficiencies.
+In this section, we discuss how we used Monte Carlo HIJING events with simulated detector reconstruction to estimate these reconstruction efficiencies.
 
 To investigate the influence of reconstruction efficiencies on particle yields, we looked at the reconstruction rates of the different particle types using the HIJING run specified in Section \ref{sec:DataSelection}.  
 The MC-truth yields of the V0s were examined at three stages of reconstruction:
 \begin{enumerate}
 \item In the raw MC event before any detector simulation was added to the MC particles.  
-Here the daughters of the V0s are required to be in mid-rapidity and surpass a minimum $p_\mathrm{T}$ value, so as to only look at findable V0s.
+Here the daughters of the V0s are required to be in mid-rapidity and surpass a minimum $p_\mathrm{T}$ value, so as to only look at V0s that could reasonably be found.
 \item In the V0 finder before any analysis-side reconstruction cuts were employed.
 \item After topological reconstruction cuts were made.
 \end{enumerate}
@@ -201,16 +201,24 @@ Only midrapidity particles that exceed a minimum $p_\mathrm{T}$ cut have been ex
 \end{figure}
 
 The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  
-Figure \ref{fig:V0ToMassCut} shows one such ratio.  Here, one can see the fraction of V0s in the V0 finder that survived all the reconstruction cuts.  
-From this, one can see how successful the current topological cuts are at selecting (anti)$\Lambda$ of various origins.  
-With different topological cuts made, a before-and-after comparison of this plot shows the efficacy of the new cuts at removing secondary V0s vs primary V0s, as in Figure \ref{V0ToMassCutWithDifferentVarBin}.
 
-Figure \ref{fig:OriginToMassCut} shows another ratio.  
-In this plot, one sees the event-averaged reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).  
+Figure \ref{fig:OriginToV0} shows one such ratio.
+Here, one can see the fraction of $\Lambda$ of different parentage that were generated in the event that were also recognized by the V0 finder.
+Note that roughly a third of them are already lost at this stage because of the $\Lambda \rightarrow \mathrm{n}\pi^0$ decay channel.
+% lambda from seconary decay have higher pT and thus are more likely to be found than primary lambda
+
+
+
+Figure \ref{fig:V0ToMassCut} shows the fraction of V0 candidates in the V0 finder that survived all the reconstruction cuts.  
+From this, one can see how successful the topological cuts are at selecting (anti)$\Lambda$ of various origins.  
+Here you can see the selection cuts at work --- primary $\Lambda$, $\Lambda$ from $\Sigma^0$, $\Lambda$ from resonance decays have a much better survival rate than $\Lambda$ from weak decays.
+%With different topological cuts made, a before-and-after comparison of this plot shows the efficacy of the new cuts at removing secondary V0s vs primary V0s, as in Figure \ref{V0ToMassCutWithDifferentVarBin}.
+
+The final ratio worth considering is Figure \ref{fig:OriginToMassCut}, which shows the reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).
+This information, which is just the convolution of the previous two figures, conveys the overall reconstruction efficiency of $\Lambda$ of different origins.
 This efficiency encompasses not only the results of the analysis-side cuts, but also the natural tracking efficiencies of ALICE detector.  
-One can see that the various $\Lambda$ and $\bar{\Lambda}$ types for the most part have a reconstruction rate between 15-25\%.  
-These reconstruction efficiencies could be convoluted with the thermal yield calculations of Section \ref{sec:LambdaParams} to obtain corrected estimates of the yields and $\lambda$ parameters.  
-Further analyses of these results are in progress.
+One can see that $\Lambda$ of different origins all have approximately the same chance of getting reconstructed.
+When applying the efficiency correction to the yields in Section \ref{sec:ThermalYields}, we used a flat 15\% efficiency for $\Lambda$ of all origins.
 
 \subsubsection{A note on injected Monte Carlo signals}
 \label{sec:InjectedMCSignals}
