@@ -201,7 +201,6 @@ Only midrapidity particles that exceed a minimum $p_\mathrm{T}$ cut have been ex
 \end{figure}
 
 The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  
-
 Figure \ref{fig:BeginToV0} shows one such ratio.
 Here, one can see the fraction of $\Lambda$ of various parentage that were generated in the event that were also recognized as V) candidates by the V0 finder.
 Note that roughly a third of them are already lost at this stage because of the $\Lambda \rightarrow \mathrm{n}\pi^0$ decay channel.
@@ -245,51 +244,11 @@ Average fraction of true $\Lambda$ in underlying MC events that pass all reconst
 \label{fig:BeginToRecon}
 \end{figure}
 
-The final ratio worth considering is Figure \ref{fig:BeginToRecon}, which shows the reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).
+The final ratio to consider is Figure \ref{fig:BeginToRecon}, which shows the reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).
 This information, which is just the product of the previous two figures, conveys the overall reconstruction efficiency of $\Lambda$ of different origins.
 This efficiency encompasses not only the results of the analysis-side cuts, but also the natural tracking efficiencies of ALICE detector.  
 One can see that $\Lambda$ of different origins all have approximately the same chance of getting reconstructed --- about 15\%.
 When applying the efficiency correction to the yields in Section \ref{sec:ThermalYields}, we used a flat 15\% efficiency for $\Lambda$ of all origins.
-
-\subsubsection{A note on injected Monte Carlo signals}
-\label{sec:InjectedMCSignals}
-
-It should be noted that this MC run, LHC12a17a\_fix, has injected $\Xi^0$, $\Xi^-$, and $\Omega$ signals, but not their respective antiparticles.  The disparity can be seen in Figure \ref{fig:MCEfficiencyWithInjected}, which shows the average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species. 
-The reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  
-A clear disparity can be seen between the reconstruction efficiencies of $\Lambda_{\Xi}$ and $\Lambda_{\Omega}$ and their respective antiparticles.  
-(This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.)
-
-The origin of this disparity has not been investigated in great detail, though it is suspected that the disparity arises from differences between the $p_\mathrm{T}$ spectra of the injected V0s and the underlying HIJING particles.  
-Because the efficacy of the various reconstruction cuts and the detector efficiency is $p_\mathrm{T}$ dependant, the average reconstruction efficiency of injected particles may differ from the base HIJING particles.  
-Figure \ref{fig:MCEfficiencyWithInjected} therefore shows a disparity between multistrange hyperon and antihyperon efficiency because the hyperons include a mix of injected and underlying particles, while the antihyperons come only from the underlying event. 
-The analysis was performed again with injected signals removed (see Figure \ref{fig:MCEfficiencyNoInjected}).  
-Without the injected signals, reconstruction efficiencies for the multi-strange particles and anti-particles are seen to be in line.  
-Subsequent studies of reconstruction cuts and efficiency were performed without injected signals such that secondary $\Lambda$ and $\bar{\Lambda}$ efficiencies would be consistent.
-
-\begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-04-20-Efficiency-WithInjectedSignals-OldCuts_2013-09-04Run.pdf}
-\caption[$Lambda$ reconstruction efficiencies with injected signals]{Average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species.  
-Reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  
-The analysis was performed for HIJING events with injected hyperon signals.  
-The events included injected $\Lambda$, $\bar{\Lambda}$, $\Xi$, and $\Omega$, but no $\bar{\Xi}$ or $\bar{\Omega}$.  
-A clear disparity can be seen between the reconstruction efficiencies of $\Lambda_{\Xi}$ and $\Lambda_{\Omega}$ and their respective antiparticles.  
-This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.}
-\label{fig:MCEfficiencyWithInjected}
-\end{figure}
-
-\begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-04-20-Efficiency-NoInjectedSignals-OldCuts_2013-11-19Run.pdf}
-\caption[$Lambda$ reconstruction efficiencies without injected signals]{Average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species.  
-Reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  
-The analysis was performed for HIJING events with injected hyperon signals.  
-However, injected hyperon signals have been excluded from this plot.  
-The various secondary $\Lambda$ are seen to have approximately the same reconstruction efficiency as respective antiparticles.  
-This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.}
-\label{fig:MCEfficiencyNoInjected}
-\end{figure}
-
-
-
 
 \subsubsection{Estimates of \texorpdfstring{$\lambda$}{lambda} parameters}
 \label{sec:LambdaParamEstimates}
