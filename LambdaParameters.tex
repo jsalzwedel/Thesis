@@ -202,29 +202,59 @@ Only midrapidity particles that exceed a minimum $p_\mathrm{T}$ cut have been ex
 
 The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  
 
-Figure \ref{fig:OriginToV0} shows one such ratio.
-Here, one can see the fraction of $\Lambda$ of different parentage that were generated in the event that were also recognized by the V0 finder.
+Figure \ref{fig:BeginToV0} shows one such ratio.
+Here, one can see the fraction of $\Lambda$ of various parentage that were generated in the event that were also recognized as V) candidates by the V0 finder.
 Note that roughly a third of them are already lost at this stage because of the $\Lambda \rightarrow \mathrm{n}\pi^0$ decay channel.
-% lambda from seconary decay have higher pT and thus are more likely to be found than primary lambda
+One curious feature of this plot is that $\Lambda$ from weak decays have a much better chance of being found than primary $\Lambda$.
+We suspect that this may be due to topological cuts in the V0 finder that have been designed to exclude primary tracks.
+$\Lambda$ from weak decays have a larger average decay length than primary $\Lambda$, and their daughter tracks have a larger average DCA to the primary vertex.
+As a result, those daughter tracks are less likely to be ignored as primary tracks.
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-10-FractionBeginToV0Finder.pdf}
+\caption[V0 finder efficiency]{
+Average fraction of true $\Lambda$ (primary and secondary) in underlying MC events that are labeled as V0 candidates by the V0 finder.
+The x-axis shows the parentage of the $\Lambda$, with the first bin corresponding to primary $\Lambda$.
+About a third of the $\Lambda$ are lost across the board due to the $\Lambda \rightarrow \pi^0 \mathrm{n}$ decay.
+We note that $\Lambda$ from weak decays have a much better chance of being found in the V0 finder than primary $\Lambda$ or those from electromagnetic ($\Sigma^0$) and strong ($\Sigma^*$) decays.
+This may be due to the topological cuts in the V0 finder that are designed to exclude primary tracks.
+$\Lambda$ from $\Xi$ decays will, on average, have a larger apparent decay length.
+Their daughter tracks will have a larger average DCA to the primary vertex, so they will be less likely to be ignored as primary tracks.
+}
+\label{fig:BeginToV0}
+\end{figure}
 
 
+Figure \ref{fig:V0ToRecon} shows the fraction of V0 candidates in the V0 finder that survived all the reconstruction cuts.  
+From this, one can see our the topological cuts at work --- primary $\Lambda$, $\Lambda$ from $\Sigma^0$, and $\Lambda$ from resonance decays have a much better survival rate than $\Lambda$ from weak decays.
 
-Figure \ref{fig:V0ToMassCut} shows the fraction of V0 candidates in the V0 finder that survived all the reconstruction cuts.  
-From this, one can see how successful the topological cuts are at selecting (anti)$\Lambda$ of various origins.  
-Here you can see the selection cuts at work --- primary $\Lambda$, $\Lambda$ from $\Sigma^0$, $\Lambda$ from resonance decays have a much better survival rate than $\Lambda$ from weak decays.
-%With different topological cuts made, a before-and-after comparison of this plot shows the efficacy of the new cuts at removing secondary V0s vs primary V0s, as in Figure \ref{V0ToMassCutWithDifferentVarBin}.
 
-The final ratio worth considering is Figure \ref{fig:OriginToMassCut}, which shows the reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).
-This information, which is just the convolution of the previous two figures, conveys the overall reconstruction efficiency of $\Lambda$ of different origins.
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-10-FractionV0FinderToRecon.pdf}
+\caption[Topological cut efficiency]{
+Average fraction of true $\Lambda$ in the V0 finder of MC events that pass all reconstruction cuts. The topological cuts of this analysis (see Section \ref{sec:Recon}) have been selected to preferentially remove secondary $\Lambda$ from weak decays. Within the limits of the ALICE tracking resolution, $\Lambda$ from $\Sigma^0$ and resonance decays look like and reconstruct like primary $\Lambda$.
+}
+\label{fig:V0ToRecon}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-10-FractionBeginToRecon.pdf}
+\caption[Total reconstruction efficiency]{
+Average fraction of true $\Lambda$ in underlying MC events that pass all reconstruction cuts. The first bin shows the efficiency of reconstructing primary $\Lambda$, while the other bins show the reconstruction efficiency of $\Lambda$ that are daughters of the labeled particles. The results in this plot are the product of the results in Figures \ref{fig:BeginToV0} and \ref{fig:V0ToRecon}. The reconstruction efficiency of a $\Lambda$ of any origin is approximately 15\%.
+}
+\label{fig:BeginToRecon}
+\end{figure}
+
+The final ratio worth considering is Figure \ref{fig:BeginToRecon}, which shows the reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).
+This information, which is just the product of the previous two figures, conveys the overall reconstruction efficiency of $\Lambda$ of different origins.
 This efficiency encompasses not only the results of the analysis-side cuts, but also the natural tracking efficiencies of ALICE detector.  
-One can see that $\Lambda$ of different origins all have approximately the same chance of getting reconstructed.
+One can see that $\Lambda$ of different origins all have approximately the same chance of getting reconstructed --- about 15\%.
 When applying the efficiency correction to the yields in Section \ref{sec:ThermalYields}, we used a flat 15\% efficiency for $\Lambda$ of all origins.
 
 \subsubsection{A note on injected Monte Carlo signals}
 \label{sec:InjectedMCSignals}
 
-It should be noted that this MC run, LHC12a17a\_fix, has injected $\Xi^0$, $\Xi^-$, and $\Omega$ signals, but not their respective antiparticles.  T
-he disparity can be seen in Figure \ref{fig:MCEfficiencyWithInjected}, which shows the average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species. 
+It should be noted that this MC run, LHC12a17a\_fix, has injected $\Xi^0$, $\Xi^-$, and $\Omega$ signals, but not their respective antiparticles.  The disparity can be seen in Figure \ref{fig:MCEfficiencyWithInjected}, which shows the average reconstruction efficiencies of $\Lambda$ ($\bar{\Lambda}$) broken down in terms of the Monte Carlo truth of each V0's parent species. 
 The reconstruction efficiency is defined as the ratio of the number of reconstructed $\Lambda$ ($\bar{\Lambda}$) of each origin type versus the number of V0 candidates of each origin in the V0 finder.  
 A clear disparity can be seen between the reconstruction efficiencies of $\Lambda_{\Xi}$ and $\Lambda_{\Omega}$ and their respective antiparticles.  
 (This plot is a few months out of date - the reconstruction cuts employed in this figure are somewhat looser than those employed in the current analysis.)
