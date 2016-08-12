@@ -253,62 +253,104 @@ When applying the efficiency correction to the yields in Section \ref{sec:Therma
 \subsubsection{Estimates of \texorpdfstring{$\lambda$}{lambda} parameters}
 \label{sec:LambdaParamEstimates}
 
-In this section, we estimate of the relevant $\lambda$ parameters involved in fitting these systems.  
-$\lambda$ can roughly be understood to be the pair purity of the system that is being fit, i.e.\ the fraction of true pairs over total pairs.  
-There are additional factors that can affect $\lambda$ such as source coherence or non-gaussianity of underlying source, but these complications will be neglected in this analysis.
+Here we present estimates of the $\lambda$ parameters that describe the relative contributions of feeddown in our analysis.
+For these results, we have used the model developed in Section \ref{sec:LambdaModel}, the thermal particle yields estimated in Section \ref{sec:ThermalYields}, and the reconstruction efficiencies estimated in Section \ref{sec:ReconstructionEff}.
+For ease of reference, our $\lambda$ model (Eqn.\ \ref{eq:LambdaParSolution}) is
+$$\lambda_i = \frac{\langle N_{i}\rangle_{\mathrm{event}}} {\langle\sum_i^m N_{i}\rangle_{\mathrm{event}}}.$$
 
-Many femtoscopic analyses utilize a single $\lambda$ value in their fit procedure as an indication of their overall pair purity.  
-This is fine in the cases where the impure pairs (i.e.\ the other $1 - \lambda$ fraction of pairs) are uncorrelated.
-But if there are residual correlations, then it becomes necessary estimate their contributions to the correlation function.
-Additional $\lambda$ parameters can be attributed to each residual correlation according to the fraction of total pairs of that type.
-In principle, all these $\lambda$ can be left as free fit parameters.
-In practice, that results in fits that are far too unconstrained to converge properly.
-In this analysis, we will estimate the $\lambda$ parameters for each relevant residual correlation, and use those numbers as fixed parameters in the fit.
+Figures \ref{fig:LambdaParParticle}--\ref{fig:LambdaParParticleAntiparticle} show the estimated $\lambda$ parameters for various pair combinations. 
+The elements of the particle-particle matrix are comparable to the elements of the antiparticle-antiparticle matrix, as well as to the diagonal elements of the particle-antiparticle matrix.
+The sum of the symmetrix, off-diagonal elements of the particle-antiparticle matrix (e.g.\ $\Lambda\bar{\Sigma}^0$ and $\bar{\Lambda}\Sigma^0$) are approximately the same as the respective element ($\Lambda\Sigma$) in the particle-particle matrix.
+In all three figures, we see that the $\Lambda\Lambda$/$\bar{\Lambda}\bar{\Lambda}$/$\Lambda\bar{\Lambda}$ contribution dominates at approximately 25\%. The $\Lambda$-Y contributions follow between 20\% and 10\%, except for the $\Lambda\Omega$ pair. The various $\Omega$ pairs have a 1\% or smaller contribution. 
 
-%A more refined estimate could be made by convoluting ALICE particle spectra with analysis-specific reconstruction efficiencies to determine analysis-specific yields of the various particle types.  
-%That avenue will be discussed more in Section \ref{sec:ReconstructionEff}. 
+For this analysis, we choose to ignore contributions with an effect smaller than 2\%.
+This excludes $\Omega$ pairs entirely, as well as the identical $\Xi$ pairs, $\Xi^0\Xi^0$ and $\Xi^-\Xi^-$. Those pairs, along with pairs containing a fake $\Lambda$, are assumed to give no contribution to the total correlation function (i.e.\ their individual correlation functions are treated as unity for all $k^*$). This leaves us with the following pairs contributing to the theoretical correlation functions: $\Lambda\Lambda$, $\Lambda\Sigma^0$, $\Lambda\Xi^0$, $\Lambda\Xi^-$, $\Sigma^0\Sigma^0$, $\Sigma^0\Xi^0$, $\Sigma^0\Xi^-$, and $\Xi^0\Xi^-$.
 
-To understand the mathematical motivation behind the $\lambda$ parameters, let us consider the simple case where the signal pairs of the correlation function come from a single event.  
-Within this event, all combinations of reconstructed V0s are paired together and binned according to their $k^*$ values.  
-For this simple example, let's assume that the reconstructed V0s consist of primary $\Lambda$, secondary $\Lambda$, and fake $\Lambda$.  
-Let us assume that origin of the different $\Lambda$ cannot be determined - the analysis only knows that a given V0 appears to be a $\Lambda$.  
-As mentioned above, the total correlation function will be a linear combination of the component correlation functions (primary-primary, primary-secondary, primary-fake, fake-fake, etc.).  
-The $\lambda$ parameters for each component correlation are given by the fraction of total pairs of that type.  
-For example, if there are ten distinct $\Lambda\Sigma$ pairs and one hundred total pairs, then $\lambda_{\Lambda\Sigma} = 1/10$.  
-If all pair types are accounted for, 
-\begin{equation}
-\label{eq:SumLambdaUnity}
-\sum\limits_{ij}\lambda_{ij} = 1.
-\end{equation}
 
-We can use the following equations to estimate the $\lambda$ parameters for different types of pairs. 
-These equations take the general form 
-\begin{equation}
-\lambda = \frac{\mathrm{Specific Pairs}}{\mathrm{Total Pairs}},
-\end{equation}
-where the calculations for numbers of pairs are simple combinatorics.  If more than one event is being used (as is the case in the data), the equation becomes
-\begin{equation}
-\lambda = \frac{\langle\mathrm{Specific Pairs}\rangle}{\langle\mathrm{Total Pairs}\rangle},
-\end{equation}
-where the average is done over events.
 
-The $\lambda$ parameter for two identical particles (e.g.\ both primary $\Lambda$) is given by
-\begin{equation}
-\label{eq:LambdaIdentical}
-\lambda_{ii} = \frac{N_i}{T}\frac{(N_i -1)/2}{(T-1)/2} = \frac{N_i}{T}\frac{(N_i -1)}{(T-1)}
-\end{equation}
-where $N_i$ is the number of particles of species $i$, $T = \sum\limits_i N_i$ is the total number of particles, and the factors of $1/2$ remove double counting.  
-For two particles with different origins (e.g.\ a primary $\Lambda$ and a $\Lambda$ from a $\Sigma^0$ decay)
-\begin{equation}
-\lambda_{ij} = \frac{N_i}{T} \frac{N_j}{(T-1)/2}
-\end{equation}
-for $i \neq j$.  
-$\lambda$ can also be calculated for pairs that are distinguishable, such as primary $\Lambda$ and primary $\bar{\Lambda}$:
-\begin{equation}
-\lambda_{i\bar{j}} = \frac{N_i N_{\bar{j}}}{T\bar{T}}
-\end{equation}
-where $T$ is the sum of all indistinguishable particles and $\bar{T}$ is the sum of all indistinguishable antiparticles.
 
+
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-12-LambdaParamsParticle.pdf}
+\caption[Particle-particle $\lambda$ parameters]{
+Estimated $\lambda$ parameters for various particle-particle contibutions.
+}
+\label{fig:LambdaParParticle}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-12-LambdaParamsAntiparticle.pdf}
+\caption[Antiparticle-antiparticle $\lambda$ parameters]{
+Estimated $\lambda$ parameters for various antiparticle-antiparticle contibutions.
+}
+\label{fig:LambdaParAntiparticle}
+\end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-12-LambdaParamsParticleAntiparticle.pdf}
+\caption[Particle-antiparticle $\lambda$ parameters]{
+Estimated $\lambda$ parameters for various particle-antiparticle contibutions. The sum of the symmetric off-diagonal elements (e.g.\ $\Lambda\bar{\Sigma}^0$ and $\bar{\Lambda}\Sigma^0$) are approximately the same as the respective element ($\Lambda\Sigma$) in the particle-particle matrix, Figure \ref{fig:LambdaParParticle}.
+}
+\label{fig:LambdaParParticleAntiparticle}
+\end{figure}
+
+%In this section, we estimate the relevant $\lambda$ parameters involved in fitting these systems.  
+%$\lambda$ can roughly be understood to be the pair purity of the system that is being fit, i.e.\ the fraction of true pairs over total pairs.  
+%There are additional factors that can affect $\lambda$ such as source coherence or non-gaussianity of underlying source, but these complications will be neglected in this analysis.
+%
+%Many femtoscopic analyses utilize a single $\lambda$ value in their fit procedure as an indication of their overall pair purity.  
+%This is fine in the cases where the impure pairs (i.e.\ the other $1 - \lambda$ fraction of pairs) are uncorrelated.
+%But if there are residual correlations, then it becomes necessary estimate their contributions to the correlation function.
+%Additional $\lambda$ parameters can be attributed to each residual correlation according to the fraction of total pairs of that type.
+%In principle, all these $\lambda$ can be left as free fit parameters.
+%In practice, that results in fits that are far too unconstrained to converge properly.
+%In this analysis, we will estimate the $\lambda$ parameters for each relevant residual correlation, and use those numbers as fixed parameters in the fit.
+%
+%%A more refined estimate could be made by convoluting ALICE particle spectra with analysis-specific reconstruction efficiencies to determine analysis-specific yields of the various particle types.  
+%%That avenue will be discussed more in Section \ref{sec:ReconstructionEff}. 
+%
+%To understand the mathematical motivation behind the $\lambda$ parameters, let us consider the simple case where the signal pairs of the correlation function come from a single event.  
+%Within this event, all combinations of reconstructed V0s are paired together and binned according to their $k^*$ values.  
+%For this simple example, let's assume that the reconstructed V0s consist of primary $\Lambda$, secondary $\Lambda$, and fake $\Lambda$.  
+%Let us assume that origin of the different $\Lambda$ cannot be determined - the analysis only knows that a given V0 appears to be a $\Lambda$.  
+%As mentioned above, the total correlation function will be a linear combination of the component correlation functions (primary-primary, primary-secondary, primary-fake, fake-fake, etc.).  
+%The $\lambda$ parameters for each component correlation are given by the fraction of total pairs of that type.  
+%For example, if there are ten distinct $\Lambda\Sigma$ pairs and one hundred total pairs, then $\lambda_{\Lambda\Sigma} = 1/10$.  
+%If all pair types are accounted for, 
+%\begin{equation}
+%\label{eq:SumLambdaUnity}
+%\sum\limits_{ij}\lambda_{ij} = 1.
+%\end{equation}
+%
+%We can use the following equations to estimate the $\lambda$ parameters for different types of pairs. 
+%These equations take the general form 
+%\begin{equation}
+%\lambda = \frac{\mathrm{Specific Pairs}}{\mathrm{Total Pairs}},
+%\end{equation}
+%where the calculations for numbers of pairs are simple combinatorics.  If more than one event is being used (as is the case in the data), the equation becomes
+%\begin{equation}
+%\lambda = \frac{\langle\mathrm{Specific Pairs}\rangle}{\langle\mathrm{Total Pairs}\rangle},
+%\end{equation}
+%where the average is done over events.
+%
+%The $\lambda$ parameter for two identical particles (e.g.\ both primary $\Lambda$) is given by
+%\begin{equation}
+%\label{eq:LambdaIdentical}
+%\lambda_{ii} = \frac{N_i}{T}\frac{(N_i -1)/2}{(T-1)/2} = \frac{N_i}{T}\frac{(N_i -1)}{(T-1)}
+%\end{equation}
+%where $N_i$ is the number of particles of species $i$, $T = \sum\limits_i N_i$ is the total number of particles, and the factors of $1/2$ remove double counting.  
+%For two particles with different origins (e.g.\ a primary $\Lambda$ and a $\Lambda$ from a $\Sigma^0$ decay)
+%\begin{equation}
+%\lambda_{ij} = \frac{N_i}{T} \frac{N_j}{(T-1)/2}
+%\end{equation}
+%for $i \neq j$.  
+%$\lambda$ can also be calculated for pairs that are distinguishable, such as primary $\Lambda$ and primary $\bar{\Lambda}$:
+%\begin{equation}
+%\lambda_{i\bar{j}} = \frac{N_i N_{\bar{j}}}{T\bar{T}}
+%\end{equation}
+%where $T$ is the sum of all indistinguishable particles and $\bar{T}$ is the sum of all indistinguishable antiparticles.
+%
 
 
 %One should note here that the above $\lambda$ equations technically apply to some sort of single-event correlation function.  
