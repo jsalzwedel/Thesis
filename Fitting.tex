@@ -1,27 +1,33 @@
-\subsection{Fit Procedure}
+\subsection{Fit procedure}
 \label{sec:FitProcedure}
 
-In this section, we discuss ... 
+In this section, we discuss the procedure by which we fit the data.
+We use a self-developed software package called FemtoFitter.
+At its heart, FemtoFitter utilizes the ROOT TMinuit implementation of the Minuit fitting package.
 
-A crucial part of the analysis is the treatment of residual correlations in the fit procedure.
+% Description of Minuit, with reference to the paper.
+% Fit function
 
-\subsubsection{Fitting via the transform method}
-
-%Proper fitting techniques for this analysis are still a work in progress.  
-%In particular, efforts are being made to evaluate the extent to which residual correlations permeate the measured correlation functions.  
-In this analysis, the importance of residual correlations can be characterized by two sets of parameters.  
-The scattering lengths $f_0$ of the residual pair describe the strength of the residual pair interaction, such that a larger $\abs{f_0}$ will generally lead to a more pronounced residual correlation function.  
-Meanwhile, the pair purity $\lambda$ of each pair type describes the relative contribution of each individual correlation function (i.e. primary or residual) to the total correlation function, as described in Section \ref{sec:Residual}. 
-The following sections will discuss how these two parameters are evaluated in this analysis.
+% chisquare vs log-likelihood (preliminary trials showed that they gave similar results. The chisquare version ran much faster, so we stuck with that.
 
 
-%Discussion of current status of fit results and systematic uncertainties.  
-%Report measured systematics as well as possible sources of systematics yet to be explored.
+% applying smear matrices
 
 
+% normalization parameters
+\subsubsection{Fit parameters}
+% fixing parameters
+% fit range
+% fitting background range
+% 
+% joint fitting
+
+% \subsubsection{Scattering parameters of residual pairs}
 
 \subsubsection{Scattering parameters of residual pairs}
 \label{sec:ScatteringParams}
+
+% Revamp this
 
 As previously mentioned, little information exists about the hyperon-hyperon scattering parameters.  
 One goal of this analysis is to make a measurement of the $\Lambda\Lambda$ scattering lengths and effective radius.  
@@ -36,9 +42,9 @@ The disadvantage of this method is that the final measurement will essentially y
 However, the advantage is that it allows all pairs (primary-primary, primary-secondary, secondary-secondary) to provide relevant contributions to the correlation function.  
 One potential way to estimate the systematic uncertainties in this method would be to do several additional fits, wherein the scattering parameters of the other pairs are treated as being 50\%, 25\%, and 0\% (no interaction) the strength of the $\Lambda\Lambda$ parameters.
 
-\subsubsection{Minuit fitting}
-\label{sec:MinuitFit}
+\subsubsection{Fit range and background}
+\label{sec:FitBackground}
 
-%Include practical treatment of fit parameters here. Residual correlation scattering lengths, simultaneous fitting.  Normalization factor vs polynomial background.
-Discussion of Minuit fitting procedure will go here.
+% Normalization factor and polynomial background.
+
 
