@@ -3,15 +3,50 @@
 
 In this section, we discuss the procedure by which we fit the data.
 We use a self-developed software package called FemtoFitter.
-At its heart, FemtoFitter utilizes the ROOT TMinuit implementation of the Minuit fitting package.
+At its heart, FemtoFitter utilizes the ROOT TMinuit implementation of the MINUIT \cite{James:2004xla} fitting package.
+In the following sections, we'll describe the functionality of MINUIT and how it fits into FemtoFitter, we'll discuss our usage of fit parameters, and we'll elaborate on general fitting details such as fit range and simultaneously fitting multiple correlation functions.
 
-% Description of Minuit, with reference to the paper.
-% Fit function
 
-% chisquare vs log-likelihood (preliminary trials showed that they gave similar results. The chisquare version ran much faster, so we stuck with that.
+\subsubsection{MINUIT}
+\label{sec:MINUIT}
+The MINUIT tool is designed to minimize the value of a multivariable function and to map out the shape of that function around the minimum.
+It is typically used to minimize a chi-square or log-likelihood function in order to find the best fit for and statistical uncertainty of the input parameters.
 
+When using chi-squared minimization to fit the data, MINUIT various the free parameters to mininize the function
+\begin{equation}
+\label{eq:Chisquare}
+\chi^2(\alpha, \beta, ...) = \sum_{i=1}^{n} \frac{(f(x_i; \alpha, \beta, ...)-m_i)^2}{\sigma^2_i},
+\end{equation}
+where $\alpha$, $\beta$, etc.\ are the input parameters, $m_i$ is a measurement with uncertainty $\sigma_i$, and $f(x_i; \alpha, \beta, ...)$ is a functional prediction of the data that depends on the input parameters.
+For a femtoscopic analyis, the measured data $m_i$ are the bin values of the combined correlation function described by Eqn.\ \ref{eq:CombineCF}, and the summation is done over the $x_i = k^*$ bins.
+The function $f(x_i; \alpha, \beta, ...)$ is the  predicted femtoscopic correlation function given by Eqn.\ \ref{eq:GeneralizedLambda}, and the variable parameters $\alpha$, $\beta$, etc.\ include the scattering length $f_0$, effective range $d_0$, and femtoscopic radius $R$.
+Chi-square minimization is not necessarily optimal for fitting correlation functions, since the ratio of two Poisson distributions is not a Poisson distribution \cite{Lisa:2005dd}.
+As a result, the statistical uncertainties generated via the chi-square method are less accurate than those from the log-likelihood method.
+
+In the alternative log-likelihood method, one does not use the measured correlation function as the data.
+Instead, one utilizes the unscaled, Poisson-distributed numerator and denominator distributions $A(k^*)$ and $B(k^*)$.
+For a correlation function analysis, the principal of maximum likelihood (PML) function is given \cite{Ahle:2002mi} by
+\begin{equation}
+\label{eq:LogLikelihood}
+\chi^2_{\mathrm{PML}} = \sum_{i = 1}^{n} 
+-2 \left[A_i \ln  \left(\frac{f(x_i) (A_i + B_i)}{A_i(f(x_i) + 1)}\right) + B_i \ln \left(\frac{(A_i + B_i)}{B_i(f(x_i) + 1)}\right)\right].
+\end{equation}
+Here, $f(x_i)$ is the same theoretical prediction as in Eqn.\ \ref{eq:Chisquare}.
+Since we use the unscaled numerator and denominator distribrutions rather than correlation functions, we cannot feed in a combined correlation function as we did in Eqn.\ \ref{eq:Chisquare}. Instead, to combine data sets for an improved fit, we calculate $\chi^2_\mathrm{PML,total}$ as the sum of the values found by applying Eqn.\ \ref{eq:LogLikelihood} to each of those data sets separately.
+As a side note, while log-likelihood minimization uses similar nomenclature to chi-square minimization ($\chi^2_\mathrm{PML}$ and $\chi^2$), they represent different phenomena. Therefore chi-square heuristics, such as $\chi^2 / \mathrm{ndf} \sim 1$ being a decent fit, do not apply.
+
+In this analysis, we tried fitting via both methods. Both yielded approximately the same results, but the log-likelihood minimization took about an order of magnitude longer to converge. Due to the run-time issues, we opted to use the chi-square method when making the systematic uncertainty estimates and measuring the final results.
+
+\subsubsection{FemtoFitter}
+\label{sec:FemtoFitter}
+
+% Structure: Fitter, PairSystem, LednickyEqn
+
+% Workflow: Give Define parameters, determine which parameters are fixed, pass initial values.
+% MINUIT finds the \chi^2 value for the given parameter set, then varies the parameters, passes those parameters back to FemtoFitter to calculate \chi^2, uses that to determine how to continue to vary the parameters, etc.
 
 % applying smear matrices
+
 
 
 % normalization parameters
