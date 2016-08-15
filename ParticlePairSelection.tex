@@ -190,8 +190,18 @@ But iterative daughter-sharing cut described above is capable removing this frau
 \subsubsection{Correlation function construction and pair cuts}
 \label{sec:CFconstruct}
 
-This analysis studies two-particle correlations as a function of the one dimensional relative momentum $k^*=\frac{1}{2}q_{\mathrm{inv}}=\frac{1}{2}\abs{P(m^2_1-m^2_2)/P^2 - q}$, where $P$ and $q$ are the four-vector momentum sum and difference, respectively, and $m_1$ and $m_2$ are the masses of the two particles.  
-The correlation function is constructed as $C(k^*) = A(k^*)/B(k^*)$, where $A(k^*)$ is the two-particle distribution of the given event and $B(k^*)$ is the distribution of a reference event.  
+This analysis studies two-particle correlations as a function of the one dimensional relative momentum 
+\begin{equation}
+\label{eq:kstar}
+k^*=\frac{1}{2}q_{\mathrm{inv}}=\frac{1}{2}\abs{P(m^2_1-m^2_2)/P^2 - q},
+\end{equation}
+where $P$ and $q$ are the four-vector momentum sum and difference, respectively, and $m_1$ and $m_2$ are the masses of the two particles.  
+The correlation function is constructed as
+\begin{equation}
+\label{eq:CFDefinition}
+C(k^*) = \frac{A(k^*)}{B(k^*)},
+\end{equation}
+where $A(k^*)$ is the two-particle distribution of the given event and $B(k^*)$ is the distribution of a reference event.  
 In practice, the signal event histogram $A(k^*)$ is constructed by binning the $k^*$ value of each pair of particles in a single event, and repeating this for each event.  
 The reference (or background) histogram is constructed by binning $k^*$ for pairs of particles taken from different events.  
 Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  
