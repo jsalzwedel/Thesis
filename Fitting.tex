@@ -35,27 +35,68 @@ Here, $f(x_i)$ is the same theoretical prediction as in Eqn.\ \ref{eq:Chisquare}
 Since we use the unscaled numerator and denominator distribrutions rather than correlation functions, we cannot feed in a combined correlation function as we did in Eqn.\ \ref{eq:Chisquare}. Instead, to combine data sets for an improved fit, we calculate $\chi^2_\mathrm{PML,total}$ as the sum of the values found by applying Eqn.\ \ref{eq:LogLikelihood} to each of those data sets separately.
 As a side note, while log-likelihood minimization uses similar nomenclature to chi-square minimization ($\chi^2_\mathrm{PML}$ and $\chi^2$), they represent different phenomena. Therefore chi-square heuristics, such as $\chi^2 / \mathrm{ndf} \sim 1$ being a decent fit, do not apply.
 
-In this analysis, we tried fitting via both methods. Both yielded approximately the same results, but the log-likelihood minimization took about an order of magnitude longer to converge. Due to the run-time issues, we opted to use the chi-square method when making the systematic uncertainty estimates and measuring the final results.
+In this analysis, we tried fitting via both methods. 
+Both yielded approximately the same results, but the log-likelihood minimization took about an order of magnitude longer to converge. 
+Due to the run-time issues, we opted to use the chi-square method when making the systematic uncertainty estimates and measuring the final results.
 
 \subsubsection{FemtoFitter}
 \label{sec:FemtoFitter}
 
 % Structure: Fitter, PairSystem, LednickyEqn
+The FemtoFitter package has several classes: Fitter, PairSystem, and LednickyEqn.
+The Fitter class sets up runs the TMinuit object; accepts user inputs such the data to be fit, fit parameter information, and fit range; and saves the results.
 
-% Workflow: Give Define parameters, determine which parameters are fixed, pass initial values.
-% MINUIT finds the \chi^2 value for the given parameter set, then varies the parameters, passes those parameters back to FemtoFitter to calculate \chi^2, uses that to determine how to continue to vary the parameters, etc.
+A PairSystem object is created for each data set that is being fit, and the measured correlation function for that system is passed in. 
+For example, the measured $\Lambda\Lambda$ 0--10\% centrality correlation function would get a PairSystem, as would $\Lambda\bar{\Lambda}$ 0--10\%.
+When the Fitter receives new fit parameters from the TMinuit object, it passes the relevant femtoscopic radius $R$ and scattering parameters $f_0$ and $d_0$ to each PairSystem.
+The PairSystem, in turn, passes those scattering parameters on to its set of LednickyEqn objects.
+The PairSystem has one LednickyEqn for the primary-primary correlation contribution and one for each residual correlation.
 
-% applying smear matrices
+Each LednickyEqn object is given a name (e.g\ "LambdaSigma"), a $\lambda$ parameter (see Section \ref{sec:LambdaParamEstimates} for values), a smear matrix (see Section \ref{sec:TransformedResiduals}), and a bool that denotes whether the pair is composed of identical particles.
+The LednickyEqn uses that information, along with the scattering parameters that it receives from the PairSystem, to calculate the value of the Lednicky and Lyuboshits equation (Eqn.\ \ref{eq:GeneralCorrelationFunction}) for a set of $k^*$ values.
+The LednickyEqn then uses its smear matrix to transform that theoretical correlation function into the $k^*_{\Lambda\Lambda}$ basis.
 
+To determine the $\chi^2$ value of a fit, the PairSystem takes the smeared Lednicky equation from each of its LednickyEqn objects, combines those into a correlation function according to Eqn.\ \ref{eq:GeneralizedLambda}, and calculates $\chi^2$ according to Eqn.\ \ref{eq:Chisquare} or \ref{eq:LogLikelihood}.
+The PairSystem passes that on to TMinuit by way of the Fitter, TMinuit uses that information to determine how to continue to vary the parameters, and the process repeats.
 
-
-% normalization parameters
 \subsubsection{Fit parameters}
+
+We introduce the following parameters in our fit: femtoscopic raidus $R$, real and imaginary part of the scattering length $f_0$, effective range of interaction $d_0$, normalization constant, linear background constant, and quadratic background constant.
+$R$, $f_0$, and $d_0$ have already been described in preceding sections.
+A multiplicative normalization constant $n$ is introduced to the theoretical correlation function via $C'(k^*) = (k^*)/n$ to get help match the height of the background.
+In $\chi^2$ fitting, the correlation function (data) is already normalized to one in the mid-$k^*$ region, so this amounts to a fine-tuning with $n$ usually in the range $0.98 < n < 1.01$.
+For log-likelihood fitting, the numerator and denominator distributions are not pre-normalized, so the normalization parameter falls in the range of $5 < n < 10$.
+
+
+%%%%
+
+The linear term
+The quadratic 
+
+%%%%%
+
+
+Each of the listed parameters can be left as a free parameter of the fit or fixed to a certain value.
+For the $\Lambda\Lambda \oplus \bar{\Lambda}\bar{\Lambda}$, $\Im f_0$ is fixed to 0, as there is not expected to be an imaginary scattering component for baryon-baryon scattering.
+Other parameters can be fixed for exploratory fitting or testing purposes.
+% such as the linear and quadratic coefficients
+
+
+
+The FemtoFitter can be used to fit a single PairSystem by itself, or it can fit multiple PairSystems at the same type and constrain them to share some of their parameters.
+For example, we do a join fit of $\Lambda\bar{\Lambda}$ 0--10\%, 10-30\%, and 30--50\% centrality.  
+We expect each of those systems to have a different femtoscopic radius $R$, so we introduce 3 radius paremeters. 
+In contrast, we use a single $f_0$ parameter and a single $d_0$ to describe the nuclear scattering, since the nuclear interaction should be the same in all three systems.
+
+
 % fixing parameters
 % fit range
 % fitting background range
 % 
 % joint fitting
+
+
+% normalization parameters
 
 % \subsubsection{Scattering parameters of residual pairs}
 
@@ -64,22 +105,27 @@ In this analysis, we tried fitting via both methods. Both yielded approximately 
 
 % Revamp this
 
-As previously mentioned, little information exists about the hyperon-hyperon scattering parameters.  
-One goal of this analysis is to make a measurement of the $\Lambda\Lambda$ scattering lengths and effective radius.  
-However, the task remains to decide how to deal with the scattering parameters of all the various residual correlations, which are equally unknown.  
-One option would be to include separate parameters for each pair interaction.  
-However, this would introduce two or three new parameters (for particle-particle or particle-antiparticle, respectively) per pair type and yield a very unconstrained fit.  
-Another option would be to tighten cuts to remove as many of the secondary $\Lambda$ as possible.  However this route stands to significantly reduce the statistics of the fit, as primary $\Lambda$ will be lost alongside the secondary.  
-On top of that, reconstruction cuts are unlikely to appreciably cut out $\Sigma$ daughters, as the electromagnetic decay of the $\Sigma$ comes with a very short decay length.
+So far, we have discussed the scattering parameters $f_0$ and $d_0$ for $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ scattering, but we have omitted discussion of the scattering of the residual correlation pairs such as $\Lambda\Sigma$ or $\Sigma\Xi$.
+In an ideal world, we would look up these values in a table of hadron-hadron interactions, plug those values into the respective Lednicky equations, and only have to contend with an unknown femtoscopic radius for these pairs.
+Unfortunately, little to nothing is known about the scattering lengths of these interactions.
+Therefore, we must find some other way to account for these residual correlation effects.
+One option would be to have $f_0$, $d_0$, and $R$ as independent free parameters for each pair, and extract those values from the fit. 
+Alas, this introduces more than a score of new parameters, and it would lead to far too unconstrained of a fit to extract anything meaningful.
+Another option --- the one we utilized in this analysis --- is to ansatz that those pairs have the same scattering parameters and radius as the primary-primary pair.
+In that case, each LednickyEqn belonging to a PairSystem will get passed the same parameters, and they will differ only by the smear matrices used to transform them.
 
-Yet another option would be to ansatz that all the pairs interact with approximately the same strength as the $\Lambda\Lambda$ interaction.  
-The disadvantage of this method is that the final measurement will essentially yield a weighted average of the various pair scattering parameters.  
-However, the advantage is that it allows all pairs (primary-primary, primary-secondary, secondary-secondary) to provide relevant contributions to the correlation function.  
-One potential way to estimate the systematic uncertainties in this method would be to do several additional fits, wherein the scattering parameters of the other pairs are treated as being 50\%, 25\%, and 0\% (no interaction) the strength of the $\Lambda\Lambda$ parameters.
 
-\subsubsection{Fit range and background}
-\label{sec:FitBackground}
-
-% Normalization factor and polynomial background.
+%As previously mentioned, little information exists about the hyperon-hyperon scattering parameters.  
+%One goal of this analysis is to make a measurement of the $\Lambda\Lambda$ scattering lengths and effective radius.  
+%However, the task remains to decide how to deal with the scattering parameters of all the various residual correlations, which are equally unknown.  
+%One option would be to include separate parameters for each pair interaction.  
+%However, this would introduce two or three new parameters (for particle-particle or particle-antiparticle, respectively) per pair type and yield a very unconstrained fit.  
+%Another option would be to tighten cuts to remove as many of the secondary $\Lambda$ as possible.  However this route stands to significantly reduce the statistics of the fit, as primary $\Lambda$ will be lost alongside the secondary.  
+%On top of that, reconstruction cuts are unlikely to appreciably cut out $\Sigma$ daughters, as the electromagnetic decay of the $\Sigma$ comes with a very short decay length.
+%
+%Yet another option would be to ansatz that all the pairs interact with approximately the same strength as the $\Lambda\Lambda$ interaction.  
+%The disadvantage of this method is that the final measurement will essentially yield a weighted average of the various pair scattering parameters.  
+%However, the advantage is that it allows all pairs (primary-primary, primary-secondary, secondary-secondary) to provide relevant contributions to the correlation function.  
+%One potential way to estimate the systematic uncertainties in this method would be to do several additional fits, wherein the scattering parameters of the other pairs are treated as being 50\%, 25\%, and 0\% (no interaction) the strength of the $\Lambda\Lambda$ parameters.
 
 
