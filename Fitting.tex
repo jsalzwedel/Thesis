@@ -61,44 +61,42 @@ The PairSystem passes that on to TMinuit by way of the Fitter, TMinuit uses that
 
 \subsubsection{Fit parameters}
 
-We introduce the following parameters in our fit: femtoscopic raidus $R$, real and imaginary part of the scattering length $f_0$, effective range of interaction $d_0$, normalization constant, linear background constant, and quadratic background constant.
+We use the following parameters in our fit: femtoscopic raidus $R$, real and imaginary part of the scattering length $f_0$, effective range of interaction $d_0$ and a normalization constant.
 $R$, $f_0$, and $d_0$ have already been described in preceding sections.
-A multiplicative normalization constant $n$ is introduced to the theoretical correlation function via $C'(k^*) = (k^*)/n$ to get help match the height of the background.
+A multiplicative normalization constant $n$ is introduced to the theoretical correlation function via $C'(k^*) = (k^*)/n$ to help match the height of the background.
 In $\chi^2$ fitting, the correlation function (data) is already normalized to one in the mid-$k^*$ region, so this amounts to a fine-tuning with $n$ usually in the range $0.98 < n < 1.01$.
 For log-likelihood fitting, the numerator and denominator distributions are not pre-normalized, so the normalization parameter falls in the range of $5 < n < 10$.
-
-
-%%%%
-
-The linear term
-The quadratic 
-
-%%%%%
-
 
 Each of the listed parameters can be left as a free parameter of the fit or fixed to a certain value.
 For the $\Lambda\Lambda \oplus \bar{\Lambda}\bar{\Lambda}$, $\Im f_0$ is fixed to 0, as there is not expected to be an imaginary scattering component for baryon-baryon scattering.
 Other parameters can be fixed for exploratory fitting or testing purposes.
-% such as the linear and quadratic coefficients
-
-
 
 The FemtoFitter can be used to fit a single PairSystem by itself, or it can fit multiple PairSystems at the same type and constrain them to share some of their parameters.
-For example, we do a join fit of $\Lambda\bar{\Lambda}$ 0--10\%, 10-30\%, and 30--50\% centrality.  
-We expect each of those systems to have a different femtoscopic radius $R$, so we introduce 3 radius paremeters. 
-In contrast, we use a single $f_0$ parameter and a single $d_0$ to describe the nuclear scattering, since the nuclear interaction should be the same in all three systems.
+For example, we do a joint fit of $\Lambda\bar{\Lambda}$ 0--10\%, 10-30\%, and 30--50\% centrality.  
+We expect each of those systems to have a different femtoscopic radius $R$, so we introduce 3 radius parameters. 
+In contrast, we use a single $f_0$ and a single $d_0$ to describe the nuclear scattering, since the nuclear interaction should be independent of event centrality.
 
+\subsection{Non-femtoscopic background}
 
-% fixing parameters
-% fit range
-% fitting background range
-% 
-% joint fitting
-
-
-% normalization parameters
-
-% \subsubsection{Scattering parameters of residual pairs}
+Equation \ref{eq:Lednicky} predicts a flat background at moderate $k^*$ ($\sim 0.3$ GeV) and above, but the measured correlation functions are decidedly non-unitary in that region.  
+This may be due to flow, pair-production in minijets, and other non-femtoscopic effects that are not included in the model.
+This non-flat background at large $k^*$ gives concern that the background at low $k^*$ may not be flat either.
+Unfortunately, we do not know if the slope of the low-$k^*$ non-femtoscopic effects is positive, negative or zero.
+Some femtoscopic analyses examine MC models to characterize the background.
+Unfortunately, the HIJING model fails to qualitatively reproduce the large $k^*$ region of these correlation functions.
+As we do not know the background of the low $k^*$ region, we assume that it follows the trend of the high $k*$ background.
+We therefore introduce into our fit a quadratic term to correct for the background:
+\begin{equation}
+\label{eq:BkgParams}
+C(k^*)' = C(k^*) * (1 + ak^* + bk^{*2}).
+\end{equation}
+We use this to fit the correlation function in the region $k^* <  0.4 \mathrm{GeV}/c$. 
+In the high $k^*$ region of $0.6\ \mathrm{GeV}/c < k^* < 0.9\ \mathrm{GeV}/c$, we instead fit with 
+\begin{equation}
+\label{eq:HighBackgroundFit}
+C(k^*)'' = (1 + ak^* + bk^{*2}).
+\end{equation}
+While the Lednicky equation should be unity in this region for reasonable scattering parameters, we fix it to unity to safeguard against the fitter trying to use unusual $f_0$ or $d_0$ values to over-fit the background.
 
 \subsubsection{Scattering parameters of residual pairs}
 \label{sec:ScatteringParams}
