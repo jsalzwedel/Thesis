@@ -9,7 +9,7 @@ When combining data from different centrality bins, care was taken to combine th
 The naive method of combining correlation functions involves adding numerators from different bins and adding denominators from different bins and then taking the ratio.  
 However, this has the pitfall of potentially combining drastically different phase spaces.  
 As a result, it may introduce artificial signals into the combined correlation function.  
-Instead of using this method, the correct method is to construct correlation functions for different bins separately.  
+Instead of using this method, a more correct method is to construct correlation functions for different bins separately.  
 Then one takes a weighted average of the correlation functions, using the number of numerator pairs in each correlation function as the weight:
 
 \begin{equation}
@@ -20,51 +20,73 @@ where the sum is done over different correlation function bins (e.g.\ 0-5\% and 
 This averaging is done on a bin-by-bin basis in $k^*$.  
 Note that this averaging procedure should be used in general to combine data sets with potentially different phase spaces. 
 For example, this procedure is employed to combine data from runs utilizing the two different field orientations (see Section \ref{sec:DataSelection}).  
-It is also employed when combining $\Lambda\Lambda$ data with $\bar{\Lambda}\bar{\Lambda}$ data.  For each centrality range (0-10\%, 10-30\%, and 30-50\%), the correlation functions of the two pair types were found to be consistent with each other (p-values of 0.26, 0.02, and 0.43 respectively).  
+It is also employed when combining $\Lambda\Lambda$ data with $\bar{\Lambda}\bar{\Lambda}$ data.  
+The statistics are too limited to analyze these correlation functions separately. Instead, we combine them together using the above method for better fitting.
+
+For each centrality range (0-10\%, 10-30\%, and 30-50\%), the correlation functions of the two pair types were found to be consistent with each other (p-values of 0.26, 0.02, and 0.43 respectively).  
 Therefore, no additional systematic error was assessed to come out of their merging.
 
 Figures \ref{fig:CFLamLamALamALam010}, \ref{fig:CFLamLamALamALam1030STAR}, and \ref{fig:CFLamLamALamALam3050} show combined $\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  
 Figures \ref{fig:CFLamALam010}, \ref{fig:CFLamALam1030}, and \ref{fig:CFLamALam3050} show $\Lambda\bar{\Lambda}$ correlation functions for the $0-10$\%, $10-30$\%, and $30-50$\% centrality ranges respectively.  
-Each plot includes the combined systematic errors discussed in Section \ref{sec:GeneralCfSysErrorDiscussion}.
+Each plot includes the combined systematic errors discussed in Section \ref{sec:SysUncertaintyCF}.
+All six correlation functions included in Figure \ref{fig:CFAllOnOnePlot}, which is considered as a possible figure for publication.
 
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-010-CommentCorrections.pdf}
+\includegraphics[width=36pc]{Figures/CFs/2016-8-30-CFLLAA010CombinedSystematicsMaximum.pdf}
 \caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 0-10\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 0-10\% centrality range with statistical and systematic errors.  
 A dip at low $k^*$ is seen which is expected from quantum interference.}
 \label{fig:CFLamLamALamALam010}
 \end{figure}
+
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-1030-CommentCorrections-WithSTAR.pdf}
+\includegraphics[width=36pc]{Figures/CFs/2016-8-30-CFLLAA1030CombinedSystematicsMaximum.pdf}
 \caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  
-A dip at low $k^*$ is seen which is expected from quantum interference.  Preliminary STAR data for $\Lambda\Lambda$ is shown for comparison.  
-For the same plot without STAR data, see Figure \ref{fig:AppendixCFLamLamALamALam1030}.}
+A dip at low $k^*$ is seen which is expected from quantum interference.}
 \label{fig:CFLamLamALamALam1030STAR}
 \end{figure}
+
+%\begin{figure}[hbtp]
+%\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-1030-CommentCorrections-WithSTAR.pdf}
+%\caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  
+%A dip at low $k^*$ is seen which is expected from quantum interference.  Preliminary STAR data for $\Lambda\Lambda$ is shown for comparison.  
+%For the same plot without STAR data, see Figure \ref{fig:AppendixCFLamLamALamALam1030}.}
+%\label{fig:CFLamLamALamALam1030STAR}
+%\end{figure}
+
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-05-11-CfLLAA-3050-CommentCorrections.pdf}
+\includegraphics[width=36pc]{Figures/CFs/2016-8-30-CFLLAA3050CombinedSystematicsMaximum.pdf}
 \caption[$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 30-50\% centrality range]{$\Lambda\Lambda + \bar{\Lambda}\bar{\Lambda}$ correlation function for the 30-50\% centrality range with statistical and systematic errors.  
-A hint of a dip at low $k^*$ may be seen, which would be expected from quantum interference.}
+Due to the poor statistics in the low $k^*$ region, it is not feasible to include this correlation function in the fit analysis.}
 \label{fig:CFLamLamALamALam3050}
 \end{figure}
 
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-05-11-CfLA-010-CommentCorrections.pdf}
+\includegraphics[width=36pc]{Figures/CFs/2016-8-30-CFLamALam010CombinedSystematicsMaximum.pdf}
 \caption[$\Lambda\bar{\Lambda}$ correlation function for the 0-10\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 0-10\% centrality range with statistical and systematic errors.  
-A wide suppression is seen which is indicative of annihilative effects.}
+A wide suppression is seen which is indicative of annihilation.}
 \label{fig:CFLamALam010}
 \end{figure}
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-05-11-CfLA-1030-CommentCorrections.pdf}
+\includegraphics[width=36pc]{Figures/CFs/2016-8-30-CFLamALam1030CombinedSystematicsMaximum.pdf}
 \caption[$\Lambda\bar{\Lambda}$ correlation function for the 10-30\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 10-30\% centrality range with statistical and systematic errors.  
-A wide suppression is seen which is indicative of annihilative effects.}
+A wide suppression is seen which is indicative of annihilation.}
 \label{fig:CFLamALam1030}
 \end{figure}
 \begin{figure}[hbtp]
-\includegraphics[width=36pc]{Figures/2014-05-11-CfLA-3050-CommentCorrections.pdf}
+\includegraphics[width=36pc]{Figures/CFs/2016-8-30-CFLamALam3050CombinedSystematicsMaximum.pdf}
 \caption[$\Lambda\bar{\Lambda}$ correlation function for the 30-50\% centrality range]{$\Lambda\bar{\Lambda}$ correlation function for the 30-50\% centrality range with statistical and systematic errors.  
-A wide suppression is seen which is indicative of annihilative effects.}
+A wide suppression is seen which is indicative of annihilation.}
 \label{fig:CFLamALam3050}
 \end{figure}
+
+\begin{figure}[hbtp]
+\includegraphics[width=36pc]{Figures/CFs/2016-08-30-AllCFsWithSysErrorsNoFit.pdf}
+\caption[All $\Lambda\Lambda+\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ correlation functions]{$\Lambda\bar{\Lambda}$ (top) and $\Lambda\Lambda+\bar{\Lambda}\bar{\Lambda}$ (bottom) correlation functions for all three centrality ranges.  
+Potential figure for publication.}
+\label{fig:CFAllOnOnePlot}
+\end{figure}
+
+
 
 \subsubsection{Interpretation of correlation function results}
 \label{sec:CFInterpretation}
