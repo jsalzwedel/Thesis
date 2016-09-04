@@ -5,7 +5,7 @@ We will now attempt to identify the various systematic effects that may affect t
 The goal will be to quantify the systematic uncertainties associated with each $k^*$ bin.  
 It should be noted, however, that subsequent fits to the correlation functions are not directly impacted by these error bars.  
 Instead, the systematics on the resulting fit parameters will be computed by refitting many versions of the correlation functions (e.g.\ those built with different reconstruction cuts) and comparing the results. 
-This will be discussed in greater detail in Section \ref{sec:FitSystematics}.
+This will be discussed in greater detail in Section \ref{sec:SysErrorsFitsCuts}.
 
 \subsubsection{Consistency checks for uncorrelated histograms}
 \label{sec:ConsistencyCheckUncorrelated}
@@ -53,7 +53,7 @@ In this analysis, we perform consistency checks of correlated data in the follow
 The resulting histogram shows the usually small differences between the two data sets.
 \item Here, ROOT incorrectly adds the errors in quadrature.  
 To fix this, manually set the error bars using $\sigma_{\Delta}(k^*) = \sqrt{ \abs{ \sigma_1^2(k^*) - \sigma_2^2(k^*) }}$.  
-This error is correct in the specific case (found here) that one histogram is entirely a subdivision of the other.
+This error is correct in the specific case (found here) that one histogram is entirely a subset of the other.
 \item If there are no significant discrepancies or systematic differences between the two original correlation functions, the difference histogram should be consistent with zero.  
 We can test this using TH1::Chisquare(TF1*), and fit the data with the function $y=0$.  
 Chisquare() returns the $\chi^2$ value of the fit.
