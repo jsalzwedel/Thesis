@@ -18,7 +18,7 @@ After obtaining a list of V0 candidates, the following cuts were applied for eac
 \begin{itemize}
 \item The V0 was rejected if (AliAODv0::GetNDaughters() $> 2$), and the daughters are required to have different charges.
 \item The daughter tracks were required to have hits on at least 80 pad rows of the TPC.
-\item The daughter protons (antiprotons) were required to have $p_{\rm T} > 0.5 (0.3)$ GeV/c, and the daughter pions required $p_{\rm T} \geq 0.16$ GeV/c. 
+\item The daughter protons and antiprotons were required to have $p_{\rm T} > 0.5$ GeV/$c$, and the daughter pions required $p_{\rm T} \geq 0.16$ GeV/$c$. 
 The difference between proton and antiproton $p_{\rm T}$ cuts arises from a need to minimize contaminations from material protons. 
 All daughters were required to be in the range $|\eta| < 0.8$.
 \item The TPC was used for PID purposes.  
@@ -129,13 +129,11 @@ The estimated ratio of real $\bar{\Lambda}$ to all reconstructed $\bar{\Lambda}$
 \subsubsection{Decay radius (XY) cut}
 The V0 finder includes a default decay radius cut of 0.9 cm, which removes V0s with a radial decay length less than that value.  
 This helps mitigate issues such as high track density which can complicate reconstruction.  
-This analysis currently only uses the default cut, though it is possible that a tighter cut could yield improved $\Lambda$ purity without severely impacting the available statistics.  
-The default cut will continue to be employed for now, but alternate cut values will be investigated in the future.  
-
+This analysis only uses the default cut, though it is possible that a tighter cut could yield improved $\Lambda$ purity without severely impacting the available statistics.  
 Changes in this cut are expected to have only small effects on the correlation functions themselves.  
 As will be described later in this note, fits of correlation functions have a $\lambda$ parameter which accounts for the pair-purity (roughly the square of the single particle purity).  
 In any case, a few percent increase in purity should not drastically impact the shape of the correlation functions.
-
+Studies of this cut may improve V0 selection for future analyses.
 
 \subsubsection{Shared daughter cut}
 
@@ -187,7 +185,7 @@ That pair of fake V0s does not share any daughters with each other, so it is not
 But iterative daughter-sharing cut described above is capable removing this fraudulent pair, since either of the fake V0s is likely to be removed for sharing a daughter with the true V0.
 
 
-\subsubsection{Correlation function construction and pair cuts}
+\subsubsection{Correlation function construction}
 \label{sec:CFconstruct}
 
 This analysis studies two-particle correlations as a function of the one dimensional relative momentum 
