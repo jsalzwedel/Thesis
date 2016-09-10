@@ -54,23 +54,20 @@ The resulting histogram shows the usually small differences between the two data
 \item Here, ROOT incorrectly adds the errors in quadrature.  
 To fix this, manually set the error bars using $\sigma_{\Delta}(k^*) = \sqrt{ \abs{ \sigma_1^2(k^*) - \sigma_2^2(k^*) }}$.  
 This error is correct in the specific case (found here) that one histogram is entirely a subset of the other.
-\item If there are no significant discrepancies or systematic differences between the two original correlation functions, the difference histogram should be consistent with zero.  
-We can test this using TH1::Chisquare(TF1*), and fit the data with the function $y=0$.  
-Chisquare() returns the $\chi^2$ value of the fit.
-\item We acquire a p-value for this consistency check using TMath::Prob(Double chi2, int ndf), which takes as input the $\chi^2$ from the fit and the number of $k^*$ bins as the number of degrees of freedom.  
-\item Finally, we evaluate the two correlation functions as either consistent or inconsistent depending on if they pass or fail the p-value test.  
-A p-value $\geq 0.01$ passes.  
-\item All pairs of histograms with p-values below that threshold are considered to have significant differences.  
-All such pairs are considered to introduce a $k^*$-dependent systematic error for the correlation function measurement in that particular centrality bin.  
-The method for evaluating the size of that systematic error is described in the following section.
+\item We now look to see if there are any significant discrepancies or systematic differences between the two original correlation functions.
+If there is a structural difference, it will generally be largest in the lowest $k^*$ bins, dropping off as $k^*$ increases.
+This shape is reasonably described by a decaying exponential: $f(k^*) = a \exp(-b k^*)$. 
+The amplitude $a$ tells us the size of the discrepancy. The width $b$ has no significance; it just helps the fit.
+\item We fit the histogram with the exponential, and we extract the amplitude $a$ and its error $\sigma_a$.
+For this analysis, we conclude that there is no discrepancy if $a$ is within 2$\sigma$ of zero.
+If $a$ is more than 2$\sigma$ from zero, then we have a source of systematic uncertainty.
+
+
+
 \end{enumerate}
 
-Using the steps listed above, we can evaluate if subtle changes to the cuts employed in correlation function construction change the resulting data in any significant way.  
+Using the steps listed above, we can evaluate if seemingly small changes to the cuts employed in correlation function construction change the resulting data in any significant way.  
 
-%The study of normalized residuals (the difference between the bin contents and the expected bin contents) can be used to characterize which regions are responsible for small p-values.  
-This is again handled by the Chi2Test() method.  
-For each $k^*$ bin, a normalized residual plot shows the number of $\sigma$ differences between the two correlation functions.  
-This can make it easy to look for systematic differences, even in the case of small shifts at high $k^*$, which would be hard to see by eye in the raw correlation functions.
 
 \subsubsection{Calculating systematic errors for data sets that fail p-value tests}
 \label{sec:CalculatingSysErrors}
