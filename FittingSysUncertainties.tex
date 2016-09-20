@@ -1,14 +1,25 @@
 \subsection{Systematic uncertainties of fits}
 \label{sec:SysErrorsFits}
 
-% General description
+We have two types of systematic uncertainties that play into our fit results: uncertainties coming from our choice of topological and pair cuts and uncertainties related to our fit procedure.
+In the following sections, we'll discuss how we quantify those uncertainties.
+
 
 \subsubsection{Systematic uncertainties from topological and pair cuts}
 \label{sec:SysErrorsFitsCuts}
 
-% Vary cut up or down by 10%, see how result changes.
+As discussed in Section \ref{sec:SysUncertaintyCF}, there are systematic uncertainties in our results arising from ambiguities in our choice of topological reconstruction cuts and pair cuts.
+We analyzed how varying those cuts varied the correlation functions, which resulted in systematic error bars on the correlation functions.
+We do not directly include the correlation function systematic error bars in our fits.
+Instead, we fit the correlation functions for each cut configuration and then see how the fit results vary.
 
-% How were results combined?
+As discussed earlier, for each type of cut we construct correlation functions using the nominal cut value as well as using $\pm10\%$ of the cut value.
+We then fit each of these correlation functions and record the measured fit parameters.
+For each type of cut and each parameter, we find the standard deviation of the three measurements.
+Then we calculate the rms value of those standard deviations, and quote that as the systematic error.
+The results can be found in Table \ref{tab:FitParams}.
+
+
 
 \subsubsection{Systematic uncertainties from fit method}
 \label{sec:SysErrorsFitsMethod}
