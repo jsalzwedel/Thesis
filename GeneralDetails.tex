@@ -3,7 +3,9 @@
 
 \subsubsection{Data selection}
 \label{sec:DataSelection}
-The analysis was performed on 31 July, 2013 using AliRoot v5-04-64-AN. The data were from PbPb collisions at $\sqrt{s_{NN}}=2.76$  TeV taken from the LHC11h (AOD115) pass 2 reconstruction. 
+The most recent analysis was performed on 06 May, 2016 using AliRoot vAN-20160506-1.
+The analysis was run using the PWGCF train with dataset LHC11h\_AOD145\_fieldconfigs.
+The data were from PbPb collisions at $\sqrt{s_{NN}}=2.76$  TeV taken from the LHC11h (AOD145) pass 2 reconstruction. 
 Runs were selected if they were listed with a pass 2 global quality of 1 ("Good run") in the Run Condition Table. 
 Approximately 66 million combined central, semi-central and minimum bias events were analyzed. 
 The following runs were used, which comprise both the positive (++) and negative magnetic (--) field orientations:
@@ -34,5 +36,5 @@ The Inner Tracking System (ITS), Time Projection Chamber (TPC), Transition Radia
 Particle identification (PID) was performed using the TPC, as well as using the Time of Flight detector (TOF) when possible.
 
 \subsubsection{Analysis code}
-The analysis task used is called AliAnalysisV0Lam.cxx, with the V0 reconstruction code included in AliAnalysisV0LamCutProcessing.cxx.  
-The code for this analyis is not currently committed to AliRoot.
+The analysis classes used for this study are checked into AliPhysics in the AliPhysics/PWGCF/FEMTOSCOPY/V0LamAnalysis directory, and they have "AliAnalysisV0Lam" prefix.
+The AddTask macro used in the analysis train is AliPhysics/PWGCF/FEMTOSCOPY/macros/AddTaskLamLam.C.
