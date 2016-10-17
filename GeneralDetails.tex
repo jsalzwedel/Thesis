@@ -1,6 +1,10 @@
 \subsection{General Details}
 \label{sec:GeneralDetails}
 
+\subsubsection{Analysis code}
+The analysis classes used for this study are checked into AliPhysics in the AliPhysics/PWGCF/FEMTOSCOPY/V0LamAnalysis directory, and they have "AliAnalysisV0Lam" prefix.
+The AddTask macro used in the analysis train is AliPhysics/PWGCF/FEMTOSCOPY/macros/AddTaskLamLam.C.
+
 \subsubsection{Data selection}
 \label{sec:DataSelection}
 The most recent analysis was performed on 06 May, 2016 using AliRoot vAN-20160506-1.
@@ -22,12 +26,18 @@ In all cases, the z-position of the primary vertex was required to be within 10 
 \subsubsection{Centrality Flattening}
 \label{sec:CentralityFlattening}
 
-No centrality flattening is currently employed in the analysis of this data, though it is planned to be completed eventually.  
-Centrality flattening is a procedure by which some events are rejected to ensure that all centralities within a given centrality window (e.g.\ $0-10\%$) are represented with equal frequency.  
-Centrality flattening is not expected to have a significant impact on the correlation function results, as it merely remove some statistics to make each 1\% centrality bin more evenly weighted in the resulting data.  
-For instance, before flattening, the ALICE Pb---Pb $K^0_\mathrm{s}K^0_\mathrm{s}$ analysis had an average centrality of 4.9\% for the 0-10\% correlation function.  
-After flattening, the average became 5\%.  
-This should result in essentially no change to extracted radii or scattering lengths.
+Each event is characterized by a centrality percent.
+There are 100 centrality bins ranging from 0\%  (head-on collisions) to 99\% (glancing collisions), and the centrality percent is defined such that each bin would be sampled equally using a minimum bias trigger.
+The LHC11h dataset employed central and semi-central triggers in addition to the minimum bias trigger, so the centrality bins are not equally filled.
+There are approximately as many events in the 0-10\% range as there are in the 10-50\% range.
+
+While the events in the 10-50\% show an even sampling, the number of events in each of the 0-10\% centrality bins differ by a few percent.
+This analysis uses a technique called centrality flattening to ensure that each of the 0-10\% bins are sampled evenly.
+For each magnetic field configuration, each centrality bin is assigned a weight that brings that bin even with the bin with the smallest overall content (the 9\% bin).
+We use those weights and a random number generator to determine whether or not to throw away any given event.
+
+The centrality flattening code can be found in AliAnalysisV0Lam::RejectEventCentFlat().
+
 
 \subsubsection{Detector use}
 Both the data analysis as well as the MC analysis utilized information from several different detectors.  
@@ -35,6 +45,3 @@ Event centrality was measured using the V0 detector with a timing cut from the Z
 The Inner Tracking System (ITS), Time Projection Chamber (TPC), Transition Radiation Detector (TRD), and Time of Flight detector together provided global tracking for the daughter particles.  
 Particle identification (PID) was performed using the TPC, as well as using the Time of Flight detector (TOF) when possible.
 
-\subsubsection{Analysis code}
-The analysis classes used for this study are checked into AliPhysics in the AliPhysics/PWGCF/FEMTOSCOPY/V0LamAnalysis directory, and they have "AliAnalysisV0Lam" prefix.
-The AddTask macro used in the analysis train is AliPhysics/PWGCF/FEMTOSCOPY/macros/AddTaskLamLam.C.
