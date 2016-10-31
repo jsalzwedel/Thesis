@@ -1,24 +1,38 @@
 \subsection{1D analytic model}
 \label{sec:AnalyticModel}
+
+%Brainstorming
+
+One can characterize two-particle correlation functions with the Koonin-Pratt equation
+\begin{equation}
+\label{eq:KooninPratt}
+C(\vec{P}, \vec{k^*}) =  \int d^3r S_{\vec{P}} (\vec{r}) \abs{\Psi(\vec{k^*},\vec{r})}^2
+\end{equation}
+where $\vec{P} = \vec{p_1} + \vec{p_2}$ is the total momentum of a particle pair, $\vec{r}$ is the relative separation of the particles, $k^*$ is the relative momentum of the particles, $\Psi$ is the two-particle wave function that describes the interaction of the particles, and $S_{\vec{P}} (\vec{r})$ is the two-particle emission function which describes the relative position of particles with total momentum $\vec{P}$ at kinetic-freezeout.
+
+... radius of homogeneity region...
+
+
+
 %\subsection{Analytical model}
 With the assumption of a spherically gaussian source of width $R$, the 1D femtoscopic correlation functions can be calculated analytically \cite{lednicky82} using 
 
 \begin{equation}
 \label{eq:GeneralCorrelationFunction}
-C(k^*)= 1 + C_1(k^*)+C_2(k^*).
+C(k^*)= 1 + C_{\mathrm{QS}}(k^*)+C_{\mathrm{FSI}}(k^*).
 \end{equation}
-$C_1$ describes plane-wave quantum interference:
+$C_{\mathrm{QS}}$ describes plane-wave quantum interference:
 \begin{equation}
-C_1(k^*) = \alpha e^{-4k^{*2}R^2}
+C_{\mathrm{QS}}(k^*) = \alpha e^{-4k^{*2}R^2}
 \end{equation}
-where $\alpha = (-1)^{2j}/(2j+1)$ for identical particles with spins $j$, and $\alpha = 0$ for non-identical particles.
-$C_2$ describes the s-wave strong final state interaction of the particles:
+where $R$ is the approximate 1D spherical source size, and $\alpha = (-1)^{2j}/(2j+1)$ for identical particles with spins $j$, and $\alpha = 0$ for non-identical particles.
+$C_{\mathrm{FSI}}$ describes the s-wave strong final state interaction of the particles:
 \begin{equation}
 \label{eq:Lednicky}
-C_2(k^*)= (1+\alpha)\left[\frac{1}{2}\abs{\frac{f(k^*)}{R}}^2(1-\frac{d_0}{2\sqrt{\pi}R})+\frac{2\Re f(k^*)}{\sqrt{\pi}R}F_1(2k^*R)-\frac{\Im f(k^*)}{R}F_2(2k^*R)\right]
+C_{\mathrm{FSI}}(k^*)= (1+\alpha)\left[\frac{1}{2}\abs{\frac{f(k^*)}{R}}^2(1-\frac{d_0}{2\sqrt{\pi}R})+\frac{2\Re f(k^*)}{\sqrt{\pi}R}F_1(2k^*R)-\frac{\Im f(k^*)}{R}F_2(2k^*R)\right]
 %C_2(k^*)= 1+ \displaystyle\sum\limits_{S}\rho_S\left[\frac{1}{2}\abs{\frac{f^S(k^*)}{R}}^2(1-\frac{d_0^S}{2\sqrt{\pi}R})+\frac{2\Re f^S(k^*)}{\sqrt{\pi}R}F_1(2k^*R)-\frac{\Im f^S(k^*)}{R}F_2(2k^*R)\right]
 \end{equation}
-where $F_1(z) = \int_0^z \! \mathrm{d}x \, e^{x^2-z^2}/z$,  $F_2(z) = (1-e^{-z^2})/z$, and $R$ is the source size.
+where $F_1(z) = \int_0^z \! \mathrm{d}x \, e^{x^2-z^2}/z$, and $F_2(z) = (1-e^{-z^2})/z$.
 The $(1+\alpha)$ pre-factor accounts for the relevant (non/anti-)symmetrizaton effects.
 $f(k^*)=(1/f_0+\frac{1}{2}d_0k^*-ik^*)^{-1}$ is the s-wave scattering amplitude, written using the effective range approximation.
 The scattering amplitude is dependent upon the effective range of interaction $d_0$, as well as the complex scattering length $f_0$.  
