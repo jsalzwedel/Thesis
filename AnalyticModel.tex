@@ -10,10 +10,47 @@ C(\vec{P}, \vec{k^*}) =  \int d^3r S_{\vec{P}} (\vec{r}) \abs{\Psi(\vec{k^*},\ve
 \end{equation}
 where $\vec{P} = \vec{p_1} + \vec{p_2}$ is the total momentum of a particle pair, $\vec{r}$ is the relative separation of the particles, $k^*$ is the relative momentum of the particles, $\Psi$ is the two-particle wave function that describes the interaction of the particles, and $S_{\vec{P}} (\vec{r})$ is the two-particle emission function which describes the relative position of particles with total momentum $\vec{P}$ at kinetic-freezeout.
 
-... radius of homogeneity region...
+As discussed in Section \ref{sec:FemtoSources}, the two-particle emission/source function describes the size and shape of the interaction region.
+However, the size of the source is not the size of the entire fireball at freezeout.
+Instead, it is the size of the region of homogeneity, the region where particles with total momentum $\vec{P}$ are emitted with the same momentum (and therefore $k^* = 0$).
+This is illustrated by the cartoon in Figure \ref{fig:HomogeneityRegion}.
+
+In practice, there are a number of ways to characterize the source function.
+One of the simplest treatments is to assume that the source is described by a spherically symmetric function such as a Gaussian.
+One can then write the source with a single, one-dimensional parameter, often a Guassian radius $R$.
+There are several weaknesses to this method.
+For example the source is likely not spherically symmetric --- at the moment of the collision of the ions the interaction region roughly has the shape of a pancake or an almond (see Figure \ref{fig:PancakeAlmond}), and it need not expand isotropically in the longitudinal and transverse directions.
+Additionally, a Gaussian may not always be the best approximation; sometimes an exponential or an Edgeworth expansion may work better \cite{Abelev:2014pja}.
+Despite these flaws, the one-dimensional approach has merit for analyses with limited statistics, since there is less risk of overfitting the data with too many parameters.
+And as we'll see below, there is an analytic form for the one-dimensional correlation function, which is not necessarily the case for multi-dimensional analyses.
+Because $\Lambda$ yields are much smaller than $\pi$ yields, and the $\Lambda\Lambda$ signal in particular is quite weak (see Figure \ref{fig:CFLamLamALamALam010}), this study employs the 1D approach.
+
+Though it is outside the scope of this analysis, it is worth mentioning the multidimensional fitting methods.
+There are two common approaches.
+One is the out-side-long prescription.
+For a detailed description, see \cite{Lisa:2005dd}.
+Here, one decomposes both the source function and the relative momentum $k^*$ into three orthogonal directions.
+One then calculates the relative momentum of the pair in the longitudinally comoving system (LCMS).
+The longitudinal direction is defined to point along the beam axis (i.e. the axis along with the ions travel on their collision course), so in the LCMS frame the pair has net longitudinal momentum $P_\mathrm{z} = 0$.
+The out direction points along the total momentum of the pair $\vec{P}=\vec{P}_{\mathrm{T}}$, and the side direction is perpendicular to the other two.
+Here, one usually assumes a Gaussian approximation for each direction with radii $R_\mathrm{out}$, $R_\mathrm{side}$, and $R_\mathrm{long}$.
+In some cases, there may also be cross terms such as $R^2_{\mathrm{out,side}}$, as well as effects arising from differences in the particles' emission times.
+
+The other multidimensional approach involves decomposing the 3D correlation function $C(\vec{k}^*)$ in terms of spherical harmonics $C_{l,m}(\abs{k^*},\theta, \phi)$ \cite{Chajecki:2008vg}.
+This has several advantages over the out-side-long method.
+For one, it is straightforward to plot a particular spherical component of the correlation function $C_{l,m}$, whereas there are ambiguities when making one-dimensional projections of $C(\vec{k}^*)$.
+For another, various physical symmetries should cause certain components of $C_{l,m}$ to be zero.
+If they do not vanish, it usually a symptom that something is procedurally wrong with the analysis.
+Therefore, inspection of the spherical components can help with analysis debugging.
+Given the strong signal seen in this analysis's $\Lambda\bar{\Lambda}$ correlation functions (see Figure \ref{fig:CFLamALam010}), said correlation functions may be a good candidate for spherical harmonic decomposition in a future study.
 
 
 
+
+
+
+% In some cases, inverted to get source function
+ 
 %\subsection{Analytical model}
 With the assumption of a spherically gaussian source of width $R$, the 1D femtoscopic correlation functions can be calculated analytically \cite{lednicky82} using 
 
