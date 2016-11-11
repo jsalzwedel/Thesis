@@ -8,7 +8,7 @@ One can characterize two-particle correlation functions with the Koonin-Pratt eq
 \label{eq:BiggerKooninPratt}
 C(k^*,P) = \frac{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)\abs{\Psi(r,k^*)}^2}{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)}
 \end{equation}
-where $S_i(x_i,p_i)$ is the single-particle emission function for particle $i$ with position $x_i$ and momentum $p_i$, $P = p_1 + p_2$ is the total momentum of a particle pair,  $r = x_1 - x_2$ is the relative separation of the particles, $k^*$ is the relative momentum of the particles
+where $S_i(x_i,p_i)$ is the single-particle emission function for particle $i$ with position $x_i$ and momentum $p_i$, $P = p_1 + p_2$ is the total momentum of a particle pair,  $r = x_1 - x_2$ is the relative separation of the particles, $k^*$ is the momentum of one of the particles in their center of mass frame (and therefore half the relative momentum)
 \begin{equation}
 \label{eq:kstar}
 k^* = \frac{p_1 - p_2}{2} -\frac{(p_1 - p_2)\cdot P}{2P^2}P,
@@ -20,11 +20,14 @@ Under certain assumptions (define assumptions here), we can simplify this down a
 \label{eq:TwoParticleEmissionFunction}
 S_P(r)=\frac{S_1(x_1,p_1) S_2(x_2,p_2)}{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)},
 \end{equation}
-which describes the relative position of particles with total momentum $\vec{P}$ at kinetic-freezeout.
+which describes the relative position of particles with total momentum $P$ at kinetic-freezeout.
+
+%If we assume that the particles have the same emission 
+
 With that simplification, we can then write the Koonin-Pratt equation as 
 \begin{equation}
 \label{eq:KooninPratt}
-C(P, k^*) =  \int d^3r S_{P} (r) \abs{\Psi(k^*,r)}^2
+C(P, k^*) =  \int d^3r S_{P} (r) \abs{\Psi(k^*,r)}^2.
 \end{equation}
 
 \subsubsection{Source functions}
@@ -56,9 +59,9 @@ The out direction points along the total momentum of the pair $\vec{P}=\vec{P}_{
 Here, one usually assumes a Gaussian approximation for each direction with radii $R_\mathrm{out}$, $R_\mathrm{side}$, and $R_\mathrm{long}$.
 In some cases, there may also be cross terms such as $R^2_{\mathrm{out,side}}$, as well as effects arising from differences in the particles' emission times.
 
-The other multidimensional approach involves decomposing the 3D correlation function $C(\vec{k}^*)$ in terms of spherical harmonics $C_{l,m}(\abs{k^*},\theta, \phi)$ \cite{Chajecki:2008vg}.
+The other multidimensional approach involves decomposing the 3D correlation function $C(k^*)$ in terms of spherical harmonics $C_{l,m}(\abs{k^*},\theta, \phi)$ \cite{Chajecki:2008vg}.
 This has several advantages over the out-side-long method.
-For one, it is straightforward to plot a particular spherical component of the correlation function $C_{l,m}$, whereas there are ambiguities when making one-dimensional projections of $C(\vec{k}^*)$.
+For one, it is straightforward to plot a particular spherical component of the correlation function $C_{l,m}$, whereas there are ambiguities when making one-dimensional projections of $C(k^*)$.
 For another, various physical symmetries should cause certain components of $C_{l,m}$ to be zero.
 If they do not vanish, it usually a symptom that something is procedurally wrong with the analysis.
 Therefore, inspection of the spherical components can help with analysis debugging.
@@ -70,17 +73,47 @@ Given the strong signal seen in this analysis's $\Lambda\bar{\Lambda}$ correlati
 \subsubsection{1D analytic model}
 \label{sec:AnalyticModel}
 
+
+For identical particles, we can write the asymptotic solution to the non-symmatrized two-particle wave function $\psi$ as a superposition of an incoming plane-wave and an outgoing spherical wave
+\begin{equation}
+\label{eq:swaveScattering}
+\psi_{p_1p_2}(r,k^*) = e^{ik^*r} + (1 + (-1)^S)f(k^*)\frac{e^{ik^*r}}{r},
+\end{equation}
+Here 
+\begin{equation}
+\label{eq:ScatteringAmplitude}
+f(k^*) = \left(\frac{1}{f_0} + \frac{1}{2}d_0k^{*2}-ik^*\right)^{-1}
+\end{equation}
+is the s-wave scattering amplitude in the effective-range approximation \cite{LANDAU1977502}, $f_0$ is the complex scattering length which characterizes the strength of the interaction, $d_0$ is the effective range of interaction, and $S$ is the total spin of the pair.
+
+For non-identical particles, the full wave function $\Psi(r,k^*) = \psi_{p_1p_2}(r,k^*)$, and there is no $(1 + (-1)^S)$ prefactor on the scattering amplitude. 
+For identical, unpolarized, spin-$\frac{1}{2}$ fermions, the symmetrized wave function is given by 
+\begin{equation}
+\label{eq:SymmetrizedWaveFunction}
+\abs{\Psi(r,k^*)}^2 = \frac{1}{2}\left(\frac{3}{4} \abs{\psi_{p_1p_2}(r,k^*) - \psi_{p_2p_1}(r,k^*)}^2
++ \frac{1}{4} \abs{\psi_{p_1p_2}(r,k^*) + \psi_{p_2p_1}(r,k^*)}^2\right),
+\end{equation}
+where $\frac{3}{4}$ of the pairs are in the symmetric spin-triplet state and antisymmetric spatial state, and the other $\frac{1}{4}$ are in the antisymmetric spin-singlet state and symmetric spatial state.
+In principle, the scattering length $f_0$ can be a spin-dependent quantity, as is the case for the p$\Lambda$ interaction \cite{Adams:2005ws}.
+
+Substituting in Eqn.\ \ref{eq:swaveScattering} and noting that $S=1$ for the spin triplet state and $S=0$ for the spin singlet state, we find
+\begin{equation}
+\abs{\Psi(r,k^*)}^2 = \frac{1}{2}\left(\frac{3}{4} \abs{e^{ik^*r} - e^{-ik^*r}}^2
++ \frac{1}{4} \abs{e^{ik^*r} + f(k^*)\frac{e^{ik^*r}}{r} + e^{-ik^*r} + f(k^*)\frac{e^{-ik^*r}}{r}}^2\right).
+\end{equation}
+\begin{equation}
+\abs{\Psi(r,k^*)}^2 =\frac{1}{2}\left(3\sin^2(k^*r)
++ \cos^2(k^*r)(1+2 \Re(\frac{f}{r}) + \frac{\abs{f}^2}{r})  \right).
+\end{equation}
+
+%Then (fill in a general derivation of the Lednicky eqn  \cite{lednicky82}) ...
+
+
+
 In this analysis, we assume a normalized, one-dimensional, spherically gaussian source of width $R$,
 \begin{equation}
 S(r) \sim \exp{(-\frac{r^2}{2R^2})}.
 \end{equation}
-Following the s-wave scattering scheme \cite{LANDAU1977502}, can write the non-symmatrized two-particle wave function $\Psi$ as a superposition of an incoming plane-wave and an outgoing spherical wave
-\begin{equation}
-\label{eq:swaveScattering}
-\Psi(r,k^*) = ...
-\end{equation}
-
-Then (fill in a general derivation of the Lednicky eqn  \cite{lednicky82}) ...
 
 
 
