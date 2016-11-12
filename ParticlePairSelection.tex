@@ -184,16 +184,34 @@ Therefore a pair constructed from the two fake V0s will contaminate the low rela
 That pair of fake V0s does not share any daughters with each other, so it is not kept out of the correlation function by simple daughter ID checks.  
 But the iterative daughter-sharing cut described above is capable removing this fraudulent pair, since either of the fake V0s is likely to be removed for sharing a daughter with the true V0.
 
+\subsubsection{Relative momentum}
+\label{sec:RelativeMomentum}
+
+This analysis studies two-particle correlations as a function of the one-dimensional relative momentum $k^*$.
+To be precise, for a pair of particles with four-momenta $p_1$ and $p_2$, $k^*$ is the momentum of one the particles in the pair's center of mass frame.
+It is defined as
+\begin{equation}
+\label{eq:kstar}
+k^*= \sqrt{-k^\mu k_\mu},
+\end{equation}
+where $k^\mu$ is half of the four-vector relative momentum
+\begin{equation}
+\label{eq:kmu}
+k^\mu = \frac{p_1^\mu - p_2^\mu}{2} -\frac{(p_1 - p_2)\cdot P}{2P^2}P^\mu,
+\end{equation}
+$P$ is the four-vector momentum sum.
+
+The literature is inconsistent when it comes to the notation for relative momentum.
+In some cases, $k^*$ refers both to the invariant quantity and to the four-vector.
+In this thesis, we will try to consistently use $k^*$ to designate the invariant quantity, and use $k^\mu$ when speaking of four-momenta.
+In some papers, $q$ or $q_{\mathrm{inv}}$ is used to represent the relative momentum.
+Though we won't use $q$ in this analysis, for reference
+$q^\mu = 2k^\mu$, and $q_{\mathrm{inv}} = 2 k^*$.
+
 
 \subsubsection{Correlation function construction}
 \label{sec:CFconstruct}
 
-This analysis studies two-particle correlations as a function of the one dimensional relative momentum 
-\begin{equation}
-\label{eq:kstar}
-k^*=\frac{1}{2}q_{\mathrm{inv}}=\frac{1}{2}\abs{P(m^2_1-m^2_2)/P^2 - q},
-\end{equation}
-where $P$ and $q$ are the four-vector momentum sum and difference, respectively, and $m_1$ and $m_2$ are the masses of the two particles.  
 The correlation function is constructed as
 \begin{equation}
 \label{eq:CFDefinition}
@@ -201,10 +219,10 @@ C(k^*) = \frac{A(k^*)}{B(k^*)},
 \end{equation}
 where $A(k^*)$ is the two-particle distribution of the given event and $B(k^*)$ is the distribution of a reference event.  
 In practice, the signal event histogram $A(k^*)$ is constructed by binning the $k^*$ value of each pair of particles in a single event, and repeating this for each event.  
-The reference (or background) histogram is constructed by binning $k^*$ for pairs of particles taken from different events.  
+The reference or background histogram is constructed by binning $k^*$ for pairs of particles taken from different events.  
 Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  
-There are five mixed events for each real event.  
-When constructing pairs of V0s from the same event, the V0s are not allowed to share a daughter with the same track id. 
+There are approximately five mixed events for each real event.  
+When constructing pairs of V0s from the same event, the V0s are not allowed to share a daughter with the same track ID. 
 The correlation functions are normalized to unity in the $ 0.3 < k^* < 0.5$ GeV/c range.
 
 \subsubsection{Pair-wise cuts}
