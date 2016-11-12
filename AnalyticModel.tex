@@ -1,7 +1,17 @@
 \subsection{Correlation function model}
 \label{sec:CorrelationFunctionModel}
 
+% introduce section
+In this section, we'll walk through the theoretical framework for analyzing femtoscopic correlations.
+We'll start with a general description of a two-particle correlation function via the Koonin-Pratt paradigm \cite{Koonin:1977fh, Pratt:1990zq}.
+From there, we will discuss several ways to write the source function which characterizes the size and shape of the interaction region, and we will give extra attention to the spherically Gaussian source employed in this analysis.
+After that, we will describe the two-particle wave function that accounts for potentially spin-dependent interactions via low-energy scattering theory.
+We will use the chosen source function and wave function to derive an analytic form for the one-dimensional correlation function.
+Finally, we will discuss the observables that are accessible through this model.
+ 
 
+\subsubsection{Koonin-Pratt equation}
+\label{sec:KooninPratt}
 
 One can characterize two-particle correlation functions with the Koonin-Pratt equation
 \begin{equation}
@@ -29,6 +39,8 @@ With that simplification, we can then write the Koonin-Pratt equation as
 \label{eq:KooninPratt}
 C(P, k^*) =  \int d^3r S_{P} (r) \abs{\Psi(k^*,r)}^2.
 \end{equation}
+
+In the following sections, we'll discuss the source function $S(r)$ that we employ to characterize the interaction region, as well as a general wave function that can describe interactions between both identical and non-identical particle pairs in the absence of Coulomb effects.
 
 \subsubsection{Source functions}
 \label{sec:SourceFunctions}
@@ -67,12 +79,23 @@ If they do not vanish, it usually a symptom that something is procedurally wrong
 Therefore, inspection of the spherical components can help with analysis debugging.
 Given the strong signal seen in this analysis's $\Lambda\bar{\Lambda}$ correlation functions (see Figure \ref{fig:CFLamALam010}), said correlation functions may be a good candidate for spherical harmonic decomposition in a future study.
 
+...
+
+In this analysis, we assume a normalized, one-dimensional, spherically gaussian source of width $R$,
+\begin{equation}
+S(r) \sim \exp{(-\frac{r^2}{2R^2})}.
+\end{equation}
+
+
 
 % In some cases, inverted to get source function
  
-\subsubsection{1D analytic model}
-\label{sec:AnalyticModel}
+\subsubsection{Wave function}
+\label{sec:WaveFunction}
 
+
+
+%Introduce section: As mentioned above, we 
 
 For identical particles, we can write the asymptotic solution to the non-symmatrized two-particle wave function $\psi$ as a superposition of an incoming plane-wave and an outgoing spherical wave
 \begin{equation}
@@ -110,12 +133,11 @@ Substituting in Eqn.\ \ref{eq:swaveScattering} and noting that $S=1$ for the spi
 
 
 
-In this analysis, we assume a normalized, one-dimensional, spherically gaussian source of width $R$,
-\begin{equation}
-S(r) \sim \exp{(-\frac{r^2}{2R^2})}.
-\end{equation}
 
+\subsubsection{1D analytic model}
+\label{sec:AnalyticModel}
 
+% Integrate over the source
 
 We can now write analytic 1D femtoscopic correlation functions as
 \begin{equation}
