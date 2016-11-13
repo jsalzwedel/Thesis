@@ -220,7 +220,16 @@ C(k^*) = \frac{A(k^*)}{B(k^*)},
 where $A(k^*)$ is the two-particle distribution of the given event and $B(k^*)$ is the distribution of a reference event.  
 In practice, the signal event histogram $A(k^*)$ is constructed by binning the $k^*$ value of each pair of particles in a single event, and repeating this for each event.  
 The reference or background histogram is constructed by binning $k^*$ for pairs of particles taken from different events.  
-Care is taken to ensure that pairs are mixed from events with similar centralities (bin width of 5\%) and primary vertex z-position (2 cm bin width).  
+The correlation function therefore is the ratio of the two-particle phase-space with correlated effects coming from interactions (the numerator) to the two-particle phase-space without correlated effects (the denominator).
+Because the denominator pairs are uncorrelated, their two-particle phase space is essentially a convolution of two single-particle phase spaces.
+Of course, the numerator pairs are also affected by the single-particle phase spaces.
+We assume that the physics of the numerator pairs can be factorized to separate out the correlated physics effects and the single-particle phase space effects.
+Thus, dividing by the background pair distribution leaves us with just the correlated physics effects, i.e.\ the correlation function. See Section \ref{sec:KooninPratt} for more details.
+
+In order for the phase-space effects to divide out, it is of course necessary for the mixed events to resemble the true events.
+For example, a mixed event where half the particles come from a central collision and half the particles come from a very peripheral collision would have a very different two-particle phase space than a central collision would.
+Care is therefore taken to ensure that pairs are mixed from events with similar characteristics. 
+Mixed events are required to have approximately the same centrality (bin width of 5\%) and primary vertex z-position (2 cm bin width).  
 There are approximately five mixed events for each real event.  
 When constructing pairs of V0s from the same event, the V0s are not allowed to share a daughter with the same track ID. 
 The correlation functions are normalized to unity in the $ 0.3 < k^* < 0.5$ GeV/c range.
