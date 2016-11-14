@@ -9,9 +9,23 @@ After that, we will describe the two-particle wave function that accounts for po
 We will use the chosen source function and wave function to derive an analytic form for the one-dimensional correlation function.
 Finally, we will discuss the observables that are accessible through this model.
  
-
 \subsubsection{Koonin-Pratt equation}
 \label{sec:KooninPratt}
+
+As discussed in Section \ref{sec:CFconstruct}, correlation functions are constructed in such a way as to divide out uncorrelated phase-space effects and to therefore leave behind only the correlated part of the two-particle phase space.
+We assume that the uncorrelated two-particle phase space is just a product of two single-particle phase spaces.
+The single-particle phase space $S(x,p)$ is related to the single-particle momentum distribution function, also known as the yield of the species:
+\begin{equation}
+\label{eq:SingleParticlePhaseSpace}
+E_p\frac{dN}{d^3p} = \int \mathop{d^4x} S(x,p).
+\end{equation}
+$S(x,p)$ is also referred to as the single-particle emission function or Wigner density.
+The correlation function can be expressed in terms of yields:
+\begin{equation}
+\label{eq:YieldsCF}
+C(p_1,p_2) = \frac{E_1E_2\frac{dN}{\mathop{d^3p_1}\mathop{d^3p_2}}}{(E_1\frac{dN}{\mathop{d^3p_1}})(E_2\frac{dN}{\mathop{d^3p_2}})},
+\end{equation}
+where the numerator term is the two-particle yield, i.e.\ the distribution of pairs of particles with momenta $p_1$ and $p_2$.
 
 One can characterize two-particle correlation functions with the Koonin-Pratt equation
 \begin{equation}
