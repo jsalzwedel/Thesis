@@ -3,7 +3,7 @@
 
 % introduce section
 In this section, we'll walk through the theoretical framework for analyzing femtoscopic correlations.
-We'll start with a general description of a two-particle correlation function via the Koonin-Pratt paradigm \cite{Koonin:1977fh, Pratt:1990zq}.
+We'll start with a general description of a two-particle correlation function via the Koonin-Pratt paradigm \cite{Koonin:1977fh, Pratt:1990zq, Lisa:2005dd}.
 From there, we will discuss several ways to write the source function which characterizes the size and shape of the interaction region, and we will give extra attention to the spherically Gaussian source employed in this analysis.
 After that, we will describe the two-particle wave function that accounts for potentially spin-dependent interactions via low-energy scattering theory.
 We will use the chosen source function and wave function to derive an analytic form for the one-dimensional correlation function.
@@ -12,54 +12,61 @@ Finally, we will discuss the observables that are accessible through this model.
 \subsubsection{Koonin-Pratt equation}
 \label{sec:KooninPratt}
 
-As discussed in Section \ref{sec:CFconstruct}, correlation functions are constructed in such a way as to divide out uncorrelated phase-space effects and to therefore leave behind only the correlated part of the two-particle phase space.
+As discussed in Section \ref{sec:CFconstruct}, correlation functions are constructed in such a way as to divide out uncorrelated phase-space effects and therefore to leave behind only the correlated part of the two-particle phase space.
 We assume that the uncorrelated two-particle phase space is just a product of two single-particle phase spaces.
-The single-particle phase space $S(x,p)$ is related to the single-particle momentum distribution function, also known as the yield of the species:
+The single-particle emission function $S(x,p)$ (also referred to as the single-particle phase space or Wigner density) is related to the single-particle momentum distribution function of the species:
 \begin{equation}
 \label{eq:SingleParticlePhaseSpace}
 E_p\frac{dN}{d^3p} = \int \mathop{d^4x} S(x,p).
 \end{equation}
-$S(x,p)$ is also referred to as the single-particle emission function or Wigner density.
-The correlation function can be expressed in terms of yields:
+The two-particle correlation function can be expressed as a ratio of distributions:
 \begin{equation}
 \label{eq:YieldsCF}
 C(p_1,p_2) = \frac{E_1E_2\frac{dN}{\mathop{d^3p_1}\mathop{d^3p_2}}}{(E_1\frac{dN}{\mathop{d^3p_1}})(E_2\frac{dN}{\mathop{d^3p_2}})},
 \end{equation}
-where the numerator term is the two-particle yield, i.e.\ the distribution of pairs of particles with momenta $p_1$ and $p_2$.
+where the numerator term is the two-particle momentum distribution, i.e.\ the distribution of pairs of particles with momenta $p_1$ and $p_2$.
 
-One can characterize two-particle correlation functions with the Koonin-Pratt equation
+We can similarly write the correlation function as a ratio of emission functions.
+Here, the denominator is just a product of two single-particle emissions.
+Assuming the particles are created and emitted independently, the numerator is likewise a product of two single-particle emission functions, but we also include the two-particle wave function $\Psi(r,k)$ which introduces correlations between particles.
 \begin{equation}
 \label{eq:BiggerKooninPratt}
-C(k^*,P) = \frac{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)\abs{\Psi(r,k^*)}^2}{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)}
+C(p_1,p_2) = \frac{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)\abs{\Psi(r,k^*)}^2}{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)}.
 \end{equation}
-where $S_i(x_i,p_i)$ is the single-particle emission function for particle $i$ with position $x_i$ and momentum $p_i$, $P = p_1 + p_2$ is the total momentum of a particle pair,  $r = x_1 - x_2$ is the relative separation of the particles, $k^*$ is the momentum of one of the particles in their center of mass frame (and therefore half the relative momentum)
-\begin{equation}
-\label{eq:kstar}
-k^* = \frac{p_1 - p_2}{2} -\frac{(p_1 - p_2)\cdot P}{2P^2}P,
-\end{equation}
-and $\Psi$ is the two-particle wave function that describes the interaction of the particles.
+The wave function only cares about the relative separation $r^\mu = x_1^\mu - x_2^\mu$ and the relative momentum $k^\mu$ of the particles. 
+The four-vector momentum difference $k^\mu$ and its corresponding invariant relative momentum $k^*$ are defined in Section \ref{sec:RelativeMomentum}.
 
-Under certain assumptions (define assumptions here), we can simplify this down about by defining the normalized two-particle emission function
+As the wave function only cares about relative quantities, let us change variables.
+Let $p_1^\mu = P^\mu/2 + k^\mu$ and $p_2^\mu = P^\mu/2 - k^\mu$, where $P^\mu = p_1^\mu + p_2^\mu$.
+With that, we can define a two-particle emission function
 \begin{equation}
 \label{eq:TwoParticleEmissionFunction}
-S_P(r)=\frac{S_1(x_1,p_1) S_2(x_2,p_2)}{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)},
+S(r, P/2 + k)=\frac{\int\mathop{d^4x_1}\mathop{d^4x_2}S_1(x_1,p_1) S_2(x_2,p_2)\delta(r - x_1 +x_2)}{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)}.
 \end{equation}
-which describes the relative position of particles with total momentum $P$ at kinetic-freezeout.
+We assume that for a given total momentum $P$ and small relative momentum $k*$ (i.e. for particles with approximately the same momentum), the emission function is independent of the momentum difference
+\begin{equation}
+S(r,P/2+k) \approx S(r,P).
+\end{equation}
+There is one last approximation. It is common to speak of the emission function for a given total momentum $P$ or transverse momentum $k_T = p_{1,T} + p_{2,T}$.
+In principle, correlation functions can be created using infinitesimally small momentum bins, in which case a source function $S_P(r)$ can be characterized for each of those $P$ bins.
+In practice, the size of the $P$ or $k_T$ bins is chosen based on the statistical limitations of the experiment; one uses as many bins as one can while still getting sufficient statistics.
+In any case, it is common to assume that the emission function is independent of momentum within each measured $P$ bin.
+Because the emission function describes the region where particles have approximately the same momentum, that region is called the region of homogeneity \cite{Akkelin:1995gh}.
 
-%If we assume that the particles have the same emission 
+% Implication: When we measure the source function, we are measuring the size/shape of the region where particles have the same momentum
 
-With that simplification, we can then write the Koonin-Pratt equation as 
+With these simplifications, we can rewrite Eqn.\ \ref{eq:BiggerKooninPratt} as 
 \begin{equation}
 \label{eq:KooninPratt}
-C(P, k^*) =  \int d^3r S_{P} (r) \abs{\Psi(k^*,r)}^2.
+C_P(k^*) =  \int d^3r S_{P} (r) \abs{\Psi(k^*,r)}^2.
 \end{equation}
-
-In the following sections, we'll discuss the source function $S(r)$ that we employ to characterize the interaction region, as well as a general wave function that can describe interactions between both identical and non-identical particle pairs in the absence of Coulomb effects.
+Equations \ref{eq:BiggerKooninPratt} and \ref{eq:KooninPratt} are both called the Koonin-Pratt equation. 
+In the following sections, we'll discuss the two-particle emission function $S(r)$ that we employ to characterize the interaction region, as well as a general wave function that can describe interactions between both identical and non-identical particle pairs in the absence of Coulomb effects.
 
 \subsubsection{Source functions}
 \label{sec:SourceFunctions}
 
-As discussed in Section \ref{sec:FemtoSources}, the two-particle emission/source function describes the size and shape of the interaction region.
+As discussed above and in Section \ref{sec:FemtoSources}, the two-particle emission/source function describes the size and shape of the interaction region.
 However, the size of the source is not the size of the entire fireball at freezeout.
 Instead, it is the size of the region of homogeneity, the region where particles with total momentum $\vec{P}$ are emitted with the same momentum (and therefore $k^* = 0$).
 This is illustrated by the cartoon in Figure \ref{fig:HomogeneityRegion}.
