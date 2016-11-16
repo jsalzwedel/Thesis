@@ -43,13 +43,16 @@ The centrality flattening code can be found in AliAnalysisV0Lam::RejectEventCent
 
 
 \subsubsection{Detector use}
-Both the data analysis as well as the MC analysis utilized information from several different detectors.  
-Event centrality was measured using the V0 detector with a timing cut from the Zero Degree Calorimeter.  
-The Inner Tracking System (ITS), Time Projection Chamber (TPC), Transition Radiation Detector (TRD), and Time of Flight detector together provided global tracking for the daughter particles.  
-Particle identification (PID) was performed using the TPC, as well as using the Time of Flight detector (TOF) when possible.
+The data in this analysis utilizes information acquired by several of ALICE's subdetectors.  
+Event centrality was measured using the V0 detector with a timing cut from the Zero Degree Calorimeter. 
+
+The neutral $\Lambda$ particle is found by looking for the pion and proton that it decays into.
+The Inner Tracking System (ITS), Time Projection Chamber (TPC), Transition Radiation Detector (TRD), and Time of Flight detector (TOF) together provided global particle tracking for these daughter particles.
+Particle identification (PID) was performed using the TPC, as well as using the Time of Flight detector when possible.
+
 
 \subsubsection{Analysis code}
-The code used in this study was written in ROOT, an offshoot of C++ designed for statistical analysis and data visualization.
+The code used in this research to comb through the data, reconstruct $\Lambda$, and measure correlation functions was written in ROOT, an offshoot of C++ designed for statistical analysis and data visualization.
 The analysis classes used for this study are checked into the ALICE Collaboration's official code bank, AliPhysics.
 The code is stored in the AliPhysics/PWGCF/FEMTOSCOPY/V0LamAnalysis directory, and the classes all have the "AliAnalysisV0Lam" prefix.
 The code can be run on the ALICE LEGO (Lightweight Environment for Grid Operators) Train via the macro AliPhysics/PWGCF/FEMTOSCOPY/macros/AddTaskLamLam.C.
@@ -57,3 +60,6 @@ The analysis train can run analyses for one or more people simultaneously, thus 
 
 For this study, the most recent analysis of an ALICE dataset was performed on 06 May, 2016 using AliRoot vAN-20160506-1.
 The analysis was run using the Correlations and Fluctuations Physics Working Group (PWGCF) train with dataset LHC11h\_AOD145\_fieldconfigs.
+
+The code used for fitting the measured correlation functions (see Section \ref{sec:FemtoFitter}) is not part of the ALICE code repository.
+However, it can be found online at \url{http://github.com/jsalzwedel/FemtoFitting}.
