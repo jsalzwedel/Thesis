@@ -57,7 +57,7 @@ In this note, we discuss how femtoscopy is capable of shedding light on both the
 \subsection{Femtoscopy (HBT)}
 \label{sec:FemtoHBT}
 Hanbury-Brown and Twiss first used two-particle interferometry of photons to measure the angular size of the star Sirius \cite{HanburyBrown:1956bqd}.
-Later, it was observed that similar techniques could be employed in a laboratory setting with pions to characterize the size of particle collisions \cite{Goldhaber:1960sf}.
+Later, it was observed that similar techniques could be employed in a laboratory setting with pions ($\pi$) to characterize the size of particle collisions \cite{Goldhaber:1960sf}.
 This technique of measuring two-particle correlations for particle pairs with small relative momentum is often referred to as HBT.
 HBT was originally used to study photons and later used to look at pions, so it often carries a connotation of Bose-Einstein correlation effects.
 Modern analyses look at all manner of hadrons, and therefore the correlations might be subject to bosonic, fermionic, or non-identical particle statistics.
@@ -100,15 +100,40 @@ Those interactions can be accounted for in the two-particle wave function, often
 For some pairs of particles, the strength and range of the interaction are well known. For example, decades of scattering experiments have measured the pp scattering parameters to great precision \cite{...}.
 But there are many hadron-hadron pairs for which little or nothing is known about the interactions, and the interactions of hadron-antihadron pairs have been explored even less.
 
-More knowledge of these interactions can improve several disparate areas of research, including rescattering calculations used in modeling fireball evolution \cite{Bleicher:1999xi}; binding energy models used in hypernuclear structure theory \cite{Hiyama:2002yj,Filikhin:2002wm}; annihilation processes in quantum chromodynamics; and, in the case of $\Lambda$ interactions, the equations of state which describe the properties of neutron stars \cite{SchaffnerBielich:2008kb,Wang:2010gr}.
+More knowledge of particle interactions can improve several disparate areas of research, including rescattering calculations used in modeling fireball evolution \cite{Bleicher:1999xi}; binding energy models used in hypernuclear structure theory \cite{Hiyama:2002yj,Filikhin:2002wm}; annihilation processes in quantum chromodynamics; and, in the case of the lambda baryon ($\Lambda$), the equations of state which describe the properties of neutron stars \cite{SchaffnerBielich:2008kb,Wang:2010gr}.
+
+One place where the absence of scattering information is relevant is with the Ultrarelativistic Quantum Molecular Dynamics model (UrQMD). UrQMD simulates particle creation and subsequent evolution in heavy-ion collisions.
+It is also used in conjunction with other heavy-ion collision models \cite{Bass:2000ib,Ryu:2012at,Song:2013qma}; those models simulate the early- and mid-stage qualities of events via macroscopic transport models such as hydrodynamics, and then use UrQMD to handle the late hadronic stage of the collisions.
+UrQMD calculates the positions and momenta of particles at fixed time steps, and it uses known particle cross-sections to determine how particles scatter off each other.
+If no experimental cross-section data is available for collisions of a particular pair of hadrons, then UrQMD extrapolates from known data.
+For example, the annihilation cross-sections of all baryon-antibaryon pairs at a given center of mass energy $\sqrt{s}$ are treated as having the same annihilation cross-section as proton-antiproton pairs at the same $\sqrt{s}$.
+Femtoscopy gives us a tool with which to measure these interactions, which will lead to increased accuracy in future rescattering models.
+A recent femtoscopic study of $\bar{\mathrm{p}}\bar{\mathrm{p}}$ pairs concluded that the scattering parameters of $\bar{\mathrm{p}}\bar{\mathrm{p}}$ are consistent with those of pp \cite{Adamczyk:2015hza}.
 
 
 \subsection{$\Lambda$ femtoscopy}
 \label{sec:LambdaFemto}
 
 % Describe why lambdas are useful for these studies
+The frontier of femtoscopy lies in studying heavier particle pairs.
+% Radii affected by freezeout times, 
+By virtue of their larger mass, particles such as p, $\Lambda$, and the cascade baryons ($\Xi^-$ and $\Xi^0$) can yield femtoscopic radii at much larger $m_\mathrm{T}$ than are accessible via pions.
+In addition, the process of identifying V0s, neutral particles such as $\Lambda$ and $K^0_\mathrm{s}$ whose decay into charged particles looks roughly "V"-shaped, differs significantly from the process of identifying charged particles.
+V0 particle femtoscopy and charged particle femtoscopy can therfore provide useful consistency checks for each other, as in the case of charged and neutral kaon analyses \cite{Adam:2015vja}.
 
+As mentioned above, there is also a need for experimental study of exotic particle interactions.
+For example, there is a sizable disparity between the leading order (LO) and next-to-leading order (NLO) calculations for the p$\Lambda$ scattering length \cite{...,...}.
+There are only a handful of measurements of the $\Lambda\Lambda$ scattering length: one via the decay of a hypernucleus (a nucleus which contains one or more strange particles) \cite{Takahashi:2001nm,Filikhin:2002wm,Hiyama:2002yj}, and one via femtoscopy at the Relativistic Heavy Ion Collider (RHIC) \cite{Adamczyk:2014vca}, and another via femtoscopy at the Super Proton Synchrotron (SPS) \cite{Andersen:1999gq}.
+The SPS experiment did not have enough data to resolve any nuclear interaction.
+The other results are inconsistent with each other --- their scattering lengths differ in sign, tantamount to a difference between attractive and repulsive interactions --- so further measurements are necessary.
 
+Modern particle colliders, including RHIC and the Large Hadron Collider (LHC), are in a unique position to perform $\Lambda$ femtoscopy.
+Lower energy colliders such as the SPS have been hampered by smaller $\Lambda$ yields and thus fewer pairs of particles.
+%There, $\Lambda$ yields are high enough to get enough data
+%The $\Lambda$ has a mass of $\sim$1116 MeV$/c^2$, almost 1000 MeV more than a $\pi$, and about 180 MeV$/c^2$ heavier than a proton.
+%Compared to $\pi$, the production of $\Lambda$ in collisions is signficantly suppressed by mass alone.
+% In 2.76 TeV central Pb-Pb collisions at the LHC, there are $\sim$ 4 $\Lambda$ created per 100 $\pi$.
+% At lower energies, strangeness suppression also results in lower lambda yields. Describe strangeness suppression.
 
 
 
