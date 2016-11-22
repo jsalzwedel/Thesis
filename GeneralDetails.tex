@@ -4,14 +4,14 @@
 \subsubsection{Data selection}
 \label{sec:DataSelection}
 
-The $\sqrt{s_{NN}}=2.76$ TeV Pb-Pb collision data analyzed in this analysis was recorded at the end of 2011.
+The $\sqrt{s_{NN}}=2.76$ TeV Pb-Pb collision data analyzed in this analysis were recorded at the end of 2011.
 This dataset, LHC11h, is comprised of a number of runs.
 A "run" refers to the data taken during a continuous recording session of the ALICE detector, as well as to the duration of the recording session.
 Runs can include anything from minutes to days of data collection.
 Not all runs are used in this analysis.
 For example, a particular run might only exist for detector calibration purposes, or a subdetector essential for this analysis might have been offline during data collection.
 Runs were selected if they were listed with a Reconstruction Pass 2 global quality of 1 ("Good run") in the ALICE Run Condition Table. 
-Approximately 66 million combined central, semi-central and minimum bias events were analyzed. 
+Approximately 45 million combined central, semi-central and minimum bias events were analyzed. 
 The following runs were used:
 
 170593, 170572, 170388, 170387, 170315, 170313, 170312, 170311, 170309, 170308, 170306, 170270, 170269, 170268, 170230, 170228, 170207, 170204, 170203, 170193, 170163, 170159, 170155, 170091, 170089, 170088, 170085, 170084, 170083, 170081, 170040, 170027, 169965, 169923, 169859, 169858, 169855, 169846, 169838, 169837, 169835, 169591, 169590, 169588, 169587, 169586, 169557, 169555, 169554, 169553, 169550, 169515, 169512, 169506, 169504, 169498, 169475, 169420, 169419, 169418, 169417, 169415, 169411, 169238, 169167, 169160, 169156, 169148, 169145, 169144, 169138, 169099, 169094, 169091, 169045, 169044, 169040, 169035, 168992, 168988, 168826, 168777, 168514, 168512, 168511, 168467, 168464, 168460, 168458, 168362, 168361, 168342, 168341, 168325, 168322, 168311, 168310, 168115, 168108, 168107, 168105, 168076, 168069, 167988, 167987, 167985, 167920, 167915
@@ -38,9 +38,6 @@ While the events in the 10-50\% show an even sampling, the number of events in e
 This analysis uses a technique called centrality flattening to ensure that each of the 0-10\% bins are sampled evenly.
 For each magnetic field configuration, each centrality bin is assigned a weight that brings that bin even with the bin with the smallest overall content (the 9\% bin).
 We use those weights and a random number generator to determine whether or not to throw away any given event.
-
-The centrality flattening code can be found in AliAnalysisV0Lam::RejectEventCentFlat().
-
 
 \subsubsection{Detector use}
 The data in this analysis utilizes information acquired by several of ALICE's subdetectors.  
