@@ -22,20 +22,23 @@ At energies seen by the Large Hadron Collider (LHC), where the ions have center 
 This medium (the QGP and subsequent hadronic phase) has several names, such as "interaction region" or "particle-emitting source", though it is colloquially called a fireball.
 The collision, the medium, and the subsequently emitted and measured particles are collectively known as an event. 
 
-It is suspected that the QGP exists for only a few moments after the collision of these ions ($\sim$ fm/$c$ = $10^{-15} \mathrm{m}/c \sim 10^{-23}$ seconds).
-Over time the plasma expands and cools, which leads to hadronization.
+It is suspected that the QGP exists for only a few moments after the collision of these ions, on time scales of about a fm/$c$ = $10^{-15} \mathrm{m}/c \sim 10^{-23}$ seconds).
+Over time the plasma expands and cools, and eventually the quarks and gluons combine to form hadrons, a process called hadronization.
 In the subsequent hadronic phase, the hadrons scatter off each other in an elaborate billiard ball game, with particles near the edge of the expanding fireball having the possibility to free-stream to the detector.
 Eventually, the source becomes dilute enough that the inter-particle scatterings die off. This occurs on time scales on the order of 10 fm/$c$\cite{BraunMunzinger:2007zz}.
 While people often speak of a singular kinetic freezeout time (the time when the rescatterings cease), in actuality particles are emitted at varying rates throughout the lifetime of the fireball.
 
 Heavy-ion physics programs such as ALICE (A Large Ion Collider Experiment) seek to study the evolution of these fireballs.
-The field seeks to answer questions such as "When does hadronization occur?", "What equations of state describe the evolution of the interaction region?", "What interactions are occuring between particles during during this evolution?", and "What is the size and shape of the source at kinetic freezeout?".
-A number of models have been developed to probe these questions and others \cite{...,...,...,...}.
+The field tries to answer questions such as "When does hadronization occur?", "What equations of state describe the evolution of the interaction region?", "What interactions are occuring between particles during during this evolution?", and "What is the size and shape of the source at kinetic freezeout?".
+A number of models have been developed to probe these questions and others \cite{...,...,...,...}, and experimental data help refine these models.
 
-Loosely speaking, a collision model has three main components: initial conditions describing the shape and energy density of the source; a theory describing how the system evolves over time; and the final result of collision, namely a description of the particles that are emitted, including their momenta, emission time, etc.
-Collider experiments have been designed so as to simplify assumptions about the initial conditions of fireballs.
-The $\ce{^197 \mathrm{Au}}$ and $\ce{^208 \mathrm{Pb}}$ ions are useful in that regard, since these particles have a spherical symmetry to their nuclear structure that gives the fireballs a relatively simple initial geometry.
+Loosely speaking, a collision model has three main components: initial conditions describing the shape and energy density of the source; a theory describing how the system evolves over time; and the final result of collision, namely a description of the particles that are emitted including their momenta, emission time, etc.
+%Collider experiments have been designed so as to simplify assumptions about the initial conditions of fireballs.
+Collider experiments have been designed to simplify assumptions about the initial conditions of fireballs, and to measure their asymptotic state.
+$\ce{^197 \mathrm{Au}}$ and $\ce{^208 \mathrm{Pb}}$ ions are used since these particles have a spherical symmetry to their nuclear structure that gives the fireballs a relatively simple initial geometry.
 Particle collider experiments provide insight into the final state of collisions by measuring the final momenta of particles produced in millions of events.
+
+% Heavy-ion models act as a bridge...
 
 
 
@@ -48,33 +51,34 @@ Particle collider experiments provide insight into the final state of collisions
 %To answer many of the above questions, it is often necessary to look at this final-state information and work backwards.
 
 
-Beyond simply measuring asymptotic particle momenta, collider experiments can use various analysis techniques to probe other facets of the fireball evolution.
+Beyond simply measuring asymptotic particle momenta, collider experiments can use an assortment of analysis techniques to probe various facets of the fireball evolution.
 These techniques include flow analysis \cite{Aamodt:2010pa,Heinz:2013th}, the study of particle spectra \cite{Aamodt:2010cz,}, and an interferometry technique known as femtoscopy \cite{Aamodt:2011mr,Lisa:2005dd}.
 
-In this thesis, we discuss how femtoscopy is capable of shedding light on both the spatial characteristics of the particle-emitting source, as well as the interactions between particles created within the source.
-
-
-
+In this thesis, we will focus our discussion on the ways that femtoscopy is capable of shedding light on both the spatial characteristics of the particle-emitting source, as well as the interactions between particles created within the source.
+% In particular, we will focus on the new avenues of research available with baryon femtoscopy, and ... lambda baryon ($\Lambda$).
 
 \subsection{Femtoscopy (HBT)}
 \label{sec:FemtoHBT}
 Hanbury-Brown and Twiss first used two-particle interferometry of photons to measure the angular size of the star Sirius \cite{HanburyBrown:1956bqd}.
 Later, it was observed that similar techniques could be employed in a laboratory setting with pions ($\pi$) to characterize the size of particle collisions \cite{Goldhaber:1960sf}.
-This technique of measuring two-particle correlations for particle pairs with small relative momentum is often referred to as HBT.
-HBT was originally used to study photons and later used to look at pions, so it often carries a connotation of Bose-Einstein correlation effects.
+This process of measuring two-particle correlations for pairs of particles with very similar momentum is often referred to as HBT, after the progenitors of the technique.
+HBT was originally used to study photons and later used to look at pions, so it often carries a connotation of Bose-Einstein correlation effects, i.e. the quantum mechanical tendency of identical bosons to exist in the same state. This is in contrast to Fermi-Dirac statistics, wherein identical fermions cannot occupy the same state because of the Pauli exclusion principle.
 Modern analyses look at all manner of hadrons, and therefore the correlations might be subject to bosonic, fermionic, or non-identical particle statistics.
-As the focus of these analyses in the particle collision context is on measuring very small sources, the more general term \textit{femtoscopy} has come into use.
+In the nuclear physics context, the focus of these analyses is on measuring very small sources, so the more general term \textit{femtoscopy} has come into use.
 
-As will be discussed in Section \ref{sec:CorrelationFunctionModel}, there is a correlation between the relative position of the particles at their moment of last scattering and their subsequent momentum after freezeout.
+As will be discussed in Section \ref{sec:CorrelationFunctionModel}, there is a correlation between the relative position of the particles at their moment of last scattering and their subsequent momentum at freezeout.
 The relative position of the particles can be described by a two-particle emission function. The final state of the particles, including their momenta, depends on the interactions between the particles and is accounted for by the two-particle wave function of the pair.
 
 Femtoscopic analyses are capable of probing both the two-particle emission function (i.e the size and shape of the source) and the interactions between particles. 
 % chaotic source
 \subsection{Femtoscopic sources}
 \label{sec:FemtoSources}
-Femtoscopic analyses are capable of measuring spatial and temporal characteristics of heavy-ion collisions.
 
-In both the astral and collider contexts, HBT/Femtoscopy is centered on measuring the interference patterns of particles emitted incoherently from a source.
+
+%In the context of both astronomy and particle physics, HBT/
+Femtoscopy is built on measuring the interference patterns of particles emitted incoherently from a source.
+Femtoscopic analyses are capable of measuring both spatial and temporal characteristics of these sources.
+
 
 As will be discussed in greater detail in Section \ref{sec:CorrelationFunctionModel}, femtoscopy does not actually measure the size of the full interaction region at the time of freezeout.
 Rather, it measures the size of the region in which particles are emitted with the same momentum, also called the region of homogeneity \cite{Akkelin:1995gh}.
@@ -86,7 +90,7 @@ These final conditions can help theorists tune their evolution models.
 
 Femtoscopic analyses traditionally study pions \cite{Goldhaber:1960sf,Aamodt:2011mr} because of their ready availability.  
 However, measurements of heavier particles such as kaons \cite{Abelev:2012ms} and baryons \cite{Gos:2007cj} can serve to complement the pion results.  
-One motivation for studying an assortment of heavier particles is to test the hydrodynamic prediction that radial flow should cause the source radii to scale roughly with the transverse mass $m_{\mathrm{T}} = \sqrt{m^2 + k^2_T}$ of the particles \cite{Csorgo:1995bi,Lisa:2005dd}, where $m$ is the particle mass and $k_T$ is the transverse momentum of the particle.
+One motivation for studying an assortment of heavier particles is to test the hydrodynamic prediction that radial flow should cause the source radii to scale roughly as the inverse of the transverse mass $1/m_{\mathrm{T}} = (m^2 + k^2_T)^{-1/2}$ of the particles \cite{Csorgo:1995bi,Lisa:2005dd}, where $m$ is the particle mass and $k_T$ is the transverse momentum of the particle.
 
 \subsection{Hadronic interactions}
 \label{sec:HadronicInteractions}
@@ -97,24 +101,23 @@ One motivation for studying an assortment of heavier particles is to test the hy
 
 Femtoscopic correlation functions are sensitive to the interactions between the particles.
 For identical, charged pion analyses, the quantum interference effects and large Coulomb interactions drown out the interactions of the strong nuclear force.
-However, for pairs such as pp and $K^0_\mathrm{s}K^0_\mathrm{s}$, the strong interactions are significant.
-Those interactions can be accounted for in the two-particle wave function, often with a simple s-wave scattering approximation.
-For some pairs of particles, the strength and range of the interaction are well known. For example, decades of scattering experiments have provided a wealth of pp scattering information \cite{Perez:2013jpa}.
-But there are many hadron-hadron pairs for which little or nothing is known about the interactions, and the interactions of hadron-antihadron pairs have been explored even less.
+However, for pairs of particles such as protons (pp) or neutral kaons ($K^0_\mathrm{s}K^0_\mathrm{s}$), the strong interactions are significant.
+%Those interactions can be accounted for in the two-particle wave function, often with a simple s-wave scattering approximation.
+As we will discuss in Section \ref{sec:WaveFunction}, these interactions are taken into account via the two-particle wave function.
+For some pairs of particles, the strength and range of their interaction is well known. For example, decades of experiments have provided a wealth of pp scattering information \cite{Perez:2013jpa}.
+While there are some predictions for hadron scattering lengths coming from chiral perturbation theory \cite{Mai:2009ce}, there are many hadron-hadron pairs for which little to no experimental data is available. And the interactions of hadron-antihadron pairs have been explored even less.
 
-% Chiral perturbation theory offers some scattering parameter predictions \cite{Mai:2009ce}.
-
-More knowledge of particle interactions can improve several disparate areas of research, including rescattering calculations used in modeling the evolution of heavy-ion collisions \cite{Bleicher:1999xi}; binding energy models used in hypernuclear structure theory \cite{Hiyama:2002yj,Filikhin:2002wm}; and, in the case of the lambda baryon ($\Lambda$), the equations of state which describe the properties of neutron stars \cite{SchaffnerBielich:2008kb,Wang:2010gr}.
+More information on these interactions can improve several disparate areas of research, including rescattering calculations used in modeling the evolution of heavy-ion collisions \cite{Bleicher:1999xi}; binding energy models used in hypernuclear structure theory \cite{Hiyama:2002yj,Filikhin:2002wm}; and, in the case of the lambda baryon ($\Lambda$), the equations of state which describe the properties of neutron stars \cite{SchaffnerBielich:2008kb,Wang:2010gr}.
 
 One place where the absence of scattering information is relevant is with the Ultrarelativistic Quantum Molecular Dynamics model (UrQMD) \cite{Bleicher:1999xi}. UrQMD simulates particle creation and subsequent evolution in heavy-ion collisions.
 It is also used in conjunction with other heavy-ion collision models \cite{Bass:2000ib,Ryu:2012at,Song:2013qma}; those models simulate the early- and mid-stage qualities of events via macroscopic transport models such as hydrodynamics, and then use UrQMD to handle the late hadronic stage of the collisions.
 UrQMD calculates the positions and momenta of particles at fixed time steps, and it uses known particle cross-sections to determine how particles scatter off each other.
 If no experimental cross-section data is available for collisions of a particular pair of hadrons, then UrQMD extrapolates from known data.
 In the case of baryon-antibaryon pairs, the annihilation cross-sections at a given center of mass energy $\sqrt{s}$ are all treated as having the same annihilation cross-section as proton-antiproton pairs at the same $\sqrt{s}$.
-Femtoscopy gives us a tool with which to measure these interactions, which will lead to increased accuracy in future rescattering models.
+Femtoscopy gives us a tool with which to measure these interactions so as to improve the accuracy of future rescattering models.
 
 There have been several recent femtoscopy success stories at the Relativistic Heavy Ion Collider (RHIC) from the STAR Experiment (Solenoidal Tracker at RHIC).
-In one study of $\bar{\mathrm{p}}\bar{\mathrm{p}}$ pairs, STAR concluded that the scattering parameters of $\bar{\mathrm{p}}\bar{\mathrm{p}}$ are consistent with those of pp \cite{Adamczyk:2015hza}.
+In one study of $\bar{\mathrm{p}}\bar{\mathrm{p}}$ pairs, STAR measured the s-wave scattering parameters of $\bar{\mathrm{p}}\bar{\mathrm{p}}$, and found that they are consistent with those of pp \cite{Adamczyk:2015hza}.
 In another study, STAR saw unexpected differences between the measured femtoscopic radii of p$\Lambda$ and p$\bar{\Lambda}$ pairs, with the latter pairs being about a factor of two smaller \cite{Adams:2005ws}.
 A reanalysis of that data implemented a new method for accounting for signal contaminations in the correlation functions \cite{Kisiel:2014mma}.
 Rather than correct for impurity with a simple scaling factor, the new method attempted to quantify the effect of the residual correlations (the femtoscopic correlations arising from the contaminations).
@@ -129,13 +132,15 @@ The analysis presented in this thesis, $\Lambda\Lambda$ and $\Lambda\bar{\Lambda
 The frontier of femtoscopy lies in studying heavier particle pairs.
 % Radii affected by freezeout times, 
 By virtue of their larger mass, particles such as p, $\Lambda$, and the cascade baryons ($\Xi^-$ and $\Xi^0$) can yield femtoscopic radii at much larger $m_\mathrm{T}$ than are accessible via pions.
+This allows them to 
 % Why does matter?
 In addition, the process of identifying V0s, neutral particles such as $\Lambda$ and $K^0_\mathrm{s}$ whose decay into charged particles looks roughly "V"-shaped, differs significantly from the process of identifying charged particles.
-V0 particle femtoscopy and charged particle femtoscopy can therfore provide useful consistency checks for each other, as in the case of charged and neutral kaon analyses \cite{Adam:2015vja}.
+V0 particle femtoscopy and charged particle femtoscopy can therfore provide useful consistency checks for each other, as seen in the recent charged and neutral kaon analyses at ALICE \cite{Adam:2015vja}.
 
-As mentioned above, there is also a need for experimental study of exotic particle interactions.
+As mentioned above, there is a need for experimental study of exotic particle interactions.
 For example, there is a sizable disparity between the leading order (LO) and next-to-leading order (NLO) calculations for the p$\Lambda$ scattering length \cite{...,...}.
-There are only a handful of measurements of the $\Lambda\Lambda$ scattering length: one via the decay of a hypernucleus (a nucleus which contains one or more strange particles) \cite{Takahashi:2001nm,Filikhin:2002wm,Hiyama:2002yj}, and one via femtoscopy at RHIC \cite{Adamczyk:2014vca}, and another via femtoscopy at the Super Proton Synchrotron (SPS) \cite{Andersen:1999gq}.
+%Scattering data for the short-lived (<lifetime> \cite{Olive:2016xmw}) , neutral $\Lambda$ are hard to come by.
+There are only a handful of measurements of the $\Lambda\Lambda$ scattering length: one via the decay of a hypernucleus (a nucleus which contains one or more strange particles) \cite{Takahashi:2001nm,Filikhin:2002wm,Hiyama:2002yj}, and one via femtoscopy at STAR \cite{Adamczyk:2014vca}, and another via femtoscopy at the Super Proton Synchrotron (SPS) \cite{Andersen:1999gq}.
 The SPS experiment did not have enough data to resolve any nuclear interaction.
 The other results are inconsistent with each other --- their scattering lengths differ in sign, tantamount to a difference between attractive and repulsive interactions --- so further measurements are necessary.
 
