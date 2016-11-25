@@ -70,6 +70,14 @@ As will be discussed in Section \ref{sec:CorrelationFunctionModel}, there is a c
 The relative position of the particles can be described by a two-particle emission function. The final state of the particles, including their momenta, depends on the interactions between the particles and is accounted for by the two-particle wave function of the pair.
 
 Femtoscopic analyses are capable of probing both the two-particle emission function (i.e the size and shape of the source) and the interactions between particles. 
+
+The primary tool of femtoscopy is the correlation function.
+A femtoscopic correlation function is constructed by binning the momentum difference (usually called relative momentum) of pairs of particles.
+This is done for both a signal distribution and a background distribution, and the correlation function is the ratio of the two.
+Correlation functions are normalized such that a value of unity for a given bin suggests that there are no correlated effects between the particles in that bin.
+A value above unity means that some effect is causing an increase of pairs at a given relative momentum, while a value below unity (but never below zero) suggests that some effect is supressing pairs at that relative momentum.
+More details on the experimental construction of correlation functions can be found in Section \ref{sec:CorrelationFunctionConstruction}.
+
 % chaotic source
 \subsection{Femtoscopic sources}
 \label{sec:FemtoSources}
@@ -161,34 +169,19 @@ Therefore, the statistics for $\bar{\Lambda}$ analyses should be comparable to t
 
 
 Several physics effects can be seen in $\Lambda$ and $\bar{\Lambda}$ correlation functions.
+The primary effect seen in $\Lambda\bar{\Lambda}$ correlations should be the final state interactions (FSI) of the strong nuclear force.  
+There should be a depletion of baryon-antibaryon pairs at low relative momentum due to annihilation channels.
+Suppressions of this sort have been seen in $p \bar{p}$ interactions \cite{Gos:2007cj,Adamczyk:2015hza}, though FSI effects in charged particle studies are somewhat obfuscated by Coulomb effects.  
+$\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlation functions are expected to be consistent with each other.
+In addition to FSI effects, they will also have a suppression at low relative momentum due to Fermi-Dirac quantum interference.
+The primary goal of this analysis is to extract the FSI scattering parameters of these pairs, as well as their femtoscopic radii.
 
-The primary effect seen in $\Lambda\bar{\Lambda}$ correlations should be final state interactions (FSI) of the strong nuclear force.  
-The baryon-antibaryon annihilation channel is expected to suppress the low relative momentum region of the correlation functions.
-Suppressions of this sort have also been seen in $p \bar{p}$ interactions \cite{Gos:2007cj,Adamczyk:2015hza}, though FSI effects in charged particle studies are somewhat obfuscated by Coulomb effects.  
-
-
-
-Also discussed in this note are the main influences on $\Lambda\Lambda$ correlations --- strong FSI and Fermi-Dirac statistics.  
-A long-term goal of this study is to measure characteristics of the interaction potential of the $\Lambda$ baryons.  
-More specifically, the scattering length $f_0$ and effective radius $d_0$ of the interaction can be extracted from two-$\Lambda$ correlations. 
-It should also be noted that the H-dibaryon may have two $\Lambda$ as one of its decay channels \cite{PhysRevLett.38.195}, though a recent study at ALICE has suggested that a $\Lambda\Lambda$ bound state is unlikely \cite{...}.  
-
-
-
-
-
-
-
-% In this thesis...
-% The purpose of this thesis is...
-% ... measurements and analysis of $\Lambda$ and $\bar\Lambda$ femtoscopic correlations
-
-% Spell out ALICE somewhere
+%It should also be noted that the H-dibaryon may have two $\Lambda$ as one of its decay channels \cite{PhysRevLett.38.195}, though a recent study at ALICE has suggested that a $\Lambda\Lambda$ bound state is unlikely \cite{...}.  
 
 In this thesis, we present $\Lambda$ and $\bar{\Lambda}$ femtoscopy from $\sqrt{s_{NN}}=2.76$ TeV Pb-Pb collisions measured at the LHC by ALICE.
 In Section \ref{sec:DataMeasurement}, we discuss the experimental details involved in measuring $\Lambda$ and constructing femtoscopic correlation functions.
 Section \ref{sec:DataAnalysis} describes how we analyzed the correlation functions.
-This includes a discussion of the theoretical formalism used to fit the data (Section \ref{sec:CorrelationFunctionModel}), an account of how we treat signal contaminations (Sections \ref{sec:Residual}--\ref{sec:MomResCorrectFit}), a walkthrough of our fit procedure (Section \ref{sec:FitProcedure}), and a breakdown of our fit results (Section \ref{sec:FitResults}).
+This includes a discussion of the theoretical formalism used to fit the data (Section \ref{sec:CorrelationFunctionModel}), an account of how we treat signal contaminations (Sections \ref{sec:Residual}--\ref{sec:MomResCorrectFit}), a walkthrough of our fit procedure (Section \ref{sec:FitProcedure}), and a breakdown of our extracted scattering parameters and radii (Section \ref{sec:FitResults}).
 
 
 
