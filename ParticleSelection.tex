@@ -24,9 +24,10 @@ All daughters were required to be in the range $|\eta| < 0.8$.
 \item The TPC was used for PID purposes.  
 A daughter was considered a proton and/or pion if the PID resolution task returned a respective $\mathrm{d}E/\mathrm{d}x$ NSigma value less than 3 for it.
 \item Daughter tracks were required to have a TOF PID NSigma value less than 4 if the TOF signal was available.
-\item The two daughters are required to have a AliAODv0::DcaV0Daughters() $< 0.4$ (the vertexer computes this DCA using resolution weighting, so the units here should probably be called "effective cm").
-\item The proton daughter was required to have a DCA to the primary vertex $> 0.1$ cm.
+\item The proton daughter was required to have a distance of closest approach (DCA) to the primary vertex $> 0.1$ cm.
 \item The pion daughter was required to have a DCA to the primary vertex $> 0.3$ cm.
+\item The two daughters are required to have a DCA to each other $< 0.4$ cm (the vertex software computes this DCA using resolution weighting, so the units here should probably be called "effective cm").
+
 \end{itemize}
 
 Each V0 is then subjected to the following cuts:
