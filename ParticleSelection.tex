@@ -8,11 +8,13 @@
 
 $\Lambda$ are neutral particles, and as such we do not directly detect them.  
 Instead, $\Lambda$ are topologically reconstructed by looking for the daughter tracks that they decay into.  
-The general term for particles reconstructed this way (including $\bar{\Lambda}$ and $K^0_\mathrm{s}$) is V0.
+The general term for a particle reconstructed this way (including $\bar{\Lambda}$ and $K^0_\mathrm{s}$) is V0.
 
-For each event, the list of AliAODv0 objects is used as an initial list of V0 candidates.  
-Only AliAODv0 objects with (AliAODv0::GetOnFlyStatus() == false) are used.  
-These are V0s constructed offline by the AliV0Vertexer using combined TPC-ITS tracking (or TPC-only if the ITS is inactive).  
+The ALICE event reconstruction software identifies potential V0 candidates by looking for pairs of charged particles that seem like they might be the decay products of a V0; namely that they both trace back to the same point some distance away from the primary vertex.
+This software, called the V0-finder, uses looser versions of the cuts described below to come up with a list of V0 candidates for each event.
+%For each event, the list of AliAODv0 objects is used as an initial list of V0 candidates.  
+%Only AliAODv0 objects with (AliAODv0::GetOnFlyStatus() == false) are used.  
+These V0 candidates (called AliAODv0 in the software) are constructed offline by the AliV0Vertexer using combined TPC-ITS tracking (or TPC-only if the ITS is inactive).  
 After obtaining a list of V0 candidates, the following cuts were applied for each V0's daughter tracks.
 
 \begin{itemize}
