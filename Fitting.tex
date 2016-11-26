@@ -77,20 +77,22 @@ We expect each of those systems to have a different femtoscopic radius $R$, so w
 In contrast, we use a single $f_0$ and a single $d_0$ to describe the nuclear scattering, since the nuclear interaction should be independent of event centrality.
 
 \subsubsection{Non-femtoscopic background}
-
+\label{sec:NonFemtoBackground}
 Equation \ref{eq:Lednicky} predicts a flat background at moderate $k^*$ ($\sim 0.3$ GeV) and above, but the measured correlation functions are decidedly non-unitary in that region.  
 This may be due to flow, pair-production in minijets, and other non-femtoscopic effects that are not included in the model.
 This non-flat background at large $k^*$ gives concern that the background at low $k^*$ may not be flat either.
 Unfortunately, we do not know if the slope of the low-$k^*$ non-femtoscopic effects is positive, negative or zero.
 Some femtoscopic analyses examine MC models to characterize the background.
-Unfortunately, the HIJING model fails to qualitatively reproduce the large $k^*$ region of these correlation functions.
-As we do not know the background of the low $k^*$ region, we assume that it follows the trend of the high $k*$ background.
-We therefore introduce into our fit a quadratic term to correct for the background:
+Unfortunately, the HIJING model fails to even qualitatively reproduce the large $k^*$ region of these correlation functions.
+As we do not know the background of the low $k^*$ region, we must take a guess at some sort of model to describe it.
+In this analysis, we assume that the background in the low $k^*$ region follows the trend of the high $k^*$ background.
+We therefore introduce into our fit a polynomial factor to correct for the background:
 \begin{equation}
 \label{eq:BkgParams}
 C(k^*)' = C(k^*) * (1 + ak^* + bk^{*2}).
 \end{equation}
-We use this to fit the correlation function in the region $k^* <  0.4 \mathrm{GeV}/c$. 
+We use this to quadratic form fit the correlation function in the region $k^* <  0.4 \mathrm{GeV}/c$. 
+
 In the high $k^*$ region of $0.6\ \mathrm{GeV}/c < k^* < 0.9\ \mathrm{GeV}/c$, we instead fit with 
 \begin{equation}
 \label{eq:HighBackgroundFit}

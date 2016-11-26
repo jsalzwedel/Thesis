@@ -34,12 +34,25 @@ The results can be found in Table \ref{tab:FitParams}.
 We have examined various aspects of the fit process for sources of systematic uncertainty.
 We varied the fit range, changed the order of the polynomial background fit, and explored different options of how to do joint fitting of multiple correlation functions.
 
+Our exploratory analysis of joint correlation function fitting didn't contribute to the systematic error bars, but it did help us to determine that  we shouldn't including the 30-50\% centrality bin of $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ in the overall fit.
+Rather than increasing the statistical significance of the fit results, including that bin drastically changed the measured scattering parameters from what was seen with only the first two centrality bins.
+For example, the effective range went from $d_{0,\Lambda\Lambda}\sim$ 5 fm to $d_{0,\Lambda\Lambda}\sim$ 500 fm.
+In addition, we observed that separate fits to the $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ radii for a given centrality bin returned radii that differed by about a factor of  two ($R_{\Lambda\bar{\Lambda},0-10\%} = 2.9 \pm 0.3$ fm vs $R_{\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda},0-10\%} = 5.4 \pm 0.6$ fm).
+As one might expect, by forcing the two pair types to use the same radius for a given centrality bin, we found radii roughly halfway between the separate results, also with a reasonable $\chi^2$.
+There are arguments why those radii should be the same, such as how there should be no asymmetry between the $\Lambda$ and $\bar{\Lambda}$ single-particle emission functions at LHC energies. 
+Nonetheless, the separate results differed by such a statistically significant amount that we decided to remove the same-radius constraint and let the data tell their own story.
+
+To model the non-femtoscopic background we used a polynomial fit of the high $k^*$ region (see Section \ref{sec:NonFemtoBackground} for more details), which had the general form 
+\begin{equation}
+f_{\mathrm{back}}(k^*) = (1 + ak^* + bk^{*2}).
+\end{equation}
+As the background fit is purely phenomenological, we experimented with several configurations of fit parameters.
+In addition to the quadratic fit above, we also fit with a linear function ($b = 0$) and with the background being unity ($b = a = 0$).
+For all three options, the fitter was able to converge to reasonable looking values.
+Because of the visibly downward trend of the background at large $k^*$, these three parameter configurations resulted in qualitatively different backgrounds in the low $k^*$ region.
+In general, the quadratic fits resulted in the backgrounds going down below unity, and the linear fits made the backgrounds go up above unity.
 
 We explored variations of the upper bound of the fit range: 0-300 MeV, 0-400 MeV, 0-500 MeV.
+There were no drastic differences to the fit results in any of the fit ranges.
 
-For the background function $f_{\mathrm{back}}(k^*)$, we tried using a linear background, a quadratic background, and no background ($f_\mathrm{back} = 1$).
-
-
-% Table? Or put table in next section with results
-
-% Combine with Fit Results section?
+Changing the background fitting method contributed a larger portion of the systematic uncertainties ($\sim 80\%$), while varying the fit range had a smaller effect.
