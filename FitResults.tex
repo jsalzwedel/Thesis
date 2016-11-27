@@ -116,24 +116,73 @@ This suggests that it isn't hopeless to try to extract $d_0$ from femtoscopic an
 
 \subsubsection{Radii}
 
-Figure \ref{fig:RvsMt} shows the extracted 1D radius $R_{\mathrm{inv}}$ for $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ as a function of centrality and the average transverse mass $m_{\mathrm{T}}$ of the measured pairs.
-Also included are the radii for $\pi^\pm\pi^\pm$, $\mathrm{K^\pm}\mathrm{K^\pm}$, $\mathrm{K^0_S}\mathrm{K^0_S}$, pp, $\bar{\mathrm{p}}\bar{\mathrm{p}}$ \cite{Adam:2015vja}, and p$\Lambda\oplus\bar{\mathrm{p}}\bar{\Lambda}$ (unpublished).
-The $\Lambda\bar{\Lambda}$ points seem to follow the $m_\mathrm{T}$ scaling of the pions, kaons, and protons.
-The $\Lambda\Lambda$ and p$\Lambda$ radii are quite large, however, and while they are consistent with each other, they do not follow the $m_\mathrm{T}$ scaling trend.
+Figure \ref{fig:RvsMt} shows the extracted 1D radii $R_{\mathrm{inv}}$ for $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ as a function of centrality and the average transverse mass $m_{\mathrm{T}}$ of the measured pairs.
+Also included are the radii for $\pi^\pm\pi^\pm$, $\mathrm{K^\pm}\mathrm{K^\pm}$, $\mathrm{K^0_S}\mathrm{K^0_S}$, pp, $\bar{\mathrm{p}}\bar{\mathrm{p}}$ \cite{Adam:2015vja}, and p$\Lambda\oplus\bar{\mathrm{p}}\bar{\Lambda}$ (unpublished, \cite{Beck:2015msi}).
+With $R_{\Lambda\bar{\Lambda},0-10\%} = 2.9\pm 0.3 \pm 0.3$ fm, $R_{\Lambda\bar{\Lambda},10-30\%} = 2.3\pm 0.2 \pm 0.2$ fm, and $R_{\Lambda\bar{\Lambda},30-50\%} = 1.8\pm 0.2 \pm 0.2$ fm, the $\Lambda\bar{\Lambda}$ points seem to follow the $m_\mathrm{T}$ scaling of the pions, kaons, and protons.
+The $\Lambda\Lambda$ and p$\Lambda$ radii are quite large however, and while they are consistent with each other, they do not follow the $m_\mathrm{T}$ scaling trend.
 
 
-We do not yet have a good explanation of this phenomena.
-Nor can we explain why the $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ radii are so different.
+%We do not yet have a good explanation of this phenomena.
+%Nor can we explain why the $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ radii are so different.
 
 
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/FitResults/2016-09-29-mTscaling.pdf}
 \caption[$R_{\mathrm{inv}}$ vs $m_{\mathrm{T}}$]{1D radius $R_\mathrm{inv}$ vs transverse mass $m_\mathrm{T}$ for many different pairs measured by ALICE in $\sqrt{s_\mathrm{NN}} = 2.76$ TeV Pb-Pb collisions \cite{Adam:2015vja}.
-The $\Lambda\bar{\Lambda}$ radii appear to follow the trend of $m_\mathrm{T}$-scaling \cite{Csorgo:1995bi,Lisa:2005dd}, but $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ and $\mathrm{p}\Lambda\oplus\bar{\mathrm{p}}\bar{\Lambda}$ do not.
+The $\Lambda\bar{\Lambda}$ radii appear to follow the trend of $m_\mathrm{T}$-scaling \cite{Csorgo:1995bi,Lisa:2005dd}, but not $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ or $\mathrm{p}\Lambda\oplus\bar{\mathrm{p}}\bar{\Lambda}$ (unpublished, \cite{Beck:2015msi}).
 }
 \label{fig:RvsMt}
 \end{figure}
 
+There are two peculiar details in these results that need explanation.
+What kind of effect would introduce an asymmetry between the particle-particle radius and the particle-antiparticle radius? 
+Furthermore, why do the particle-particle radii deviate so much from the loose $m_\mathrm{T}$ trend observed for the pions, kaons, and protons?
+An ideal explanation would answer both of these questions with a single effect (e.g.\ perhaps there is some unaccounted for detector effect modifying the $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ correlation function in such a way as to make the radius appear larger).
+If the measured results are correct, we would like to identify the underlying physics.
+If the measured results are incorrect, we want to determine where the problem lies in the experimental method or analysis process.
+In what follows, we will offer several hypotheses for why these results are seen, but first, let us discuss why the difference in radii is unusual.
+
+If one considers the two-particle emission functions to be simple convolutions of the single-particle $\Lambda$ and $\bar{\Lambda}$ emission functions, and one assumes that there is no asymmetry between those single-particle emission functions at the $\sqrt{s}$ and $\mu_b$ of the LHC, then in the absence of other confounding effects one would assume that $\Lambda\Lambda$, $\bar{\Lambda}\bar{\Lambda}$, and $\Lambda\bar{\Lambda}$ would all have the two-particle emission functions and same radii.
+While the $\Lambda\Lambda$ and $\bar{\Lambda}\bar{\Lambda}$ correlation functions and radii are consistent with each other, we see that the $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ radii are larger than the comparable centrality $\Lambda\bar{\Lambda}$ radii by almost a factor of two.
+
+It is possible that the anomalous differences between the $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$ radii may an error introduced by over- or under-corrected detector effects such as splitting and merging.
+If this is to blame, it would probably afflict the $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ correlation functions.
+The $\Lambda\bar{\Lambda}$ is correlation function is fairly robust against such effects. 
+The correlation function is very wide, while splitting/merging affects the low-$k^*$ range.
+In addition, for detector effects to occur with same-sign particles in $\Lambda\bar{\Lambda}$, a proton would have to be identified as a pion or vice versa.
+
+So given the cuts implemented in Section \ref{sec:PairWiseCuts}, why might there still be an issue?
+In short, it is possible that real correlated physics effects might show up in our average separation correlation functions.
+In that case, when we set our pair cuts to remove merging, we may have accidentally cut out physics effects as well.
+
+%Well, first let's elaborate on the discussion of pair cuts from .
+There is some correlation between the measured positions of charged tracks and the momenta of those tracks and their parents.
+Through that correlation, the detector effects of splitting and merging can show up as false signals in relative momentum correlation functions.
+It may be the case that true physics correlations can show up as false signals in average separation correlation functions, the purpose of which is to detect and remove splitting and merging.
+If true physics effects bleed into the average separation plots, it may lead us to impose strict cuts which unintentionally remove those physics effects from the femtoscopic correlation functions.
+Such a cut may lead to spurious fit results, such as the anomalously large $\Lambda\bar{\Lambda}\oplus\bar{\Lambda}\bar{\Lambda}$ radii.
+Future analyses may find merit in investigating alternative criteria to cut upon.
+For example, one might require the decay lengths of the V0s to differ by several centimeters.
+This would bias the daughter tracks to a larger separation, thus limiting splitting and merging effects, without introducing any relative momentum bias.
+Then it seems the risk of unintentionally cutting out true physics effects would be small, as it is unlikely that there is any correlation between the relative momentum of particles and their relative decay positions.
+
+Of course, it is also possible that the radius results presented here are correct, that there truly is a physical difference between the emission functions of $\Lambda\Lambda$/$\bar{\Lambda}\bar{\Lambda}$ and $\Lambda\bar{\Lambda}$.
+One way this might occur would be if the $\Lambda\bar{\Lambda}$ two-particle emission function contains a sizable number of pairs coming from pair creation.
+
+For example, near-threshold pair creation of $\Lambda\bar{\Lambda}$ particles could cause low-$k^*$ pairs to be emitted with only a small spatial separation.
+If there are a sizable number of these pairs, the two-particle emission function would have an additional component with a small radius, similar to the core-halo effect in pion femtoscopy (in addition to the usual Gaussian signal measured in pion correlation functions, there is also a very narrow enhancement in the lowest few $k^*$ bins arising from a very large emission region, the pions that come from the decays of long-lived resonances).
+In the $\Lambda\bar{\Lambda}$ case, the two-particle emission function would have a component with a small radius from the pair-created particles, as well the expected "normal"-sized radius component arising from the convolution of the two single-particle emission functions.
+
+The fit function we employ only has one radius parameter, not two, so the single radius radius may be something of an average of the size of these two regions.
+Because of that, the extracted $\Lambda\bar{\Lambda}$ radius would be smaller than the radius of either of the $\Lambda$ or $\bar{\Lambda}$ single-particle emission functions, and thus smaller than the $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ radius.
+While this would account for a discrepancy between the particle-particle and particle-antiparticle radii, it seems like it would result in the $\Lambda\bar{\Lambda}$ radii looking too small, rather than the $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ radii looking too big.
+When STAR was trying to account for the difference between the p$\Lambda$ and p$\bar{\Lambda}$ radii, they conjectured that pair creation might have something to do it \cite{Adams:2005ws}.
+But in their case, the particle-antiparticle radius looked too small, as would be expected from this effect.
+
+These are a couple potential explanations for our curious results.
+It seems like the former issue, better treatment of detector effects, would be the best avenue to explore next, since it could account for the large $\Lambda\Lambda\oplus\bar{\Lambda}\bar{\Lambda}$ radii.
+The latter issue, pair creation giving rise to complicated emission functions, could possibly be explored by analyzing emission positions of particles in UrQMD.
 
 % Plot with STAR radii
 
+% unclear background treatment. Some experiments have alleviated some of the background effects incorporating event-plane binning into their correlation function construction.
