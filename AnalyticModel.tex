@@ -69,17 +69,24 @@ In the following sections, we'll discuss the two-particle emission function $S(r
 As discussed above and in Section \ref{sec:FemtoSources}, the two-particle emission function describes the size and shape of the interaction region.
 However, the size of the source is not the size of the entire fireball at freezeout.
 Instead, it is the size of the region of homogeneity, the region where particles with total momentum $\vec{P}$ are emitted with the same momentum (and therefore $k^* = 0$).
-This is illustrated by the cartoon in Figure \ref{fig:HomogeneityRegion}.
+%This is illustrated by the cartoon in Figure \ref{fig:HomogeneityRegion}.
 
 In practice, there are a number of ways to characterize the source function.
 One of the simplest treatments is to assume that the source is described by a spherically symmetric function such as a Gaussian.
 One can then write the source with a single, one-dimensional parameter, often a Gaussian radius $R$.
 There are several weaknesses to this method.
-For example the source is likely not spherically symmetric --- at the moment of the collision of the ions the interaction region roughly has the shape of a pancake or an almond (see Figure \ref{fig:PancakeAlmond}), and it need not expand isotropically in the longitudinal and transverse directions.
+For example the source is likely not spherically symmetric --- at the moment of the collision of the ions the interaction region roughly has the shape of a pancake or an almond,
+% (see Figure \ref{fig:PancakeAlmond})
+and it need not expand isotropically in the longitudinal and transverse directions.
 Additionally, a Gaussian may not always be the best approximation; sometimes an exponential or an Edgeworth expansion may work better \cite{Abelev:2014pja}.
 Despite these flaws, the one-dimensional approach has merit for analyses with limited statistics, since there is less risk of overfitting the data with too many parameters.
 And as we'll see below, there is an analytic form for the one-dimensional correlation function, which is not necessarily the case for multi-dimensional analyses.
 Because $\Lambda$ yields are much smaller than $\pi$ yields, and the $\Lambda\Lambda$ signal in particular is quite weak (see Figure \ref{fig:CFLamLamALamALam010}), this study employs the 1D approach.
+We assume a normalized, one-dimensional, spherically gaussian source of width $R$,
+\begin{equation}
+\label{eq:Gaussian1DSource}
+S_P(r) \sim \exp{(-\frac{r^2}{2R^2})}.
+\end{equation}
 
 Though it is outside the scope of this analysis, it is worth mentioning the multidimensional fitting methods.
 There are two common approaches.
@@ -100,12 +107,6 @@ If they do not vanish, it usually a symptom that something is procedurally wrong
 Therefore, inspection of the spherical components can help with analysis debugging.
 Given the strong signal seen in this analysis's $\Lambda\bar{\Lambda}$ correlation functions (see Figure \ref{fig:CFLamALam010}), said correlation functions may be a good candidate for spherical harmonic decomposition in a future study.
 
-...
-
-In this analysis, we assume a normalized, one-dimensional, spherically gaussian source of width $R$,
-\begin{equation}
-S(r) \sim \exp{(-\frac{r^2}{2R^2})}.
-\end{equation}
 
 
 
@@ -142,13 +143,14 @@ In principle, the scattering length $f_0$ can be a spin-dependent quantity, as i
 
 Substituting in Eqn.\ \ref{eq:swaveScattering} and noting that $S=1$ for the spin triplet state and $S=0$ for the spin singlet state, we find
 \begin{equation}
+\label{eq:IdenticalUnpolarizedFermionicWaveFunction}
 \abs{\Psi(r,k^*)}^2 = \frac{1}{2}\left(\frac{3}{4} \abs{e^{ik^*r} - e^{-ik^*r}}^2
 + \frac{1}{4} \abs{e^{ik^*r} + f(k^*)\frac{e^{ik^*r}}{r} + e^{-ik^*r} + f(k^*)\frac{e^{-ik^*r}}{r}}^2\right).
 \end{equation}
-\begin{equation}
-\abs{\Psi(r,k^*)}^2 =\frac{1}{2}\left(3\sin^2(k^*r)
-+ \cos^2(k^*r)(1+2 \Re(\frac{f}{r}) + \frac{\abs{f}^2}{r})  \right).
-\end{equation}
+%\begin{equation}
+%\abs{\Psi(r,k^*)}^2 =\frac{1}{2}\left(3\sin^2(k^*r)
+%+ \cos^2(k^*r)(1+2 \Re(\frac{f}{r}) + \frac{\abs{f}^2}{r})  \right).
+%\end{equation}
 
 %Then (fill in a general derivation of the Lednicky eqn  \cite{lednicky82}) ...
 
@@ -159,8 +161,9 @@ Substituting in Eqn.\ \ref{eq:swaveScattering} and noting that $S=1$ for the spi
 \label{sec:AnalyticModel}
 
 % Integrate over the source
-
-We can now write analytic 1D femtoscopic correlation functions as
+We then evaluate the Koonin-Pratt equation (Eqn.\ \ref{eq:KooninPratt}) with the use of our two-particle source function (Eqn.\ \ref{eq:Gaussian1DSource}) and symmetrized wave function (Eqn.\ \ref{eq:IdenticalUnpolarizedFermionicWaveFunction}).
+The details of the calculation can be found in \cite{lednicky82}.
+The resulting analytic, one-dimensional, femtoscopic correlation function is called the Lednicky and Lyuboshits equation (abridged to Lednicky equation), which can be broken down as
 \begin{equation}
 \label{eq:GeneralCorrelationFunction}
 C(k^*)= 1 + C_{\mathrm{QS}}(k^*)+C_{\mathrm{FSI}}(k^*).
@@ -178,12 +181,11 @@ C_{\mathrm{FSI}}(k^*)= (1+\alpha)\left[\frac{1}{2}\abs{\frac{f(k^*)}{R}}^2(1-\fr
 \end{equation}
 where $F_1(z) = \int_0^z \! \mathrm{d}x \, e^{x^2-z^2}/z$, and $F_2(z) = (1-e^{-z^2})/z$.
 The $(1+\alpha)$ pre-factor accounts for the relevant (non/anti-)symmetrizaton effects.
-$f(k^*)=(1/f_0+\frac{1}{2}d_0k^*-ik^*)^{-1}$ is the s-wave scattering amplitude, written using the effective range approximation.
-The scattering amplitude is dependent upon the effective range of interaction $d_0$, as well as the complex scattering length $f_0$.  
+The scattering amplitude $f$ (Eqn.\ \ref{eq:ScatteringAmplitude}) is dependent upon the effective range of interaction $d_0$, as well as the complex scattering length $f_0$.  
 The real part of the scattering amplitude can contribute either a positive or a negative correlation, but either way the effect is relatively narrow in $k^*$ (on the order of about one hundred MeV/$c$).  
 The imaginary part of the scattering amplitude accounts for inelastic processes of baryon-antibaryon annihilation.  
 Introducing a non-zero imaginary part to the scattering length produces a wide (hundreds of MeV/$c$) negative correlation.  
-For charged particles, an additional factor \cite{Aamodt:2011kd} is necessary to account for the Coulomb interaction.
+%For charged particles, an additional factor \cite{Aamodt:2011kd} is necessary to account for the Coulomb interaction.
 
 Technically, the scattering length and effective range are spin dependent.  
 It should be noted that in the case of identical fermions, "the contributions of s-wave interaction of identical nucleons to the correlation function goes to zero [for summary spin state S = 1] (identical nucleons with parallel spins cannot be in the s-wave state)" \cite{lednicky82}.  
@@ -196,13 +198,13 @@ For statistical reasons, this analysis will eschew spin-dependent measurements o
 
 \subsubsection{Observables}
 \label{sec:Observables}
-For pion, kaon, and proton femtoscopic analyses, the scattering lengths and effective range of interaction are well specified by years of scattering data, and they can be fixed to the known values.  
+For analyses such as proton-proton or proton-neutron, the scattering lengths $f_0$ and effective range of interaction $d_0$ are well specified by years of scattering data, and they can be fixed to the known values.  
 In the case of lambda-(anti-)lambda femtoscopy, the interaction is heretofore largely unstudied.  
 For this analysis, the scattering lengths and effective range are left as free parameters.  
-Another free parameter is the $\lambda$ parameter, which is a rough measure of the pair purity.  
+Many analyses treat $\lambda$, a rough measure of the pair purity, as another free parameter.  
 For example, $\lambda_{\Lambda\Lambda}$ would correspond to the ratio of number of true primary $\Lambda\Lambda$ pairs to the total number of pairs in the correlation function. 
 The remaining fraction is comprised of all the other combinations of pair types, such as pairs where one $\Lambda$ is real and primary and the other is fake, or pairs between primary and secondary lambdas.  
-The implementation of $\lambda$ parameters is described in Section \ref{sec:TransformedResiduals}, and estimates of the parameters are given in Section \ref{sec:LambdaParams}
-The last fit parameter is $R_{\rm inv}$, which characterizes the one dimensional size of the emitting source.  
+Our implementation of $\lambda$ parameters is described in Section \ref{sec:TransformedResiduals}, and estimates of those parameters are given in Section \ref{sec:LambdaParams}
+The last fit parameter is $R_{\rm inv}$, which characterizes the size of the one-dimensional two-particle emission function.
 
 
