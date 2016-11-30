@@ -1,4 +1,4 @@
-\subsection{Momentum resolution corrections}
+\section{Momentum resolution corrections}
 \label{sec:MomResCorrectFit}
 
 As discussed in Section \ref{sec:MomentumResCorrectionCF}, we corrected for the momentum resolution of tracks at the fit level. 
@@ -63,7 +63,7 @@ First, it is no longer necessary to run an iterative analysis (see Section \ref{
 This method requires a one--time analysis of Monte Carlo data to produce the momentum resolution smearing matrix. 
 Second, the resolution correction can be incorporated directly into the fit procedure as an intermediate step between calculating the fit function and taking the $\chi^2$ difference with the data.
 
-\subsubsection{Smear matrices}
+\subsection{Smear matrices}
 \label{sec:SmearMath}
 Momentum resolution affects daughter tracks, and as such the primary or secondary nature of the parent $\Lambda$ is irrelevant.
 Therefore, when smearing the fit function, momentum resolution smearing should be applied after residual correlation smearing. 
@@ -301,7 +301,7 @@ Smear matrix for $\Xi^{-}\bar{\Xi}^0$ and $\Xi^{+}\Xi^0$, which accounts for bot
 \end{figure}
 
 
-\subsubsection{Implementation in fit}
+\subsection{Implementation in fit}
 
 When calculating the fit function, the contribution from the primary correlation function $C_{\Lambda\Lambda}(k^*_{\Lambda\Lambda})$ and each residual correlation  ($C_{ij}(k^*_{ij})$) is first calculated according to Eqn.\ \ref{eq:Lednicky}.
 Then each contribution is smeared with its own smear matrix via Eqn.\ \ref{eq:FullSmearing}.

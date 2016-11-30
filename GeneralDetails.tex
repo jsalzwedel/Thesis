@@ -1,7 +1,7 @@
-\subsection{General Details}
+\section{General Details}
 \label{sec:GeneralDetails}
 
-\subsubsection{Data selection}
+\subsection{Data selection}
 \label{sec:DataSelection}
 
 The $\sqrt{s_{NN}}=2.76$ TeV Pb-Pb collision data analyzed in this analysis were recorded at the end of 2011.
@@ -26,7 +26,7 @@ The approximately $4.5*10^5$ events in this dataset were reconstructed using cal
 
 In all cases, the z-component of the primary vertex (the position of the collision within the detector) was required to be within 10 cm of the center of the ALICE detector for an event to be selected.  
 
-\subsubsection{Centrality Flattening}
+\subsection{Centrality Flattening}
 \label{sec:CentralityFlattening}
 
 Each event is characterized by a centrality percent.
@@ -39,7 +39,7 @@ This analysis uses a technique called centrality flattening to ensure that each 
 For each magnetic field configuration, each centrality bin is assigned a weight that brings that bin even with the bin with the smallest overall content (the 9\% bin).
 We use those weights and a random number generator to determine whether or not to throw away any given event.
 
-\subsubsection{Detector use}
+\subsection{Detector use}
 The data in this analysis utilizes information acquired by several of ALICE's subdetectors.  
 Event centrality was measured using the V0 detector with a timing cut from the Zero Degree Calorimeter. 
 
@@ -49,7 +49,7 @@ Information from the TPC is used to perform particle identification (PID), the a
 %Particle identification (PID) was performed using the TPC, as well as using the Time of Flight detector when possible.
 
 
-\subsubsection{Analysis code}
+\subsection{Analysis code}
 The code used in this research to comb through the data, reconstruct $\Lambda$, and measure correlation functions was written in ROOT, an offshoot of C++ designed for statistical analysis and data visualization.
 The analysis classes used for this study are checked into the ALICE Collaboration's official code bank, AliPhysics.
 The code is stored in the AliPhysics/PWGCF/FEMTOSCOPY/V0LamAnalysis directory, and the classes all have the "AliAnalysisV0Lam" prefix.

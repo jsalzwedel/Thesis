@@ -1,4 +1,4 @@
-\subsection{Fit procedure}
+\section{Fit procedure}
 \label{sec:FitProcedure}
 
 In this section, we discuss the procedure by which we fit the data.
@@ -7,7 +7,7 @@ At its heart, FemtoFitter utilizes the ROOT TMinuit implementation of the MINUIT
 In the following sections, we'll describe the functionality of MINUIT and how it fits into FemtoFitter, we'll discuss our usage of fit parameters, and we'll elaborate on general fitting details such as fit range and simultaneously fitting multiple correlation functions.
 
 
-\subsubsection{MINUIT}
+\subsection{MINUIT}
 \label{sec:MINUIT}
 The MINUIT tool is designed to minimize the value of a multivariable function and to map out the shape of that function around the minimum.
 It is typically used to minimize a chi-square or log-likelihood function in order to find the best fit for and statistical uncertainty of the input parameters.
@@ -39,7 +39,7 @@ In this analysis, we tried fitting via both methods.
 Both yielded approximately the same results, but the log-likelihood minimization took about an order of magnitude longer to converge. 
 Due to the run-time issues, we opted to use the chi-square method when making the systematic uncertainty estimates and measuring the final results.
 
-\subsubsection{FemtoFitter}
+\subsection{FemtoFitter}
 \label{sec:FemtoFitter}
 
 % Structure: Fitter, PairSystem, LednickyEqn
@@ -59,7 +59,7 @@ The LednickyEqn then uses its smear matrix to transform that theoretical correla
 To determine the $\chi^2$ value of a fit, the PairSystem takes the smeared Lednicky equation from each of its LednickyEqn objects, combines those into a correlation function according to Eqn.\ \ref{eq:GeneralizedLambda}, and calculates $\chi^2$ according to Eqn.\ \ref{eq:Chisquare} or \ref{eq:LogLikelihood}.
 The PairSystem passes that on to TMinuit by way of the Fitter, TMinuit uses that information to determine how to continue to vary the parameters, and the process repeats.
 
-\subsubsection{Fit parameters}
+\subsection{Fit parameters}
 
 We use the following parameters in our fit: femtoscopic raidus $R$, real and imaginary part of the scattering length $f_0$, effective range of interaction $d_0$ and a normalization constant.
 $R$, $f_0$, and $d_0$ have already been described in preceding sections.
@@ -76,7 +76,7 @@ For example, we do a joint fit of $\Lambda\bar{\Lambda}$ 0--10\%, 10-30\%, and 3
 We expect each of those systems to have a different femtoscopic radius $R$, so we introduce 3 radius parameters. 
 In contrast, we use a single $f_0$ and a single $d_0$ to describe the nuclear scattering, since the nuclear interaction should be independent of event centrality.
 
-\subsubsection{Non-femtoscopic background}
+\subsection{Non-femtoscopic background}
 \label{sec:NonFemtoBackground}
 Equation \ref{eq:Lednicky} predicts a flat background at moderate $k^*$ ($\sim 0.3$ GeV) and above, but the measured correlation functions are decidedly non-unitary in that region.  
 This may be due to flow, pair-production in minijets, and other non-femtoscopic effects that are not included in the model.
@@ -100,7 +100,7 @@ C(k^*)'' = (1 + ak^* + bk^{*2}).
 \end{equation}
 While the Lednicky equation should be unity in this region for reasonable scattering parameters, we fix it to unity to safeguard against the fitter trying to use unusual $f_0$ or $d_0$ values to over-fit the background.
 
-\subsubsection{Scattering parameters of residual pairs}
+\subsection{Scattering parameters of residual pairs}
 \label{sec:ScatteringParams}
 
 % Revamp this

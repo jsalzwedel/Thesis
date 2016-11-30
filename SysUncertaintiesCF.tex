@@ -1,4 +1,4 @@
-\subsection{Systematic uncertainties of correlation functions}
+\section{Systematic uncertainties of correlation functions}
 \label{sec:SysUncertaintyCF}
 
 We will now attempt to identify the various systematic effects that may affect the correlation functions.  
@@ -7,7 +7,7 @@ It should be noted, however, that subsequent fits to the correlation functions a
 Instead, the systematics on the resulting fit parameters will be computed by refitting many versions of the correlation functions (e.g.\ those built with different reconstruction cuts) and comparing the results. 
 This will be discussed in greater detail in Section \ref{sec:SysErrorsFitsCuts}.
 
-\subsubsection{Consistency checks for uncorrelated histograms}
+\subsection{Consistency checks for uncorrelated histograms}
 \label{sec:ConsistencyCheckUncorrelated}
 One of the tools we will employ in the search for systematic effects is the TH1::Chi2Test(TH1* h1) method, which compares two histograms bin-by-bin to determine a $\chi^2$.  
 The test is performed assuming the hypothesis that the two histograms are Poissonian samples of the same underlying distribution.  
@@ -42,7 +42,7 @@ It is important to emphasize that Chi2Test() is only appropriate for comparing t
 In the case of correlated histograms (e.g.\ correlation functions constructed using slightly different two-track cuts or different reconstruction cuts), a different method must be used to test the histograms for consistency.  
 
 
-\subsubsection{Consistency checks for correlated histograms}
+\subsection{Consistency checks for correlated histograms}
 \label{sec:ConsistencyCheckCorrelated}
 Chi2Test() cannot be used to compare correlated data because the test is performed assuming the statistical error bars on the two histograms are independent.  
 That is obviously not the case for two histograms that differ in their data only be a few percent.  
@@ -69,7 +69,7 @@ As the fit function can be positive or negative, this leads to asymmetric errors
 Using the steps listed above, we can evaluate if seemingly small changes to the cuts employed in correlation function construction change the resulting data in any significant way.  
 
 
-\subsubsection{Systematic errors from reconstruction cuts}
+\subsection{Systematic errors from reconstruction cuts}
 \label{sec:SystematicsReconstruction}
 
 In this section we discuss the systematic errors associated with the V0 reconstruction cuts (e.g.\ cosine of pointing angle, DCA to primary vertex, etc.).  
@@ -106,14 +106,14 @@ Checking each cut yields a positive, negative, or non-existent systematic uncert
 For a given bin, we take the positive and negative values with the largest magnitude to be the upper and lower asymmetric errors, respectively.
 
 
-\subsubsection{Systematic errors from pair-wise cuts}
+\subsection{Systematic errors from pair-wise cuts}
 \label{sec:SystematicsPairWise}
 
 The systematic uncertainties from the average separation cut are implemented in exactly the same way as the single-particle reconstruction cuts in the previous section. 
 For each cut value, we vary the cut by $\pm10\%$, construct correlation functions, and find the uncertainty for each $k^*$ bin via the method in Section \ref{sec:ConsistencyCheckCorrelated}.
 In general, the systematic uncertainties are quite small --- about an order of magnitude smaller than the uncertainties from the reconstruction cuts.
 
-\subsubsection{Systematic errors from shared-daughter cut}
+\subsection{Systematic errors from shared-daughter cut}
 
 At this time, two femtoscopic analyses at ALICE employ a shared-daughter cut (this analysis and the $\mathrm{K}^0_\mathrm{S}$ analysis), though each cut is implemented with independent code.  
 The reasons for this cut are intuitive - two V0s cannot actually have the same daughter, regardless of what might arise from the reconstruction process.  
@@ -127,7 +127,7 @@ Those extra pairs are removed by virtue of the shared daughter cut.
 While the benefits of the shared-daughter cut are apparent,
 and the disadvantages seem to be minimal (even when you cut a real V0, you a left with a fake V0 that is close in phase space), it is unclear at this time how to determine what systematic uncertainties may arise from this cut and how to quantify that uncertainty.
 
-\subsubsection{Combining different sources of systematic error}
+\subsection{Combining different sources of systematic error}
 \label{sec:CombiningSys}
 
 Systematic errors have been evaluated for reconstruction cuts and average separation cuts.
