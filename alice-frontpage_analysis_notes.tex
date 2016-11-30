@@ -1,4 +1,4 @@
-\documentclass[ALICE,manyauthors]{ALICE_internal_notes}
+\documentclass[11pt, onehalf, phd]{osudiss-2}
 %\documentclass[ALICE,manyauthors]{ALICE_scientific_notes}
 %
 %\newcommand{\jpsi}{\rm J/$\psi$}
@@ -22,6 +22,7 @@
 \linenumbers
 \setlength\linenumbersep{5pt}
 \renewcommand\linenumberfont{\normalfont\tiny\sffamily\color{gray}}
+\providecommand{\abs}[1]{\left\lvert#1\right\rvert}
 
 % clickable table of contents
 \usepackage{color}   %May be necessary if you want to color links
@@ -49,22 +50,39 @@
 %
 %%% Put your own title + short title here:
 \title{Lambda femtoscopy in $\sqrt{s_{NN}}=2.76$ TeV Pb-Pb collisions at ALICE}
-\ShortTitle{Lambda femtoscopy in $\sqrt{s_{NN}}=2.76$ TeV Pb-Pb collisions at ALICE}   % appears on right page headers
+%\title{Lambda femtoscopy in $\sqrt{s_{NN}}=2.76$ TeV Pb-Pb collisions at ALICE}   % appears on right page headers
 %
-\author{Jai Salzwedel$^{1}$}
-\author{
-1. The Ohio State University, Columbus, USA\\
-}
-\author{Email: jai.salzwedel@gmail.com}
+\author{Jai Salzwedel}
+\advisorname{Professor Thomas Humanic}
+\degree{Doctor of Philosophy} % Default value
+\member{Professor Michael Lisa}
+\member{Professor Yuri Kovchegov}
+\member{Professor Fengyuan Yang}
+\member{5th Member}
+\authordegrees{B.A. \&  M.S.}
+\graduationyear{2016}
+\unit{Graduate Program in Physics} % defaults to ``Graduate Program in Physics''
+
+%\author{Email: jai.salzwedel@gmail.com}
+
 %
-\ShortAuthor{ALICE Internal Note 2015}      % appears on left page headers, do not change
-%
+\frontmatter
 \begin{abstract}
 \input{Abstract.tex}
 \end{abstract}
 \end{titlepage}
-%
+%\dedication{To Charlie and Eleanor King, in Loving Memory.}
+%\include{acknowledge}
+%\include{vita}
+\tableofcontents
 
+\clearpage
+\listoffigures
+
+\clearpage
+\listoftables
+
+\mainmatter
 \input{AnalysisNote.tex}               %%%%%%%%%%% put the body of the article here
 
 \end{document}
