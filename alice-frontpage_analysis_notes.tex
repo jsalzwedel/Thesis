@@ -24,6 +24,15 @@
 \renewcommand\linenumberfont{\normalfont\tiny\sffamily\color{gray}}
 \providecommand{\abs}[1]{\left\lvert#1\right\rvert}
 
+\newcommand\presentationsname{Presentations}
+\newenvironment{preslist}
+  {\vspace*{15pt}\begin{center}{{\typesetLevelThree\presentationsname}}
+   \end{center}\vspace*{10pt}}
+  {\vspace{\baselineskip}}
+% Use with the |preslist| environment for presentation entries.
+%    \begin{macrocode}
+\newcommand\presitem[1]{\noindent #1 \par~~\par}
+
 % clickable table of contents
 \usepackage{color}   %May be necessary if you want to color links
 \usepackage{hyperref}
@@ -71,9 +80,9 @@
 \input{Abstract.tex}
 \end{abstract}
 \end{titlepage}
-%\dedication{To Charlie and Eleanor King, in Loving Memory.}
+\dedication{Placeholder dedication}
 %\include{acknowledge}
-\include{Vita.tex}
+
 \tableofcontents
 
 \clearpage
@@ -84,5 +93,5 @@
 
 \mainmatter
 \input{AnalysisNote.tex}               %%%%%%%%%%% put the body of the article here
-
+\include{vita}
 \end{document}
