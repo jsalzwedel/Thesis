@@ -170,7 +170,7 @@
 \newcommand\coadvisorword{Co-Advisor}
 \newcommand\fieldsname{Fields of Study}
 \newcommand\publicationsname{Publications}
-\newcommand\vitaname{Vita}
+\newcommand\Vitaname{Vita}
 \newcommand\dedicationname{Dedication}
 \newcommand\majorfieldname{Major Field}
 \newcommand\@unit{Graduate Program in Physics}        % default
@@ -338,11 +338,11 @@
 }
 \let\acknowledgements\acknowledgments
 \let\endacknowledgements\endacknowledgments
-\newenvironment{vita}{
+\newenvironment{Vita}{
   \clearpage
   \setlength\chapterskip{1in-\topskip-\parskip-\lineskip-\baselineskip-1em}
-  \chapter*{\vitaname}
-  \addcontentsline{toc}{front}{\vitaname}
+  \chapter*{\Vitaname}
+  \addcontentsline{toc}{front}{\Vitaname}
   \thispagestyle{plain}\singlespacing
 }
 {
