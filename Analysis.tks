@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TexmakerSession quickmode="3">
-    <document bookmark1="0" line="44" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/ResidualCorrelations.tex" bookmark3="0"/>
-    <document bookmark1="0" line="5" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/DataMeasurement.tex" bookmark3="0"/>
-    <document bookmark1="0" line="62" hasfocus="false" bookmark2="0" master="true" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/alice-frontpage_analysis_notes.tex" bookmark3="0"/>
-    <document bookmark1="0" line="7" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/AnalyticModel.tex" bookmark3="0"/>
-    <document bookmark1="0" line="7" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/FittingSysUncertainties.tex" bookmark3="0"/>
-    <document bookmark1="0" line="0" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Appendix.tex" bookmark3="0"/>
-    <document bookmark1="0" line="98" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Fitting.tex" bookmark3="0"/>
-    <document bookmark1="0" line="9" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/DataAnalysis.tex" bookmark3="0"/>
-    <document bookmark1="0" line="1" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Conclusion.tex" bookmark3="0"/>
-    <document bookmark1="0" line="13" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/FitResults.tex" bookmark3="0"/>
-    <document bookmark1="0" line="27" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/CorrelationConstruction.tex" bookmark3="0"/>
-    <document bookmark1="0" line="16" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/AnalysisNote.tex" bookmark3="0"/>
-    <document bookmark1="0" line="54" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/GeneralDetails.tex" bookmark3="0"/>
-    <document bookmark1="0" line="12" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/LambdaParameters.tex" bookmark3="0"/>
-    <document bookmark1="0" line="5" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/CorrelationFunctionResults.tex" bookmark3="0"/>
-    <document bookmark1="0" line="133" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/SysUncertaintiesCF.tex" bookmark3="0"/>
-    <document bookmark1="0" line="0" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Abstract.tex" bookmark3="0"/>
-    <document bookmark1="0" line="12" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/MomentumResCorrections.tex" bookmark3="0"/>
-    <document bookmark1="0" line="181" hasfocus="false" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/ParticleSelection.tex" bookmark3="0"/>
-    <document bookmark1="0" line="181" hasfocus="true" bookmark2="0" master="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Introduction.tex" bookmark3="0"/>
+    <document bookmark1="0" bookmark3="0" line="5" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/DataMeasurement.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="44" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/ResidualCorrelations.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="76" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/alice-frontpage_analysis_notes.tex" master="true"/>
+    <document bookmark1="0" bookmark3="0" line="7" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/AnalyticModel.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="7" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/FittingSysUncertainties.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="98" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Fitting.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="0" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Appendix.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="1" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Conclusion.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="9" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/DataAnalysis.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="13" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/FitResults.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="27" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/CorrelationConstruction.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="16" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/AnalysisNote.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="54" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/GeneralDetails.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="12" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/LambdaParameters.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="5" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/CorrelationFunctionResults.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="2" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Vita.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="133" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/SysUncertaintiesCF.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="0" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Abstract.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="12" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/MomentumResCorrections.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="181" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/ParticleSelection.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="181" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Introduction.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="0" bookmark2="0" hasfocus="true" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Publications.tex" master="false"/>
+    <document bookmark1="0" bookmark3="0" line="2" bookmark2="0" hasfocus="false" file="/home/jai/Analysis/PresentationsAndPapers/Analysis_Notes/CurrentNote/Acknowledge.tex" master="false"/>
 </TexmakerSession>
