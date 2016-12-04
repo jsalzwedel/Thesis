@@ -9,7 +9,7 @@ This will be discussed in greater detail in Section \ref{sec:SysErrorsFitsCuts}.
 
 \subsection{Consistency checks for uncorrelated histograms}
 \label{sec:ConsistencyCheckUncorrelated}
-One of the tools we will employ in the search for systematic effects is the TH1::Chi2Test(TH1* h1) method, which compares two histograms bin-by-bin to determine a $\chi^2$.  
+One of the tools we employ in the search for systematic effects is the TH1::Chi2Test(TH1* h1) method, which compares two histograms bin-by-bin to determine a $\chi^2$.  
 The test is performed assuming the hypothesis that the two histograms are Poissonian samples of the same underlying distribution.  
 A p-value is computed which represents the probability that a measurement could be performed that would yield results this different or more, given the hypothesis of identity.  
 The hypothesis of identity is rejected in instances where the p-value is lower than 0.01. 
@@ -31,7 +31,7 @@ In the instances where they do not exceed the significance level, they will be a
 In particular, we will look to see if there are any systematic differences between the correlation functions.  
 For example, it may be seen that the lowest ten $k^*$ bins will all be higher in one correlation function than another.  
 If so, the data will still be merged (so long as the results aren't dramatically different), but a systematic uncertainty will be computed and applied to the final averaged correlation function in the form of systematic error bars.  
-Section \ref{sec:CalculatingSysErrors} describes how these uncertainties are calculated.  
+%Section \ref{sec:CalculatingSysErrors} describes how these uncertainties are calculated.  
 
 When using Chi2Test() to compare correlation functions, the trouble areas that result in small p-values will likely be the lowest $k^*$ bins (which exhibit most of the interesting physics, and which also suffer the most from two-track effects), and large $k^*$ bins (close to $1 \mathrm{GeV/c}$).  
 The height of the the large $k^*$ bins is noticeably susceptible to statistical (or systematic) deviations in the normalization region.  
@@ -45,14 +45,14 @@ In the case of correlated histograms (e.g.\ correlation functions constructed us
 \subsection{Consistency checks for correlated histograms}
 \label{sec:ConsistencyCheckCorrelated}
 Chi2Test() cannot be used to compare correlated data because the test is performed assuming the statistical error bars on the two histograms are independent.  
-That is obviously not the case for two histograms that differ in their data only be a few percent.  
-In this analysis, we perform consistency checks of correlated data in the following fashion:
+That is obviously not the case for two histograms that differ in their content by only a few percent.  
+In this analysis, we follow the advice of Roger Barlow \cite{Barlow:2002yb} and perform consistency checks of correlated data in the following fashion:
 
 \begin{enumerate}
-\item Take the difference between the two correlation function histograms $\Delta C(k^*) = C_1(k^*) - C_2(k^*)$, using $C_1\rightarrow$ Add($C_2$,$-1$).  
+\item Take the difference between the two correlation function histograms $$\Delta C(k^*) = C_1(k^*) - C_2(k^*),$$ using $C_1\rightarrow$ Add($C_2$,$-1$).  
 The resulting histogram shows the usually small differences between the two data sets.
-\item Here, ROOT incorrectly adds the errors in quadrature.  
-To fix this, manually set the error bars using $\sigma_{\Delta}(k^*) = \sqrt{ \abs{ \sigma_1^2(k^*) - \sigma_2^2(k^*) }}$.  
+\item Here, ROOT adds the errors in quadrature, which isn't correct for correlated data.  
+To fix this, we manually set the error bars using $\sigma_{\Delta}(k^*) = \sqrt{ \abs{ \sigma_1^2(k^*) - \sigma_2^2(k^*) }}$.  
 This error is correct in the specific case (found here) that one histogram is entirely a subset of the other.
 \item We now look to see if there are any significant discrepancies or systematic differences between the two original correlation functions.
 If there is a structural difference, it will generally be largest in the lowest $k^*$ bins, dropping off as $k^*$ increases.
