@@ -49,8 +49,8 @@ The optimal cut values were determined by comparing distributions of reconstruct
 The data set (LHC12a17a\_fix) included injected strange signals (extra $\Lambda$, $\bar{\Lambda}$, $\Xi$, and $\Omega$ in each event).  
 In this analysis, we have estimated the reconstruction efficiency of primary and secondary $\Lambda$ reconstruction efficiency in an effort to account for feeddown effects (see Section \ref{sec:ReconstructionEff}).
 The added particles sample a $p_\mathrm{T}$ range that allows for easy detector reconstruction, which skews those efficiency estimates.
-Therefore, we have performed our MC analyses with  the injected signals removed.  A primary particle (AliAODMCParticle) was considered injected if it had AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$. 
-Likewise, a secondary particle (e.g.\ $\Lambda$ resulting from decay of a $\Sigma$ baryon) was considered injected if it's mother particle had AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$.  
+Therefore, we have performed our MC analyses with  the injected signals removed.  An injected primary particle (AliAODMCParticle) has AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$. 
+Likewise, an injected secondary particle (e.g.\ $\Lambda$ from a $\Sigma$ baryon decay) has a mother particle with AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$.  
 
 $\Lambda$ were reconstructed and their corresponding AliAODMCParticle objects were consulted in order to classify the $\Lambda$ into different categories: Real, primary $\Lambda$; secondary $\Lambda$ coming from decays of $\Sigma$ (or $\Sigma$ excited states); secondary $\Lambda$ coming from decays of $\Xi$, $\Omega$, and other sources; fake $\Lambda$; and $K^0_\mathrm{s}$ that have been misidentified as $\Lambda$.  
 For each cut parameter (e.g.\ cosine of pointing angle), a plot was made showing the distributions of V0 candidates of the various types.  
