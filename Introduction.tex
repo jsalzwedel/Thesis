@@ -22,6 +22,9 @@ At energies seen by the Large Hadron Collider (LHC), where the ions have center 
 This medium (the QGP and subsequent hadronic phase) has several names, such as "interaction region" or "particle-emitting source", though it is colloquially called a fireball.
 The collision, the medium, and the subsequently emitted and measured particles are collectively known as an event. 
 
+\section{Heavy-ion collisions}
+\label{sec:HeavyIonCollisions}
+
 \begin{figure}[hbt]
 \includegraphics[width=36pc]{Figures/BorrowedFigures/HeavyIonEvolution.pdf}
 \caption[Evolution of a heavy ion collision]{Evolution of a heavy ion collision \cite{Shen:2015msa}. 
@@ -58,9 +61,67 @@ Particle collider experiments provide insight into the final state of collisions
 
 Beyond simply measuring asymptotic particle momenta, collider experiments can use an assortment of analysis techniques to probe various facets of the fireball evolution.
 These techniques include flow analysis \cite{Aamodt:2010pa,Heinz:2013th}, the study of particle spectra \cite{Aamodt:2010cz}, and an interferometry technique known as femtoscopy \cite{Aamodt:2011mr,Lisa:2005dd}.
+In the following sections, we'll give a brief introduction to these topics, before moving on to the main topic of this thesis: femtoscopy.
 
-In this thesis, we will focus our discussion on the ways that femtoscopy is capable of shedding light on both the spatial characteristics of the particle-emitting source, as well as the interactions between particles created within the source.
+
+
+%In this thesis, we will focus our discussion on the ways that femtoscopy is capable of shedding light on both the spatial characteristics of the particle-emitting source, as well as the interactions between particles created within the source.
 % In particular, we will focus on the new avenues of research available with baryon femtoscopy, and ... lambda baryon ($\Lambda$).
+\subsection{Jet quenching}
+
+
+\subsection{Flow}
+\label{sec:Flow}
+
+Figure \ref{fig:Almond} shows a cartoon of a peripheral heavy-ion collision.
+
+
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/BorrowedFigures/Almond.pdf}
+\caption[Non-central collision]{ 
+Cartoon of a non-central heavy-ion collision \cite{Rapp:2008qc}.
+The blue shapes are the recently-collided ions, while the overlap region of the expanding fireball is orange.
+The almond-shaped fireball is taller than it is wide, which results in a larger pressure gradient along the x-axis than along the y-axis.
+This pressure gradient causes the fireball to expand more rapidly along the x-axis than along the y-axis.
+
+}
+\label{fig:Almond}
+\end{figure}
+
+
+\subsection{Spectra}
+
+If the fireball of a heavy-ion collision is in an evolving thermal equilibrium as hydrodynamic models suggest, what is the temperature of the fireball at different points in its lifetime? 
+Answers to this question can be found by looking at particle spectra.
+Spectral analyses measure the number of particles produced in collisions.
+There are a few ways to disect this information.
+For each species of particle (e.g.\ $\pi$, K, p), one can look at how many of them are produced on average for a given event.
+For a system in thermal equilibrium, the expected number of particles $n_i$ of a particular species in a given energy state $E_i$ follows the distribution
+\begin{equation}
+\label{eq:ThermalDistribution}
+n_i(E_i) = \frac{g_i}{e^{(E_i - \mu_b)/kT} \pm 1}
+\end{equation}
+where $g_i$ is the degeneracy of the state, $\mu_b$ is the baryochemical potential of the system,  $T$ is the temperature of the system, and the  $+/-$ is for fermions/bosons. 
+The baryochemical potential quantifies the baryon-antibaryon asymmetry of the system; $\mu_b = 0$ means that there are equal numbers of baryons and antibaryons.
+% citation needed
+
+%One can also look at the momentum distribution of a particular particle species
+
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/BorrowedFigures/ALICEYieldsThermalFit.pdf}
+\caption[Thermal fit of ALICE yields]{Particle yields from central Pb-Pb collisions at ALICE, which are fit with a statistical hadronization model \cite{Stachel:2013zma}. 
+The fit suggests that the particle abundances, which mostly appear to obey a thermal distribution, cease to evolve below the temperature $T = 156$ MeV .
+The fit also finds that the baryon chemical potential is zero, which means that there is no asymmetry between the matter and antimatter yields of the system. 
+}
+\label{fig:ThermalYieldFit}
+\end{figure}
+
+Figure \ref{fig:ThermalYieldFit} shows particle yields measured in central Pb-Pb collisions at ALICE.
+Those yields have been fit with a thermal model \cite{Stachel:2013zma}. 
+The fit finds that the baryochemical potential is zero, as one expects at LHC energies.
+Most of the particle species appear to obey a thermal distribution for $T = 156$ MeV, which suggests that relative particle yields cease to evolve below that temperature.
+That said, the proton and antiproton yields both lie a couple sigma below the thermal value, and studies are ongoing to determine what physics effects might drive these particles out of equilibrium.
+
 
 \section{Femtoscopy (HBT)}
 \label{sec:FemtoHBT}
