@@ -29,7 +29,7 @@ The collision, the medium, and the subsequently emitted and measured particles a
 \includegraphics[width=36pc]{Figures/BorrowedFigures/HeavyIonEvolution.pdf}
 \caption[Evolution of a heavy ion collision]{Evolution of a heavy ion collision \cite{Shen:2015msa}. 
 Two ions collide and leave behind a medium of high energy density. 
-After about 1 fm/$c$, the medium thermalizes as a plasma of deconfined quarks and gluons. 
+After about 1 fm/$c$ ($\sim 10^{-23}$ s), the medium thermalizes as a plasma of deconfined quarks and gluons. 
 After a few fm/$c$, the quarks and gluons cool down and hadronize into pions, kaons, and many other particles. These hadrons scatter off each other few more fm/$c$, until the become so dilute that they free-stream to a detector.}
 \label{fig:HeavyIonEvolution}
 \end{figure}
@@ -43,10 +43,10 @@ Eventually, the source becomes dilute enough that the inter-particle scatterings
 While people often speak of a singular kinetic freezeout time (the time when the rescatterings cease), in actuality particles are emitted at varying rates throughout the lifetime of the fireball.
 
 Heavy-ion physics programs such as ALICE (A Large Ion Collider Experiment) seek to study the evolution of these fireballs.
-The field tries to answer questions such as "When does hadronization occur?", "What equations of state describe the evolution of the interaction region?", "What interactions are occuring between particles during during this evolution?", and "What is the size and shape of the source at kinetic freezeout?".
-A number of models have been developed to probe these questions and others \cite{Werner:2010aa,Karpenko:2012yf,Bozek:2012qs,Schenke:2009gb}, and experimental data help refine these models.
+The field tries to answer questions such as "When does hadronization occur?", "What equations of state describe the evolution of the interaction region?", "What interactions are occuring between particles during during this evolution?", and "What is the size and shape of the medium at kinetic freezeout?".
+A number of models have been developed to probe these questions and others \cite{Werner:2010aa,Karpenko:2012yf,Bozek:2012qs,Schenke:2009gb}, and experimental results help refine these models.
 
-Loosely speaking, a collision model has three main components: initial conditions describing the shape and energy density of the source; a theory describing how the system evolves over time; and the final result of collision, namely a description of the particles that are emitted including their momenta, emission time, etc.
+Generally speaking, collision models have three main components: initial conditions describing the shape and energy density of the source; a theory describing how the system evolves over time; and the final result of collision, namely a description of the particles that are emitted including their momenta, emission time, etc.
 %Collider experiments have been designed so as to simplify assumptions about the initial conditions of fireballs.
 Collider experiments have been designed to simplify assumptions about the initial conditions of fireballs, and to measure their asymptotic state.
 $\ce{^197 \mathrm{Au}}$ and $\ce{^208 \mathrm{Pb}}$ ions are used since these particles have a spherical symmetry to their nuclear structure that gives the fireballs a relatively simple initial geometry.
@@ -58,18 +58,111 @@ Particle collider experiments provide insight into the final state of collisions
 %By looking at the final-state information of large ensembles of collisions and making various model assumptions about the initial conditions and evolution, it is possible to work backward to obtain a better grasp of what happens in the early stages of the collisions.
 %To answer many of the above questions, it is often necessary to look at this final-state information and work backwards.
 
-
 Beyond simply measuring asymptotic particle momenta, collider experiments can use an assortment of analysis techniques to probe various facets of the fireball evolution.
 These techniques include flow analysis \cite{Aamodt:2010pa,Heinz:2013th}, the study of particle spectra \cite{Aamodt:2010cz}, and an interferometry technique known as femtoscopy \cite{Aamodt:2011mr,Lisa:2005dd}.
-In the following sections, we'll describe the ALICE detector and give a short description of a few of these physics analyses, before moving on to the main topic of this thesis: femtoscopy.
+In the following sections, we'll give an overview of the LHC and the ALICE detector.
+We'll then give a short description of a few of the ongoing physics programs.
+Finally, we'll move on to the main topic of this thesis: femtoscopy.
 
+\subsection{The Large Hadron Collider}
+\label{sec:TheLHC}
+
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/BorrowedFigures/LHC.png}
+\caption[Schematic of the LHC]{A schematic of the Large Hadron Collider. 
+Proton and/or Pb ion beams go through a series of accelarators before being injected into the LHC. Beams travel in both directions around the LHC, and the two beams are only allowed to collide at the four experiments: ALICE, ATLAS, LHC-b, and CMS.}
+\label{fig:LHC}
+\end{figure}
+
+ALICE is one of several experiments at the Large Hadron Collider.
+The LHC itself is part of the European Organization  for Nuclear Research (CERN, from the French \it Conseil Europ\'een pour la Recherche Nucl\'eaire\rm).
+CERN is near Geneva, Switzerland, and the 27 km ring of the LHC lies partly in France and partly in Switzerland.
+%There are several detectors built around the ring.
+
+The LHC is literally built upon previous successful experiments. 
+In order to get protons and ions traveling at very nearly the speed of light, they are sent through a series of increasingly powerful accelerators.
+They are then injected into the LHC ring in bunches of up to $10^{11}$ particles, with bunches traveling in both clockwise and counterclockwise directions around the ring \cite{Lefevre:1092437}.
+The bunches are spaced a few nanoseconds apart.
+There are thousands of bunches per beam in proton-proton mode, while Pb-Pb mode has hundreds.
+Those bunches are steered around the ring with magnets as strong at 8 Tesla.
+The two beams are only allowed to intersect at four points, the four major LHC experiments: ALICE, LHC-b, CMS, ATLAS.
+At these intersection points, there can be millions or even hundreds of millions of proton-proton collisions per second.
+Ions have collision rates in the thousands.
+Figure \ref{fig:LHC} shows a diagram of the LHC and the accelerators that feed into it.
+ % Very small chance of ions colliding, but there are so many bunches and so many ions per bunch that  can get up to 500 Pb-Pb collisions per second.
+ 
+ 
 \subsection{The ALICE detector}
 \label{sec:ALICEDetector}
 
+ 
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/BorrowedFigures/ALICEDetector.jpg}
+\caption[Cartoon of the ALICE detector]{A cartoon of the ALICE detector \cite{Aamodt:2008zz}.}
+\label{fig:ALICEDetector}
+\end{figure}
+
+%The primary research focus of the ALICE detector is to measure and analyze heavy-ion collisions.
+Figure \ref{fig:ALICEDetector} shows a cartoon of the ALICE detector.
+The main barrel of the detector is 14.1 m long and 15.8 m in diameter. The outer layer (shown in red in the cartoon), is an 0.5 T solenoidal magnet.
+The two beams are steered such that most collision events occur within 10 cm of the longitudinal center of the detector (i.e. along the beam axis), and within about a cm of the radial center.
+
+The ALICE detector is composed of many subdetectors \cite{Aamodt:2008zz}.
+The inner most detector is the Inner Tracking System (ITS), which provides full azimuthal coverage with a radial range of 3.9 cm to 43 cm.
+The ITS consists of 6 layers of silicon detectors: two Silicon Pixel Detectors, two Silicon Drift Detectors, and two Silicon Strip Detectors.
+The ITS serves multiple purposes.
+The spatial resolution of the various layers ranges from tens to hundreds of $\mu$m.
+With hundreds (p-p) or thousands (Pb-Pb) of particles produced in each collision, the ITS is able to reconstruct the position of the collision with a resolution better than 100 $\mu$m.
+The collision location is called the primary vertex, as nearly all the reconstructed particles trace back to it.
+The ITS also provides position tracking and particle identification (PID) for low-momentum particles via $\frac{\mathrm{d}E}{\mathrm{d}x}$ measurement \cite{Jackson:1998nia}.
+Finally, the tracking resolution of the ITS allows it to identify secondary vertices, the locations where hyperons (baryons containing a strange quark) and various heavy mesons decay into charged particles.
+
+The next detector is the Time Projection Chamber (TPC) \cite{ALICE:2014qrd}, which spans $r=85$ cm to $r=250$ cm.
+The TPC is a 5 m long barrel full of a 90:10:5 mixture of Ne, CO$_2$, and N$_2$ gas.
+The barrel is divided in half longitudinally by a 100 kV electrode, and there are readout electronics on either end.
+When a charged particle passes through the TPC, it ionizes the gas in its wake.
+The electric field then drives the electron clouds toward the readout electronics.
+These clouds quickly reach their max drift velocity of 2.7 cm/$\mu$s (27 km/s). 
+The position of the track can thus be determined by the length of time it takes for the ionized gas to reach the readout chamber.
+The 0.5 T magnetic field causes the track's trajectory to bend, and the track's momentum can be determined by the curvature of the track.
+The TPC therefore is able to determine the 3D position of the track throughout the TPC with mm precision, the momentum of the track, and its d$E$/d$x$ value.
+This is the main tracking system of the ALICE detector, and it can provide PID information for particles with momentum up to $\sim 1$ GeV/$c$.
+
+Figure \ref{fig:ExampleCollision} shows a Pb-Pb collision recorded in the first run of the LHC.
+The tracking by the ITS is shown in white, while tracking from the TPC is yellow.
+The TPC can provide quality tracking information for ion events with thousands of charged particles, but it has the drawback of being a slow detector compared to the ITS.
+The maximum drift time of a track is about 90 $\mu$s, so if two or more events occur within that window their tracking information can overlap.
+This is called event pile-up.
+The TPC can safely isolate and record central Pb-Pb events at a rate of 300 Hz and p-p events at a rate of 1 kHz.
 
 
-%In this thesis, we will focus our discussion on the ways that femtoscopy is capable of shedding light on both the spatial characteristics of the particle-emitting source, as well as the interactions between particles created within the source.
-% In particular, we will focus on the new avenues of research available with baryon femtoscopy, and ... lambda baryon ($\Lambda$).
+
+% ITS vertex determination
+
+%ZDC, V0, T0 centrality
+
+% TPC
+
+%TOF 
+
+%EMCAL
+
+
+
+
+
+
+
+
+
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/BorrowedFigures/ExampleCollision.png}
+\caption[Example of a Pb-Pb collision]{An example of a Pb-Pb collision measured at the ALICE detector.}
+\label{fig:ExampleCollision}
+\end{figure}
+
+% Discussion of subdetectors
+
 \subsection{Jet quenching}
 
 
@@ -148,7 +241,7 @@ A value above unity means that some effect is causing an increase of pairs at a 
 More details on the experimental construction of correlation functions can be found in Section \ref{sec:CorrelationFunctionConstruction}.
 
 % chaotic source
-\section{Femtoscopic sources}
+\subsection{Femtoscopic sources}
 \label{sec:FemtoSources}
 
 
@@ -169,7 +262,7 @@ Femtoscopic analyses traditionally study pions \cite{Goldhaber:1960sf,Aamodt:201
 However, measurements of heavier particles such as kaons \cite{Abelev:2012ms} and baryons \cite{Gos:2007cj} can serve to complement the pion results.  
 One motivation for studying an assortment of heavier particles is to test the hydrodynamic prediction that radial flow should cause the source radii to scale roughly as the inverse of the transverse mass $1/m_{\mathrm{T}} = (m^2 + k^2_T)^{-1/2}$ of the particles \cite{Csorgo:1995bi,Lisa:2005dd}, where $m$ is the particle mass and $k_T$ is the transverse momentum of the particle.
 
-\section{Hadronic interactions}
+\subsection{Hadronic interactions}
 \label{sec:HadronicInteractions}
 % Baryon--(anti)baryon correlation functions are also 
 %Femtoscopy can also be useful in the study of final-state interactions (FSI).  
@@ -202,7 +295,7 @@ With the new method in place, the extracted $p\bar{\Lambda}$ radius was consiste
 The analysis presented in this thesis, $\Lambda\Lambda$ and $\Lambda\bar{\Lambda}$ femtoscopy, uses this approach for handling residual correlations; the details can be found in Sections \ref{sec:Residual} and \ref{sec:LambdaParams}.
 
 
-\section{$\Lambda$ femtoscopy}
+\subsection{$\Lambda$ femtoscopy}
 \label{sec:LambdaFemto}
 
 % Describe why lambdas are useful for these studies
