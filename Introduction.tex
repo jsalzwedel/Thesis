@@ -67,7 +67,7 @@ Finally, we'll move on to the main topic of this thesis: femtoscopy.
 \subsection{The Large Hadron Collider}
 \label{sec:TheLHC}
 
-\begin{figure}[hbt]
+\begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/BorrowedFigures/LHC.png}
 \caption[Schematic of the LHC]{A schematic of the Large Hadron Collider. 
 Proton and/or Pb ion beams go through a series of accelarators before being injected into the LHC. Beams travel in both directions around the LHC, and the two beams are only allowed to collide at the four experiments: ALICE, ATLAS, LHC-b, and CMS.}
@@ -101,7 +101,6 @@ Figure \ref{fig:LHC} shows a diagram of the LHC and the accelerators that feed i
 \caption[Cartoon of the ALICE detector]{A cartoon of the ALICE detector \cite{Aamodt:2008zz}.}
 \label{fig:ALICEDetector}
 \end{figure}
-
 %The primary research focus of the ALICE detector is to measure and analyze heavy-ion collisions.
 Figure \ref{fig:ALICEDetector} shows a cartoon of the ALICE detector.
 The main barrel of the detector is 14.1 m long and 15.8 m in diameter. The outer layer (shown in red in the cartoon), is an 0.5 T solenoidal magnet.
@@ -128,49 +127,65 @@ The 0.5 T magnetic field causes the track's trajectory to bend, and the track's 
 The TPC therefore is able to determine the 3D position of the track throughout the TPC with mm precision, the momentum of the track, and its d$E$/d$x$ value.
 This is the main tracking system of the ALICE detector, and it can provide PID information for particles with momentum up to $\sim 1$ GeV/$c$.
 
-Figure \ref{fig:ExampleCollision} shows a Pb-Pb collision recorded in the first run of the LHC.
-The tracking by the ITS is shown in white, while tracking from the TPC is yellow.
-The TPC can provide quality tracking information for ion events with thousands of charged particles, but it has the drawback of being a slow detector compared to the ITS.
-The maximum drift time of a track is about 90 $\mu$s, so if two or more events occur within that window their tracking information can overlap.
-This is called event pile-up.
-The TPC can safely isolate and record central Pb-Pb events at a rate of 300 Hz and p-p events at a rate of 1 kHz.
-
-
-
-% ITS vertex determination
-
-%ZDC, V0, T0 centrality
-
-% TPC
-
-%TOF 
-
-%EMCAL
-
-
-
-
-
-
-
-
-
 \begin{figure}[hbt]
 \includegraphics[width=36pc]{Figures/BorrowedFigures/ExampleCollision.png}
 \caption[Example of a Pb-Pb collision]{An example of a Pb-Pb collision measured at the ALICE detector.}
 \label{fig:ExampleCollision}
 \end{figure}
+Figure \ref{fig:ExampleCollision} shows a Pb-Pb collision recorded in the first run of the LHC.
+The tracking by the ITS is shown in white, while tracking from the TPC is yellow.
+The TPC can provide quality tracking information for ion events with thousands of charged particles, but it has the drawback of being a slow detector compared to the ITS.
+The maximum drift time of a track is about 90 $\mu$s, so if two or more events occur within that window their tracking information can overlap.
+This is called event pile-up.
+The TPC can isolate and record central Pb-Pb events at a rate of 300 Hz and p-p events at a rate of 1 kHz.
 
-% Discussion of subdetectors
+The Time-Of-Flight (TOF) detector is a 20 cm thick shell around the TPC.
+In conjunction with the T0 detector which determines the timing of the initial collision, the TOF can measure the time it takes a particle to reach it.
+With this information and momentum information from other tracking detectors, the mass of the particle can be determined.
+The TOF can successfully distinguish between particles with momentum as low as 0.5 GeV/$c$ up to 3-4 GeV/$c$, depending on the particle, and it essential for PID of particles above the 1 GeV/$c$ limit of the TPC. 
+
+The T0, VZERO, and Zero Degree Calorimeter (ZDC) detectors provide event triggering for the ALICE detector.
+Event triggering detectors monitor activity in the beam collision area, and they inform the detector when to record data.
+The ALICE detector therefore does not need to record information for every interaction, including interactions from the occasional cosmic rays striking the detector or the beam striking ambient gas.
+Instead, it can selectively record events that appear interesting.
+The primary triggers used with Pb-Pb events are minimum bias, semi-central, and central.
+
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/BorrowedFigures/GlauberImpactParameter.pdf}
+\caption[Monte Carlo Glauber impact parameter simulation]{Distribution of $\sqrt{s_\mathrm{NN}} = 2.76$ TeV Pb-Pb collision impact parameters $b$ from a Monte Carlo Glauber simulation \cite{Abelev:2013xaa}.
+Impact parameter is defined as the distance between the center of one nucleus to the center of the other at the time of the collision.
+Bands indicate the impact parameters associated with different centrality classes.
+}
+\label{fig:GlauberImpactParameter}
+\end{figure}
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/BorrowedFigures/GlauberCentrality.pdf}
+\caption[Monte Carlo Glauber number of participants simulation]{A Monte Carlo Glauber simulation of the total number of nucleons involved in $\sqrt{s_\mathrm{NN}} = 2.76$ TeV Pb-Pb collisions \cite{Abelev:2013xaa}.
+A nucleon from one ion that interacts with a nucleon from another is called a participant.
+In a peripheral collision, each ion only has a handful of participants.
+Central collisions may have $\sim 200$ participants.
+The estimated participant ranges of the centrality classes are shown.
+}
+\label{fig:GlauberCentrality}
+\end{figure}
+Ion collisions can be classified several ways \cite{Abelev:2013xaa} as seen in Figures \ref{fig:GlauberImpactParameter} and \ref{fig:GlauberCentrality}.
+One is by impact parameter $b$, which is the distance from the center of one nucleus to the center of the other.
+Another is by the number of participants --- the nucleons from one ion that interact with nucleons from the other.
+From an experimental perspective, the most common way to define them is by centrality percentile.
+Centrality is calibrated from the number of charged particles produced in each collision.
+Central collisions (0-10\%) have the highest multiplicity, while peripheral (90\% and above) collisions have the smallest.
+Minimum bias triggers record an even sampling of the centrality distribution.
+The central trigger records only 0-10\% central events, and the the semi-central trigger records events in the 10-50\% centrality range.
+Signals from the ZDC and VZERO provide centrality estimates for the trigger process.
+
+%EMCAL
+
 
 \subsection{Jet quenching}
 
 
 \subsection{Flow}
 \label{sec:Flow}
-
-Figure \ref{fig:Almond} shows a cartoon of a peripheral heavy-ion collision.
-
 
 \begin{figure}[hbt]
 \includegraphics[width=36pc]{Figures/BorrowedFigures/Almond.pdf}
@@ -179,11 +194,26 @@ Cartoon of a non-central heavy-ion collision \cite{Rapp:2008qc}.
 The blue shapes are the recently-collided ions, while the overlap region of the expanding fireball is orange.
 The almond-shaped fireball is taller than it is wide, which results in a larger pressure gradient along the x-axis than along the y-axis.
 This pressure gradient causes the fireball to expand more rapidly along the x-axis than along the y-axis.
-
 }
 \label{fig:Almond}
 \end{figure}
+When two ions collide, the topology of their overlap region has a pronounced effect on the momentum distribution of the particles produced in the collision.
+Figure \ref{fig:Almond} shows a cartoon of a non-central heavy-ion collision.
+At LHC energies, the colliding ions are Lorentz length-contracted by a factor of $\sim 1500$, effectively making them flat disks or pancakes with non-uniform density (more nucleons in the center than towards the edge).
+When these two pancakes collide with a non-zero impact parameter, the overlap region of their participant nucleons is roughly almond shaped.
+As shown in the figure, the almond-shaped fireball is taller than it is wide.
+This creates a larger pressure gradient along the axis of the impact parameter (the short axis) than along the long axis.
+This drives a faster expansion along the short axis as the fireball evolves.
+In this way, the initial shape of the collision impacts the final momentum distribution of the event, a phenomenon called anisotropic flow.
+Using a Fourier decomposition of the the azimuthally-dependent momentum distribution of events, anisotropic flow can be quantified in terms of flow coefficients $v_n$.
+Elliptic flow and triangular flow, $v_2$ and $v_3$,  are the most studied coefficients.
+Elliptic flow owes much of its existence to the initial spatial anisotropy of the almond-shaped fireball, but triangular flow comes from event-by-event energy density fluctuations in the interaction region.
 
+The study of anisotropic flow helps us understand the initial conditions and the evolution of heavy-ion collisions.
+Theorists have had a great deal of success modeling  this evolution, and the evolution of the QGP phase in particular, using relativistic hydrodynamic calculations \cite{Heinz:2013th}.
+This has lead some to declare that the quark-gluon plasma is "most perfect fluid" \cite{Heinz:2005zg}, due to its adherence to ideal fluid dynamics.
+Nonetheless, viscous effects have been found to have significant effects on the flow coefficients for particles with large transverse (radially outward from the beam axis) momentum $p_\mathrm{T}$.
+Flow studies continue to be an important tool in understanding the dynamics of heavy-ion collisions.
 
 \subsection{Spectra}
 
