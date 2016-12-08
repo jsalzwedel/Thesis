@@ -255,11 +255,11 @@ HBT was originally used to study photons and later used to look at pions, so it 
 Modern analyses look at all manner of hadrons, and therefore the correlations might be subject to bosonic, fermionic, or non-identical particle statistics.
 In the nuclear physics context, the focus of these analyses is on measuring very small sources, so the more general term \textit{femtoscopy} has come into use.
 
-\begin{figure}[hbt]
-\includegraphics[width=24pc]{Figures/BorrowedFigures/QandK.jpg}
-\caption[Relative momentum]{A cartoon showing the relative momentum $\vec{q} = \vec{p}_1 - \vec{p}_2$ for a pair of particles being emitted from a heavy-ion collision \cite{Plumberg:2016sig}.}
-\label{fig:QandK}
-\end{figure}
+%\begin{figure}[hbt]
+%\includegraphics[width=24pc]{Figures/BorrowedFigures/QandK.jpg}
+%\caption[Relative momentum]{A cartoon showing the relative momentum $\vec{q} = \vec{p}_1 - \vec{p}_2$ for a pair of particles being emitted from a heavy-ion collision \cite{Plumberg:2016sig}.}
+%\label{fig:QandK}
+%\end{figure}
 
 Femtoscopic analyses are capable of probing both the two-particle emission function (i.e the size and shape of the source) and the interactions between particles. 
 The primary tool of femtoscopy is the correlation function.
@@ -287,61 +287,67 @@ In the following two sections, we'll discuss the source functions and the intera
 
 % chaotic source
 %In the context of both astronomy and particle physics, HBT/
-Femtoscopy is built on measuring the interference patterns of particles emitted incoherently from a source.
-Femtoscopic analyses are capable of measuring both spatial and temporal characteristics of these sources.
-
-\begin{figure}[hbt]
-\includegraphics[width=36pc]{Figures/HomemadeFigures/FlowAndMomentum.pdf}
-\caption[Effect of radial flow on momentum]{A cartoon showing possibly emission momenta for particles at different places in the fireball.
-(Left) In a static source where no particles interact, particles are emitted isotropically, and there are no rescatterings to change their momenta.
-(Right) In an evolving source, the pressure of the fireball creates an outward radial flow of particles.
-Particles are more likely to be emitted with their momenta pointing outward.}
-\label{fig:FlowAndMomentum}
-\end{figure}
-
-As will be discussed in greater detail in Section \ref{sec:CorrelationFunctionModel}, femtoscopy does not actually measure the size of the full interaction region at the time of freezeout.
+Femtoscopy is built on measuring the interference patterns of particles emitted incoherently from a source, be it a star or a heavy-ion collision.
+As will be discussed in greater detail in Section \ref{sec:CorrelationFunctionModel}, femtoscopy does not actually measure the size of the full interaction region of a heavy-ion collision at the time of freezeout.
 Rather, it measures the size of the region in which particles are emitted with approximately the same momentum, also called the region of homogeneity \cite{Akkelin:1995gh}.
 If particles were emitted isotropically throughout the interaction region, the measured source size would be the the full size of the interaction region.
-This would be the case if the source were static.
+This would be the case if the source were static (no expansion).
 If hadrons could not scatter off each other, then they would be emitted from the interaction region isotropically, as seen in the cartoon on the left of Figure \ref{fig:FlowAndMomentum}.
 However, effects such as radial flow create correlations between particle emission direction and position. 
 The pressure of the fireball boosts the momentum of particles outward, as seen on the right hand side of Figure \ref{fig:FlowAndMomentum}.
 Particles can still freeze out with an inward-pointing momentum, but the probability of that happening will be suppressed.
 In simple terms, a particle near the edge of the fireball is more likely to be emitted outward, where there are fewer particles to scatter off of, than it is for it to be emitted inward where it would have to travel through the bulk of the interaction region without scattering again. 
 
-% Femtoscopic correlations such as quantum state interference only arise for particles with low relative momentum $k^\mu = \frac{1}{2}(..)
-% High momentum vs low momentum
-% The homogeneity region/radius is ... region where particles are 
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/HomemadeFigures/FlowAndMomentum.pdf}
+\caption[Effect of radial flow on momentum]{A cartoon showing possible emission momenta for particles at different places in the fireball.
+(Left) In a static source where no particles interact, particles are emitted isotropically, and there are no rescatterings to change their momenta.
+(Right) In an evolving source, the pressure of the fireball creates an outward radial flow of particles.
+Particles are more likely to be emitted with their momenta pointing outward.}
+\label{fig:FlowAndMomentum}
+\end{figure}
 
 \begin{figure}[hbt]
 \includegraphics[width=36pc]{Figures/HomemadeFigures/RegionsOfHomogeneity.pdf}
-\caption[Regions of homogeneity]{A cartoon showing regions of homogeneity---the regions where particles can be found with similar momenta and thus small relative momentum $k^\mu = (p_1^\mu - p_2^\mu)/2$.
+\caption[Regions of homogeneity]{A cartoon showing regions of homogeneity---the regions where particles can be found with similar momenta and thus small relative momentum $k^* = \sqrt{-(p_1 - p_2)^2}/2$.
 (Left) In a static source where no particles interact, particles are emitted isotropically throughout the interaction region.
-Pairs of high momentum particles with small $k^\mu$ can be found throughout the fireball, as can pairs of low momentum particles with small $k^\mu$.
+Pairs of high momentum particles with small $k^*$ can be found throughout the fireball, as can pairs of low momentum particles with small $k^*$.
 The regions of homogeneity are essentially the size of the fireball for pairs of any momentum.
 (Right) In an evolving source, the pressure of the fireball boosts the momenta of particles outward.
-High momentum particles with small $k^\mu$ are only found close together in small regions.
-Low momentum particles with small $k^\mu$ can be found in larger regions.
+High momentum particles with small $k^*$ are only found close together in small regions.
+Low momentum particles with small $k^*$ can be found in larger regions.
 High momentum particles have small regions of homogeneity, while low momentum particles have medium-sized regions.}
 \label{fig:RegionsOfHomogeneity}
 \end{figure}
 
 
-The homogeneity radii measured by femtoscopy give a snapshot of the final conditions of the fireball.
-These final conditions can help theorists tune their evolution models.
-
-
-
-
 Femtoscopic analyses traditionally study pions \cite{Goldhaber:1960sf,Aamodt:2011mr} because of their ready availability.  
 However, measurements of heavier particles such as kaons \cite{Abelev:2012ms} and baryons \cite{Gos:2007cj} can serve to complement the pion results.  
 One motivation for studying an assortment of heavier particles is to test the hydrodynamic prediction that radial flow should cause the source radii to scale roughly as the inverse of the transverse mass $1/m_{\mathrm{T}} = (m^2 + k^2_T)^{-1/2}$ of the particles \cite{Csorgo:1995bi,Lisa:2005dd}, where $m$ is the particle mass and $k_T$ is the transverse momentum of the particle.
+An example of this can be seen in Figure \ref{fig:RegionsOfHomogeneity}.
+On the left we see a fireball with no interactions between particles and thus no flow.
+The collision of the heavy-ions created particles thermally (a spectrum of low to high momentum), and isotropically (in terms of where the particles were created, and direction of their momentum upon creation).
+With no rescattering, their final momenta are the same as their initial momenta.
+Therefore, when one looks for a region of homogeneity, the region where pairs of particles can be found with $k^* \approx 0$, one sees that it is essentially the entirety of the fireball.
+This is the case both for low momentum particles and high momentum particles.
+On the right side of Figure \ref{fig:RegionsOfHomogeneity}, we see an expanding fireball.
+Because of the internal pressure of the fireball, outward travelling particles tend to have a large momentum and inward particles a small momentum.
+Now when one looks for regions of homogeneity, one sees different results for large and small momentum particles.
+For two particles with large momentum to have $k^* \approx 0$, they need to be on the same "side" of the fireball.
+The dashed blue lines represent these regions of homogeneity.
+For this simple case of a circular fireball, the blue circled regions are all about the same size.
+Here, one would say that the overall homogeneity region for large momentum particles is small.
+In contrast, the small momentum particles have a larger region of homogeneity.
+Inward-traveling particles from near the edge have approximately the same momentum as outward traveling particles in the center (both pointing the same direction).
+Even particles traveling in opposite directions still have a fairly small $k^*$.
+So these low momentum particles have a larger homogeneity region than the high-momentum particles, but even so their region is not the size of the entire fireball.
+
+Femtoscopy can measure homogeneity regions.
+In doing so, it yields a snapshot of the final size and shape of the interaction region.
+While it isn't a complete picture of the fireball, it is nonetheless the best picture experimentally available.
 
 \subsection{Hadronic interactions}
 \label{sec:HadronicInteractions}
-% Baryon--(anti)baryon correlation functions are also 
-%Femtoscopy can also be useful in the study of final-state interactions (FSI).  
-
 
 
 Femtoscopic correlation functions are sensitive to the interactions between the particles.
@@ -377,9 +383,8 @@ The analysis presented in this thesis, $\Lambda\Lambda$ and $\Lambda\bar{\Lambda
 The frontier of femtoscopy lies in studying heavier particle pairs.
 % Radii affected by freezeout times, 
 By virtue of their larger mass, particles such as p, $\Lambda$, and the cascade baryons ($\Xi^-$ and $\Xi^0$) can yield femtoscopic radii at much larger $m_\mathrm{T}$ than are accessible via pions.
-This allows them to 
-% Why does matter?
-In addition, the process of identifying V0s, neutral particles such as $\Lambda$ and $K^0_\mathrm{s}$ whose decay into charged particles looks roughly "V"-shaped, differs significantly from the process of identifying charged particles.
+In addition, femtoscopy gives access to the scattering paramaters of these particles, information that is sorely need for a number of heavier particle pairs.
+Finally, the process of identifying V0s, neutral particles such as $\Lambda$ and $K^0_\mathrm{s}$ whose decay into charged particles looks roughly "V"-shaped, differs significantly from the process of identifying charged particles.
 V0 particle femtoscopy and charged particle femtoscopy can therfore provide useful consistency checks for each other, as seen in the recent charged and neutral kaon analyses at ALICE \cite{Adam:2015vja}.
 
 As mentioned above, there is a need for experimental study of exotic particle interactions.
