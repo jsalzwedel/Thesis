@@ -80,17 +80,15 @@ CERN is near Geneva, Switzerland, and the 27 km ring of the LHC lies partly in F
 %There are several detectors built around the ring.
 
 The LHC is literally built upon previous successful experiments. 
-In order to get protons and ions traveling at very nearly the speed of light, they are sent through a series of increasingly powerful accelerators.
-They are then injected into the LHC ring in bunches of up to $10^{11}$ particles, with bunches traveling in both clockwise and counterclockwise directions around the ring \cite{Lefevre:1092437}.
+In order to get protons and ions traveling at very nearly the speed of light, they are sent through a series of increasingly powerful accelerators, each of which was a state of the art machine for particle physics in its day.
+Figure \ref{fig:CERNComplex} shows a diagram of the LHC and the accelerators that feed into it.
+Particles are injected into the LHC ring in bunches of up to $10^{11}$ particles, with bunches traveling in both clockwise and counterclockwise directions around the ring \cite{Lefevre:1092437}.
 The bunches are spaced a few nanoseconds apart.
 There are thousands of bunches per beam in proton-proton mode, while Pb-Pb mode has hundreds.
 Those bunches are steered around the ring with magnets as strong at 8 Tesla.
 The two beams are only allowed to intersect at four points, the four major LHC experiments: ALICE, LHC-b, CMS, ATLAS.
 At these intersection points, there can be millions or even hundreds of millions of proton-proton collisions per second.
 Ions have collision rates in the thousands.
-Figure \ref{fig:CERNComplex} shows a diagram of the LHC and the accelerators that feed into it.
- % Very small chance of ions colliding, but there are so many bunches and so many ions per bunch that  can get up to 500 Pb-Pb collisions per second.
- 
  
 \subsection{The ALICE detector}
 \label{sec:ALICEDetector}
@@ -258,9 +256,8 @@ Modern analyses look at all manner of hadrons, and therefore the correlations mi
 In the nuclear physics context, the focus of these analyses is on measuring very small sources, so the more general term \textit{femtoscopy} has come into use.
 
 As will be discussed in Section \ref{sec:CorrelationFunctionModel}, there is a correlation between the relative position of the particles at their moment of last scattering and their subsequent momentum at freezeout.
-The relative position of the particles can be described by a two-particle emission function. The final state of the particles, including their momenta, depends on the interactions between the particles and is accounted for by the two-particle wave function of the pair.
-
-Femtoscopic analyses are capable of probing both the two-particle emission function (i.e the size and shape of the source) and the interactions between particles. 
+The relative position of the particles can be described by a two-particle emission function.
+The final state of the particles, including their momenta, depends on the interactions between the particles and is accounted for by the two-particle wave function of the pair.
 
 \begin{figure}[hbt]
 \includegraphics[width=24pc]{Figures/BorrowedFigures/QandK.jpg}
@@ -268,8 +265,9 @@ Femtoscopic analyses are capable of probing both the two-particle emission funct
 \label{fig:QandK}
 \end{figure}
 
+Femtoscopic analyses are capable of probing both the two-particle emission function (i.e the size and shape of the source) and the interactions between particles. 
 The primary tool of femtoscopy is the correlation function.
-A femtoscopic correlation function is constructed by binning the momentum difference (usually called relative momentum) of pairs of particles.
+A femtoscopic correlation function is constructed by binning the momentum difference $k^\mu = (p_1^\mu - p_2^\mu)/2$ of pairs of particles.
 This is done for both a signal distribution and a background distribution, and the correlation function is the ratio of the two.
 Correlation functions are normalized such that a value of unity for a given bin suggests that there are no correlated effects between the particles in that bin.
 A value above unity means that some effect is causing an increase of pairs at a given relative momentum, while a value below unity (but never below zero) suggests that some effect is supressing pairs at that relative momentum.
@@ -284,14 +282,48 @@ More details on the experimental construction of correlation functions can be fo
 Femtoscopy is built on measuring the interference patterns of particles emitted incoherently from a source.
 Femtoscopic analyses are capable of measuring both spatial and temporal characteristics of these sources.
 
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/HomemadeFigures/FlowAndMomentum.pdf}
+\caption[Effect of radial flow on momentum]{A cartoon showing possibly emission momenta for particles at different places in the fireball.
+(Left) In a static source where no particles interact, particles are emitted isotropically, and there are no rescatterings to change their momenta.
+(Right) In an evolving source, the pressure of the fireball creates an outward radial flow of particles.
+Particles are more likely to be emitted with their momenta pointing outward.}
+\label{fig:FlowAndMomentum}
+\end{figure}
 
 As will be discussed in greater detail in Section \ref{sec:CorrelationFunctionModel}, femtoscopy does not actually measure the size of the full interaction region at the time of freezeout.
-Rather, it measures the size of the region in which particles are emitted with the same momentum, also called the region of homogeneity \cite{Akkelin:1995gh}.
+Rather, it measures the size of the region in which particles are emitted with approximately the same momentum, also called the region of homogeneity \cite{Akkelin:1995gh}.
 If particles were emitted isotropically throughout the interaction region, the measured source size would be the the full size of the interaction region.
+This would be the case if the source were static.
+If hadrons could not scatter off each other, then they would be emitted from the interaction region isotropically, as seen in the cartoon on the left of Figure \ref{fig:FlowAndMomentum}.
 However, effects such as radial flow create correlations between particle emission direction and position. 
-For example, a particle near the edge of the fireball is more likely to be emitted outward, where there are fewer particles to scatter off of, than it is for it to be emitted inward where it would have to travel through the bulk of the interaction region without scattering again. 
+The pressure of the fireball boosts the momentum of particles outward, as seen on the right hand side of Figure \ref{fig:FlowAndMomentum}.
+Particles can still freeze out with an inward-pointing momentum, but the probability of that happening will be suppressed.
+In simple terms, a particle near the edge of the fireball is more likely to be emitted outward, where there are fewer particles to scatter off of, than it is for it to be emitted inward where it would have to travel through the bulk of the interaction region without scattering again. 
+
+% Femtoscopic correlations such as quantum state interference only arise for particles with low relative momentum $k^\mu = \frac{1}{2}(..)
+% High momentum vs low momentum
+% The homogeneity region/radius is ... region where particles are 
+
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/HomemadeFigures/RegionsOfHomogeneity.pdf}
+\caption[Regions of homogeneity]{A cartoon showing regions of homogeneity---the regions where particles can be found with similar momenta and thus small relative momentum $k^\mu = (p_1^\mu - p_2^\mu)/2$.
+(Left) In a static source where no particles interact, particles are emitted isotropically throughout the interaction region.
+Pairs of high momentum particles with small $k^\mu$ can be found throughout the fireball, as can pairs of low momentum particles with small $k^\mu$.
+The regions of homogeneity are essentially the size of the fireball for pairs of any momentum.
+(Right) In an evolving source, the pressure of the fireball boosts the momenta of particles outward.
+High momentum particles with small $k^\mu$ are only found close together in small regions.
+Low momentum particles with small $k^\mu$ can be found in larger regions.
+High momentum particles have small regions of homogeneity, while low momentum particles have medium-sized regions.}
+\label{fig:RegionsOfHomogeneity}
+\end{figure}
+
+
 The homogeneity radii measured by femtoscopy give a snapshot of the final conditions of the fireball.
 These final conditions can help theorists tune their evolution models.
+
+
+
 
 Femtoscopic analyses traditionally study pions \cite{Goldhaber:1960sf,Aamodt:2011mr} because of their ready availability.  
 However, measurements of heavier particles such as kaons \cite{Abelev:2012ms} and baryons \cite{Gos:2007cj} can serve to complement the pion results.  
