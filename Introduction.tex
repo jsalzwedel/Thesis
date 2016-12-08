@@ -255,10 +255,6 @@ HBT was originally used to study photons and later used to look at pions, so it 
 Modern analyses look at all manner of hadrons, and therefore the correlations might be subject to bosonic, fermionic, or non-identical particle statistics.
 In the nuclear physics context, the focus of these analyses is on measuring very small sources, so the more general term \textit{femtoscopy} has come into use.
 
-As will be discussed in Section \ref{sec:CorrelationFunctionModel}, there is a correlation between the relative position of the particles at their moment of last scattering and their subsequent momentum at freezeout.
-The relative position of the particles can be described by a two-particle emission function.
-The final state of the particles, including their momenta, depends on the interactions between the particles and is accounted for by the two-particle wave function of the pair.
-
 \begin{figure}[hbt]
 \includegraphics[width=24pc]{Figures/BorrowedFigures/QandK.jpg}
 \caption[Relative momentum]{A cartoon showing the relative momentum $\vec{q} = \vec{p}_1 - \vec{p}_2$ for a pair of particles being emitted from a heavy-ion collision \cite{Plumberg:2016sig}.}
@@ -267,17 +263,29 @@ The final state of the particles, including their momenta, depends on the intera
 
 Femtoscopic analyses are capable of probing both the two-particle emission function (i.e the size and shape of the source) and the interactions between particles. 
 The primary tool of femtoscopy is the correlation function.
-A femtoscopic correlation function is constructed by binning the momentum difference $k^\mu = (p_1^\mu - p_2^\mu)/2$ of pairs of particles.
+A femtoscopic correlation function is constructed by binning the momentum difference $k^\mu = (p_1^\mu - p_2^\mu)/2$ of pairs of particles (this form of $k^\mu$ holds for identical particles; the general form is given in Equation \ref{eq:kmu}).
 This is done for both a signal distribution and a background distribution, and the correlation function is the ratio of the two.
+With a carefully chosen background distribution, uncorrelated phase space effects are divided out, and the correlation function can reveal correlated physics effects.
 Correlation functions are normalized such that a value of unity for a given bin suggests that there are no correlated effects between the particles in that bin.
 A value above unity means that some effect is causing an increase of pairs at a given relative momentum, while a value below unity (but never below zero) suggests that some effect is supressing pairs at that relative momentum.
 More details on the experimental construction of correlation functions can be found in Section \ref{sec:CorrelationFunctionConstruction}.
 
-% chaotic source
+As will be discussed in Section \ref{sec:CorrelationFunctionModel}, there is a correlation between the relative position of the particles at their moment of last scattering and their subsequent momentum at freezeout.
+The relative position of the particles is described by a two-particle emission function, which is essentially a probability distribution function for finding two particles separated by $\vec{r} = \vec{x}_1 - \vec{x}_2$.
+The final state of the particles, including their momenta, depends on the interactions between the particles and is accounted for by the two-particle wave function of the pair.
+The correlation function $C_P(k^*)$ is the convolution of the emission function and the wave function:
+\begin{equation}
+\label{eq:KooninPrattInIntro}
+C_P(k^*) =  \int d^3r S_{P} (r) \abs{\Psi(k^*,r)}^2.
+\end{equation}
+Here $k^* = \sqrt{-k^\mu k_\mu}$ is the magnitude of the relative momentum, $S_P(r)$ is the emission function for pairs of particles with total momentum $\vec{P} = \vec{p}_1 + \vec{p}_2$, and $\Psi(k*,r)$ is the properly symmetrized two-particle wave function of the pair.
+The wave function acts to Fourier transform the source function from a relative position space to relative momentum space.
+In the following two sections, we'll discuss the source functions and the interactions that make up the wave functions in greater detail.
+
 \subsection{Femtoscopic sources}
 \label{sec:FemtoSources}
 
-
+% chaotic source
 %In the context of both astronomy and particle physics, HBT/
 Femtoscopy is built on measuring the interference patterns of particles emitted incoherently from a source.
 Femtoscopic analyses are capable of measuring both spatial and temporal characteristics of these sources.
