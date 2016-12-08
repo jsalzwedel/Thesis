@@ -35,6 +35,7 @@
 
 % clickable table of contents
 \usepackage{color}   %May be necessary if you want to color links
+
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true, %set true if you want colored links
@@ -50,8 +51,8 @@
 \usepackage{amssymb}
 
 % mark overfull hboxes
-\usepackage[width=5pt,
-            height=0.5\baselineskip]{overcolored}
+%\usepackage[width=5pt,
+ %           height=0.5\baselineskip]{overcolored}
 
 % Fix quotation marks
 \usepackage [english]{babel}
@@ -62,6 +63,14 @@
 \makeatletter
 \g@addto@macro\@floatboxreset\centering
 \makeatother
+
+% Add backreferences
+\usepackage[backend=biber,backref=true,sorting=none]{biblatex}
+\addbibresource{bibfile.bib}
+\DefineBibliographyStrings{english}{%
+  backrefpage = {page},% originally "cited on page"
+  backrefpages = {pages},% originally "cited on pages"
+}
 
 %
 \begin{document}%
