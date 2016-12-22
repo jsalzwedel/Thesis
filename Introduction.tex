@@ -18,7 +18,8 @@ By studying the QGP, as well as the conditions that exist after the QGP dissipat
 
 Modern particle accelerators create conditions under which the QGP can exist for a short time \cite{Heinz:2000bk}.
 This is primarily done via the collision of heavy ions such as $\ce{^197 \mathrm{Au}}$ and $\ce{^208 \mathrm{Pb}}$.
-At energies seen by the Large Hadron Collider (LHC), where the ions have center of mass energies per nucleon on the order of tera electron Volts (TeV), these collisions can produce a hot, dense medium from which thousands of particles are emitted \cite{Aamodt:2010cz}.
+At energies seen by the Large Hadron Collider (LHC), the ions travel at nearly the speed of light ($c = 3 * 10^8 \mathrm{\frac{m}{s}}$), and they have center of mass energies per nucleon on the order of tera electron Volts (TeV).
+The collisions of these ions can produce a hot, dense medium from which thousands of particles are emitted \cite{Aamodt:2010cz}.
 This medium (the QGP and subsequent hadronic phase) has several names, such as "interaction region" or "particle-emitting source", though it is colloquially called a fireball.
 The collision, the medium, and the subsequently emitted and measured particles are collectively known as an event. 
 
@@ -32,7 +33,7 @@ After a few fm/$c$, the quarks and gluons cool down and hadronize into pions, ka
 \end{figure}
 
 Figure \ref{fig:HeavyIonEvolution} shows a cartoon of a heavy ion collision.
-It is suspected that the QGP exists for only a few moments after the collision of these ions, on time scales of about a few fm/$c$ (1 fm/$c$ = $10^{-15} \mathrm{m}/c \sim 10^{-23}$ seconds).
+It is suspected that the QGP exists for only a few moments after the collision of these ions, on time scales of about a few fm/$c$ (femtometers per speed of light, with 1 fm/$c$ = $10^{-15} \mathrm{m}/c \sim 10^{-23}$ seconds).
 Over time the plasma expands and cools, and eventually the quarks and gluons combine to form hadrons, a process called hadronization.
 In the subsequent hadronic phase, the hadrons scatter off each other in an elaborate billiard ball game, with particles near the edge of the expanding fireball having the possibility to free-stream to the detector.
 Eventually, the source becomes dilute enough that the inter-particle scatterings die off. This occurs on time scales on the order of 10 fm/$c$ \cite{BraunMunzinger:2007zz}.
@@ -102,7 +103,8 @@ Figure \ref{fig:ALICEDetector} shows a cartoon of the ALICE detector.
 The main barrel of the detector is 14.1 m long and 15.8 m in diameter. The outer layer (shown in red in the cartoon), is an 0.5 T solenoidal magnet.
 The two beams are steered such that most collision events occur within 10 cm of the longitudinal center of the detector (i.e. along the beam axis), and within about a cm of the radial center.
 
-The ALICE detector is composed of many subdetectors \cite{Aamodt:2008zz}.
+The ALICE detector is composed of many subdetectors \cite{Aamodt:2008zz}, several of which are designed to monitor the trajectories of charged particles that pass through them.
+These reconstructed trajectories are called tracks.
 The inner most detector is the Inner Tracking System (ITS), which provides full azimuthal coverage with a radial range of 3.9 cm to 43 cm.
 The ITS consists of 6 layers of silicon detectors: two Silicon Pixel Detectors, two Silicon Drift Detectors, and two Silicon Strip Detectors.
 The ITS serves multiple purposes.
@@ -119,13 +121,18 @@ When a charged particle passes through the TPC, it ionizes the gas in its wake.
 The electric field then drives the electron clouds toward the readout electronics.
 These clouds quickly reach their max drift velocity of 2.7 cm/$\mu$s (27 km/s). 
 The position of the track can thus be determined by the length of time it takes for the ionized gas to reach the readout chamber.
-The 0.5 T magnetic field causes the track's trajectory to bend, and the track's momentum can be determined by the curvature of the track.
-The TPC therefore is able to determine the 3D position of the track throughout the TPC with mm precision, the momentum of the track, and its d$E$/d$x$ value.
+The 0.5 T magnetic field causes the track's trajectory to bend, and the particle's momentum can be determined by the curvature of the track.
+The TPC therefore is able to determine the 3D position of the track throughout the TPC with mm precision, the momentum of the charged particle, and its d$E$/d$x$ value.
 This is the main tracking system of the ALICE detector, and it can provide PID information for particles with momentum up to $\sim 1$ GeV/$c$.
 
 \begin{figure}[hbt]
 \includegraphics[width=36pc]{Figures/BorrowedFigures/ExampleCollision.png}
-\caption[Example of a Pb-Pb collision]{An example of a Pb-Pb collision measured at the ALICE detector.}
+\caption[Example of a Pb-Pb collision]{An example of a Pb-Pb collision measured at the ALICE detector.
+Charged particles traveling through the detector leave behind tracks that the detector can measured, each of which is depicted by a colored line.
+The white region in the center of the detector is the Inner Tracking System, while the surrounding grey region is the Time Projection Chamber.
+Tracks measured by the ITS are grey, while tracks found by the TPC are yellow.
+Combined tracking information from both detectors is used to improve the momentum resolution of each track.
+}
 \label{fig:ExampleCollision}
 \end{figure}
 Figure \ref{fig:ExampleCollision} shows a Pb-Pb collision recorded in the first run of the LHC.
@@ -380,7 +387,7 @@ The analysis presented in this thesis, $\Lambda\Lambda$ and $\Lambda\bar{\Lambda
 The frontier of femtoscopy lies in studying heavier particle pairs.
 % Radii affected by freezeout times, 
 By virtue of their larger mass, particles such as p, $\Lambda$, and the cascade baryons ($\Xi^-$ and $\Xi^0$) can yield femtoscopic radii at much larger $m_\mathrm{T}$ than are accessible via pions.
-In addition, femtoscopy gives access to the scattering paramaters of these particles, information that is sorely need for a number of heavier particle pairs.
+In addition, femtoscopy gives access to the scattering paramaters of these particles, information that is sorely needed for a number of heavier particle pairs.
 Finally, the process of identifying V0s, neutral particles such as $\Lambda$ and $K^0_\mathrm{s}$ whose decay into charged particles looks roughly "V"-shaped, differs significantly from the process of identifying charged particles.
 V0 particle femtoscopy and charged particle femtoscopy can therfore provide useful consistency checks for each other, as seen in the recent charged and neutral kaon analyses at ALICE \cite{Adam:2015vja}.
 
