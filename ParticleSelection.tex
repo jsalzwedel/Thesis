@@ -47,7 +47,7 @@ Future investigation of $p_\mathrm{T}$-dependent invariant mass peak and subsequ
 
 The optimal cut values were determined by comparing distributions of reconstructed $\Lambda$ in Monte Carlo HIJING events with simulated detector effects.  
 The data set (LHC12a17a\_fix) included injected strange signals (extra $\Lambda$, $\bar{\Lambda}$, $\Xi$, and $\Omega$ in each event).  
-In this analysis, we have estimated the reconstruction efficiency of primary and secondary $\Lambda$ reconstruction efficiency in an effort to account for feeddown effects (see Section \ref{sec:ReconstructionEff}).
+In this analysis, we have estimated the reconstruction efficiency of primary and secondary $\Lambda$ in an effort to account for feeddown effects (see Section \ref{sec:ReconstructionEff}).
 The added particles sample a $p_\mathrm{T}$ range that allows for easy detector reconstruction, which skews those efficiency estimates.
 Therefore, we have performed our MC analyses with  the injected signals removed.  An injected primary particle (AliAODMCParticle) has AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$. 
 Likewise, an injected secondary particle (e.g.\ $\Lambda$ from a $\Sigma$ baryon decay) has a mother particle with AliAODMCParticle::GetLabel() greater than AliGenHijingEventHeader::NProduced()$-1$.  
@@ -126,14 +126,14 @@ The estimated ratio of real $\bar{\Lambda}$ to all reconstructed $\bar{\Lambda}$
 \label{fig:ALamInvMass}
 \end{figure}
 
-\subsection{Decay radius (XY) cut}
-The V0 finder includes a default decay radius cut of 0.9 cm, which removes V0s with a radial decay length less than that value.  
-This helps mitigate issues such as high track density which can complicate reconstruction.  
-This analysis only uses the default cut, though it is possible that a tighter cut could yield improved $\Lambda$ purity without severely impacting the available statistics.  
-Changes in this cut are expected to have only small effects on the correlation functions themselves.  
-As will be described later in this note, fits of correlation functions have a $\lambda$ parameter which accounts for the pair-purity (roughly the square of the single particle purity).  
-In any case, a few percent increase in purity should not drastically impact the shape of the correlation functions.
-Studies of this cut may improve V0 selection for future analyses.
+%\subsection{Decay radius (XY) cut}
+%The V0 finder includes a default decay radius cut of 0.9 cm, which removes V0s with a radial decay length less than that value.  
+%This helps mitigate issues such as high track density which can complicate reconstruction.  
+%This analysis only uses the default cut, though it is possible that a tighter cut could yield improved $\Lambda$ purity without severely impacting the available statistics.  
+%Changes in this cut are expected to have only small effects on the correlation functions themselves.  
+%As will be described later in this note, fits of correlation functions have a $\lambda$ parameter which accounts for the pair-purity (roughly the square of the single particle purity).  
+%In any case, a few percent increase in purity should not drastically impact the shape of the correlation functions.
+%Studies of this cut may improve V0 selection for future analyses.
 
 \subsection{Shared daughter cut}
 
@@ -182,4 +182,4 @@ One of the benefits of this cut is that it helps remove a splitting-like effect 
 By the nature of the reconstruction cuts, all three of the V0s will be close in momentum space.  
 Therefore a pair constructed from the two fake V0s will contaminate the low relative-momentum region of the correlation function.  
 That pair of fake V0s does not share any daughters with each other, so it is not kept out of the correlation function by simple daughter ID checks.  
-But the iterative daughter-sharing cut described above is capable removing this fraudulent pair, since either of the fake V0s is likely to be removed for sharing a daughter with the true V0.
+But the iterative daughter-sharing cut described above is capable of removing this fraudulent pair, since either of the fake V0s is likely to be removed for sharing a daughter with the true V0.
