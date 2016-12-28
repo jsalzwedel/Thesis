@@ -140,7 +140,7 @@ The tracking by the ITS is shown in white, while tracking from the TPC is yellow
 The TPC can provide quality tracking information for ion events with thousands of charged particles, but it has the drawback of being a slow detector compared to the ITS.
 The maximum drift time of a track is about 90 $\mu$s, so if two or more events occur within that window their tracking information can overlap.
 This is called event pile-up.
-The TPC can isolate and record central Pb-Pb events at a rate of 300 Hz and p-p events at a rate of 1 kHz.
+The TPC can isolate and record central Pb-Pb events (events with head-on collisions) at a rate of 300 Hz and p-p events at a rate of 1 kHz.
 
 The Time-Of-Flight (TOF) detector is a 20 cm thick shell around the TPC.
 In conjunction with the T0 detector which determines the timing of the initial collision, the TOF can measure the time it takes a particle to reach it.
@@ -148,11 +148,41 @@ With this information and momentum information from other tracking detectors, th
 The TOF can successfully distinguish between particles with momentum as low as 0.5 GeV/$c$ up to 3-4 GeV/$c$, depending on the particle, and it essential for PID of particles above the 1 GeV/$c$ limit of the TPC. 
 
 The T0, VZERO, and Zero Degree Calorimeter (ZDC) detectors provide event triggering for the ALICE detector.
-Event triggering detectors monitor activity in the beam collision area, and they inform the detector when to record data.
+Event-triggering detectors monitor activity in the beam collision area, and they inform the detector when to record data.
 The ALICE detector therefore does not need to record information for every interaction, including interactions from the occasional cosmic rays striking the detector or the beam striking ambient gas.
-Instead, it can selectively record events that appear interesting.
-The primary triggers used with Pb-Pb events are minimum bias, semi-central, and central.
+Instead, it can use event triggers to selectively record events that appear relevant to the designated research goals of the ALICE collaboration.
+For example, there may be an interest in central collisions, which produce the most particles.
+The primary triggers used by ALICE with Pb-Pb events are minimum bias, semi-central, and central, each of which will be described in the following section.
 
+\subsection{Event characterization}
+\label{sec:EventCharacterization}
+
+It is often useful to classify a heavy-ion collision by how central/peripheral (head-on/glancing) the collision is.
+Figures \ref{fig:GlauberImpactParameter}, \ref{fig:GlauberCentrality}, and \ref{fig:NpartCentrality} show several ways of quantifying this \cite{Abelev:2013xaa, Aamodt:2010pa}.
+One is by impact parameter $b$, which is the distance from the center of one nucleus to the center of the other.
+Another is by the total number of participants $N_\mathrm{part}$ --- the nucleons from either ion that interact with nucleons from the other ion.
+With 208 nucleons in a Pb nucleus, the maximum number of participants is 416.
+A third way of classifying them is by multiplicity (the number of particles produced in each collision), as central collisions tend to produce more particles than peripheral collisions.
+
+While any of these definitions might be useful from a theoretical standpoint, they have varying degrees of usefulness and accessibility in an experimental setting.
+Impact parameter, with a scale of femtometers, is inaccessible by experimental measurement.
+The number of participants can be estimated using detectors such as the ZDC, which measure the number of spectator nucleons (nucleons that are not participants) on a collision.
+And the number of particles is easily quantified; in practice, experiments often use the number of charged particles in an event as a proxy for the total number of particles in the event.
+At ALICE, typically only particles found
+at mid-pseudorapidity $\abs{\eta} < 0.8$ are used in these estimates, where pseudorapidity is defined as
+\begin{equation}
+\label{eq:Pseudorapidity}
+\eta = \frac{1}{2} \ln \left( \frac{\abs{p} + p_{\mathrm{z}}}{\abs{p} + p_{\mathrm{z}}} \right),
+\end{equation}
+and $p$ and $p_\mathrm{z}$ are a particle's three-vector momentum and momentum along the beam axis, respectiviely.
+
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/BorrowedFigures/NpartCentrality.pdf}
+\caption[Charged-particle multiplicity distribution used for centrality definition]{
+Uncorrected charged-particle multiplicity measured by the ALICE TPC at mid-pseudorapidity ($\abs{\eta} < 0.8$) in $\sqrt{s_\mathrm{NN}} = 2.76$ TeV Pb-Pb collisions \cite{Aamodt:2010pa}.
+Centrality classes are defined in percentile bins with 0-5\% corresponding to the most central collisions with the largest multiplicities, and 95-100\% corresponding to peripheral collisions with the smallest multiplicities.}
+\label{fig:NpartCentrality}
+\end{figure}
 \begin{figure}[hbt]
 \includegraphics[width=36pc]{Figures/BorrowedFigures/GlauberImpactParameter.pdf}
 \caption[Monte Carlo Glauber impact parameter simulation]{Distribution of $\sqrt{s_\mathrm{NN}} = 2.76$ TeV Pb-Pb collision impact parameters $b$ from a Monte Carlo Glauber simulation \cite{Abelev:2013xaa}.
@@ -166,22 +196,20 @@ Bands indicate the impact parameters associated with different centrality classe
 \caption[Monte Carlo Glauber number of participants simulation]{A Monte Carlo Glauber simulation of the total number of nucleons involved in $\sqrt{s_\mathrm{NN}} = 2.76$ TeV Pb-Pb collisions \cite{Abelev:2013xaa}.
 A nucleon from one ion that interacts with a nucleon from another is called a participant.
 In a peripheral collision, each ion only has a handful of participants.
-Central collisions may have $\sim 200$ participants.
+Central collisions may have $\sim 200$ participants per ion.
 The estimated participant ranges of the centrality classes are shown.
 }
 \label{fig:GlauberCentrality}
 \end{figure}
-Ion collisions can be classified several ways \cite{Abelev:2013xaa} as seen in Figures \ref{fig:GlauberImpactParameter} and \ref{fig:GlauberCentrality}.
-One is by impact parameter $b$, which is the distance from the center of one nucleus to the center of the other.
-Another is by the number of participants --- the nucleons from one ion that interact with nucleons from the other.
-From an experimental perspective, the most common way to define them is by centrality percentile.
-Centrality is calibrated from the number of charged particles produced in each collision.
-Central collisions (0-10\%) have the highest multiplicity, while peripheral (90\% and above) collisions have the smallest.
-Minimum bias triggers record an even sampling of the centrality distribution.
-The central trigger records only 0-10\% central events, and the the semi-central trigger records events in the 10-50\% centrality range.
-Signals from the ZDC and VZERO provide centrality estimates for the trigger process.
 
-%EMCAL
+To bridge these various ways of classifying collisions, we define centrality classes.
+There are a number of ways to calibrate centrality, the most common of which is by ranking events in terms of their multiplicity.
+Central collisions (0-10\%) have the highest multiplicity, while peripheral (90\% and above) collisions have the smallest, as seen in Figure \ref{fig:NpartCentrality} \cite{Aamodt:2010pa}.
+Centrality can also be mapped onto theoretical calculations of impact parameter (Figure \ref{fig:GlauberImpactParameter}) and $N_\mathrm{part}$ (Figure \ref{fig:GlauberCentrality}) \cite{Abelev:2013xaa}.
+
+Multiplicity estimates from the TPC, along with timing information and other signals from the ZDC and VZERO, provide event triggering and centrality measurements.
+The minimum bias trigger records an even sampling of the centrality distribution.
+The central trigger records only 0-10\% central events, and the the semi-central trigger records events in the 10-50\% centrality range.
 
 \section{Heavy-ion analyses}
 
@@ -383,16 +411,31 @@ The analysis presented in this thesis, $\Lambda\Lambda$ and $\Lambda\bar{\Lambda
 \subsection{$\Lambda$ femtoscopy}
 \label{sec:LambdaFemto}
 
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/HomemadeFigures/LambdaDecayCartoon.pdf}
+\caption[Cartoon of lambda decay]
+{
+Cartoon of the decay of a lambda baryon ($\Lambda$).
+A $\Lambda$ moving near the speed of light decays into a proton and a pion after traveling a few centimeters away from the fireball in which it was created. 
+The $\Lambda$ is charge-neutral, so it is not detected directly; instead it is reconstructed by looking for pairs of charged particles that fit a certain decay topology.
+See Section \ref{sec:ParticleSelection} for more details about $\Lambda$ reconstruction.
+%The $\Lambda$ is charge-neutral, so its trajectory is straight.
+%But the proton and pion that it decays into are charged, so their trajector is curved by the magnetic field created by the surrounding detector.
+}
+\label{fig:LambdaDecayCartoon}
+\end{figure}
+
 % Describe why lambdas are useful for these studies
 The frontier of femtoscopy lies in studying heavier particle pairs.
 % Radii affected by freezeout times, 
 By virtue of their larger mass, particles such as p, $\Lambda$, and the cascade baryons ($\Xi^-$ and $\Xi^0$) can yield femtoscopic radii at much larger $m_\mathrm{T}$ than are accessible via pions.
 In addition, femtoscopy gives access to the scattering paramaters of these particles, information that is sorely needed for a number of heavier particle pairs.
 Finally, the process of identifying V0s, neutral particles such as $\Lambda$ and $K^0_\mathrm{s}$ whose decay into charged particles looks roughly "V"-shaped, differs significantly from the process of identifying charged particles.
-V0 particle femtoscopy and charged particle femtoscopy can therfore provide useful consistency checks for each other, as seen in the recent charged and neutral kaon analyses at ALICE \cite{Adam:2015vja}.
+Figure \ref{fig:LambdaDecayCartoon} shows a cartoon of a $\Lambda$ decay.
+Because of the differences in their analysis techniques, V0 particle femtoscopy and charged particle femtoscopy can therfore provide useful consistency checks for each other, as seen in the recent charged and neutral kaon analyses at ALICE \cite{Adam:2015vja}.
 
 As mentioned above, there is a need for experimental study of exotic particle interactions.
-For example, there is a sizable disparity in the p$\Lambda$ singlet-state scattering length between the leading order (1.9 fm) and next-to-leading order (2.9 fm) chiral effective field theory calculations \cite{Haidenbauer:2013oca}.
+For example, there is a sizable disparity in the p$\Lambda$ singlet-state scattering length $f_0$ between the leading order ($f_0 = 1.9$ fm) and next-to-leading order ($f_0 = 2.9$ fm) chiral effective field theory calculations \cite{Haidenbauer:2013oca}.
 %Scattering data for the short-lived (<lifetime> \cite{Olive:2016xmw}) , neutral $\Lambda$ are hard to come by.
 There are only a handful of measurements of the $\Lambda\Lambda$ scattering length: one via the decay of a hypernucleus (a nucleus which contains one or more strange particles) \cite{Takahashi:2001nm,Filikhin:2002wm,Hiyama:2002yj}, and one via femtoscopy at STAR \cite{Adamczyk:2014vca}, and another via femtoscopy at the Super Proton Synchrotron (SPS) \cite{Andersen:1999gq}.
 The SPS experiment did not have enough data to resolve any nuclear interaction.
