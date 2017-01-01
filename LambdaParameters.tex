@@ -127,7 +127,7 @@ The results without efficiency corrections are visible in Figure \ref{fig:Lambda
 The results with efficiency corrections can be seen in Figure \ref{fig:LambdaYieldsWithEfficiency}.
 
 
-\begin{figure}[hbt]
+\begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-06-LambdaYieldsNoEfficiency.pdf}
 \caption[$\Lambda$ yields from THERMINATOR 2 without efficiency corrections]{
 Expected yield of $\Lambda$ in each event arising from different sources, as predicted by the thermal hadronization model in THERMINATOR 2 \cite{Chojnacki:2011hb}. The x-axis shows the different origins: primary $\Lambda$, secondary $\Lambda$ coming from various hyperons, and fakes (misidentified particles).  $\Lambda$ coming from the strong decay of short-lived resonances are included in the primary $\Lambda$ count. The number of fakes in each event are generated via a Poissonian distribution, assuming an $\approx 5$\% impurity. Reconstruction inefficiencies, which naturally reduce the number of reconstructed particles, are not included in this plot.
@@ -136,7 +136,7 @@ Expected yield of $\Lambda$ in each event arising from different sources, as pre
 \end{figure}
 
 
-\begin{figure}[hbt]
+\begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-06-LambdaYieldsWithEfficiency.pdf}
 \caption[$\Lambda$ yields from THERMINATOR 2 with efficiency corrections]{
 Expected yield of $\Lambda$ in each event arising from different sources, as predicted by the thermal hadronization model in THERMINATOR 2 \cite{Chojnacki:2011hb}. The x-axis shows the different origins: primary $\Lambda$, secondary $\Lambda$ coming from various hyperons, and fakes (misidentified particles).  $\Lambda$ coming from the strong decay of short-lived resonances are included in the primary $\Lambda$ count. The number of fakes in each event are generated via a Poissonian distribution, assuming an $\approx 5$\% impurity. Reconstruction efficiency corrections (estimated in Section \ref{sec:ReconstructionEff}) are included in these yields.
@@ -187,7 +187,7 @@ Here the daughters of the V0s are required to be in mid-rapidity and surpass a m
 At each stage, the MC truths of all remaining particles of the following types were counted: primary $\Lambda$; secondary $\Lambda$ from $\Sigma^0$, $\Sigma^*$, $\Xi^0$, $\Xi^-$, $\Omega$, and other sources; the respective anti-particles; $\mathrm{K}^0_{\mathrm{S}}$ misidentified as $\Lambda$ or $\bar{\Lambda}$; other misidentified V0s; and fake V0s reconstructed in the V0 finder.  
 The resulting yields are visible in Figure \ref{fig:MCYields}.
 
-\begin{figure}[hbt]
+\begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/2014-02-03-MCYields.pdf}
 \caption[$\Lambda$ MC Yields at Different Reconstruction Stages]{
 MC truth yields of $\Lambda$ at different stages of reconstruction.
@@ -200,16 +200,8 @@ Only midrapidity particles that exceed a minimum $p_\mathrm{T}$ cut have been ex
 \label{fig:MCYields}
 \end{figure}
 
-The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  
-Figure \ref{fig:BeginToV0} shows one such ratio.
-Here, one can see the fraction of $\Lambda$ of various parentage that were generated in the event that were also recognized as V) candidates by the V0 finder.
-Note that roughly a third of them are already lost at this stage because of the $\Lambda \rightarrow \mathrm{n}\pi^0$ decay channel.
-One curious feature of this plot is that $\Lambda$ from weak decays have a much better chance of being found than primary $\Lambda$.
-We suspect that this may be due to topological cuts in the V0 finder that have been designed to exclude primary tracks.
-$\Lambda$ from weak decays have a larger average decay length than primary $\Lambda$, and their daughter tracks have a larger average DCA to the primary vertex.
-As a result, those daughter tracks are less likely to be ignored as primary tracks.
 
-\begin{figure}[hbt]
+\begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-10-FractionBeginToV0Finder.pdf}
 \caption[V0 finder efficiency]{
 Average fraction of true $\Lambda$ (primary and secondary) in underlying MC events that are labeled as V0 candidates by the V0 finder.
@@ -223,12 +215,16 @@ Their daughter tracks will have a larger average DCA to the primary vertex, so t
 \label{fig:BeginToV0}
 \end{figure}
 
+The results of Figure \ref{fig:MCYields} can be better interpreted by taking the ratios of the yields at different stages.  
+Figure \ref{fig:BeginToV0} shows one such ratio.
+Here, one can see the fraction of $\Lambda$ of various parentage that were generated in the event that were also recognized as V) candidates by the V0 finder.
+Note that roughly a third of them are already lost at this stage because of the $\Lambda \rightarrow \mathrm{n}\pi^0$ decay channel.
+One curious feature of this plot is that $\Lambda$ from weak decays have a much better chance of being found than primary $\Lambda$.
+We suspect that this may be due to topological cuts in the V0 finder that have been designed to exclude primary tracks.
+$\Lambda$ from weak decays have a larger average decay length than primary $\Lambda$, and their daughter tracks have a larger average DCA to the primary vertex.
+As a result, those daughter tracks are less likely to be ignored as primary tracks.
 
-Figure \ref{fig:V0ToRecon} shows the fraction of V0 candidates in the V0 finder that survived all the reconstruction cuts.  
-From this, one can see our the topological cuts at work --- primary $\Lambda$, $\Lambda$ from $\Sigma^0$, and $\Lambda$ from resonance decays have a much better survival rate than $\Lambda$ from weak decays.
-
-
-\begin{figure}[hbt]
+\begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-10-FractionV0FinderToRecon.pdf}
 \caption[Topological cut efficiency]{
 Average fraction of true $\Lambda$ in the V0 finder of MC events that pass all reconstruction cuts. The topological cuts of this analysis (see Section \ref{sec:Recon}) have been selected to preferentially remove secondary $\Lambda$ from weak decays. Within the limits of the ALICE tracking resolution, $\Lambda$ from $\Sigma^0$ and resonance decays look like and reconstruct like primary $\Lambda$.
@@ -236,13 +232,16 @@ Average fraction of true $\Lambda$ in the V0 finder of MC events that pass all r
 \label{fig:V0ToRecon}
 \end{figure}
 
-\begin{figure}[hbt]
+\begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-10-FractionBeginToRecon.pdf}
 \caption[Total reconstruction efficiency]{
 Average fraction of true $\Lambda$ in underlying MC events that pass all reconstruction cuts. The first bin shows the efficiency of reconstructing primary $\Lambda$, while the other bins show the reconstruction efficiency of $\Lambda$ that are daughters of the labeled particles. The results in this plot are the product of the results in Figures \ref{fig:BeginToV0} and \ref{fig:V0ToRecon}. The reconstruction efficiency of a $\Lambda$ of any origin is approximately 15\%.
 }
 \label{fig:BeginToRecon}
 \end{figure}
+
+Figure \ref{fig:V0ToRecon} shows the fraction of V0 candidates in the V0 finder that survived all the reconstruction cuts.  
+From this, one can see our the topological cuts at work --- primary $\Lambda$, $\Lambda$ from $\Sigma^0$, and $\Lambda$ from resonance decays have a much better survival rate than $\Lambda$ from weak decays.
 
 The final ratio to consider is Figure \ref{fig:BeginToRecon}, which shows the reconstruction efficiency from the beginning (particles in the underlying event) to the end (all particles passing all cuts).
 This information, which is just the product of the previous two figures, conveys the overall reconstruction efficiency of $\Lambda$ of different origins.
@@ -271,7 +270,7 @@ This excludes $\Omega$ pairs entirely, as well as the identical $\Xi$ pairs, $\X
 
 
 
-\begin{figure}[hbt]
+\begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-12-LambdaParamsParticle.pdf}
 \caption[Particle-particle $\lambda$ parameters]{
 Estimated $\lambda$ parameters for various particle-particle contibutions.
@@ -279,7 +278,7 @@ Estimated $\lambda$ parameters for various particle-particle contibutions.
 \label{fig:LambdaParParticle}
 \end{figure}
 
-\begin{figure}[hbt]
+\begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-12-LambdaParamsAntiparticle.pdf}
 \caption[Antiparticle-antiparticle $\lambda$ parameters]{
 Estimated $\lambda$ parameters for various antiparticle-antiparticle contibutions.
@@ -287,7 +286,7 @@ Estimated $\lambda$ parameters for various antiparticle-antiparticle contibution
 \label{fig:LambdaParAntiparticle}
 \end{figure}
 
-\begin{figure}[hbt]
+\begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/YieldAndEff/2016-08-12-LambdaParamsParticleAntiparticle.pdf}
 \caption[Particle-antiparticle $\lambda$ parameters]{
 Estimated $\lambda$ parameters for various particle-antiparticle contibutions. The sum of the symmetric off-diagonal elements (e.g.\ $\Lambda\bar{\Sigma}^0$ and $\bar{\Lambda}\Sigma^0$) are approximately the same as the respective element ($\Lambda\Sigma$) in the particle-particle matrix, Figure \ref{fig:LambdaParParticle}.
