@@ -242,7 +242,7 @@ Elliptic flow owes much of its existence to the initial spatial anisotropy of th
 The study of anisotropic flow helps us understand the initial conditions and the evolution of heavy-ion collisions.
 Theorists have had a great deal of success modeling  this evolution, and the evolution of the QGP phase in particular, using relativistic hydrodynamic calculations \cite{Heinz:2013th}.
 This has lead some to declare that the quark-gluon plasma is "most perfect fluid" \cite{Heinz:2005zg}, due to its adherence to ideal fluid dynamics.
-Nonetheless, viscous effects have been found to have significant effects on the flow coefficients for particles with large transverse (radially outward from the beam axis) momentum $p_\mathrm{T}$.
+Nonetheless, viscous effects have been found to have significant effects on the flow coefficients for particles with large transverse momentum (radially outward from the beam axis) $p_\mathrm{T} = \sqrt{\vec{p}^2 - p_z^2}$, where $p_z$ is the momemtum along the beam-axis.
 Flow studies continue to be an important tool in understanding the dynamics of heavy-ion collisions.
 
 \subsection{Spectra}
@@ -298,7 +298,7 @@ By measuring the interference pattern of the light for different photomultiplier
 Pions with momenta $p_1$ and $p_2$ are emitted from points $x_1$ and $x_2$, a separation of $r = x_1 - x_2$. 
 The momenta of the pions are measured by a particle detector such as ALICE.
 By looking at correlations of many pairs of pions, one can measure the size of the two-particle emission function $S(r)$, which describes the separation distribution of the emission points of pairs of particles.
-In practice, only pairs of particles with small relative momentum $k = (p_1 - p_2)/2 \lesssim 200$ MeV/$c$ are sensitive to the size of the emission region.
+In practice, only pairs of particles with small relative momentum $k = \abs{p_1 - p_2}/2 \lesssim 100$ MeV/$c$ are sensitive to the size of the emission region.
 }
 \label{fig:HeavyIonHBT}
 \end{figure}
@@ -310,22 +310,34 @@ HBT was originally used to study photons and later used to look at pions, so it 
 Modern analyses look at all manner of hadrons, and therefore the correlations might be subject to bosonic, fermionic, or non-identical particle statistics.
 In the nuclear physics context, the focus of these analyses is on measuring very small sources, so the more general term \textit{femtoscopy} has come into use.
 
-%\begin{figure}[hbt]
-%\includegraphics[width=24pc]{Figures/BorrowedFigures/QandK.jpg}
-%\caption[Relative momentum]{A cartoon showing the relative momentum $\vec{q} = \vec{p}_1 - \vec{p}_2$ for a pair of particles being emitted from a heavy-ion collision \cite{Plumberg:2016sig}.}
-%\label{fig:QandK}
-%\end{figure}
+
 \subsection{Femtoscopic correlation functions}
 \label{sec:FemtoscopicCorrelationFunctions}
 
 %femtoscopic analyses are capable of probing both the two-particle emission function (i.e the size and shape of the source) and the interactions between particles. 
+\begin{figure}[hbtp]
+\includegraphics[width=24pc]{Figures/BorrowedFigures/PionCorrelationFunctions.pdf}
+\caption[Femtoscopy of same-charge and mixed-charge pions]{
+Pion correlation functions measured in $\sqrt{s_\mathrm{NN}} = 2.76$ TeV Pb-Pb by ALICE.
+Two-particle correlation functions $C_2$ are shown for 0-5\% central collisions as a function of the relative momentum $q \equiv 2 \sqrt{-k^\mu k_\mu}$.
+Each panel shows correlation functions constructed with pairs from a different average transverse momentum range $k_\mathrm{T} = (p_\mathrm{T,1} + p_\mathrm{T,2})/2$. 
+Correlation functions of mixed-charge pions (blue boxes) have a strong enhancement (deviation from $C(q) = 1$) at low $q$ arising from Coulomb attraction.
+Same-charge pions (red circles) have an enhancement from bosonic quantum interference and a dip at very low $q$ from Coulomb repulsion.
+The figure also includes a fit to the data using a Gaussian parametrization of the source size and a non-Gaussian fit using Edgeworth coefficients \cite{Blinnikov:1997jq}.}
+\label{fig:PionCorrelationFunctions}
+\end{figure}
+
 The main tool of femtoscopy is the correlation function $C(k)$, which reveals correlations among pairs of particles as a function of the momentum difference $k^\mu = (p_1^\mu - p_2^\mu)/2$ of those particles (this form of $k^\mu$ holds for identical particles; the general form is given in Equation \ref{eq:kmu}).
 Correlation functions are typically normalized such that a value of unity for a given bin suggests that there are no correlated effects between the particles in that bin.
 A value above unity means that some effect is causing an increase of pairs at a given relative momentum, such as the Bose-Einsten enhancement of identical pions. 
 A value below unity (but never below zero) suggests that an effect is supressing pairs at that relative momentum, such as the Coulomb repulsion of of same-sign pions.
+The Coulomb attraction/repulsion of opposite-sign/same-sign pions is visible in Figure \ref{fig:PionCorrelationFunctions}, which shows pion correlation functions measured in $\sqrt{s_\mathrm{NN}} = 2.76$ TeV Pb-Pb by ALICE.
+Here, the two-particle correlation functions $C_2$ are shown for 0-5\% central collisions as a function of $q \equiv 2 \sqrt{-k^\mu k_\mu}$.
+Each panel shows correlation functions constructed with pairs from a different average transverse momentum range $k_\mathrm{T} = (p_\mathrm{T,1} + p_\mathrm{T,2})/2$ (pair transverse momentum is usually denoted as $k_\mathrm{T}$, but throughout this thesis, we will use $P_\mathrm{T} \equiv k_\mathrm{T}$ to avoid confusion with the momentum difference $k$). 
+The figure also includes a fit to the data using a Gaussian parametrization of the source size and a non-Gaussian fit with Edgeworth coefficients \cite{Blinnikov:1997jq} (more on femtoscopic sources in Sections \ref{sec:FemtoSources} and \ref{sec:SourceFunctions}).
 
 The correlation function is constructed as a ratio of a signal distribution over a background distribution.
-Both distributions are binned in $k$, sometimes with $k$ as a 3-vector and sometimes as a magnitude.
+Both distributions are binned in $k$, sometimes with $k$ as vector and sometimes as a magnitude.
 The signal distribution sums over pairs of particles where both particles come from the same collision event, aggregated over many events.
 The background distribution is created to closely match the phase space of the signal distribution, but without any correlated physics effects like Coulomb attraction/repulsion.
 The uncorrelated, relative-momentum phase space is the combinatoric momentum difference of the single-particle spectra of the particles being studied, $\frac{dN_1}{d^3 p}$ and $\frac{dN_2}{d^3 p}$.
@@ -393,7 +405,7 @@ The region of homogeneity is essentially the size of the fireball for the low-mo
 \label{fig:RegionsOfHomogeneity}
 \end{figure}
 
-Figure \ref{fig:RegionsOfHomogeneity} illustrates the effect of radial flow, which causes the size of homogeneity region to depend on the average transverse-momentum $P_\mathrm{T} = p_(\mathrm{T,1} + p_\mathrm{T,2})/2$ of the particles being studied.
+Figure \ref{fig:RegionsOfHomogeneity} illustrates the effect of radial flow, which causes the size of homogeneity region to depend on the average transverse-momentum $P_\mathrm{T} = (p_\mathrm{T,1} + p_\mathrm{T,2})/2$ of the particles being studied.
 In the figure, a hadronic rescattering model \cite{Humanic:2005ye} has been used to determine the freezeout positions of pions in S-Pb collisions at SPS energies.
 The left plots show pions with $0 < p_\mathrm{T} < 100$ MeV/$c$, while the right plots show pions with $500 < p_\mathrm{T} < 600$ MeV/$c$.
 The top plots show pions with any azimuthal emission direction, while the bottom plots show only pions emitted between $165^\circ < \phi < 195^\circ$, as indicated by the arrows.
