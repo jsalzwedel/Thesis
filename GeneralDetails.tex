@@ -46,10 +46,10 @@ We use those weights and a random number generator to determine whether or not t
 The data in this analysis utilizes information acquired by several of ALICE's subdetectors.  
 Event centrality was measured using the VZERO detector with a timing cut from the Zero Degree Calorimeter. 
 
-The neutral $\Lambda$ particle is found by looking for the pion and proton that it decays into.
+The neutral $\Lambda$ particle is found by looking for the pion and proton that it decays into (more on this in Section \ref{sec:ParticleSelection}.
 The Inner Tracking System (ITS), Time Projection Chamber (TPC), Transition Radiation Detector (TRD), and Time of Flight detector (TOF) together provided global particle tracking for these daughter particles.
 Information from the TPC is used to obtain PID information for V0 candidate daughters.
-PID information from the TOF is also used for particles above 0.8 GeV/$c$.
+PID information from the TOF is also used for particles with $p > 0.8$ GeV/$c$, as the TPC cannot distinguish between pions, kaons, and protons above that threshold.
 
 
 \subsection{Analysis code}
