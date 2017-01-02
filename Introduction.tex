@@ -363,58 +363,65 @@ Femtoscopy is built on measuring the interference patterns of particles emitted 
 As will be discussed in greater detail in Section \ref{sec:CorrelationFunctionModel}, femtoscopy does not actually measure the size of the full interaction region of a heavy-ion collision at the time of freezeout.
 Rather, it measures the size of the region in which particles are emitted with approximately the same momentum, also called the region of homogeneity \cite{Akkelin:1995gh}.
 If particles were emitted isotropically throughout the interaction region, the measured source size would be the the full size of the interaction region.
-This would be the case if the source were static (no expansion).
+This would be the case for a non-expanding source, one where particles don't interact.
 If hadrons could not scatter off each other, then they would be emitted from the interaction region isotropically, as seen in the cartoon on the left of Figure \ref{fig:FlowAndMomentum}.
 However, effects such as radial flow create correlations between particle emission direction and position. 
 The pressure of the fireball boosts the momentum of particles outward, as seen on the right hand side of Figure \ref{fig:FlowAndMomentum}.
 Particles can still freeze out with an inward-pointing momentum, but the probability of that happening will be suppressed.
 In simple terms, a particle near the edge of the fireball is more likely to be emitted outward, where there are fewer particles to scatter off of, than it is for it to be emitted inward where it would have to travel through the bulk of the interaction region without scattering again. 
 
-\begin{figure}[hbt]
-\includegraphics[width=36pc]{Figures/HomemadeFigures/FlowAndMomentum.pdf}
-\caption[Effect of radial flow on momentum]{A cartoon showing possible emission momenta for particles at different places in the fireball.
+\begin{figure}[hbtp]
+\includegraphics[width=24pc]{Figures/HomemadeFigures/FlowAndMomentum.pdf}
+\caption[Effect of radial flow on momentum]{A illustration showing possible emission momenta for particles at different places in the fireball.
 (Left) In a static source where no particles interact, particles are emitted isotropically, and there are no rescatterings to change their momenta.
 (Right) In an evolving source, the pressure of the fireball creates an outward radial flow of particles.
 Particles are more likely to be emitted with their momenta pointing outward.}
 \label{fig:FlowAndMomentum}
 \end{figure}
 
-\begin{figure}[hbt]
-\includegraphics[width=36pc]{Figures/HomemadeFigures/RegionsOfHomogeneity.pdf}
-\caption[Regions of homogeneity]{A cartoon showing regions of homogeneity---the regions where particles can be found with similar momenta and thus small relative momentum $k^* = \sqrt{-(p_1 - p_2)^2}/2$.
-(Left) In a static source where no particles interact, particles are emitted isotropically throughout the interaction region.
-Pairs of high momentum particles with small $k^*$ can be found throughout the fireball, as can pairs of low momentum particles with small $k^*$.
-The regions of homogeneity are essentially the size of the fireball for pairs of any momentum.
-(Right) In an evolving source, the pressure of the fireball boosts the momenta of particles outward.
-High momentum particles with small $k^*$ are only found close together in small regions.
-Low momentum particles with small $k^*$ can be found in larger regions.
-High momentum particles have small regions of homogeneity, while low momentum particles have medium-sized regions.}
+\begin{figure}[hbtp]
+\includegraphics[width=24pc]{Figures/BorrowedFigures/fighbt12.pdf}
+\caption[Regions of homogeneity]{
+Pion freezeout positions in the transverse plane from a hadronic rescattering model \cite{Humanic:2005ye} of S-Pb collisions at the Super Proton Synchrotron with various momentum cuts applied. 
+The left plots show pions with $0 < p_\mathrm{T} < 100$ MeV/$c$, while the right plots show pions with $500 < p_\mathrm{T} < 600$ MeV/$c$.
+The top plots show pions with any azimuthal emission direction, while the bottom plots show only pions emitted between $165^\circ < \phi < 195^\circ$, as indicated by the arrows.
+From the top plots, one sees that low-momentum pions are emitted throughout the fireball, while high-momentum particles tend to be emitted near the outside of the fireball.
+From the bottom plots, one sees that low-momentum pions travelling generally in the negative x-direction come from all over the fireball, while high-momentum particles are mostly emitted from the left side.
+From these plots, one can get a qualitative picture of femtoscopic regions of homogeneity, regions where pairs have approximately the same momentum.
+The region of homogeneity is essentially the size of the fireball for the low-momentum particles, while the region is distinctly smaller for the high-momentum particles.
+}
 \label{fig:RegionsOfHomogeneity}
 \end{figure}
 
+Figure \ref{fig:RegionsOfHomogeneity} illustrates the effect of radial flow, which causes the size of homogeneity region to depend on the average transverse-momentum $P_\mathrm{T} = p_(\mathrm{T,1} + p_\mathrm{T,2})/2$ of the particles being studied.
+In the figure, a hadronic rescattering model \cite{Humanic:2005ye} has been used to determine the freezeout positions of pions in S-Pb collisions at SPS energies.
+The left plots show pions with $0 < p_\mathrm{T} < 100$ MeV/$c$, while the right plots show pions with $500 < p_\mathrm{T} < 600$ MeV/$c$.
+The top plots show pions with any azimuthal emission direction, while the bottom plots show only pions emitted between $165^\circ < \phi < 195^\circ$, as indicated by the arrows.
+From the top plots, one sees that low-momentum pions are emitted throughout the fireball, while high-momentum particles tend to be emitted near the outside of the fireball.
+From the bottom plots, one sees that low-momentum pions travelling generally in the negative x-direction come from all over the fireball, while high-momentum particles are mostly emitted from the left side.
+From these plots, one can get a qualitative picture of femtoscopic regions of homogeneity, regions where pairs have approximately the same momentum.
+The region of homogeneity is essentially the size of the fireball for the low-momentum particles, while the region is distinctly smaller for the high-momentum particles.
 
+\begin{figure}[hbt]
+\includegraphics[width=36pc]{Figures/BorrowedFigures/ALICERadii.pdf}
+\caption[Transverse mass dependence of femtoscopic source radii at ALICE]{Femtoscopic source radii $R_\mathrm{inv}$ vs transverse mass $m_\mathrm{T} = \sqrt{m^2 + P^2_\mathrm{T}}$ measured by ALICE in $\sqrt{s_\mathrm{NN}} = 2.76$ TeV Pb-Pb collisions \cite{Adam:2015vja}.
+The radii are measured for pions, kaons, and protons using a one-dimensional Gaussian parametrization.
+The colors show different centrality classes: red, green, and blue for 0-10\%, 10-30\%, and 30-50\% respectively.
+There is a strong centrality dependence to the radii, with more central events having larger radii.
+Within each species, there is also a clear trend of the radii falling with increasing transverse mass, though there is at best a rough transverse mass scaling between species.}
+\label{fig:ALICERadii}
+\end{figure}
 Femtoscopic analyses traditionally study pions \cite{Goldhaber:1960sf,Aamodt:2011mr} because of their ready availability.  
 However, measurements of heavier particles such as kaons \cite{Abelev:2012ms} and baryons \cite{Gos:2007cj} can serve to complement the pion results.  
-One motivation for studying an assortment of heavier particles is to test the hydrodynamic prediction that radial flow should cause the source radii to scale roughly as the inverse of the transverse mass $1/m_{\mathrm{T}} = (m^2 + k^2_T)^{-1/2}$ of the particles \cite{Csorgo:1995bi,Lisa:2005dd}, where $m$ is the particle mass and $k_T$ is the transverse momentum of the particle.
-An example of this can be seen in Figure \ref{fig:RegionsOfHomogeneity}.
-On the left we see a fireball with no interactions between particles and thus no flow.
-The collision of the heavy-ions created particles thermally (a spectrum of low to high momentum), and isotropically (in terms of where the particles were created, and direction of their momentum upon creation).
-With no rescattering, their final momenta are the same as their initial momenta.
-Therefore, when one looks for a region of homogeneity, the region where pairs of particles can be found with $k^* \approx 0$, one sees that it is essentially the entirety of the fireball.
-This is the case both for low momentum particles and high momentum particles.
-On the right side of Figure \ref{fig:RegionsOfHomogeneity}, we see an expanding fireball.
-Because of the internal pressure of the fireball, outward travelling particles tend to have a large momentum and inward particles a small momentum.
-Now when one looks for regions of homogeneity, one sees different results for large and small momentum particles.
-For two particles with large momentum to have $k^* \approx 0$, they need to be on the same "side" of the fireball.
-The dashed blue lines represent these regions of homogeneity.
-For this simple case of a circular fireball, the blue circled regions are all about the same size.
-Here, one would say that the overall homogeneity region for large momentum particles is small.
-In contrast, the small momentum particles have a larger region of homogeneity.
-Inward-traveling particles from near the edge have approximately the same momentum as outward traveling particles in the center (both pointing the same direction).
-Even particles traveling in opposite directions still have a fairly small $k^*$.
-So these low momentum particles have a larger homogeneity region than the high-momentum particles, but even so their region is not the size of the entire fireball.
+One motivation for studying an assortment of heavier particles is to test the hydrodynamic prediction that radial flow should cause the source radii to scale not with the transverse momentum $P_\mathrm{T}$ of the pair, but actually with the transverse mass  $m_{\mathrm{T}} = \sqrt{m^2 + P^2_\mathrm{T}}$ of the particles \cite{Csorgo:1995bi,Lisa:2005dd}, where $m$ is mass of the particles being studied.
+To be more precise, radial flow is expected to cause the size $R$ of the homogeneity regions to fall roughly as $R \propto \sqrt{T/m_\mathrm{T}}$, where $T$ is the kinetic freezeout temperature of the fireball.
+Figure \ref{fig:ALICERadii} shows femtoscopic radii measured by ALICE for pions, kaons, and protons.
+There is a strong $m_\mathrm{T}$-scaling trend within each species.
+The trend is looser between species; higher mass particles do have smaller source radii than lower mass particles, but the radii of different species are not consistent at a given transverse mass.
+There is some dispute about whether radii should be dependent on $P_\mathrm{T}$, $m_\mathrm{T}$, or some nonlinear combination of the two \cite{Sinyukov:2015kga}.
+Measurements of different species of particles at various $P_\mathrm{T}$ and $m_\mathrm{T}$ values may help to resolve this issue.
 
-Femtoscopy can measure homogeneity regions.
+As we have discussed in this section, femtoscopy can measure the size of homogeneity regions in fireballs.
 In doing so, it yields a snapshot of the final size and shape of the interaction region.
 While it isn't a complete picture of the fireball, it is nonetheless the best picture experimentally available.
 
@@ -422,7 +429,7 @@ While it isn't a complete picture of the fireball, it is nonetheless the best pi
 \label{sec:HadronicInteractions}
 
 
-Femtoscopic correlation functions are sensitive to the interactions between the particles.
+Femtoscopic correlation functions are sensitive to the interactions between particles.
 For identical, charged pion analyses, the quantum interference effects and large Coulomb interactions drown out the interactions of the strong nuclear force.
 However, for pairs of particles such as protons (pp) or neutral kaons ($K^0_\mathrm{s}K^0_\mathrm{s}$), the strong interactions are significant.
 %Those interactions can be accounted for in the two-particle wave function, often with a simple s-wave scattering approximation.
