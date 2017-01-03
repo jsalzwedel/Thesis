@@ -10,42 +10,48 @@ $\Lambda$ are neutral particles, and as such we do not directly detect them.
 Instead, $\Lambda$ are topologically reconstructed by looking for the daughter tracks that they decay into.  
 The general term for a particle reconstructed this way (including $\bar{\Lambda}$ and $K^0_\mathrm{s}$) is V0.
 
+\begin{figure}
+\includegraphics[width=24pc]{Figures/BorrowedFigures/V0Topology.pdf}
+\caption[Topological reconstruction of V0 particles]{Relevant topological quantities used to reconstruct neutral V0 particles from charged tracks \cite{Buxton:2016private}.
+In addition to the reconstructed track trajectory and momentum, one needs the distance of closest approach (DCA) of each track to the primary vertex (the location of the collision), the distance of the tracks to each other, the DCA of the V0 to the primary vertex as determined by the total momentum of the daughter tracks, the decay length of the V0, and the pointing angle of the V0 (the angle between the reconstructed momentum of the V0 and its decay length vector).}
+\label{fig:TopologicalCuts}
+\end{figure}
+
 The ALICE event reconstruction software identifies potential V0 candidates by looking for pairs of charged particles that seem like they might be the decay products of a V0; namely that they both trace back to the same point some distance away from the primary vertex.
 This software, called the V0-finder, uses looser versions of the cuts described below to come up with a list of V0 candidates for each event.
-%For each event, the list of AliAODv0 objects is used as an initial list of V0 candidates.  
 %Only AliAODv0 objects with (AliAODv0::GetOnFlyStatus() == false) are used.  
 These V0 candidates (called AliAODv0 in the software) are constructed offline by the AliV0Vertexer using combined TPC-ITS tracking (or TPC-only if the ITS is inactive).  
 After obtaining a list of V0 candidates, the following cuts were applied for each V0's daughter tracks.
+See Figure \ref{fig:TopologicalCuts} for an illustration of these topological quantities.
 
 \begin{itemize}
-\item The V0 was rejected if (AliAODv0::GetNDaughters() $> 2$), and the daughters are required to have different charges.
+\item The V0 was required to have two daughters, and those daughters were required to have different charges.
 \item The daughter tracks were required to have hits on at least 80 pad rows of the TPC.
-\item The daughter protons and antiprotons were required to have $p_{\rm T} > 0.5$ GeV/$c$, and the daughter pions required $p_{\rm T} \geq 0.16$ GeV/$c$. 
-The difference between proton and antiproton $p_{\rm T}$ cuts arises from a need to minimize contaminations from material protons. 
-All daughters were required to be in the range $|\eta| < 0.8$.
+\item The daughter protons and antiprotons were required to have $p_{\rm T} > 0.5$ GeV/$c$, and the daughter pions required $p_{\rm T} \geq 0.16$ GeV/$c$.
+\item Both daughters were required to be in the range $|\eta| < 0.8$.
 \item The TPC was used for PID purposes.  
-A daughter was considered a proton and/or pion if the PID resolution task returned a respective $\mathrm{d}E/\mathrm{d}x$ NSigma value less than 3 for it.
-\item Daughter tracks were required to have a TOF PID NSigma value less than 4 if the TOF signal was available.
-\item The proton daughter was required to have a distance of closest approach (DCA) to the primary vertex $> 0.1$ cm.
+A daughter was considered a proton and/or pion if the PID resolution task returned a respective $\mathrm{d}E/\mathrm{d}x$ $N_\sigma < 3$.
+\item Daughter tracks were required to have a TOF $N_\sigma < 4$ if the TOF signal was available. 
+\item The distance of closest approach (DCA) of the proton daughter track to the primary vertex was required to be $>$ 0.1 cm (i.e. the proton daughter track is not allowed to be closer than 0.1 cm to the primary vertex at any point along its trajectory)
 \item The pion daughter was required to have a DCA to the primary vertex $> 0.3$ cm.
-\item The two daughters are required to have a DCA to each other $< 0.4$ cm (the vertex software computes this DCA using resolution weighting, so the units here should probably be called "effective cm").
+\item The two daughters were required to have a DCA to each other $< 0.4$ cm (the vertex software computes this DCA using momentum resolution weighting, so the units here should probably be called "effective cm").
 
 \end{itemize}
 
 Each V0 is then subjected to the following cuts:
 \begin{itemize}
 \item The V0 is required to have $|\eta| < 0.8$.
-\item The V0 is required to have a proper decay length less than 60 cm.
-\item The cosine of the pointing angle must be greater than 0.9993.
+\item The V0 is required to have a proper decay length $L_0 = \gamma L < 60$ cm, where $L$ is the distance from the primary vertex to the estimated decay position as measured in the lab frame, and $\gamma = (1 - v^2/c^2)^{-1/2}$ is the relativistic Lorentz factor.
+\item The cosine of the pointing angle (the angle between the V0's momentum and its decay length vector) must be greater than 0.9993.
 \item The DCA of the V0 to the primary vertex must be less than 0.5 cm.
-\item For a $\Lambda$ was required to have a proton daughter and a $\pi^-$ daughter (as determined using the above PID cuts).  
+\item A $\Lambda$ was required to have a proton daughter and a $\pi^-$ daughter, as determined using the above PID cuts.  
 For a $\bar{\Lambda}$, an antiproton and $\pi^+$ daughter were required.
-\item For both $\Lambda$ and $\bar{\Lambda}$, the reconstructed invariant mass was required to fall within $\abs{m_\mathrm{inv}-m_\mathrm{PDG}} < 3.8$ MeV.  
-Note that this cut value was determined by inspection of the $p_\mathrm{T}$-integrated invariant mass peak.  
+\item For both $\Lambda$ and $\bar{\Lambda}$, the reconstructed invariant mass $m_\mathrm{inv}^2 = m_\Lambda^2 = (E_\pi + E_p)^2 - (\vec{p}_\pi + \vec{p}_p)^2$ was required to fall within $\abs{m_\mathrm{inv}-m_\mathrm{PDG}} < 3.8$ MeV, where $m_\mathrm{PDG} = 1.11568$ GeV is the known rest mass of the $\Lambda$ as cataloged by the Particle Data Group \cite{Olive:2016xmw}.  
+Note that this cut value was determined from the $p_\mathrm{T}$-integrated invariant mass peak.  
 Future investigation of $p_\mathrm{T}$-dependent invariant mass peak and subsequently enforcing a $p_\mathrm{T}$-dependent cut could lead to better background reduction.  
 \end{itemize}
 
-The optimal cut values were determined by comparing distributions of reconstructed $\Lambda$ in Monte Carlo HIJING events with simulated detector effects.  
+The optimal cut values were determined by comparing distributions of reconstructed $\Lambda$ in Monte Carlo HIJING events \cite{Gyulassy:1994ew} with simulated detector effects (the data from the MC events undergo a simulated reconstruction using the same software as for real data).  
 The data set (LHC12a17a\_fix) included injected strange signals (extra $\Lambda$, $\bar{\Lambda}$, $\Xi$, and $\Omega$ in each event).  
 In this analysis, we have estimated the reconstruction efficiency of primary and secondary $\Lambda$ in an effort to account for feeddown effects (see Section \ref{sec:ReconstructionEff}).
 The added particles sample a $p_\mathrm{T}$ range that allows for easy detector reconstruction, which skews those efficiency estimates.
@@ -85,10 +91,10 @@ Optimal cut values were set such that a looser cut would differentially add more
 \label{fig:AntiLambdaCutDists2}
 \end{figure}
 
-For the construction of Figures \ref{fig:LambdaCutDists1},\ref{fig:LambdaCutDists2},\ref{fig:AntiLambdaCutDists1}, and \ref{fig:AntiLambdaCutDists2}, each $\Lambda$ type was preselected using AliAODMCParticle information, and only V0 candidates of that type were reconstructed in that analysis run. 
+For the construction of Figures \ref{fig:LambdaCutDists1}, \ref{fig:LambdaCutDists2}, \ref{fig:AntiLambdaCutDists1}, and \ref{fig:AntiLambdaCutDists2}, each $\Lambda$ type was preselected using AliAODMCParticle information, and only V0 candidates of that type were reconstructed in that analysis run. 
 This was done for ease of histogramming the distributions.  
 Roughly equal numbers events were analyzed for each run type, with the exception of the analysis of the primary $\Lambda$.  That analysis run utilized only about half the data set.  
-Therefore, the primary $\Lambda$ ($\bar{\Lambda}$) distributions in Figures \ref{fig:LambdaCutDists1},\ref{fig:LambdaCutDists2},\ref{fig:AntiLambdaCutDists1}, and \ref{fig:AntiLambdaCutDists2} have been scaled by a factor of 2 to compensate.
+Therefore, the primary $\Lambda$ ($\bar{\Lambda}$) distributions in Figures \ref{fig:LambdaCutDists1}, \ref{fig:LambdaCutDists2}, \ref{fig:AntiLambdaCutDists1}, and \ref{fig:AntiLambdaCutDists2} have been scaled by a factor of 2 to compensate.
 
 In these figures, both the shape and magnitude of each distribution is relevant for determining the cuts. 
 For each cut type, a cut value was selected such that a looser cut would differentially accept more fake or secondary $\Lambda$ than primary $\Lambda$. 
