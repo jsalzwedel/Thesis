@@ -34,25 +34,30 @@ The study found that the fit with residual correlations measured a source size c
 In contrast, the fits that did not include residual correlations measured source radii that deviated significantly from the old p$\Lambda$ and $\bar{\mathrm{p}}\bar{\Lambda}$ results.  
 One conclusion from that study was that it is important to make a precise characterization of the $\lambda$ parameters associated with each type of pair contribution.  
 As mentioned above in Section \ref{sec:Observables}, the $\lambda$ parameter can be interpreted as the fraction of total pairs associated with that pair type.  
-Quantitatively, it is included in the fit as shown in Equation \ref{eq:Residual} below.
-
+%Quantitatively, it is included in the fit as shown in Equation \ref{eq:Residual} below.
 We attempt to quantify the residual contamination in this analysis by simultaneously fitting the data for both the primary correlation function and the residual correlations.  
-For example, $\Lambda\Lambda$ correlations with $\mathrm{\Lambda\Sigma^0}$ feeddown would be fit using 
+The $\lambda$ parameter acts as a weight for combining the primary and secondary correlations, via
+\begin{equation}
+\label{eq:GeneralizedLambda}
+C_{\mathrm{total}}(k^*_{\Lambda\Lambda})= \sum_{i} \lambda_{i} C_{i}(k^*_{\Lambda\Lambda}),
+\end{equation}
+where $i$ runs over the different pair types, and $\sum \lambda_{i} = 1$, and $C_{i}(k^*_{\Lambda\Lambda})$ is a theoretical correlation function (see Eqn.\ \ref{eq:GeneralCorrelationFunction}) expressed in the basis of the relative momentum of primary and/or secondary $\Lambda\Lambda$ pairs.
 
+For example, $\Lambda\Lambda$ correlations with $\mathrm{\Lambda\Sigma^0}$ feeddown would be fit using 
 \begin{equation}
 \label{eq:Residual}
-C_{\mathrm{meas}}(k^*_{\Lambda\Lambda})= 1 + \lambda_{\Lambda\Lambda}[C_{\Lambda\Lambda}(k^*_{\Lambda\Lambda})-1]+\lambda_{\Lambda\Sigma}[C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda})-1],
+C_{\mathrm{total}}(k^*_{\Lambda\Lambda})= 1 + \lambda_{\Lambda\Lambda}[C_{\Lambda\Lambda}(k^*_{\Lambda\Lambda})-1]+\lambda_{\Lambda\Sigma}[C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda})-1],
 \end{equation}
 where 
 \begin{equation}
 \label{eq:ResCorSmear}
 C_{\Lambda\Sigma}(k^*_{\Lambda\Lambda}) \equiv \frac{\displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}T(k^*_{\Lambda\Lambda},k^*_{\Lambda\Sigma})C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})}{\displaystyle\sum\limits_{k^*_{\Lambda\Sigma}}T(k^*_{\Lambda\Lambda},k^*_{\Lambda\Sigma})},
 \end{equation}
-$C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eq.~(\ref{eq:Lednicky}), and $T$ is a transform matrix generated with THERMINATOR \cite{Chojnacki:2011hb}, which shows how the $k^*$ of pairs of particles kinematically transforms when one of the particles decays.  
+$C_{\Lambda\Sigma}(k^*_{\Lambda\Sigma})$ is the $\Lambda\Sigma$ correlation function calculated from Eqn.\ \ref{eq:GeneralCorrelationFunction}, and $T$ is a transform matrix generated with THERMINATOR \cite{Chojnacki:2011hb} (see Section \ref{sec:ThermalYields}), which shows how the $k^*$ of pairs of particles kinematically transforms when one of the particles decays.  
 Figure \ref{fig:TherminatorLS} shows the normalized transform matrix for $\Lambda\Sigma \rightarrow \Lambda\Lambda$.
-The width of the smearing band is characterized by the decay momentum --- 74 MeV/c for $\Sigma^0 \rightarrow \Lambda + \gamma$.
-See Section \ref{sec:SmearMath} for details about the normalization.
-
+The width of the smearing band is characterized by the decay momentum, 74 MeV/c for $\Sigma^0 \rightarrow \Lambda + \gamma$.
+See Section \ref{sec:SmearMath} for details about the normalization of $T$.
+Further residual correlations (e.g.\ from $\Sigma\Sigma \rightarrow \Lambda\Lambda$) can be included via additional $C_i(k^*_{\Lambda\Lambda})$ terms.
 
 \begin{figure}[hbt]
 \begin{center}
@@ -62,13 +67,6 @@ See Section \ref{sec:SmearMath} for details about the normalization.
 \label{fig:TherminatorLS}
 \end{figure}
 
-Further residual correlations (e.g.\ from $\Sigma\Sigma \rightarrow \Lambda\Lambda$) can be included via additional terms.
-The generalized form of Eqn.\ \ref{eq:Residual} is 
-\begin{equation}
-\label{eq:GeneralizedLambda}
-C_{\mathrm{meas}}(k^*_{\Lambda\Lambda})= \sum_{i} \lambda_{i} C_{i}(k^*_{\Lambda\Lambda}),
-\end{equation}
-where $i$ runs over the different pair types, and $\sum \lambda_{i} = 1$.
 Figures \ref{fig:TherminatorSS}--\ref{fig:TherminatorXcX0} show normalized residual correlations for $\Sigma^0\Lambda$, $\Sigma^0\Sigma^0$, $\Sigma^0\Xi^{0}$, $\Sigma^0\Xi^{-}$, $\Xi^0\Lambda$ $\Xi^{-}\Lambda$, and $\Xi^0\Xi^{-}$. 
 The width of double hyperon decays $YY \rightarrow \Lambda\Lambda$ is generally wider than single decays $Y\Lambda \rightarrow \Lambda\Lambda$ because each decay contibrutes a momentum shift.
 The antihyperon decays $\bar{Y} \rightarrow \bar{\Lambda}$ have the same kinematics as the hyperon decays, so Figures \ref{fig:TherminatorLS}--\ref{fig:TherminatorXcX0} are also used for their respective antiparticle-antiparticle and particle-antiparticle pair smearing.
@@ -138,7 +136,6 @@ In the Gaussian residual method, the measured correlation function is fit with
 \label{eq:GaussianResiduals}
 C_{\mathrm{meas}}(k^*) = \lambda_{\mathrm{prim}}*C_{\mathrm{prim}}(k^*)+(1-\lambda_{\mathrm{prim}})(1-\beta  e^{-4k^{*2}\omega^2})
 \end{equation}
-
 where the phenomenological parameters $\beta$ and $\omega$ help fit the roughly Gaussian-shaped residual correlations that are expected.
 The interpretation of $\beta$ and $\omega$ is tenuous, so if one has reasonable estimates for the different components ($\lambda$ parameters) of the residual correlations, as well as for the strength of the residual interactions (the scattering parameters $f_0$ and $d_0$), one is probably better off using the more rigorous Transform method of Section \ref{sec:TransformedResiduals}.
 %advantages: Don't need to know/make big assumptions about residual interaction parameters.
