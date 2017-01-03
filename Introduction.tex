@@ -233,16 +233,26 @@ At LHC energies, the colliding ions are Lorentz length-contracted by a factor of
 When these two pancakes collide with a non-zero impact parameter, the overlap region of their participant nucleons is roughly almond shaped.
 As shown in the figure, the almond-shaped fireball is taller than it is wide.
 This creates a larger pressure gradient along the axis of the impact parameter (the short axis) than along the long axis.
-This drives a faster expansion along the short axis as the fireball evolves.
-In this way, the initial shape of the collision impacts the final momentum distribution of the event, a phenomenon called anisotropic flow.
-Using a Fourier decomposition of the the azimuthally-dependent momentum distribution of events, anisotropic flow can be quantified in terms of flow coefficients $v_n$.
-Elliptic flow and triangular flow, $v_2$ and $v_3$,  are the most studied coefficients.
+This drives a faster expansion along the short axis as the fireball evolves, a phenomenon called anisotropic flow.
+In this way, the initial shape of the collision impacts the final momentum distribution of the event.
+
+Using a Fourier decomposition of the azimuthally-dependent momentum distribution \cite{Snellings:2011sz}, anisotropic flow can be quantified in terms of flow coefficients $v_n$
+\begin{equation}
+E \frac{\mathrm{d^3}N}{\mathrm{d^3}p} = \frac{1}{2\pi}\frac{\mathrm{d^2}N}{p_\mathrm{T}\mathrm{d}p_\mathrm{T}\mathrm{d}y}\left(1 + 2 \sum_{n=1}^{\infty} v_n \cos\left[n(\phi - \Psi_{\mathrm{RP}})\right]\right),
+\end{equation}
+where $E$, $p$, $p_\mathrm{T} = \sqrt{\vec{p}^2 - p_z^2}$, $p_z$, and $\phi$ are the energy, momentum, transverse momentum (radially outward from beam axis), longitudinal momentum (along beam axis), and azimuthal angle of a particle's momentum as measured in the lab frame, respectively; $E \frac{\mathrm{d^3}N}{\mathrm{d^3}p}$ is the momentum distribution of measured particles; $y = \frac{1}{2} \ln \left( \frac{E + p_z}{E - p_z} \right)$ is a particle's rapidity; and $\Psi_\mathrm{RP}$ is the azimuthal angle of the reaction plane, which is defined by the collision impact parameter (vector pointing from the center of one nucleus to the center of the other) and beam direction.
+The Fourier components $v_n$ are then defined as
+\begin{equation}
+v_n(p_\mathrm{T},y) = \langle\cos[n(\phi - \Psi_\mathrm{RP} )]\rangle 
+\end{equation}
+where the angle brackets represent an average over all particles and sum over each event for a given $p_\mathrm{T}$ and $y$ bin.
+Elliptic flow and triangular flow, $v_2$ and $v_3$, are the most studied coefficients.
 Elliptic flow owes much of its existence to the initial spatial anisotropy of the almond-shaped fireball, but triangular flow comes from event-by-event energy density fluctuations in the interaction region.
 
 The study of anisotropic flow helps us understand the initial conditions and the evolution of heavy-ion collisions.
 Theorists have had a great deal of success modeling  this evolution, and the evolution of the QGP phase in particular, using relativistic hydrodynamic calculations \cite{Heinz:2013th}.
-This has lead some to declare that the quark-gluon plasma is "most perfect fluid" \cite{Heinz:2005zg}, due to its adherence to ideal fluid dynamics.
-Nonetheless, viscous effects have been found to have significant effects on the flow coefficients for particles with large transverse momentum (radially outward from the beam axis) $p_\mathrm{T} = \sqrt{\vec{p}^2 - p_z^2}$, where $p_z$ is the momemtum along the beam-axis.
+This has lead some to declare that the quark-gluon plasma is the "most perfect fluid" \cite{Heinz:2005zg}, due to its adherence to ideal fluid dynamics.
+Nonetheless, viscous effects have been found to have significant effects on the flow coefficients for particles with large transverse momentum.
 Flow studies continue to be an important tool in understanding the dynamics of heavy-ion collisions.
 
 \subsection{Spectra}
@@ -259,8 +269,6 @@ n_i(E_i) = \frac{g_i}{e^{(E_i - \mu_b)/kT} \pm 1}
 where $g_i$ is the degeneracy of the state, $\mu_b$ is the baryochemical potential of the system,  $T$ is the temperature of the system, and the  $+/-$ is for fermions/bosons. 
 The baryochemical potential quantifies the baryon-antibaryon asymmetry of the system; $\mu_b = 0$ means that there are equal numbers of baryons and antibaryons.
 % citation needed
-
-%One can also look at the momentum distribution of a particular particle species
 
 \begin{figure}[hbtp]
 \includegraphics[width=36pc]{Figures/BorrowedFigures/ALICEYieldsThermalFit.pdf}
