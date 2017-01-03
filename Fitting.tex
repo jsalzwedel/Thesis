@@ -109,9 +109,9 @@ So far, we have discussed the scattering parameters $f_0$ and $d_0$ for $\Lambda
 In an ideal world, we would look up these values in a table of hadron-hadron interactions, plug those values into the respective Lednicky equations, and only have to contend with an unknown femtoscopic radius for these pairs.
 Unfortunately, little to nothing is known about the scattering lengths of these interactions.
 Therefore, we must find some other way to account for these residual correlation effects.
-One option would be to have $f_0$, $d_0$, and $R$ as independent free parameters for each pair, and extract those values from the fit. 
+One option would be to have $f_0$, $d_0$, and $R$ as independent free parameters for each type of pair (e.g.\ $f_{0,\Sigma\Lambda}$, $f_{0,\Sigma\Sigma}$, $f_{0,\Xi^-\Lambda}$) and extract those values from the fit. 
 Alas, this introduces more than a score of new parameters, and it would lead to far too unconstrained of a fit to extract anything meaningful.
-Another option --- the one we utilized in this analysis --- is to ansatz that those pairs have the same scattering parameters and radius as the primary-primary pair.
+Another option---the one we utilized in this analysis---is to make the simplifying assumption that those pairs have the same scattering parameters and radius as the primary-primary pair.
 In that case, each LednickyEqn belonging to a PairSystem will get passed the same parameters, and they will differ only by the smear matrices used to transform them.
 
 
