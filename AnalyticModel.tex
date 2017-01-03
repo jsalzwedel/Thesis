@@ -27,49 +27,61 @@ C(p_1,p_2) = \frac{E_1E_2\frac{dN}{\mathop{d^3p_1}\mathop{d^3p_2}}}{(E_1\frac{dN
 where the numerator term is the two-particle momentum distribution, i.e.\ the distribution of pairs of particles with momenta $p_1$ and $p_2$.
 
 We can similarly write the correlation function as a ratio of emission functions.
-Here, the denominator is just a product of two single-particle emissions.
+In that case, the denominator is just a product of two single-particle emission functions.
 Assuming the particles are created and emitted independently, the numerator is likewise a product of two single-particle emission functions, but we also include the two-particle wave function $\Psi(r,k)$ which introduces correlations between particles.
 \begin{equation}
 \label{eq:BiggerKooninPratt}
-C(p_1,p_2) = \frac{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)\abs{\Psi(r,k^*)}^2}{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)}.
+C(p_1,p_2) = \frac{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)\abs{\Psi(r,k)}^2}{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)}.
 \end{equation}
 The wave function only cares about the relative separation $r^\mu = x_1^\mu - x_2^\mu$ and the relative momentum $k^\mu$ of the particles. 
 The four-vector momentum difference $k^\mu$ and its corresponding invariant relative momentum $k^*$ are defined in Section \ref{sec:RelativeMomentum}.
+Note that $S_1 = S_2$ for pairs of identical particles.
 
 As the wave function only cares about relative quantities, let us change variables.
 Let $p_1^\mu = P^\mu/2 + k^\mu$ and $p_2^\mu = P^\mu/2 - k^\mu$, where $P^\mu = p_1^\mu + p_2^\mu$.
-With that, we can define a two-particle emission function
+With that, we can rewrite the correlation function as 
+\begin{equation}
+\label{eq:KooninPrattWithPAndK}
+C(P,k) = \frac{\int d^4x_1d^4x_2 S_1(x_1,P/2 + k) S_2(x_2,P/2 - k)\abs{\Psi(r,k)}^2}{\int d^4x_1d^4x_2 S_1(x_1,P/2 + k) S_2(x_2,P/2 - k)}.
+\end{equation}
+
+We assume that for a given total momentum $P$ and small relative momentum $k$ (i.e. for particles with approximately the same momentum), the emission function is independent of the momentum difference
+\begin{equation}
+\begin{split}
+& S_1(x_1,P/2+k) \approx S_1(x_1,P) \\ 
+& S_2(x_2,P/2-k) \approx S_2(x_2,P).
+\end{split}
+\end{equation}
+To make the integral only care about relative quantities, we can define a two-particle emission function, which describes the separation of particles at the time(s) of their emission
 \begin{equation}
 \label{eq:TwoParticleEmissionFunction}
-S(r, P/2 + k)=\frac{\int\mathop{d^4x_1}\mathop{d^4x_2}S_1(x_1,p_1) S_2(x_2,p_2)\delta(r - x_1 +x_2)}{\int d^4x_1d^4x_2 S_1(x_1,p_1) S_2(x_2,p_2)}.
+S_{12}(r, P)=\frac{\int\mathop{d^4x_1}\mathop{d^4x_2}S_1(x_1,P) S_2(x_2,P)\delta(r - x_1 +x_2)}{\int d^4x_1d^4x_2 S_1(x_1,P) S_2(x_2,P)}.
 \end{equation}
-We assume that for a given total momentum $P$ and small relative momentum $k*$ (i.e. for particles with approximately the same momentum), the emission function is independent of the momentum difference
+With this, we obtain
 \begin{equation}
-S(r,P/2+k) \approx S(r,P).
+C(P,k) =  \int d^3r S_{12}(r, P) \abs{\Psi(r,k)}^2.
 \end{equation}
-There is one last approximation. It is common to speak of the emission function for a given total momentum $P$ or transverse momentum $k_T = p_{1,T} + p_{2,T}$.
-In principle, correlation functions can be created using infinitesimally small momentum bins, in which case a source function $S_P(r)$ can be characterized for each of those $P$ bins.
-In practice, the size of the $P$ or $k_T$ bins is chosen based on the statistical limitations of the experiment; one uses as many bins as one can while still getting sufficient statistics.
+
+There is one last approximation. It is common to speak of the emission function for a given total momentum $P$ or average transverse momentum $P_\mathrm{T} = (p_{1,T} + p_{2,T})/2$.
+In principle, correlation functions can be created using infinitesimally small momentum bins, in which case a two-particle emission function $S_P(r)$ can be characterized for each of those $P$ bins.
+In practice, the size of the $P$ or $P_\mathrm{T}$ bins is chosen based on the statistical limitations of the experiment; one uses as many bins as one can while still getting sufficient statistics.
 In any case, it is common to assume that the emission function is independent of momentum within each measured $P$ bin.
 Because the emission function describes the region where particles have approximately the same momentum, that region is called the region of homogeneity \cite{Akkelin:1995gh}.
 
-% Implication: When we measure the source function, we are measuring the size/shape of the region where particles have the same momentum
-
-With these simplifications, we can rewrite Eqn.\ \ref{eq:BiggerKooninPratt} as 
+With these simplifications, we can finally rewrite Eqn.\ \ref{eq:BiggerKooninPratt} as 
 \begin{equation}
 \label{eq:KooninPratt}
-C_P(k^*) =  \int d^3r S_{P} (r) \abs{\Psi(k^*,r)}^2.
+C_P(k) =  \int d^3r S_{P} (r) \abs{\Psi(r,k)}^2.
 \end{equation}
 Equations \ref{eq:BiggerKooninPratt} and \ref{eq:KooninPratt} are both called the Koonin-Pratt equation. 
-In the following sections, we'll discuss the two-particle emission function $S(r)$ that we employ to characterize the interaction region, as well as a general wave function that can describe interactions between both identical and non-identical particle pairs in the absence of Coulomb effects.
+In the following sections, we'll discuss the two-particle emission function $S_P(r)$ that we employ to characterize the interaction region, as well as a general wave function that can describe interactions between both identical and non-identical particle pairs in the absence of Coulomb effects.
 
 \subsection{Source functions}
 \label{sec:SourceFunctions}
 
 As discussed above and in Section \ref{sec:FemtoSources}, the two-particle emission function describes the size and shape of the interaction region.
 However, the size of the source is not the size of the entire fireball at freezeout.
-Instead, it is the size of the region of homogeneity, the region where particles with total momentum $\vec{P}$ are emitted with the same momentum (and therefore $k^* = 0$).
-%This is illustrated by the cartoon in Figure \ref{fig:HomogeneityRegion}.
+Instead, it is the size of the region of homogeneity, the region where particles with total momentum $P$ are emitted with the same momentum, such that $k^* = 0$.
 
 In practice, there are a number of ways to characterize the source function.
 One of the simplest treatments is to assume that the source is described by a spherically symmetric function such as a Gaussian.
@@ -78,7 +90,7 @@ There are several weaknesses to this method.
 For example the source is likely not spherically symmetric --- at the moment of the collision of the ions the interaction region roughly has the shape of a pancake or an almond,
 % (see Figure \ref{fig:PancakeAlmond})
 and it need not expand isotropically in the longitudinal and transverse directions.
-Additionally, a Gaussian may not always be the best approximation; sometimes an exponential or an Edgeworth expansion may work better \cite{Abelev:2014pja}.
+Additionally, a Gaussian may not always be the best approximation; sometimes an exponential or an Edgeworth expansion may work better \cite{Abelev:2013pqa, Abelev:2014pja}.
 Despite these flaws, the one-dimensional approach has merit for analyses with limited statistics, since there is less risk of overfitting the data with too many parameters.
 And as we'll see below, there is an analytic form for the one-dimensional correlation function, which is not necessarily the case for multi-dimensional analyses.
 Because $\Lambda$ yields are much smaller than $\pi$ yields, and the $\Lambda\Lambda$ signal in particular is quite weak (see Figure \ref{fig:CFLamLamALamALam010}), this study employs the 1D approach.
