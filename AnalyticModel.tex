@@ -127,21 +127,37 @@ Given the strong signal seen in this analysis's $\Lambda\bar{\Lambda}$ correlati
 \subsection{Wave function}
 \label{sec:WaveFunction}
 
-
-
-%Introduce section: As mentioned above, we 
-
-For identical particles, we can write the asymptotic solution to the non-symmatrized two-particle wave function $\psi$ as a superposition of an incoming plane-wave and an outgoing spherical wave
+For identical, non-interacting particles, the non-symmetrized two-particle wave function $\psi$ is a product of plane waves
 \begin{equation}
-\label{eq:swaveScattering}
-\psi_{p_1p_2}(r,k^*) = e^{ik^*r} + (1 + (-1)^S)f(k^*)\frac{e^{ik^*r}}{r},
+\begin{split}
+\psi(p_1, p_2, x_1, x_2) & = e^{-ip_1x_1}e^{-ip_2x_2} \\
+& = e^{-i P(x_1 + x_2)/2}e^{-ikr}
+\end{split}
 \end{equation}
-Here 
+where $P = p_1 + p_2$, $k = p_1 - p_2$, and $r = x_1 - x_2$.
+In the case of interacting particles, we instead have
+\begin{equation}
+\psi(p_1, p_2, x_1, x_2) = e^{-i P(x_1 + x_2)/2} \left[ e^{-ikr} + \phi(p_1, p_2, r) \right].
+\end{equation}
+where $\phi(p_1, p_2, r)$ describes the final state interactions of the particles.
+Assuming that the range of the interaction potential is smaller than the distance between emission points $r$, the the magnitude of the momentum difference is much smaller than the mass of the particles ($k^* << m$), and that the particles are emitted at the same time, then the interaction term can be approximated \cite{lednicky82} by
+\begin{equation}
+\label{eq:InteractionTerm}
+\phi(p_1, p_2, r) = (1 + (-1)^S)f(k^*)\frac{e^{ik^*r}}{r},
+\end{equation}
+where 
 \begin{equation}
 \label{eq:ScatteringAmplitude}
 f(k^*) = \left(\frac{1}{f_0} + \frac{1}{2}d_0k^{*2}-ik^*\right)^{-1}
 \end{equation}
 is the s-wave scattering amplitude in the effective-range approximation \cite{LANDAU1977502}, $f_0$ is the complex scattering length which characterizes the strength of the interaction, $d_0$ is the effective range of interaction, and $S$ is the total spin of the pair.
+Thus, for identical particles, the asymptotic solution to the non-symmatrized two-particle wave function $\psi$ takes the form of a superposition of an incoming plane-wave and an outgoing spherical wave
+\begin{equation}
+\label{eq:swaveScattering}
+\psi(p_1, p_2, x_1, x_2) = e^{-i P(x_1 + x_2)/2} \left[ e^{-ikr} + (1 + (-1)^S)f(k^*)\frac{e^{ik^*r}}{r}\right].
+\end{equation}
+
+%\psi_{p_1p_2}(r,k^*) = e^{ik^*r} + (1 + (-1)^S)f(k^*)\frac{e^{ik^*r}}{r},
 
 For non-identical particles, the full wave function $\Psi(r,k^*) = \psi_{p_1p_2}(r,k^*)$, and there is no $(1 + (-1)^S)$ prefactor on the scattering amplitude. 
 For identical, unpolarized, spin-$\frac{1}{2}$ fermions, the symmetrized wave function is given by 
@@ -152,22 +168,7 @@ For identical, unpolarized, spin-$\frac{1}{2}$ fermions, the symmetrized wave fu
 \end{equation}
 where $\frac{3}{4}$ of the pairs are in the symmetric spin-triplet state and antisymmetric spatial state, and the other $\frac{1}{4}$ are in the antisymmetric spin-singlet state and symmetric spatial state.
 In principle, the scattering length $f_0$ can be a spin-dependent quantity, as is the case for the p$\Lambda$ interaction \cite{Adams:2005ws}.
-
-Substituting in Eqn.\ \ref{eq:swaveScattering} and noting that $S=1$ for the spin triplet state and $S=0$ for the spin singlet state, we find
-\begin{equation}
-\label{eq:IdenticalUnpolarizedFermionicWaveFunction}
-\abs{\Psi(r,k^*)}^2 = \frac{1}{2}\left(\frac{3}{4} \abs{e^{ik^*r} - e^{-ik^*r}}^2
-+ \frac{1}{4} \abs{e^{ik^*r} + f(k^*)\frac{e^{ik^*r}}{r} + e^{-ik^*r} + f(k^*)\frac{e^{-ik^*r}}{r}}^2\right).
-\end{equation}
-%\begin{equation}
-%\abs{\Psi(r,k^*)}^2 =\frac{1}{2}\left(3\sin^2(k^*r)
-%+ \cos^2(k^*r)(1+2 \Re(\frac{f}{r}) + \frac{\abs{f}^2}{r})  \right).
-%\end{equation}
-
-%Then (fill in a general derivation of the Lednicky eqn  \cite{lednicky82}) ...
-
-
-
+In this analysis, we will assume that singlet ($S=0$) and triplet ($S=1$) scattering parameters are spin-independent.
 
 \subsection{1D analytic model}
 \label{sec:AnalyticModel}
@@ -175,7 +176,7 @@ Substituting in Eqn.\ \ref{eq:swaveScattering} and noting that $S=1$ for the spi
 % Integrate over the source
 We then evaluate the Koonin-Pratt equation (Eqn.\ \ref{eq:KooninPratt}) with the use of our two-particle source function (Eqn.\ \ref{eq:Gaussian1DSource}) and symmetrized wave function (Eqn.\ \ref{eq:IdenticalUnpolarizedFermionicWaveFunction}).
 The details of the calculation can be found in \cite{lednicky82}.
-The resulting analytic, one-dimensional, femtoscopic correlation function is called the Lednicky and Lyuboshits equation (abridged to Lednicky equation), which can be broken down as
+The resulting analytic, one-dimensional, femtoscopic correlation function is called the Lednicky and Lyuboshits equation (sometimes just called the Lednicky equation), which can be broken down as
 \begin{equation}
 \label{eq:GeneralCorrelationFunction}
 C(k^*)= 1 + C_{\mathrm{QS}}(k^*)+C_{\mathrm{FSI}}(k^*).
