@@ -1,6 +1,5 @@
 *.aux
 *.log
-*.pdf
 *.dvi
 *.lof
 *.toc
@@ -8,3 +7,10 @@
 *.blg
 *.out
 *.gz
+*.bcf
+*.lot
+*.ps
+*.xml
+*.zip
+*backup.pdf
+*.odp
