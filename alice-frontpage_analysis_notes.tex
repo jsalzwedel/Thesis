@@ -60,6 +60,10 @@
 \usepackage [autostyle, english = american]{csquotes}
 \MakeOuterQuote{"}
 
+\addto\captionsenglish {
+	\renewcommand\contentsname{Table of Contents}
+	\renewcommand{\contentsname}{\hfill\typesetLevelTwo Table of Contents\hfill} % Added to center Contents header text, goddammit tocloft
+}
 % Center figures
 \makeatletter
 \g@addto@macro\@floatboxreset\centering
